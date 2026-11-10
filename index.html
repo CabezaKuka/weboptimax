@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Nesting y desarrollos de chapa para plasma CNC: distribuye piezas DXF en planchas, genera T, curvas, conos y transiciones, pasa piezas de una foto a DXF, corta barras, guillotina, rejas y portones. DEMO gratis, PRO 49 USDT.">
+<meta property="og:title" content="optiMAX: nesting y desarrollos de chapa para plasma CNC">
+<meta property="og:description" content="Más piezas por plancha y menos horas dibujando desarrollos. DEMO gratis para Windows.">
+<meta property="og:image" content="https://optimax.lat/img/og.jpg">
+<meta property="og:url" content="https://optimax.lat/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/icono.png">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
+<title>optiMAX: nesting y desarrollos de chapa para plasma CNC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Concepto: chapa de acero bajo la luz del plasma. Fondo acero azulado, rojo de la marca solo para acciones,
+   blanco caliente del arco para lo que importa. Marcas de registro de plancha como único ornamento. */
+:root{
+  --acero:#1a1f24;      /* fondo */
+  --acero-2:#222930;    /* paneles */
+  --acero-3:#2c343c;    /* bordes, filas */
+  --linea:#3b4550;
+  --texto:#e8ecef;
+  --tenue:#9ba7b3;
+  --rojo:#e3120b;       /* rojo optiMAX */
+  --rojo-hover:#ff2a1f;
+  --arco:#fff4e2;       /* blanco del arco */
+  --ambar:#f2b200;
+  --ok:#56c27a;
+  --f-titulo:"Saira Condensed","Arial Narrow",Arial,sans-serif;
+  --f-texto:"Barlow","Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:ui-monospace,"Cascadia Mono",Consolas,"Liberation Mono",monospace;
+  --ancho:1180px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--acero);color:var(--texto);font:400 17px/1.6 var(--f-texto);-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--arco);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--f-titulo);font-weight:700;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:.005em}
+h2{font-size:clamp(2rem,4.2vw,3.1rem)}
+h3{font-size:1.55rem}
+p{margin:0}
+.envoltura{max-width:var(--ancho);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.seccion{padding-block:clamp(56px,8vw,104px)}
+.seccion+.seccion{border-top:1px solid var(--acero-3)}
+.intro{max-width:62ch;display:grid;gap:14px;margin-bottom:40px}
+.intro p{color:var(--tenue)}
+.tenue{color:var(--tenue)}
+
+/* Barra superior */
+.barra{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(26,31,36,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--acero-3)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--acero)}
+.barra .envoltura{display:flex;align-items:center;gap:24px;min-height:64px}
+.barra .marca img{height:30px;width:auto}
+.barra nav{display:flex;gap:22px;margin-left:auto;font-weight:500;font-size:.98rem}
+.barra nav a{text-decoration:none;color:var(--tenue)}
+.barra nav a:hover{color:var(--texto)}
+@media (max-width:860px){.barra nav{display:none}.barra .boton{margin-left:auto}}
+
+/* Botones */
+.boton{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 1rem/1 var(--f-texto);padding:14px 22px;border-radius:4px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background .15s,border-color .15s}
+.boton-rojo{background:var(--rojo);color:#fff}
+.boton-rojo:hover{background:var(--rojo-hover)}
+.boton-linea{border-color:var(--linea);color:var(--texto);background:transparent}
+.boton-linea:hover{border-color:var(--texto)}
+.boton-chico{padding:10px 16px;font-size:.92rem}
+.mensaje{font-size:.92rem;color:var(--ambar);min-height:1.4em}
+
+/* Portada */
+.portada{padding-block:clamp(40px,6vw,80px) clamp(48px,7vw,96px)}
+.portada .envoltura{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,5vw,64px);align-items:center}
+.portada h1{font-size:clamp(2.7rem,6.4vw,5.3rem);font-weight:800;line-height:.95;text-transform:none}
+.portada .bajada{font-size:1.17rem;color:var(--tenue);max-width:46ch;margin-top:22px}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.datos-portada{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;color:var(--tenue);font-size:.95rem}
+.datos-portada span::before{content:"";display:inline-block;width:6px;height:6px;background:var(--rojo);margin-right:8px;vertical-align:middle;border-radius:1px}
+@media (max-width:900px){.portada .envoltura{grid-template-columns:1fr}}
+
+/* Marco con marcas de registro de plancha */
+.plancha{position:relative;padding:14px}
+.plancha::before,.plancha::after,.plancha .m3,.plancha .m4{content:"";position:absolute;width:22px;height:22px;border-color:var(--tenue);border-style:solid;opacity:.7}
+.plancha::before{top:0;left:0;border-width:2px 0 0 2px}
+.plancha::after{top:0;right:0;border-width:2px 2px 0 0}
+.plancha .m3{bottom:0;left:0;border-width:0 0 2px 2px}
+.plancha .m4{bottom:0;right:0;border-width:0 2px 2px 0}
+.plancha video,.plancha img{width:100%;border-radius:2px;background:#000}
+.plancha figcaption{font-size:.86rem;color:var(--tenue);margin-top:10px}
+.video-portada{aspect-ratio:16/9;object-fit:cover;box-shadow:0 0 90px rgba(255,120,60,.18)}
+
+/* Prueba de rendimiento */
+.franja{background:var(--acero-2);border-block:1px solid var(--acero-3)}
+.franja .envoltura{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;padding-block:34px}
+.franja .cifra{font-family:var(--f-titulo);font-weight:800;font-size:clamp(2.4rem,5vw,3.6rem);line-height:1;color:var(--arco)}
+.franja p{max-width:70ch}
+@media (max-width:640px){.franja .envoltura{grid-template-columns:1fr;gap:12px}}
+
+/* Funciones: filas alternadas */
+.funciones{display:grid;gap:clamp(56px,7vw,96px)}
+.funcion{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr);gap:clamp(24px,4vw,56px);align-items:center}
+.funcion:nth-child(even){grid-template-columns:minmax(0,1.4fr) minmax(0,.85fr)}
+.funcion:nth-child(even) .funcion-texto{order:2}
+.funcion-texto{display:grid;gap:14px;min-width:0}
+.funcion-texto p{color:var(--tenue)}
+.funcion ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.funcion li{padding-left:20px;position:relative}
+.funcion li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--rojo)}
+.sello{display:inline-block;font:600 .78rem/1 var(--f-texto);letter-spacing:.06em;padding:5px 8px;border-radius:3px;vertical-align:middle;margin-left:10px}
+.sello-pro{background:var(--rojo);color:#fff}
+.sello-demo{border:1px solid var(--linea);color:var(--tenue)}
+.sello-nuevo{background:var(--ambar);color:#1a1f24;margin-left:0;margin-right:10px}
+
+/* Novedad: foto a DXF */
+.novedad{border-top:1px solid var(--acero-3)}
+.novedad-pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr 1.65fr;gap:18px;align-items:start}
+.novedad-pasos li{display:grid;gap:10px;align-content:start;min-width:0}
+.novedad-pasos .num{font:800 1.35rem/1 var(--f-titulo);color:var(--rojo);margin-right:6px}
+.novedad-pasos b{display:block;margin-bottom:2px}
+.novedad-pasos p{color:var(--tenue);font-size:.95rem}
+.novedad-pie{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--tenue);font-size:.95rem}
+.novedad-pie .sello{margin-left:0;margin-right:6px}
+@media (max-width:900px){.novedad-pasos{grid-template-columns:1fr 1fr}.novedad-pasos li:last-child{grid-column:1/-1}}
+@media (max-width:520px){.novedad-pasos{grid-template-columns:1fr}}
+.captura{cursor:zoom-in;border:1px solid var(--acero-3);border-radius:4px;overflow:hidden;background:#fff;padding:0;display:block;width:100%}
+.captura img{width:100%;height:auto}
+.doble{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;align-items:start}
+@media (max-width:600px){.doble{grid-template-columns:1fr}}
+@media (max-width:900px){.funcion,.funcion:nth-child(even){grid-template-columns:1fr}.funcion:nth-child(even) .funcion-texto{order:0}}
+
+/* Catálogo de desarrollos */
+.catalogo{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,400px),1fr));gap:1px;background:var(--acero-3);border:1px solid var(--acero-3);border-radius:4px;overflow:hidden}
+.catalogo li{background:var(--acero-2);padding:12px 16px 12px 12px;display:grid;grid-template-columns:88px minmax(0,1fr) auto;align-items:center;gap:14px;list-style:none}
+.catalogo li img{width:88px;height:66px}
+.catalogo li span:first-child{font-weight:500}
+.catalogo{padding:0;margin:0}
+.nota-tecnica{margin-top:18px;color:var(--tenue);font-size:.95rem;max-width:75ch}
+
+/* Taller */
+.taller{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.taller figure{margin:0;position:relative;overflow:hidden;border-radius:3px;background:#000}
+.taller img,.taller video{width:100%;height:100%;object-fit:cover}
+.taller .alto{grid-row:span 2}
+.taller figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 10px;font-size:.85rem;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#f2f2f2}
+@media (max-width:760px){.taller{grid-template-columns:1fr 1fr}.taller .alto{grid-row:span 1;grid-column:span 2;aspect-ratio:4/5}}
+
+/* Tabla DEMO / PRO */
+.tabla-caja{overflow-x:auto;border:1px solid var(--acero-3);border-radius:4px}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--acero-3);vertical-align:top}
+thead th{font-family:var(--f-titulo);font-size:1.35rem;font-weight:700;background:var(--acero-2)}
+thead th small{display:block;font-family:var(--f-texto);font-size:.9rem;font-weight:500;color:var(--tenue)}
+tbody tr:last-child td{border-bottom:0}
+td:nth-child(2),td:nth-child(3),th:nth-child(2),th:nth-child(3){width:24%;text-align:center}
+.si{color:var(--ok);font-weight:600}
+.no{color:var(--linea)}
+.parcial{color:var(--texto);font-size:.93rem;line-height:1.35}
+.col-pro{background:rgba(227,18,11,.06)}
+@media (max-width:600px){table{min-width:0}th,td{padding:12px 10px}td:nth-child(2),td:nth-child(3),th:nth-child(2),th:nth-child(3){width:19%}thead th{font-size:1.15rem}}
+
+/* Requisitos */
+.requisitos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px 36px;margin:0}
+.requisitos div{border-top:2px solid var(--linea);padding-top:12px}
+.requisitos dt{font-weight:600}
+.requisitos dd{margin:4px 0 0;color:var(--tenue)}
+
+/* Compra */
+.compra{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+@media (max-width:900px){.compra{grid-template-columns:1fr}}
+.precio{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:22px}
+.precio b{font-family:var(--f-titulo);font-weight:800;font-size:clamp(3rem,12vw,4.2rem);white-space:nowrap;line-height:1;color:var(--arco)}
+.precio span{color:var(--tenue)}
+.pasos{counter-reset:paso;list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.pasos li{counter-increment:paso;display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px}
+.pasos li::before{content:counter(paso);font-family:var(--f-titulo);font-weight:800;font-size:1.4rem;width:40px;height:40px;border:2px solid var(--rojo);border-radius:50%;display:grid;place-items:center;line-height:1}
+.pasos b{display:block}
+.pasos span{color:var(--tenue)}
+.pago{background:var(--acero-2);border:1px solid var(--acero-3);border-radius:6px;padding:clamp(18px,3vw,28px);display:grid;gap:18px}
+.pago-red{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:600}
+.pago-red span:last-child{color:var(--tenue);font-weight:500}
+.qr-y-dir{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center}
+@media (max-width:480px){.qr-y-dir{grid-template-columns:1fr}}
+#qr{background:#fff;padding:10px;border-radius:4px;width:156px;height:156px;display:grid;place-items:center}
+#qr img,#qr canvas{width:136px!important;height:136px!important}
+.direccion{font-family:var(--f-mono);font-size:.95rem;word-break:break-all;background:var(--acero);border:1px solid var(--linea);border-radius:4px;padding:12px;user-select:all}
+.avisos{margin:0;padding:0;list-style:none;display:grid;gap:10px;font-size:.95rem}
+.avisos li{padding:10px 12px;border-left:3px solid var(--ambar);background:rgba(242,178,0,.07)}
+.formulario{display:grid;gap:12px;border-top:1px solid var(--acero-3);padding-top:18px}
+.formulario label{display:grid;gap:6px;font-weight:500;font-size:.95rem}
+.formulario input{font:400 1rem var(--f-mono);padding:11px 12px;border-radius:4px;border:1px solid var(--linea);background:var(--acero);color:var(--texto);width:100%}
+.formulario input:focus{outline:2px solid var(--arco);outline-offset:1px}
+#nombre-lic{font-family:var(--f-texto)}
+.condiciones{margin-top:26px;display:grid;gap:8px;color:var(--tenue);font-size:.95rem}
+.condiciones b{color:var(--texto);font-weight:600}
+
+/* Preguntas */
+.preguntas{display:grid;gap:0;border-top:1px solid var(--acero-3);max-width:860px}
+.preguntas details{border-bottom:1px solid var(--acero-3)}
+.preguntas summary{cursor:pointer;padding:18px 36px 18px 0;font-weight:600;font-size:1.07rem;list-style:none;position:relative}
+.preguntas summary::-webkit-details-marker{display:none}
+.preguntas summary::after{content:"+";position:absolute;right:6px;top:12px;font:400 1.6rem/1 var(--f-titulo);color:var(--tenue)}
+.preguntas details[open] summary::after{content:"−"}
+.preguntas details p{padding:0 0 20px;color:var(--tenue);max-width:72ch}
+
+/* Pie */
+footer{border-top:1px solid var(--acero-3);padding-block:36px;color:var(--tenue);font-size:.93rem}
+footer .envoltura{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center}
+footer img{height:22px;width:auto}
+
+/* Pestañas de forma de pago */
+.pestanas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;background:var(--acero);border:1px solid var(--acero-3);border-radius:6px;padding:5px}
+.pestanas button{font:600 1rem/1.2 var(--f-texto);color:var(--tenue);background:transparent;border:0;border-radius:4px;padding:10px 8px;cursor:pointer;display:grid;gap:2px;text-align:center}
+.pestanas button small{font-weight:400;font-size:.82rem}
+.pestanas button[aria-selected="true"]{background:var(--acero-3);color:var(--texto);box-shadow:inset 0 -2px 0 var(--rojo)}
+.panel{display:grid;gap:18px}
+.qr-banco{display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:20px;align-items:start}
+.qr-banco img{width:100%;height:auto;border-radius:6px;background:#fff}
+.qr-banco-texto{display:grid;gap:12px;justify-items:start}
+.qr-banco-texto .pago-red{width:100%}
+@media (max-width:520px){.qr-banco{grid-template-columns:1fr}.qr-banco img{max-width:300px;margin-inline:auto}}
+
+@media (max-width:420px){.pestanas button{font-size:.92rem;padding:9px 4px}}
+
+/* ID de Binance (en el lugar del QR) */
+.id-caja{display:grid;place-items:center;align-content:center;gap:10px;min-height:250px;padding:18px 12px;background:var(--acero);border:1px solid var(--linea);border-radius:6px;text-align:center}
+.id-caja small{color:var(--tenue);font-size:.95rem}
+.id-caja b{font:700 2.1rem/1 var(--f-mono);letter-spacing:.02em;color:var(--arco);user-select:all}
+.id-caja .tenue{font-size:.88rem;min-height:1.3em}
+@media (max-width:520px){.id-caja{min-height:0;max-width:300px;width:100%;margin-inline:auto}}
+
+/* Envío del comprobante */
+.envio{display:grid;gap:14px;background:var(--acero);border:1px solid var(--linea);border-radius:6px;padding:16px}
+.envio-opciones{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center}
+.envio-qr{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;grid-column:1 / -1}
+#qr-wa{background:#fff;padding:10px;border-radius:4px;width:200px;height:200px;display:grid;place-items:center}
+#qr-wa img,#qr-wa canvas{width:180px!important;height:180px!important}
+.envio-boton{display:grid;gap:6px;justify-items:start;grid-column:1 / -1}
+.envio .tenue{font-size:.9rem}
+.vista-msg{margin:0;white-space:pre-wrap;font:400 .9rem var(--f-mono);color:var(--tenue);border-top:1px solid var(--acero-3);padding-top:10px}
+@media (max-width:520px){.envio-qr{grid-template-columns:1fr}}
+
+/* WhatsApp de consultas (asistente automático) */
+:root{--wa:#25d366;--wa-fondo:#0f2a1a}
+.ico-chat{width:22px;height:22px;flex:none;color:var(--wa)}
+.wa-chip{display:inline-grid;grid-template-columns:auto auto;column-gap:10px;align-items:center;justify-self:start;width:max-content;max-width:100%;text-decoration:none;background:var(--wa-fondo);border:1px solid rgba(37,211,102,.45);border-radius:999px;padding:8px 16px 8px 12px;color:var(--texto);font-weight:600}
+.wa-chip .ico-chat{grid-row:span 2}
+.wa-chip small{font-weight:400;font-size:.8rem;color:var(--tenue);line-height:1.1}
+.wa-chip span{line-height:1.2}
+.wa-chip:hover{border-color:var(--wa)}
+.wa-flotante{position:fixed;right:max(18px,calc(env(safe-area-inset-right,0px) + 12px));bottom:max(18px,calc(env(safe-area-inset-bottom,0px) + 12px));z-index:40;display:flex;align-items:center;gap:8px;background:var(--wa);color:#08341a;font-weight:600;text-decoration:none;padding:12px 18px 12px 14px;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.wa-flotante .ico-chat{color:#08341a;--wa-fondo:var(--wa)}
+.wa-flotante:hover{background:#3be07a}
+@media (max-width:600px){.wa-flotante{padding:14px}.wa-flotante span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+
+/* Visor de capturas */
+dialog.visor{border:0;padding:0;background:transparent;max-width:min(96vw,1600px);max-height:94vh}
+dialog.visor::backdrop{background:rgba(10,12,14,.88)}
+dialog.visor img{max-height:90vh;width:auto;margin:auto;border-radius:4px}
+/* Pasos de instalación: se abre al tocar «Descargar» (la descarga arranca igual) */
+dialog.instalar{border:1px solid var(--linea);border-radius:8px;padding:0;background:var(--acero-2);color:var(--texto);width:min(880px,94vw);max-height:94vh;overflow:auto}
+dialog.instalar::backdrop{background:rgba(10,12,14,.8)}
+.instalar-caja{position:relative;padding:26px clamp(18px,3vw,32px) 24px;display:grid;gap:14px}
+.instalar-caja h2{font-size:clamp(1.7rem,3vw,2.2rem);padding-right:44px}
+.instalar-cerrar{position:absolute;top:14px;right:14px;width:36px;height:36px;background:transparent;color:var(--tenue);border:1px solid var(--linea);border-radius:4px;font:600 1rem var(--f-texto);cursor:pointer}
+.instalar-cerrar:hover{color:var(--texto);border-color:var(--tenue)}
+.instalar-aviso{background:var(--acero);border:1px solid var(--acero-3);border-radius:6px;padding:14px 16px;font-size:.97rem}
+.instalar-aviso a{color:var(--texto)}
+.instalar-pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.instalar-pasos li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center}
+.instalar-pasos li.ancho{grid-column:1/-1;grid-template-columns:1fr}
+.instalar-pasos img{width:auto;height:150px;max-width:100%;border-radius:4px;border:1px solid var(--acero-3)}
+.instalar-pasos .num{font:800 1.35rem/1 var(--f-titulo);color:var(--rojo);margin-right:6px}
+.instalar-nota{font-size:.93rem}
+.instalar details summary{cursor:pointer;color:var(--tenue)}
+.instalar details p{margin-top:8px;color:var(--tenue);font-size:.95rem}
+.instalar-pie{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;font-size:.93rem}
+@media (max-width:640px){.instalar-pasos{grid-template-columns:1fr}}
+dialog.visor button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));background:var(--acero-2);color:var(--texto);border:1px solid var(--linea);border-radius:4px;font:600 .95rem var(--f-texto);padding:8px 14px;cursor:pointer}
+</style>
+<!-- Meta Pixel Code (optiMAX-WEB) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4773464836310644');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></noscript>
+
+<header class="barra">
+  <div class="envoltura">
+    <a class="marca" href="#inicio" aria-label="optiMAX, inicio"><img src="img/logo-blanco.webp" alt="optiMAX" width="90" height="30"></a>
+    <nav aria-label="Secciones">
+      <a href="#foto-dxf">Foto a DXF</a>
+      <a href="#funciones">Funciones</a>
+      <a href="#desarrollos">Desarrollos</a>
+      <a href="#versiones">DEMO y PRO</a>
+      <a href="#comprar">Comprar</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="boton boton-rojo boton-chico js-descarga" href="#descargar">Descargar DEMO</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="portada">
+    <div class="envoltura">
+      <div>
+        <h1>Más piezas por plancha y menos horas dibujando desarrollos</h1>
+        <p class="bajada">optiMAX acomoda tus piezas DXF en la plancha, genera desarrollos de chapa (injertos en T, curvas, conos, transiciones y helicoides) y exporta el DXF con el orden de corte listo para la mesa plasma. Además trae módulos para cortar tubos, barras y angulares, planificar cortes con guillotina y calcular rejas y portones.</p>
+        <div class="acciones">
+          <a class="boton boton-rojo js-descarga" href="#descargar">Descargar DEMO gratis</a>
+          <a class="boton boton-linea" href="#comprar">Comprar PRO por 49 USDT</a>
+        </div>
+        <p class="mensaje js-mensaje-descarga" role="status"></p>
+        <div class="datos-portada">
+          <span>Windows 10 y 11</span><span>En español</span><span>Funciona sin internet</span><span>DEMO sin vencimiento</span>
+        </div>
+      </div>
+      <figure class="plancha" style="margin:0">
+        <span class="m3"></span><span class="m4"></span>
+        <video class="video-portada" src="video/plasma-corte.mp4" poster="video/plasma-corte.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mesa plasma CNC cortando una plancha"></video>
+        <figcaption>Mesa plasma CNC del taller donde se desarrolla optiMAX, en Santa Cruz de la Sierra, Bolivia.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="seccion novedad" id="foto-dxf">
+    <div class="envoltura">
+      <div class="intro">
+        <h2><span class="sello sello-nuevo">NUEVO</span>De una foto a DXF</h2>
+        <p>¿Tenés que repetir una pieza y no tenés el plano? Apoyala sobre la hoja de calibración, sacale una foto y optiMAX te da el contorno medido, listo para el nesting.</p>
+      </div>
+      <ol class="novedad-pasos">
+        <li>
+          <button class="captura js-ampliar" type="button" aria-label="Ampliar foto de la pieza">
+            <img src="img/foto-pieza.webp" width="900" height="900" loading="lazy" alt="Pieza de chapa cortada, sostenida con guante de trabajo">
+          </button>
+          <div><b><span class="num">1</span>La pieza</b><p>Cualquier pieza de chapa, aunque no tengas el dibujo.</p></div>
+        </li>
+        <li>
+          <button class="captura js-ampliar" type="button" aria-label="Ampliar foto de la pieza sobre la hoja de calibración">
+            <img src="img/foto-hoja.webp" width="900" height="900" loading="lazy" alt="La misma pieza apoyada sobre la hoja de calibración con cuatro cuadros negros en las esquinas">
+          </button>
+          <div><b><span class="num">2</span>La foto</b><p>Imprimí la hoja de calibración (Carta, A4 o A3), apoyá la pieza y sacá la foto desde arriba con el celular.</p></div>
+        </li>
+        <li>
+          <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de Pieza desde una foto">
+            <img src="img/cap-foto-dxf.webp" width="1378" height="836" loading="lazy" alt="Ventana Pieza desde una foto con el contorno detectado: 5 rectas y 1 arco, 139,64 × 111,08 mm">
+          </button>
+          <div><b><span class="num">3</span>El DXF</b><p>optiMAX detecta rectas, arcos y círculos y te da las medidas. Ajustás el contorno si hace falta y lo agregás al nesting o lo exportás en DXF.</p></div>
+        </li>
+      </ol>
+      <div class="novedad-pie">
+        <span><span class="sello sello-demo">DEMO</span>Detectar, medir y editar</span>
+        <span><span class="sello sello-pro">PRO</span>Agregar al nesting y exportar el DXF</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="franja">
+    <div class="envoltura">
+      <div class="cifra">Mismo resultado</div>
+      <p>Probado en el taller con lotes reales de piezas irregulares: optiMAX usa la misma cantidad de planchas y deja prácticamente el mismo sobrante que el software comercial de nesting que usamos. Y en el mismo programa tenés desarrollos de chapa, corte de barras, guillotina y presupuesto.</p>
+    </div>
+  </div>
+
+  <section class="seccion" id="funciones">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Todo el trabajo de corte en un solo programa</h2>
+        <p>Pensado para talleres que cortan chapa con plasma CNC y también trabajan con angulares, tubos y cizalla. Tocá cualquier captura para verla en grande.</p>
+      </div>
+
+      <div class="funciones">
+        <article class="funcion">
+          <div class="funcion-texto">
+            <h3>Nesting por forma real <span class="sello sello-demo">DEMO y PRO</span></h3>
+            <p>Cargás tus DXF, indicás cantidades y la medida de la plancha. optiMAX prueba decenas de órdenes de colocación en paralelo y se queda con el que usa menos planchas y deja el sobrante más aprovechable.</p>
+            <ul>
+              <li>Piezas irregulares, con agujeros y piezas chicas dentro de los agujeros</li>
+              <li>Importa un DXF con muchas piezas y agrupa las iguales</li>
+              <li>Rotación desde 90° hasta libre cada 5°</li>
+              <li>Orden de corte optimizado: agujeros primero y mínimo recorrido en vacío</li>
+              <li>Verifica cada DXF exportado contra la distribución, pieza por pieza</li>
+            </ul>
+          </div>
+          <button class="captura js-ampliar" type="button" aria-label="Ampliar captura del nesting">
+            <img src="img/cap-nesting.webp" width="1560" height="1002" loading="lazy" alt="optiMAX con 72 piezas distribuidas en 8 planchas de 1.000 × 2.000 mm, 71,2 % de aprovechamiento">
+          </button>
+        </article>
+
+        <article class="funcion">
+          <div class="funcion-texto">
+            <h3>Desarrollos de chapa <span class="sello sello-pro">PRO</span></h3>
+            <p>Completás las medidas y la pieza desarrollada entra directo al nesting. Ves la vista previa antes de agregarla y la podés reeditar después.</p>
+            <ul>
+              <li>Injertos en T a cualquier ángulo y con excentricidad</li>
+              <li>Curvas redondas y rectangulares, conos, transiciones y helicoides</li>
+              <li>Agujero en la chapa del caño principal incluido</li>
+              <li>Plano de armado en PDF con marcas y líneas de plegado</li>
+            </ul>
+          </div>
+          <div class="doble">
+            <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de Crear pieza">
+              <img src="img/cap-desarrollo.webp" width="1380" height="841" loading="lazy" alt="Ventana Crear pieza con el desarrollo de una T cilindro sobre cilindro de 100 mm a 90°">
+            </button>
+            <button class="captura js-ampliar" type="button" aria-label="Ampliar plano de armado en PDF">
+              <img src="img/plano-transicion.webp" width="1102" height="776" loading="lazy" alt="Plano de armado en PDF de una transición rectangular a redondo de 300 × 300 mm a Ø 100 mm, escala 1:10, con líneas de plegado">
+            </button>
+          </div>
+        </article>
+
+        <article class="funcion">
+          <div class="funcion-texto">
+            <h3>Barras, tubos y angulares <span class="sello sello-demo">DEMO hasta 5 piezas</span> <span class="sello sello-pro">PRO</span></h3>
+            <p>Optimiza el corte de perfiles en barras de largo fijo. Pegás la lista desde Excel y obtenés cuántas barras comprar y cómo cortar cada una.</p>
+            <ul>
+              <li>Largo de barra y ancho de corte a elección</li>
+              <li>Lista de corte en PDF con la medida de cada tramo</li>
+              <li>Precio por pieza según el costo de la barra</li>
+            </ul>
+          </div>
+          <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de barras">
+            <img src="img/cap-barras.webp" width="1237" height="790" loading="lazy" alt="Corte de 79 piezas de ángulo 40×40×3 en 20 barras de 6.000 mm con 94,5 % de aprovechamiento">
+          </button>
+        </article>
+
+        <article class="funcion">
+          <div class="funcion-texto">
+            <h3>Guillotina (cizalla) <span class="sello sello-demo">DEMO hasta 5 piezas</span> <span class="sello sello-pro">PRO</span></h3>
+            <p>Para rectángulos que cortás con cizalla: cortes de lado a lado, como trabaja la máquina, respetando el largo máximo de corte.</p>
+            <ul>
+              <li>Cortes numerados en el orden en que se hacen</li>
+              <li>Plan de cortes en PDF para llevar a la máquina</li>
+            </ul>
+          </div>
+          <div class="doble">
+            <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de guillotina">
+              <img src="img/cap-guillotina.webp" width="1279" height="809" loading="lazy" alt="Ventana de guillotina con 18 piezas en 3 planchas y 25 cortes">
+            </button>
+            <button class="captura js-ampliar" type="button" aria-label="Ampliar plan de cortes en PDF">
+              <img src="img/cap-pdf-guillotina.webp" width="1125" height="675" loading="lazy" alt="Plan de cortes de guillotina en PDF con los cortes numerados">
+            </button>
+          </div>
+        </article>
+
+        <article class="funcion">
+          <div class="funcion-texto">
+            <h3>Rejas y portones <span class="sello sello-demo">Reja en DEMO</span> <span class="sello sello-pro">Portones PRO</span></h3>
+            <p>Ponés el ancho y el alto del portón o la reja, elegís los perfiles y el relleno, y te arma el plano con todas las medidas, la lista de corte con cada pieza marcada y cuántas barras comprar de cada perfil.</p>
+            <ul>
+              <li>Reja, portón batiente de 1 y 2 hojas y portón corredizo</li>
+              <li>Relleno vertical, horizontal, diagonal, rombos, cuadrícula, cruz o chapa ciega</li>
+              <li>Cortes a 45° con croquis y marcas por color en el plano</li>
+              <li>Peso, metros de soldadura y m² de pintura</li>
+              <li>Perfiles en milímetros o pulgadas</li>
+              <li>Plano con medidas en PDF, exportación a DXF y copia para Excel (PRO)</li>
+              <li>En la DEMO: reja de ventana de hasta 1.500 × 1.000 mm</li>
+            </ul>
+          </div>
+          <div class="doble">
+            <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de rejas y portones">
+              <img src="img/cap-rejas.webp" width="1321" height="830" loading="lazy" alt="Ventana Rejas y portones con un portón batiente de 2 hojas de 3.000 × 2.100 mm: 28 piezas, 10 barras, 57 kg">
+            </button>
+            <button class="captura js-ampliar" type="button" aria-label="Ampliar plano con medidas en PDF">
+              <img src="img/cap-pdf-rejas.webp" width="1121" height="792" loading="lazy" alt="Plano en PDF del portón batiente de 2 hojas con cotas acumuladas y piezas marcadas por letra">
+            </button>
+          </div>
+        </article>
+
+        <article class="funcion">
+          <div class="funcion-texto">
+            <h3>Costos y presupuesto <span class="sello sello-pro">PRO</span></h3>
+            <p>Con el precio de la chapa y los datos de tu máquina calcula metros de corte, perforaciones, tiempo estimado y costo de cada pieza.</p>
+            <ul>
+              <li>Descuenta el sobrante que se puede reutilizar</li>
+              <li>Presupuesto en PDF interno o versión para el cliente</li>
+              <li>Moneda y datos de tu empresa configurables</li>
+            </ul>
+          </div>
+          <button class="captura js-ampliar" type="button" aria-label="Ampliar captura del presupuesto">
+            <img src="img/cap-presupuesto.webp" width="1199" height="753" loading="lazy" alt="Presupuesto del trabajo: 72 piezas, 123 m de corte, 1 h 55 min estimados">
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="desarrollos">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Catálogo de piezas</h2>
+        <p>Las formas básicas y la curva redonda por sectores vienen en la DEMO. El resto de los desarrollos es parte de la PRO.</p>
+      </div>
+      <ul class="catalogo">
+        <li><img src="img/fig/rectangulo.webp" width="88" height="66" loading="lazy" alt=""><span>Rectángulo</span><span class="sello sello-demo">DEMO</span></li>
+        <li><img src="img/fig/disco.webp" width="88" height="66" loading="lazy" alt=""><span>Disco / arandela</span><span class="sello sello-demo">DEMO</span></li>
+        <li><img src="img/fig/brida.webp" width="88" height="66" loading="lazy" alt=""><span>Brida</span><span class="sello sello-demo">DEMO</span></li>
+        <li><img src="img/fig/codo_sectores.webp" width="88" height="66" loading="lazy" alt=""><span>Curva redonda por sectores</span><span class="sello sello-demo">DEMO</span></li>
+        <li><img src="img/fig/t_cil_cil.webp" width="88" height="66" loading="lazy" alt=""><span>T cilindro / cilindro</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="img/fig/t_rect_cil.webp" width="88" height="66" loading="lazy" alt=""><span>T ramal rectangular sobre caño</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="img/fig/t_cil_rect.webp" width="88" height="66" loading="lazy" alt=""><span>T ramal redondo sobre caja</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="img/fig/codo_rect.webp" width="88" height="66" loading="lazy" alt=""><span>Curva rectangular</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="img/fig/curva_directa_90.webp" width="88" height="66" loading="lazy" alt=""><span>Curva directa 90°</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="img/fig/curva_directa.webp" width="88" height="66" loading="lazy" alt=""><span>Curva directa</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="img/fig/desvio_paralelo.webp" width="88" height="66" loading="lazy" alt=""><span>Desvío circular paralelo</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="img/fig/tronco_cono.webp" width="88" height="66" loading="lazy" alt=""><span>Tronco de cono / reducción</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="img/fig/transicion_rect_red.webp" width="88" height="66" loading="lazy" alt=""><span>Transición rectangular a redondo</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="img/fig/helicoide.webp" width="88" height="66" loading="lazy" alt=""><span>Helicoide (hélice de sinfín)</span><span class="sello sello-pro">PRO</span></li>
+      </ul>
+      <p class="nota-tecnica">Las medidas se cargan como diámetros y secciones exteriores; el desarrollo se calcula sobre el espesor neutro de la chapa. Las líneas de plegado llevan muescas en V opcionales y van al plano PDF, nunca al DXF de corte.</p>
+    </div>
+  </section>
+
+  <section class="seccion" id="taller">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Hecho en un taller que corta todos los días</h2>
+        <p>optiMAX nació para resolver el corte de nuestras propias máquinas de chapa y angulares. Cada función se pensó con un problema real de la mesa plasma.</p>
+      </div>
+      <div class="taller">
+        <figure class="alto"><img src="img/taller-pieza.webp" width="1152" height="2048" loading="lazy" alt="Pieza de chapa cortada con plasma y armada en el taller"><figcaption>Pieza cortada y armada</figcaption></figure>
+        <figure><img src="img/taller-plasma.webp" width="1600" height="900" loading="lazy" alt="Plancha recién cortada sobre la mesa plasma"><figcaption>Plancha recién cortada</figcaption></figure>
+        <figure><video src="video/plasma-chispas.mp4" poster="video/plasma-chispas.jpg" autoplay muted loop playsinline preload="none" aria-label="Arco de plasma cortando"></video><figcaption>Corte en curso</figcaption></figure>
+        <figure><img src="img/taller-maquinas.webp" width="1252" height="851" loading="lazy" alt="Máquinas agrícolas de chapa terminadas en el taller"><figcaption>Máquinas terminadas</figcaption></figure>
+        <figure><img src="img/taller-tolvas.webp" width="1600" height="900" loading="lazy" alt="Tolvas de chapa en fabricación"><figcaption>Tolvas en fabricación</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="versiones">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>DEMO y PRO</h2>
+        <p>La DEMO no vence y ya hace el nesting completo. La PRO suma los desarrollos, los portones, los costos, los proyectos y quita los límites de barras, guillotina y rejas.</p>
+      </div>
+      <div class="tabla-caja">
+        <table>
+          <thead>
+            <tr><th scope="col">Función</th><th scope="col">DEMO<small>Gratis</small></th><th scope="col" class="col-pro">PRO<small>49 USDT o 590 Bs, pago único</small></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nesting por forma real, DXF con varias piezas y orden de corte optimizado</td><td class="si">Sí</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Niveles de cálculo</td><td class="parcial">Rápido y Normal (hasta 24 órdenes)</td><td class="parcial col-pro">+ Profundo y Máximo</td></tr>
+            <tr><td>Exportar el DXF de todas las planchas (R12, con arcos)</td><td class="si">Sí</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Plano de armado en PDF y pesos</td><td class="si">Sí</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Costos, tiempo de corte y presupuesto en PDF</td><td class="no">No</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Guardar y abrir proyectos</td><td class="no">No</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Formas básicas y curva redonda por sectores</td><td class="si">Sí</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Los otros 10 desarrollos (T, curvas, cono, transición, desvío, helicoide)</td><td class="no">No</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Foto a DXF: detectar, medir y editar</td><td class="si">Sí</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Foto a DXF: agregar al nesting y exportar el DXF</td><td class="no">No</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Barras, tubos y guillotina: calcular y dibujar</td><td class="parcial">Hasta 5 piezas</td><td class="parcial col-pro">Sin límite</td></tr>
+            <tr><td>Barras y guillotina: precio por pieza, PDF y Excel</td><td class="no">No</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Rejas y portones: plano, lista de corte y barras</td><td class="parcial">Reja de ventana hasta 1.500 × 1.000 mm</td><td class="parcial col-pro">Todos los tipos y medidas</td></tr>
+            <tr><td>Rejas y portones: DXF, PDF, Excel y costos</td><td class="no">No</td><td class="si col-pro">Sí</td></tr>
+            <tr><td>Ajustes del sistema</td><td class="parcial">Edita materiales (sin precio ni velocidad); el resto solo lo ve</td><td class="parcial col-pro">Todo</td></tr>
+            <tr><td>Actualizaciones gratis</td><td class="si">Sí</td><td class="si col-pro">Sí</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="descargar">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Requisitos</h2>
+        <p>optiMAX es un programa de escritorio para Windows. Se instala como cualquier programa; no hace falta instalar Python ni nada más.</p>
+      </div>
+      <dl class="requisitos">
+        <div><dt>Sistema</dt><dd>Windows 10 u 11 de 64 bits</dd></div>
+        <div><dt>Procesador</dt><dd>x64 de 4 núcleos o más recomendado; el cálculo usa varios núcleos a la vez</dd></div>
+        <div><dt>Memoria</dt><dd>4 GB mínimo, 8 GB recomendado</dd></div>
+        <div><dt>Disco</dt><dd>Unos 300 MB libres</dd></div>
+        <div><dt>Pantalla</dt><dd>1366 × 768 o mayor</dd></div>
+        <div><dt>Archivos</dt><dd>Lee y exporta DXF; detecta si el dibujo está en milímetros o pulgadas</dd></div>
+      </dl>
+      <div class="acciones">
+        <a class="boton boton-rojo js-descarga" href="#descargar">Descargar DEMO gratis</a>
+      </div>
+      <p class="mensaje js-mensaje-descarga" role="status"></p>
+    </div>
+  </section>
+
+  <section class="seccion" id="comprar">
+    <div class="envoltura compra">
+      <div>
+        <h2>Comprar optiMAX PRO</h2>
+        <div class="precio" style="margin-top:22px"><b>49 USDT</b><span>o 590 Bs desde Bolivia. Pago único, una PC.</span></div>
+        <ol class="pasos">
+          <li><div><b>Instalá la DEMO</b><span>En la ventana «Activar optiMAX PRO» aparece el código de tu PC.</span></div></li>
+          <li><div><b>Pagá la licencia</b><span>Desde cualquier país, 49 USDT al ID de Binance o por la red BNB Smart Chain (BEP-20). Desde Bolivia, también 590 Bs con el QR del BNB.</span></div></li>
+          <li><div><b>Mandanos tus datos y la captura por WhatsApp</b><span>Completá tu nombre y el código de tu PC: se arma el mensaje solo y le adjuntás la captura del pago.</span></div></li>
+          <li><div><b>Recibí tu clave PRO</b><span>Verificamos el pago y te enviamos la clave para activar en esa PC.</span></div></li>
+        </ol>
+        <div class="condiciones">
+          <p><b>Una licencia, una PC.</b> La clave queda atada al equipo.</p>
+          <p><b>Sin devoluciones.</b> Probá la DEMO con tus propios DXF antes de comprar.</p>
+        </div>
+      </div>
+
+      <div class="pago">
+        <div class="pestanas" role="tablist" aria-label="Forma de pago">
+          <button type="button" role="tab" id="tab-binance" aria-controls="panel-binance" aria-selected="true">ID de Binance<small>49 USDT</small></button>
+          <button type="button" role="tab" id="tab-usdt" aria-controls="panel-usdt" aria-selected="false">Otra billetera<small>USDT BEP-20</small></button>
+          <button type="button" role="tab" id="tab-qr" aria-controls="panel-qr" aria-selected="false">Desde Bolivia<small>QR, 590 Bs</small></button>
+        </div>
+
+        <div class="panel" id="panel-binance" role="tabpanel" aria-labelledby="tab-binance">
+          <div class="qr-banco">
+            <div class="id-caja">
+              <small>ID de Binance</small>
+              <b id="id-binance"></b>
+              <button class="boton boton-linea boton-chico" type="button" id="copiar-id">Copiar ID</button>
+              <span class="tenue" id="copiado-id" role="status"></span>
+            </div>
+            <div class="qr-banco-texto">
+              <div class="pago-red"><span>ID de Binance</span><span>Monto: 49 USDT</span></div>
+              <p class="tenue">Nombre de la cuenta: <b style="color:var(--texto)">GMSoftware</b></p>
+              <p class="tenue">En la app de Binance: <b style="color:var(--texto)">Activos → USDT → Enviar → Enviar a usuario de Binance</b>. Pegá el ID y enviá 49 USDT.</p>
+              <p class="tenue">Es una transferencia entre cuentas de Binance: llega al instante y sin comisión.</p>
+              <ul class="avisos"><li>Guardá la captura del pago: la vas a mandar por WhatsApp.</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-usdt" role="tabpanel" aria-labelledby="tab-usdt" hidden>
+          <div class="pago-red"><span>USDT en red BNB Smart Chain (BEP-20)</span><span>Monto: 49 USDT</span></div>
+          <div class="qr-y-dir">
+            <div id="qr" aria-label="Código QR de la dirección de pago"></div>
+            <div style="display:grid;gap:10px;min-width:0">
+              <div class="direccion" id="direccion"></div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+                <button class="boton boton-linea boton-chico" type="button" id="copiar">Copiar dirección</button>
+                <span class="tenue" id="copiado" role="status" style="font-size:.9rem"></span>
+              </div>
+            </div>
+          </div>
+          <ul class="avisos">
+            <li>Desde cualquier billetera o exchange: Binance, MEXC, Bybit, etc.</li>
+            <li>Usá solamente la red BNB Smart Chain (BEP-20). Si enviás por otra red (TRC-20, ERC-20) el dinero puede perderse.</li>
+            <li>Enviá 49 USDT. La comisión de la red corre por nuestra cuenta.</li>
+            <li>Guardá la captura del envío: la vas a mandar por WhatsApp.</li>
+          </ul>
+        </div>
+
+        <div class="panel" id="panel-qr" role="tabpanel" aria-labelledby="tab-qr" hidden>
+          <div class="qr-banco">
+            <img id="img-qr-bnb" src="img/qr-bnb.jpg" width="640" height="1002" alt="QR de cobro del Banco Nacional de Bolivia por 590 Bs, concepto licencia optiMAX PRO">
+            <div class="qr-banco-texto">
+              <div class="pago-red"><span>QR del Banco Nacional de Bolivia</span><span>Monto: 590 Bs</span></div>
+              <p class="tenue">Escaneá el QR con la app de tu banco o billetera. El monto ya está cargado.</p>
+              <p class="tenue">Si estás mirando la página desde el celular, guardá el QR y cargalo desde la galería en la app de tu banco.</p>
+              <a class="boton boton-linea boton-chico" id="bajar-qr" href="img/qr-bnb.jpg" download="QR-optiMAX-PRO.jpg">Guardar QR</a>
+              <ul class="avisos"><li>Guardá la captura del comprobante: la vas a mandar por WhatsApp.</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <form class="formulario" id="form-comprobante" novalidate>
+          <label for="nombre-lic">Nombre o empresa para la licencia
+            <input id="nombre-lic" name="nombre-lic" autocomplete="organization" maxlength="80" placeholder="Así aparece en «Acerca de» del programa">
+          </label>
+          <label for="codigo-pc">Código de tu PC (ventana «Activar optiMAX PRO»)
+            <input id="codigo-pc" name="codigo-pc" autocomplete="off" spellcheck="false" placeholder="Ej.: 5ZS5-FJFM-AJVR">
+          </label>
+          <button class="boton boton-rojo" type="submit">Preparar mensaje de WhatsApp</button>
+          <p class="mensaje" id="mensaje-form" role="status"></p>
+          <div class="envio" id="envio" hidden>
+            <p><b>Último paso:</b> enviá el mensaje y adjuntá la captura del pago.</p>
+            <div class="envio-opciones">
+              <div class="envio-qr">
+                <div id="qr-wa" aria-label="Código QR para abrir WhatsApp en el celular"></div>
+                <span class="tenue">¿Pagaste desde el celular? Escaneá este QR con la cámara: se abre WhatsApp con el mensaje listo para adjuntar la captura.</span>
+              </div>
+              <div class="envio-boton">
+                <a class="boton boton-rojo" id="abrir-wa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+                <span class="tenue">Abre WhatsApp en este dispositivo.</span>
+              </div>
+            </div>
+            <pre class="vista-msg" id="vista-msg"></pre>
+          </div>
+          <p class="tenue" style="font-size:.9rem">WhatsApp de ventas: <span style="user-select:all" id="numero-wa">+591 77626675</span></p>
+          <p class="tenue" style="font-size:.9rem">¿Dudas antes de comprar? Preguntale a nuestro asistente:</p>
+          <a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Escribinos tu consulta</span><small>WhatsApp +591 78516826</small></a>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="preguntas">
+    <div class="envoltura">
+      <div class="intro"><h2>Preguntas frecuentes</h2><p>¿Tenés otra pregunta? Escribile a nuestro asistente por WhatsApp, contesta al instante.</p><a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Escribinos tu consulta</span><small>WhatsApp +591 78516826</small></a></div>
+      <div class="preguntas">
+        <details><summary>¿Sirve para mi mesa plasma?</summary><p>optiMAX exporta un DXF por plancha, solo con las líneas de corte y en el orden optimizado. Ese archivo lo abre el programa de tu mesa (FastCAM u otro), que agrega entradas, compensación y velocidad como siempre. En el taller lo usamos con FastCAM.</p></details>
+        <details><summary>¿Windows muestra un aviso de seguridad al instalar?</summary><p>Es un control habitual de Windows al instalar. Tocá «Más información» y después «Ejecutar de todas formas». optiMAX está <a class="js-vt" target="_blank" rel="noopener">verificado con 69 antivirus</a>, sin ninguna detección. En Windows 11 la ventana se ve distinta, pero los botones son los mismos. Si usás Edge y la descarga queda en pausa, tocá «…» sobre la descarga y «Conservar». Descargalo siempre desde optimax.lat.</p></details>
+        <details><summary>¿Necesita internet?</summary><p>No. El programa y la activación de la PRO funcionan sin conexión.</p></details>
+        <details><summary>¿La DEMO tiene vencimiento?</summary><p>No. Podés usarla todo el tiempo que quieras, con los límites de la tabla DEMO y PRO.</p></details>
+        <details><summary>¿Puedo usar la licencia en dos computadoras?</summary><p>No. Cada clave sirve para una PC. Para otra computadora hace falta otra licencia.</p></details>
+        <details><summary>¿Puedo pagar de otra forma?</summary><p>Desde cualquier país, 49 USDT al ID de Binance (entre cuentas de Binance) o por la red BNB Smart Chain (BEP-20) desde cualquier billetera o exchange. Desde Bolivia, también 590 Bs con el QR del Banco Nacional de Bolivia. Por ahora no hay otras formas de pago.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="envoltura">
+    <img src="img/logo-blanco.webp" alt="optiMAX" width="66" height="22">
+    <span>Desarrollado por GMSoftware, Santa Cruz de la Sierra, Bolivia</span>
+    <a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Escribinos tu consulta</span><small>WhatsApp +591 78516826</small></a>
+    <span>Ventas: +591 77626675</span>
+  </div>
+</footer>
+
+<a class="wa-flotante js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener" aria-label="Consultas por WhatsApp, asistente automático"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Consultas</span></a>
+
+<dialog class="visor" id="visor" aria-label="Captura ampliada">
+  <button type="button" id="cerrar-visor">Cerrar</button>
+  <img id="visor-img" alt="">
+</dialog>
+
+<dialog class="instalar" id="instalar" aria-labelledby="instalar-titulo">
+  <div class="instalar-caja">
+    <button type="button" class="instalar-cerrar" id="cerrar-instalar" aria-label="Cerrar">✕</button>
+    <h2 id="instalar-titulo">Tu descarga empezó</h2>
+    <p class="tenue">Para instalar, abrí el archivo descargado.</p>
+    <p class="instalar-aviso"><b>¿Windows muestra un aviso de seguridad?</b> Es un control habitual de Windows al instalar.
+      Tocá «Más información» y después «Ejecutar de todas formas». optiMAX está
+      <a class="js-vt" target="_blank" rel="noopener">verificado con 69 antivirus</a>, sin ninguna detección.</p>
+    <ol class="instalar-pasos">
+      <li><img src="img/instalar-1.webp" width="532" height="498" loading="lazy"
+             alt="Ventana «Windows protegió su PC» con «Más información» marcado">
+        <div><span class="num">1</span>Tocá <b>«Más información»</b></div></li>
+      <li><img src="img/instalar-2.webp" width="532" height="498" loading="lazy"
+             alt="Ventana «Windows protegió su PC» con «Ejecutar de todas formas» marcado">
+        <div><span class="num">2</span>Tocá <b>«Ejecutar de todas formas»</b></div></li>
+      <li class="ancho"><div><span class="num">3</span>Si Windows pregunta si permitís que la aplicación haga cambios, tocá
+        <b>«Sí»</b>. En el instalador de optiMAX aceptá las condiciones de uso y seguí con <b>«Siguiente»</b> hasta
+        <b>«Instalar»</b>.</div></li>
+    </ol>
+    <p class="instalar-nota tenue">En Windows 11 la ventana se ve distinta, pero los botones son los mismos.</p>
+    <p class="instalar-nota tenue">¿Usás Edge y la descarga quedó en pausa? Tocá «…» sobre la descarga y «Conservar».</p>
+    <details><summary>¿Por qué Windows pide confirmar?</summary>
+      <p>Windows pide una confirmación extra con los programas que no tienen un certificado de firma digital de pago, y
+      optiMAX se distribuye sin ese certificado. El instalador es el que publica GMSoftware en su repositorio oficial de
+      GitHub: descargalo siempre desde optimax.lat.</p></details>
+    <div class="instalar-pie">
+      <a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>¿Dudas para instalar? Escribinos</span><small>WhatsApp +591 78516826</small></a>
+      <span class="tenue">¿No empezó? <a id="descarga-otra" href="#">Descargalo de nuevo</a></span>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* ===== Configuración: cambiar solo esto ===== */
+const CONFIG = {
+  direccionPago: "0xb4cd33650f254214ed24188ed087f6848add00d1",  // USDT en BNB Smart Chain (BEP-20)
+  idBinance: "211223373",     // ID de Binance (transferencia entre usuarios de Binance)
+  urlDescarga: "https://github.com/CabezaKuka/optimax-descargas/releases/latest/download/optiMAX_Setup.exe",
+  urlCompartir: "https://optimax.lat/#descargar",   // enlace que se manda a sí mismo quien entra desde el celular
+  virusTotal: "https://www.virustotal.com/gui/file/8f7866c572370a9b867d7969cdec06a9c3da1e1b310e0ee4c071aaa098bea532",  // análisis del instalador con Foto a DXF (0/69, 03/11/2026); actualizar si se cambia el .exe
+  whatsapp: "59177626675",            // ventas (comprobantes), solo dígitos
+  whatsappConsultas: "59178516826",   // asistente de consultas, solo dígitos
+  qrBancoVence: "2028-10-25"          // QR del BNB (590 Bs): generar uno nuevo antes de esta fecha
+};
+/* =========================================== */
+
+// Dirección y QR
+const dir = document.getElementById("direccion");
+dir.textContent = CONFIG.direccionPago;
+document.querySelectorAll(".js-consultas").forEach(a => a.href = `https://wa.me/${CONFIG.whatsappConsultas}`);
+try {
+  new QRCode(document.getElementById("qr"), {text: CONFIG.direccionPago, width: 136, height: 136, correctLevel: QRCode.CorrectLevel.M});
+} catch (e) { document.getElementById("qr").hidden = true; }
+
+// Copiar al portapapeles (si el navegador no deja, queda seleccionado para Ctrl+C)
+function copiarTexto(boton, nodo, texto, aviso, listo, seleccionado) {
+  boton.addEventListener("click", () => {
+    const marcar = () => { const r = document.createRange(); r.selectNodeContents(nodo); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto)
+        .then(() => { aviso.textContent = listo; })
+        .catch(() => { marcar(); aviso.textContent = seleccionado; });
+    } else { marcar(); aviso.textContent = seleccionado; }
+  });
+}
+copiarTexto(document.getElementById("copiar"), dir, CONFIG.direccionPago, document.getElementById("copiado"),
+            "Dirección copiada", "Dirección seleccionada: copiala con Ctrl+C");
+const idb = document.getElementById("id-binance");
+idb.textContent = CONFIG.idBinance;
+copiarTexto(document.getElementById("copiar-id"), idb, CONFIG.idBinance, document.getElementById("copiado-id"),
+            "ID copiado", "ID seleccionado: copialo con Ctrl+C");
+
+// Descarga: arranca sola (enlace directo) y a la vez se abren los pasos de instalación
+const instalar = document.getElementById("instalar");
+document.getElementById("descarga-otra").href = CONFIG.urlDescarga || "#descargar";
+document.querySelectorAll(".js-vt").forEach(vt => { if (CONFIG.virusTotal) vt.href = CONFIG.virusTotal; });  // sin URL queda como texto
+document.getElementById("cerrar-instalar").addEventListener("click", () => instalar.close());
+instalar.addEventListener("click", ev => { if (ev.target === instalar) instalar.close(); });
+// Celular o tablet: el .exe no sirve ahí, así que el botón ofrece mandarse el enlace para abrirlo en la PC
+const esMovil = (() => {
+  try {
+    if (navigator.userAgentData && navigator.userAgentData.mobile) return true;
+    const ua = navigator.userAgent || "";
+    if (/Android|iPhone|iPad|iPod|Mobile|Windows Phone/i.test(ua)) return true;
+    return navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;   // iPad que se presenta como Mac
+  } catch (e) { return false; }
+})();
+function avisoDescarga(a, texto) {
+  document.querySelectorAll(".js-mensaje-descarga").forEach(m => m.textContent = "");
+  const zona = a.closest("section") || document;
+  const m = zona.querySelector(".js-mensaje-descarga") || document.querySelector(".js-mensaje-descarga");
+  if (m) m.textContent = texto;
+}
+function compartirEnlace(a) {
+  const url = CONFIG.urlCompartir;
+  const listo = "Enlace copiado: pegalo en tu WhatsApp o mail y abrilo desde la PC.";
+  const copiar = () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => avisoDescarga(a, listo))
+        .catch(() => avisoDescarga(a, "Abrí este enlace desde tu PC: " + url));
+    } else avisoDescarga(a, "Abrí este enlace desde tu PC: " + url);
+  };
+  if (navigator.share) {
+    navigator.share({title: "optiMAX DEMO", text: "Descargá la DEMO de optiMAX en la PC (Windows):", url: url})
+      .catch(err => { if (!err || err.name !== "AbortError") copiar(); });
+  } else copiar();
+}
+if (esMovil) {
+  document.querySelectorAll(".js-descarga").forEach(a => {
+    a.textContent = a.classList.contains("boton-chico") ? "Enlace para mi PC" : "Enviarme el enlace para mi PC";
+    a.href = "#descargar";
+    a.addEventListener("click", ev => { ev.preventDefault(); compartirEnlace(a); });
+  });
+  document.querySelectorAll(".js-mensaje-descarga").forEach(m =>
+    m.textContent = "optiMAX es para PC con Windows: mandate el enlace y descargalo desde la computadora.");
+}
+document.querySelectorAll(".js-descarga").forEach(a => {
+  if (esMovil) return;
+  if (CONFIG.urlDescarga) {
+    a.href = CONFIG.urlDescarga;
+    a.addEventListener("click", () => setTimeout(() => { if (instalar.showModal && !instalar.open) instalar.showModal(); }, 150));
+    return;
+  }
+  a.addEventListener("click", ev => {
+    ev.preventDefault();
+    document.querySelectorAll(".js-mensaje-descarga").forEach(m => m.textContent = "");
+    const zona = a.closest("section") || document;
+    const m = zona.querySelector(".js-mensaje-descarga") || document.querySelector(".js-mensaje-descarga");
+    m.textContent = "La descarga se habilita en los próximos días. Mientras tanto, escribinos por WhatsApp al +591 78516826.";
+  });
+});
+
+// Pestañas de forma de pago, en este orden: ID de Binance, USDT BEP-20, QR del BNB
+// (en Bolivia abre la del QR; en otros países, la del ID de Binance)
+const FORMAS = {binance: "ID de Binance, 49 USDT", usdt: "USDT BEP-20, 49 USDT", qr: "QR del BNB, 590 Bs"};
+let formaPago = "binance";
+function elegirPago(forma) {
+  formaPago = forma;
+  for (const f of Object.keys(FORMAS)) {
+    document.getElementById("tab-" + f).setAttribute("aria-selected", String(f === forma));
+    document.getElementById("panel-" + f).hidden = f !== forma;
+  }
+  document.getElementById("mensaje-form").textContent = "";
+  if (!document.getElementById("envio").hidden) prepararMensaje(false);   // el mensaje ya armado cambia de forma de pago
+}
+for (const f of Object.keys(FORMAS)) document.getElementById("tab-" + f).addEventListener("click", () => elegirPago(f));
+document.querySelector(".pestanas").addEventListener("keydown", ev => {
+  if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
+  const orden = Object.keys(FORMAS), k = orden.indexOf(formaPago);
+  const otra = orden[(k + (ev.key === "ArrowRight" ? 1 : orden.length - 1)) % orden.length];
+  elegirPago(otra); document.getElementById("tab-" + otra).focus();
+});
+try {
+  if (Intl.DateTimeFormat().resolvedOptions().timeZone === "America/La_Paz") {
+    elegirPago("qr");
+    // Desde Bolivia el precio se muestra en bolivianos
+    const comprar = document.querySelector('.portada a[href="#comprar"]');
+    if (comprar) comprar.textContent = "Comprar PRO por 590 Bs";
+    const precio = document.querySelector(".precio");
+    if (precio) {
+      precio.querySelector("b").textContent = "590 Bs";
+      precio.querySelector("span").textContent = "o 49 USDT desde otros países. Pago único, una PC.";
+    }
+  }
+} catch (e) {}
+
+// Código de PC: mismas reglas que el programa (12 caracteres de base32; 0, 1 y 8 se leen como O, I y B)
+function normalizarCodigo(c) {
+  let t = String(c).toUpperCase().replace(/[^A-Z0-9]/g, "");
+  t = t.replace(/0/g, "O").replace(/1/g, "I").replace(/8/g, "B");
+  if (t.length !== 12 || /[^A-Z2-7]/.test(t)) return null;
+  return t.slice(0, 4) + "-" + t.slice(4, 8) + "-" + t.slice(8);
+}
+// El programa abre la página con ?codigo=XXXX-XXXX-XXXX#comprar: se completa solo
+try {
+  const c = new URLSearchParams(location.search).get("codigo");
+  const n = c && normalizarCodigo(c);
+  if (n) document.getElementById("codigo-pc").value = n;
+} catch (e) {}
+
+// Nombre: el generador de claves acepta hasta 80 bytes (las letras con tilde ocupan 2)
+const bytes = t => new TextEncoder().encode(t).length;
+
+function prepararMensaje(mostrarErrores) {
+  const msg = document.getElementById("mensaje-form");
+  const nombre = document.getElementById("nombre-lic").value.split(/\s+/).filter(Boolean).join(" ");
+  const campoCod = document.getElementById("codigo-pc");
+  if (!nombre) { if (mostrarErrores) msg.textContent = "Escribí el nombre o la empresa para la licencia."; return false; }
+  if (bytes(nombre) > 80) { if (mostrarErrores) msg.textContent = "El nombre es muy largo: acortalo un poco (máximo 80 caracteres sin tildes)."; return false; }
+  const codigo = normalizarCodigo(campoCod.value);
+  if (!codigo) {
+    if (mostrarErrores) msg.textContent = "El código de PC tiene 12 letras y números, por ejemplo 5ZS5-FJFM-AJVR. Copialo de la ventana «Activar optiMAX PRO».";
+    return false;
+  }
+  campoCod.value = codigo;
+  msg.textContent = "";
+  const texto = `Hola, pagué optiMAX PRO.\nNombre para la licencia: ${nombre}\nCódigo de PC: ${codigo}\nForma de pago: ${FORMAS[formaPago]}\nAdjunto la captura del pago.`;
+  const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texto)}`;
+  document.getElementById("abrir-wa").href = url;
+  document.getElementById("vista-msg").textContent = texto;
+  const caja = document.getElementById("qr-wa");
+  caja.innerHTML = "";
+  try { new QRCode(caja, {text: url, width: 360, height: 360, correctLevel: QRCode.CorrectLevel.L}); }
+  catch (e) { caja.parentElement.hidden = true; }
+  document.getElementById("envio").hidden = false;
+  return true;
+}
+
+document.getElementById("form-comprobante").addEventListener("submit", ev => {
+  ev.preventDefault();
+  if (prepararMensaje(true)) document.getElementById("envio").scrollIntoView({behavior: "smooth", block: "nearest"});
+});
+["nombre-lic", "codigo-pc"].forEach(id => document.getElementById(id).addEventListener("input", () => {
+  document.getElementById("envio").hidden = true;          // si cambian los datos, se vuelve a preparar
+}));
+
+// Píxel de Meta: clics que interesan (si un bloqueador frena el píxel, no pasa nada)
+function evento(nombre, datos) { try { if (window.fbq) fbq("track", nombre, datos || {}); } catch (e) {} }
+function eventoPropio(nombre, datos) { try { if (window.fbq) fbq("trackCustom", nombre, datos || {}); } catch (e) {} }
+document.querySelectorAll(".js-descarga").forEach(a => a.addEventListener("click", () => {
+  if (esMovil) eventoPropio("EnlacePC", {content_name: "optiMAX DEMO"});   // celular: no es una descarga
+  else evento("Lead", {content_name: "optiMAX DEMO"});                     // PC: descarga real
+}));
+document.getElementById("abrir-wa").addEventListener("click", () =>
+  evento("InitiateCheckout", formaPago === "qr" ? {content_name: "optiMAX PRO", value: 590, currency: "BOB"}
+                                                : {content_name: "optiMAX PRO", value: 49, currency: "USD"}));
+document.querySelectorAll(".js-consultas").forEach(a => a.addEventListener("click", () => evento("Contact")));
+
+// Visor de capturas
+const visor = document.getElementById("visor"), vimg = document.getElementById("visor-img");
+document.querySelectorAll(".js-ampliar").forEach(b => b.addEventListener("click", () => {
+  const img = b.querySelector("img"); vimg.src = img.src; vimg.alt = img.alt;
+  if (visor.showModal) visor.showModal();
+}));
+document.getElementById("cerrar-visor").addEventListener("click", () => visor.close());
+visor.addEventListener("click", ev => { if (ev.target === visor) visor.close(); });
+
+// Videos: respetar movimiento reducido
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll("video[autoplay]").forEach(v => { v.removeAttribute("autoplay"); v.pause(); v.controls = true; });
+}
+</script>
+</body>
+</html>
