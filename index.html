@@ -283,6 +283,118 @@ dialog.instalar::backdrop{background:rgba(10,12,14,.8)}
 .instalar-pie{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;font-size:.93rem}
 @media (max-width:640px){.instalar-pasos{grid-template-columns:1fr}}
 dialog.visor button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));background:var(--acero-2);color:var(--texto);border:1px solid var(--linea);border-radius:4px;font:600 .95rem var(--f-texto);padding:8px 14px;cursor:pointer}
+
+/* ================= Rediseño: profundidad, movimiento y foco en el producto ================= */
+:root{--brillo:rgba(255,110,40,.16);--sombra:0 24px 60px -18px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.06)}
+/* Fondo: grilla tenue de plancha + resplandor del arco */
+body{background:
+  radial-gradient(1200px 600px at 85% -10%,rgba(255,110,40,.10),transparent 60%),
+  linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px) 0 0/48px 48px,
+  linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px) 0 0/48px 48px,
+  var(--acero)}
+.seccion+.seccion{border-top:0}
+.seccion{position:relative}
+.seccion::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--linea) 20%,var(--linea) 80%,transparent)}
+.portada+.seccion::before{display:none}
+
+/* Botones con más presencia */
+.boton{border-radius:6px;transition:background .15s,border-color .15s,transform .15s,box-shadow .15s}
+.boton-rojo{box-shadow:0 8px 24px -8px rgba(227,18,11,.7)}
+.boton-rojo:hover{transform:translateY(-1px);box-shadow:0 12px 30px -8px rgba(255,42,31,.8)}
+.boton-linea:hover{background:rgba(255,255,255,.04)}
+
+/* Portada */
+.portada{position:relative;overflow:hidden}
+.portada h1{letter-spacing:-.005em}
+.portada h1 .acento{background:linear-gradient(95deg,#ff7a2e,var(--rojo) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.etiqueta{display:inline-flex;align-items:center;gap:8px;font:600 .82rem/1 var(--f-texto);letter-spacing:.08em;text-transform:uppercase;color:var(--tenue);border:1px solid var(--acero-3);background:rgba(255,255,255,.03);border-radius:999px;padding:7px 12px;margin-bottom:20px}
+.etiqueta i{width:7px;height:7px;border-radius:50%;background:var(--rojo);box-shadow:0 0 10px var(--rojo);font-style:normal}
+.escena{margin:0}
+.escena-marco{position:relative}
+.escena .video-portada{border-radius:8px;box-shadow:0 0 120px var(--brillo),var(--sombra)}
+.escena .flota{position:absolute;left:clamp(-48px,-4vw,-16px);bottom:clamp(-70px,-6vw,-36px);width:62%;animation:flotar 7s ease-in-out infinite}
+.escena figcaption{margin-top:clamp(48px,6vw,80px);padding-left:64%}
+@media (max-width:900px){.escena figcaption{padding-left:0;margin-top:clamp(70px,16vw,110px)}}
+@keyframes flotar{50%{transform:translateY(-8px)}}
+@media (max-width:900px){.escena .flota{left:-6px;width:66%}}
+
+/* Capturas como ventanas del programa */
+.ventana{padding:26px 0 0!important;background:#dfe4e9!important;border:0!important;border-radius:8px!important;position:relative;box-shadow:var(--sombra);transition:transform .25s,box-shadow .25s}
+.ventana::before{content:"";position:absolute;top:9px;left:11px;width:8px;height:8px;border-radius:50%;background:#ff5f57;box-shadow:13px 0 #febc2e,26px 0 #28c840}
+.ventana img{border-top:1px solid #c8ced5}
+.captura{transition:transform .25s,box-shadow .25s}
+.captura:hover{transform:translateY(-4px);box-shadow:0 30px 70px -20px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.1),0 0 60px var(--brillo)}
+.novedad-pasos .captura{border-radius:8px;box-shadow:var(--sombra);border:0}
+
+/* Cifras */
+.cifras{background:linear-gradient(180deg,rgba(255,255,255,.03),transparent),var(--acero-2);border-block:1px solid var(--acero-3)}
+.cifras .envoltura{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding-block:clamp(28px,4vw,44px)}
+.cifras div.dato{padding:6px clamp(14px,2.4vw,28px);border-left:1px solid var(--acero-3);display:grid;gap:6px;align-content:start}
+.cifras div.dato:first-child{border-left:0;padding-left:0}
+.cifras b{font:800 clamp(2.2rem,4.4vw,3.3rem)/1 var(--f-titulo);color:var(--arco)}
+.cifras b small{font-size:.55em;color:var(--tenue);margin-left:2px}
+.cifras span{color:var(--tenue);font-size:.93rem;line-height:1.4}
+@media (max-width:860px){.cifras .envoltura{grid-template-columns:1fr 1fr;row-gap:26px}.cifras div.dato:nth-child(3){border-left:0;padding-left:0}}
+
+/* Resumen de módulos en tarjetas */
+.modulos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 0 clamp(56px,7vw,96px);padding:0;list-style:none}
+.modulos a{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;height:100%;padding:18px;text-decoration:none;border-radius:10px;border:1px solid var(--acero-3);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));transition:border-color .2s,transform .2s,background .2s}
+.modulos a:hover{border-color:rgba(227,18,11,.55);transform:translateY(-3px);background:linear-gradient(180deg,rgba(227,18,11,.08),rgba(255,255,255,.01))}
+.modulos svg{grid-row:span 2;width:44px;height:44px;padding:10px;border-radius:9px;background:rgba(227,18,11,.12);color:#ff5a3c;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.modulos b{font:700 1.25rem/1.15 var(--f-titulo);align-self:end}
+.modulos span{color:var(--tenue);font-size:.93rem;line-height:1.4}
+@media (max-width:900px){.modulos{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.modulos{grid-template-columns:1fr}}
+.funcion{scroll-margin-top:90px}
+
+/* Catálogo */
+.catalogo li{transition:background .2s}
+.catalogo li:hover{background:#28303a}
+
+/* Taller */
+.taller figure{border-radius:8px}
+.taller img,.taller video{transition:transform .6s}
+.taller figure:hover img,.taller figure:hover video{transform:scale(1.04)}
+
+/* Planes DEMO / PRO */
+.planes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
+.plan{position:relative;display:grid;gap:16px;align-content:start;padding:clamp(20px,3vw,30px);border-radius:12px;border:1px solid var(--acero-3);background:var(--acero-2)}
+.plan-pro{border-color:rgba(227,18,11,.55);background:radial-gradient(500px 220px at 100% 0,rgba(227,18,11,.16),transparent 70%),var(--acero-2);box-shadow:0 0 80px -30px rgba(227,18,11,.6)}
+.plan h3{font-size:1.9rem}
+.plan .monto{font:800 clamp(2.6rem,6vw,3.4rem)/1 var(--f-titulo);color:var(--arco)}
+.plan .monto small{display:block;font:400 .95rem/1.4 var(--f-texto);color:var(--tenue);margin-top:6px}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.plan li{padding-left:26px;position:relative}
+.plan li::before{content:"";position:absolute;left:2px;top:.45em;width:12px;height:7px;border:solid var(--ok);border-width:0 0 2px 2px;transform:rotate(-45deg)}
+.plan .boton{justify-self:start;margin-top:4px}
+.plan-pro .cinta{position:absolute;top:18px;right:18px;font:600 .75rem/1 var(--f-texto);letter-spacing:.06em;padding:6px 10px;border-radius:999px;background:var(--rojo);color:#fff}
+@media (max-width:760px){.planes{grid-template-columns:1fr}}
+.comparacion>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;font-weight:600;padding:12px 18px;border:1px solid var(--linea);border-radius:6px;margin-bottom:16px}
+.comparacion>summary::-webkit-details-marker{display:none}
+.comparacion>summary::after{content:"+";font:400 1.4rem/1 var(--f-titulo);color:var(--tenue)}
+.comparacion[open]>summary::after{content:"−"}
+.comparacion>summary:hover{border-color:var(--texto)}
+
+/* Compra y preguntas */
+.pago{border-radius:12px;box-shadow:var(--sombra)}
+.preguntas summary{transition:color .15s}
+.preguntas summary:hover{color:var(--arco)}
+
+/* Aparición al hacer scroll (solo si hay JS y no se pidió reducir movimiento) */
+.revelar{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.revelar.visto{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.revelar{opacity:1;transform:none;transition:none}.escena .flota{animation:none}.captura,.modulos a,.taller img{transition:none}}
+
+/* Barra fija de descarga en el celular */
+.barra-movil{display:none}
+@media (max-width:600px){
+  .barra-movil{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:35;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:rgba(26,31,36,.94);backdrop-filter:blur(10px);border-top:1px solid var(--acero-3);transform:translateY(110%);transition:transform .3s}
+  .barra-movil.activa{transform:none}
+  .barra-movil .boton{padding:13px 12px}
+  .barra-movil .boton-rojo{flex:1}
+  body{padding-bottom:76px}
+  .wa-flotante{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
 </style>
 <!-- Meta Pixel Code (optiMAX-WEB) -->
 <script>
@@ -322,8 +434,9 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
   <section class="portada">
     <div class="envoltura">
       <div>
-        <h1>Más piezas por plancha y menos horas dibujando desarrollos</h1>
-        <p class="bajada">optiMAX acomoda tus piezas DXF en la plancha, genera desarrollos de chapa (injertos en T, curvas, conos, transiciones y helicoides) y exporta el DXF con el orden de corte listo para la mesa plasma. Además trae módulos para cortar tubos, barras y angulares, planificar cortes con guillotina y calcular rejas y portones.</p>
+        <span class="etiqueta"><i></i>Software para plasma CNC</span>
+        <h1>Más piezas por plancha y <span class="acento">menos horas dibujando</span> desarrollos</h1>
+        <p class="bajada">Nesting de tus DXF, desarrollos de chapa listos para cortar y el orden de corte optimizado para tu mesa plasma. Más barras, guillotina, rejas y presupuesto, en un solo programa.</p>
         <div class="acciones">
           <a class="boton boton-rojo js-descarga" href="#descargar">Descargar DEMO gratis</a>
           <a class="boton boton-linea" href="#comprar">Comprar PRO por 49 USDT</a>
@@ -333,9 +446,14 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
           <span>Windows 10 y 11</span><span>En español</span><span>Funciona sin internet</span><span>DEMO sin vencimiento</span>
         </div>
       </div>
-      <figure class="plancha" style="margin:0">
+      <figure class="plancha escena">
         <span class="m3"></span><span class="m4"></span>
+        <div class="escena-marco">
         <video class="video-portada" src="video/plasma-corte.mp4" poster="video/plasma-corte.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mesa plasma CNC cortando una plancha"></video>
+        <button class="captura ventana flota js-ampliar" type="button" aria-label="Ampliar captura del nesting">
+          <img src="img/cap-nesting.webp" width="1560" height="1002" fetchpriority="high" alt="optiMAX con 72 piezas distribuidas en 8 planchas de 1.000 × 2.000 mm">
+        </button>
+        </div>
         <figcaption>Mesa plasma CNC del taller donde se desarrolla optiMAX, en Santa Cruz de la Sierra, Bolivia.</figcaption>
       </figure>
     </div>
@@ -361,7 +479,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
           <div><b><span class="num">2</span>La foto</b><p>Imprimí la hoja de calibración (Carta, A4 o A3), apoyá la pieza y sacá la foto desde arriba con el celular.</p></div>
         </li>
         <li>
-          <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de Pieza desde una foto">
+          <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de Pieza desde una foto">
             <img src="img/cap-foto-dxf.webp" width="1378" height="836" loading="lazy" alt="Ventana Pieza desde una foto con el contorno detectado: 5 rectas y 1 arco, 139,64 × 111,08 mm">
           </button>
           <div><b><span class="num">3</span>El DXF</b><p>optiMAX detecta rectas, arcos y círculos y te da las medidas. Ajustás el contorno si hace falta y lo agregás al nesting o lo exportás en DXF.</p></div>
@@ -374,10 +492,12 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
     </div>
   </section>
 
-  <div class="franja">
+  <div class="cifras">
     <div class="envoltura">
-      <div class="cifra">Mismo resultado</div>
-      <p>Probado en el taller con lotes reales de piezas irregulares: optiMAX usa la misma cantidad de planchas y deja prácticamente el mismo sobrante que el software comercial de nesting que usamos. Y en el mismo programa tenés desarrollos de chapa, corte de barras, guillotina y presupuesto.</p>
+      <div class="dato"><b>=</b><span>Mismas planchas y mismo sobrante que el nesting comercial que usamos, en lotes reales del taller</span></div>
+      <div class="dato"><b data-contar="94.5" data-dec="1">94,5<small>%</small></b><span>de aprovechamiento: 79 piezas de ángulo en 20 barras de 6 m</span></div>
+      <div class="dato"><b data-contar="14">14</b><span>piezas paramétricas: T, curvas, conos, transiciones y helicoides</span></div>
+      <div class="dato"><b>0<small>/69</small></b><span>antivirus con detecciones en el análisis del instalador</span></div>
     </div>
   </div>
 
@@ -388,8 +508,17 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
         <p>Pensado para talleres que cortan chapa con plasma CNC y también trabajan con angulares, tubos y cizalla. Tocá cualquier captura para verla en grande.</p>
       </div>
 
+      <ul class="modulos">
+        <li><a href="#f-nesting"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M7 7h4v6H7zM14 7h3v3h-3zM13 13h4v4h-4zM7 16h3"/></svg><b>Nesting por forma real</b><span>Más piezas por plancha, orden de corte y DXF listo</span></a></li>
+        <li><a href="#f-desarrollos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 9 5h6l5 15"/><path d="M6.5 13h11"/><path d="M9 5c1 2 5 2 6 0"/></svg><b>Desarrollos de chapa</b><span>T, curvas, conos, transiciones y helicoides</span></a></li>
+        <li><a href="#f-barras"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18M3 12h18M3 16h18"/><path d="M10 6v4M15 10v4M8 14v4"/></svg><b>Barras y tubos</b><span>Cuántas barras comprar y cómo cortar cada una</span></a></li>
+        <li><a href="#f-guillotina"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M12 4v16M3 12h9"/></svg><b>Guillotina</b><span>Cortes de lado a lado, numerados y en PDF</span></a></li>
+        <li><a href="#f-rejas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5h16v16"/><path d="M8 5v16M12 5v16M16 5v16M4 9h16"/></svg><b>Rejas y portones</b><span>Plano, lista de corte, peso y pintura</span></a></li>
+        <li><a href="#f-costos"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h6"/></svg><b>Costos y presupuesto</b><span>Tiempo de corte y costo de cada pieza</span></a></li>
+      </ul>
+
       <div class="funciones">
-        <article class="funcion">
+        <article class="funcion" id="f-nesting">
           <div class="funcion-texto">
             <h3>Nesting por forma real <span class="sello sello-demo">DEMO y PRO</span></h3>
             <p>Cargás tus DXF, indicás cantidades y la medida de la plancha. optiMAX prueba decenas de órdenes de colocación en paralelo y se queda con el que usa menos planchas y deja el sobrante más aprovechable.</p>
@@ -401,12 +530,12 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
               <li>Verifica cada DXF exportado contra la distribución, pieza por pieza</li>
             </ul>
           </div>
-          <button class="captura js-ampliar" type="button" aria-label="Ampliar captura del nesting">
+          <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura del nesting">
             <img src="img/cap-nesting.webp" width="1560" height="1002" loading="lazy" alt="optiMAX con 72 piezas distribuidas en 8 planchas de 1.000 × 2.000 mm, 71,2 % de aprovechamiento">
           </button>
         </article>
 
-        <article class="funcion">
+        <article class="funcion" id="f-desarrollos">
           <div class="funcion-texto">
             <h3>Desarrollos de chapa <span class="sello sello-pro">PRO</span></h3>
             <p>Completás las medidas y la pieza desarrollada entra directo al nesting. Ves la vista previa antes de agregarla y la podés reeditar después.</p>
@@ -418,16 +547,16 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
             </ul>
           </div>
           <div class="doble">
-            <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de Crear pieza">
+            <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de Crear pieza">
               <img src="img/cap-desarrollo.webp" width="1380" height="841" loading="lazy" alt="Ventana Crear pieza con el desarrollo de una T cilindro sobre cilindro de 100 mm a 90°">
             </button>
-            <button class="captura js-ampliar" type="button" aria-label="Ampliar plano de armado en PDF">
+            <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar plano de armado en PDF">
               <img src="img/plano-transicion.webp" width="1102" height="776" loading="lazy" alt="Plano de armado en PDF de una transición rectangular a redondo de 300 × 300 mm a Ø 100 mm, escala 1:10, con líneas de plegado">
             </button>
           </div>
         </article>
 
-        <article class="funcion">
+        <article class="funcion" id="f-barras">
           <div class="funcion-texto">
             <h3>Barras, tubos y angulares <span class="sello sello-demo">DEMO hasta 5 piezas</span> <span class="sello sello-pro">PRO</span></h3>
             <p>Optimiza el corte de perfiles en barras de largo fijo. Pegás la lista desde Excel y obtenés cuántas barras comprar y cómo cortar cada una.</p>
@@ -437,12 +566,12 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
               <li>Precio por pieza según el costo de la barra</li>
             </ul>
           </div>
-          <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de barras">
+          <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de barras">
             <img src="img/cap-barras.webp" width="1237" height="790" loading="lazy" alt="Corte de 79 piezas de ángulo 40×40×3 en 20 barras de 6.000 mm con 94,5 % de aprovechamiento">
           </button>
         </article>
 
-        <article class="funcion">
+        <article class="funcion" id="f-guillotina">
           <div class="funcion-texto">
             <h3>Guillotina (cizalla) <span class="sello sello-demo">DEMO hasta 5 piezas</span> <span class="sello sello-pro">PRO</span></h3>
             <p>Para rectángulos que cortás con cizalla: cortes de lado a lado, como trabaja la máquina, respetando el largo máximo de corte.</p>
@@ -452,16 +581,16 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
             </ul>
           </div>
           <div class="doble">
-            <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de guillotina">
+            <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de guillotina">
               <img src="img/cap-guillotina.webp" width="1279" height="809" loading="lazy" alt="Ventana de guillotina con 18 piezas en 3 planchas y 25 cortes">
             </button>
-            <button class="captura js-ampliar" type="button" aria-label="Ampliar plan de cortes en PDF">
+            <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar plan de cortes en PDF">
               <img src="img/cap-pdf-guillotina.webp" width="1125" height="675" loading="lazy" alt="Plan de cortes de guillotina en PDF con los cortes numerados">
             </button>
           </div>
         </article>
 
-        <article class="funcion">
+        <article class="funcion" id="f-rejas">
           <div class="funcion-texto">
             <h3>Rejas y portones <span class="sello sello-demo">Reja en DEMO</span> <span class="sello sello-pro">Portones PRO</span></h3>
             <p>Ponés el ancho y el alto del portón o la reja, elegís los perfiles y el relleno, y te arma el plano con todas las medidas, la lista de corte con cada pieza marcada y cuántas barras comprar de cada perfil.</p>
@@ -476,16 +605,16 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
             </ul>
           </div>
           <div class="doble">
-            <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de rejas y portones">
+            <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de rejas y portones">
               <img src="img/cap-rejas.webp" width="1321" height="830" loading="lazy" alt="Ventana Rejas y portones con un portón batiente de 2 hojas de 3.000 × 2.100 mm: 28 piezas, 10 barras, 57 kg">
             </button>
-            <button class="captura js-ampliar" type="button" aria-label="Ampliar plano con medidas en PDF">
+            <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar plano con medidas en PDF">
               <img src="img/cap-pdf-rejas.webp" width="1121" height="792" loading="lazy" alt="Plano en PDF del portón batiente de 2 hojas con cotas acumuladas y piezas marcadas por letra">
             </button>
           </div>
         </article>
 
-        <article class="funcion">
+        <article class="funcion" id="f-costos">
           <div class="funcion-texto">
             <h3>Costos y presupuesto <span class="sello sello-pro">PRO</span></h3>
             <p>Con el precio de la chapa y los datos de tu máquina calcula metros de corte, perforaciones, tiempo estimado y costo de cada pieza.</p>
@@ -495,7 +624,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
               <li>Moneda y datos de tu empresa configurables</li>
             </ul>
           </div>
-          <button class="captura js-ampliar" type="button" aria-label="Ampliar captura del presupuesto">
+          <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura del presupuesto">
             <img src="img/cap-presupuesto.webp" width="1199" height="753" loading="lazy" alt="Presupuesto del trabajo: 72 piezas, 123 m de corte, 1 h 55 min estimados">
           </button>
         </article>
@@ -551,6 +680,36 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
         <h2>DEMO y PRO</h2>
         <p>La DEMO no vence y ya hace el nesting completo. La PRO suma los desarrollos, los portones, los costos, los proyectos y quita los límites de barras, guillotina y rejas.</p>
       </div>
+      <div class="planes">
+        <div class="plan">
+          <h3>DEMO</h3>
+          <div class="monto">Gratis<small>Sin vencimiento</small></div>
+          <ul>
+            <li>Nesting completo y DXF de todas las planchas</li>
+            <li>Formas básicas y curva redonda por sectores</li>
+            <li>Foto a DXF: detectar, medir y editar</li>
+            <li>Barras y guillotina hasta 5 piezas</li>
+            <li>Reja de ventana hasta 1.500 × 1.000 mm</li>
+          </ul>
+          <a class="boton boton-linea js-descarga" href="#descargar">Descargar DEMO gratis</a>
+          <p class="mensaje js-mensaje-descarga" role="status"></p>
+        </div>
+        <div class="plan plan-pro">
+          <span class="cinta">PAGO ÚNICO</span>
+          <h3>PRO</h3>
+          <div class="monto js-precio-pro">49 USDT<small>o 590 Bs desde Bolivia · una PC</small></div>
+          <ul>
+            <li>Todo lo de la DEMO, sin límites</li>
+            <li>Los 10 desarrollos de chapa</li>
+            <li>Foto a DXF al nesting y exportar</li>
+            <li>Todos los portones, con DXF, PDF y Excel</li>
+            <li>Costos, presupuesto y proyectos guardados</li>
+          </ul>
+          <a class="boton boton-rojo" href="#comprar">Comprar PRO</a>
+        </div>
+      </div>
+      <details class="comparacion">
+      <summary>Ver la comparación completa</summary>
       <div class="tabla-caja">
         <table>
           <thead>
@@ -576,6 +735,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
           </tbody>
         </table>
       </div>
+      </details>
     </div>
   </section>
 
@@ -730,6 +890,11 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
   </div>
 </footer>
 
+<div class="barra-movil" id="barra-movil">
+  <a class="boton boton-rojo js-descarga" href="#descargar" data-movil="Enviar la DEMO a mi PC">Descargar DEMO gratis</a>
+  <a class="boton boton-linea" href="#comprar">Comprar PRO</a>
+</div>
+
 <a class="wa-flotante js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener" aria-label="Consultas por WhatsApp, asistente automático"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Consultas</span></a>
 
 <dialog class="visor" id="visor" aria-label="Captura ampliada">
@@ -847,7 +1012,7 @@ function compartirEnlace(a) {
 }
 if (esMovil) {
   document.querySelectorAll(".js-descarga").forEach(a => {
-    a.textContent = a.classList.contains("boton-chico") ? "Enlace para mi PC" : "Enviarme el enlace para mi PC";
+    a.textContent = a.dataset.movil || (a.classList.contains("boton-chico") ? "Enlace para mi PC" : "Enviarme el enlace para mi PC");
     a.href = "#descargar";
     a.addEventListener("click", ev => { ev.preventDefault(); compartirEnlace(a); });
   });
@@ -901,6 +1066,8 @@ try {
       precio.querySelector("b").textContent = "590 Bs";
       precio.querySelector("span").textContent = "o 49 USDT desde otros países. Pago único, una PC.";
     }
+    document.querySelectorAll(".js-precio-pro").forEach(m =>
+      m.innerHTML = "590 Bs<small>o 49 USDT desde otros países · una PC</small>");
   }
 } catch (e) {}
 
@@ -974,6 +1141,34 @@ document.querySelectorAll(".js-ampliar").forEach(b => b.addEventListener("click"
 }));
 document.getElementById("cerrar-visor").addEventListener("click", () => visor.close());
 visor.addEventListener("click", ev => { if (ev.target === visor) visor.close(); });
+
+// Aparición al hacer scroll, cifras que cuentan y barra fija del celular
+(() => {
+  const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!("IntersectionObserver" in window)) return;
+  const contar = b => {
+    const fin = parseFloat(b.dataset.contar), dec = +(b.dataset.dec || 0), nodo = b.firstChild, t0 = performance.now();
+    const fmt = v => v.toFixed(dec).replace(".", ",");
+    const paso = t => { const k = Math.min(1, (t - t0) / 1200); nodo.textContent = fmt(fin * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(paso); };
+    requestAnimationFrame(paso);
+  };
+  if (!quieto) {
+    const sel = ".intro, .modulos li, .funcion, .novedad-pasos li, .cifras .dato, .catalogo, .taller figure, .plan, .requisitos div, .pasos li, .pago, .preguntas";
+    const obs = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("visto"); obs.unobserve(e.target);
+      e.target.querySelectorAll("[data-contar]").forEach(contar);
+    }), {rootMargin: "0px 0px -8% 0px"});
+    document.querySelectorAll(sel).forEach((el, i) => {
+      el.classList.add("revelar");
+      const hermanos = el.parentElement ? [...el.parentElement.children].indexOf(el) : 0;
+      el.style.transitionDelay = Math.min(hermanos, 5) * 70 + "ms";
+      obs.observe(el);
+    });
+  }
+  const barra = document.getElementById("barra-movil"), portada = document.querySelector(".portada");
+  if (barra && portada) new IntersectionObserver(([e]) => barra.classList.toggle("activa", !e.isIntersecting)).observe(portada);
+})();
 
 // Videos: respetar movimiento reducido
 if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
