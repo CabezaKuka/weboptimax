@@ -589,6 +589,20 @@ body{background:
 /* Barra fija del celular */
 .barra-movil{background:rgba(255,255,255,.95)}
 @media (max-width:600px){.barra-movil{background:rgba(255,255,255,.95)}}
+
+/* Nodos del diagrama más evidentes como botones (PC) */
+@media (min-width:901px){
+  .nodo{width:68px;height:68px}
+  .nodo-ico{background:#fff;border:2px solid rgba(227,18,11,.35);box-shadow:0 8px 20px -10px rgba(227,18,11,.55)}
+  .nodo svg{width:30px;height:30px}
+  .nodo:not([aria-selected="true"]) .nodo-ico::before{content:"+";position:absolute;top:-4px;right:-4px;width:22px;height:22px;border-radius:50%;background:var(--rojo);color:#fff;font:700 16px/22px var(--f-texto);text-align:center;box-shadow:0 2px 6px rgba(227,18,11,.45)}
+  .nodo:not([aria-selected="true"]) .nodo-ico::after{border:2px solid rgba(227,18,11,.4)}
+  .nodo-txt{top:calc(100% + 8px);width:auto;white-space:nowrap;padding:4px 10px;border-radius:999px;background:#fff;border:1px solid var(--acero-3);color:var(--texto);font-weight:600;box-shadow:0 4px 12px -8px rgba(20,30,40,.4);transition:border-color .2s,color .2s,background .2s}
+  .nodo:hover .nodo-ico{background:rgba(227,18,11,.08);border-color:var(--rojo);transform:scale(1.1)}
+  .nodo:hover .nodo-txt{border-color:var(--rojo);color:var(--rojo)}
+  .nodo[aria-selected="true"] .nodo-ico{border-color:var(--rojo)}
+  .nodo[aria-selected="true"] .nodo-txt{background:var(--rojo);border-color:var(--rojo);color:#fff}
+}
 </style>
 <!-- Meta Pixel Code (optiMAX-WEB) -->
 <script>
