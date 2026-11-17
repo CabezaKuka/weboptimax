@@ -1227,6 +1227,7 @@ document.querySelectorAll(".js-video-yt").forEach(b => b.addEventListener("click
   f.title = "Video de optiMAX";
   f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
   f.allowFullscreen = true;
+  f.referrerPolicy = "strict-origin-when-cross-origin";
   b.replaceWith(f);
   eventoPropio("VerVideo");
 }));
