@@ -309,14 +309,24 @@ body{background:
 .portada h1 .acento{background:linear-gradient(95deg,#ff7a2e,var(--rojo) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .etiqueta{display:inline-flex;align-items:center;gap:8px;font:600 .82rem/1 var(--f-texto);letter-spacing:.08em;text-transform:uppercase;color:var(--tenue);border:1px solid var(--acero-3);background:rgba(255,255,255,.03);border-radius:999px;padding:7px 12px;margin-bottom:20px}
 .etiqueta i{width:7px;height:7px;border-radius:50%;background:var(--rojo);box-shadow:0 0 10px var(--rojo);font-style:normal}
-.escena{margin:0}
-.escena-marco{position:relative}
-.escena .video-portada{border-radius:8px;box-shadow:0 0 120px var(--brillo),var(--sombra)}
-.escena .flota{position:absolute;left:clamp(-48px,-4vw,-16px);bottom:clamp(-70px,-6vw,-36px);width:62%;animation:flotar 7s ease-in-out infinite}
-.escena figcaption{margin-top:clamp(48px,6vw,80px);padding-left:64%}
-@media (max-width:900px){.escena figcaption{padding-left:0;margin-top:clamp(70px,16vw,110px)}}
-@keyframes flotar{50%{transform:translateY(-8px)}}
-@media (max-width:900px){.escena .flota{left:-6px;width:66%}}
+.fondo-portada{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;z-index:0;pointer-events:none}
+.portada::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  linear-gradient(90deg,var(--acero) 22%,rgba(26,31,36,.78) 52%,rgba(26,31,36,.35)),
+  linear-gradient(0deg,var(--acero),transparent 30%)}
+.portada .envoltura{position:relative;z-index:1}
+.escena{margin:0;perspective:1600px}
+.escena .ventana{transform:rotateY(-7deg) rotateX(2deg);transform-origin:left center;box-shadow:0 40px 90px -20px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08),0 0 120px var(--brillo)}
+.escena .ventana:hover{transform:none}
+.escena figcaption{font-size:.86rem;color:var(--tenue);margin-top:16px;max-width:52ch}
+@media (max-width:900px){
+  .portada::after{background:linear-gradient(180deg,rgba(26,31,36,.55),var(--acero) 70%)}
+  .escena .ventana{transform:none}
+}
+.cabecera-portada{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:20px}
+.cabecera-portada .etiqueta{margin-bottom:0}
+.paises{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.85rem;color:var(--tenue)}
+.paises span{display:inline-flex;align-items:center;gap:6px}
+.paises svg{width:21px;height:14px;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
 
 /* Capturas como ventanas del programa */
 .ventana{padding:26px 0 0!important;background:#dfe4e9!important;border:0!important;border-radius:8px!important;position:relative;box-shadow:var(--sombra);transition:transform .25s,box-shadow .25s}
@@ -383,7 +393,7 @@ body{background:
 /* Aparición al hacer scroll (solo si hay JS y no se pidió reducir movimiento) */
 .revelar{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .revelar.visto{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.revelar{opacity:1;transform:none;transition:none}.escena .flota{animation:none}.captura,.modulos a,.taller img{transition:none}}
+@media (prefers-reduced-motion:reduce){.revelar{opacity:1;transform:none;transition:none}.escena .ventana{transform:none}.captura,.modulos a,.taller img{transition:none}}
 
 /* Barra fija de descarga en el celular */
 .barra-movil{display:none}
@@ -432,9 +442,13 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
 
 <main id="inicio">
   <section class="portada">
+    <video class="fondo-portada" src="video/plasma-corte.mp4" poster="video/plasma-corte.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
     <div class="envoltura">
       <div>
-        <span class="etiqueta"><i></i>Software para plasma CNC</span>
+        <div class="cabecera-portada">
+          <span class="etiqueta"><i></i>Software para plasma CNC</span>
+          <span class="paises" aria-label="Para talleres de Bolivia, Perú, Colombia y Paraguay"><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#007934"/><rect width="30" height="13.34" fill="#f9e300"/><rect width="30" height="6.67" fill="#d52b1e"/></svg>Bolivia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#d91023"/><rect x="10" width="10" height="20" fill="#fff"/></svg>Perú</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#ce1126"/><rect width="30" height="15" fill="#003893"/><rect width="30" height="10" fill="#fcd116"/></svg>Colombia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#0038a8"/><rect width="30" height="13.34" fill="#fff"/><rect width="30" height="6.67" fill="#d52b1e"/><circle cx="15" cy="10" r="2.3" fill="none" stroke="#0038a8" stroke-width=".8"/></svg>Paraguay</span></span>
+        </div>
         <h1>Más piezas por plancha y <span class="acento">menos horas dibujando</span> desarrollos</h1>
         <p class="bajada">Nesting de tus DXF, desarrollos de chapa listos para cortar y el orden de corte optimizado para tu mesa plasma. Más barras, guillotina, rejas y presupuesto, en un solo programa.</p>
         <div class="acciones">
@@ -446,15 +460,11 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
           <span>Windows 10 y 11</span><span>En español</span><span>Funciona sin internet</span><span>DEMO sin vencimiento</span>
         </div>
       </div>
-      <figure class="plancha escena">
-        <span class="m3"></span><span class="m4"></span>
-        <div class="escena-marco">
-        <video class="video-portada" src="video/plasma-corte.mp4" poster="video/plasma-corte.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mesa plasma CNC cortando una plancha"></video>
-        <button class="captura ventana flota js-ampliar" type="button" aria-label="Ampliar captura del nesting">
+      <figure class="escena">
+        <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura del nesting">
           <img src="img/cap-nesting.webp" width="1560" height="1002" fetchpriority="high" alt="optiMAX con 72 piezas distribuidas en 8 planchas de 1.000 × 2.000 mm">
         </button>
-        </div>
-        <figcaption>Mesa plasma CNC del taller donde se desarrolla optiMAX, en Santa Cruz de la Sierra, Bolivia.</figcaption>
+        <figcaption>72 piezas en 8 planchas. De fondo, la mesa plasma del taller donde se desarrolla optiMAX, en Santa Cruz de la Sierra.</figcaption>
       </figure>
     </div>
   </section>
@@ -1172,7 +1182,7 @@ visor.addEventListener("click", ev => { if (ev.target === visor) visor.close(); 
 
 // Videos: respetar movimiento reducido
 if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.querySelectorAll("video[autoplay]").forEach(v => { v.removeAttribute("autoplay"); v.pause(); v.controls = true; });
+  document.querySelectorAll("video[autoplay]").forEach(v => { v.removeAttribute("autoplay"); v.pause(); if (!v.classList.contains("fondo-portada")) v.controls = true; });
 }
 </script>
 </body>
