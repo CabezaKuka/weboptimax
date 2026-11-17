@@ -603,6 +603,22 @@ body{background:
   .nodo[aria-selected="true"] .nodo-ico{border-color:var(--rojo)}
   .nodo[aria-selected="true"] .nodo-txt{background:var(--rojo);border-color:var(--rojo);color:#fff}
 }
+
+/* Celular: lista de módulos sin negrita y módulos con aspecto de botón */
+@media (max-width:900px){
+  .lista-modulos{font-weight:400}
+  .nodo{border:2px solid rgba(227,18,11,.3);box-shadow:0 8px 18px -12px rgba(227,18,11,.6);padding:10px 10px 10px 10px;font-weight:600}
+  .nodo-ico{background:#fff;border:2px solid rgba(227,18,11,.35)}
+  .nodo-flecha{width:28px;height:28px;flex:0 0 28px;border:0;border-radius:50%;background:var(--rojo);transform:none;margin:0;position:relative;box-shadow:0 3px 8px rgba(227,18,11,.4)}
+  .nodo-flecha::before{content:"";position:absolute;left:50%;top:45%;width:8px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:translate(-50%,-50%) rotate(45deg);transition:transform .2s}
+  .nodo:active{transform:scale(.98)}
+  .nodo[aria-selected="true"]{background:var(--rojo);border-color:var(--rojo)}
+  .nodo[aria-selected="true"] .nodo-txt{color:#fff}
+  .nodo[aria-selected="true"] .nodo-ico{border-color:#fff}
+  .nodo[aria-selected="true"] .nodo-flecha{background:#fff;transform:none;margin:0}
+  .nodo[aria-selected="true"] .nodo-flecha::before{border-color:var(--rojo);top:58%;transform:translate(-50%,-50%) rotate(-135deg)}
+  .hub-mapa .hub-panel{border:2px solid var(--rojo);border-top:0}
+}
 </style>
 <!-- Meta Pixel Code (optiMAX-WEB) -->
 <script>
