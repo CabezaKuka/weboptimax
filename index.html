@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Software para talleres metalúrgicos: nesting de piezas DXF y desarrollos de chapa (T, curvas, conos, transiciones) para CNC de plasma, oxicorte o láser, foto a DXF, y sin CNC: corte de barras, guillotina, rejas, portones y presupuesto. DEMO gratis, PRO 49 USDT.">
 <meta property="og:title" content="optiMAX: nesting, desarrollos de chapa y cortes para talleres metalúrgicos">
-<meta property="og:description" content="Más piezas por plancha y menos horas dibujando desarrollos. DEMO gratis para Windows.">
+<meta property="og:description" content="Todo el corte del taller, optimizado en un solo programa: nesting, desarrollos, barras, guillotina, rejas y presupuesto. DEMO gratis para Windows.">
 <meta property="og:image" content="https://optimax.lat/img/og.jpg">
 <meta property="og:url" content="https://optimax.lat/">
 <meta property="og:type" content="website">
@@ -80,6 +80,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .portada .envoltura{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,5vw,64px);align-items:center}
 .portada h1{font-size:clamp(2.7rem,6.4vw,5.3rem);font-weight:800;line-height:.95;text-transform:none}
 .portada .bajada{font-size:1.17rem;color:var(--tenue);max-width:46ch;margin-top:22px}
+.chips-modulos{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;max-width:560px}
+.chips-modulos li{font-size:.9rem;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--acero-3);background:rgba(26,31,36,.6);backdrop-filter:blur(4px)}
+.chips-modulos+.bajada{margin-top:16px;font-size:1rem}
 .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .datos-portada{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;color:var(--tenue);font-size:.95rem}
 .datos-portada span::before{content:"";display:inline-block;width:6px;height:6px;background:var(--rojo);margin-right:8px;vertical-align:middle;border-radius:1px}
@@ -305,7 +308,8 @@ body{background:
 
 /* Portada */
 .portada{position:relative;overflow:hidden}
-.portada h1{letter-spacing:-.005em}
+.portada h1{letter-spacing:-.005em;font-size:clamp(2.5rem,4.6vw,4.1rem);line-height:.98}
+@media (min-width:901px){.portada .envoltura{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}}
 .portada h1 .acento{background:linear-gradient(95deg,#ff7a2e,var(--rojo) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .etiqueta{display:inline-flex;align-items:center;gap:8px;font:600 .82rem/1 var(--f-texto);letter-spacing:.08em;text-transform:uppercase;color:var(--tenue);border:1px solid var(--acero-3);background:rgba(255,255,255,.03);border-radius:999px;padding:7px 12px;margin-bottom:20px}
 .etiqueta i{width:7px;height:7px;border-radius:50%;background:var(--rojo);box-shadow:0 0 10px var(--rojo);font-style:normal}
@@ -575,8 +579,9 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
           <span class="etiqueta"><i></i>Software para talleres metalúrgicos</span>
           <span class="paises" aria-label="Para talleres de Bolivia, Perú, Colombia y Paraguay"><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#007934"/><rect width="30" height="13.34" fill="#f9e300"/><rect width="30" height="6.67" fill="#d52b1e"/></svg>Bolivia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#d91023"/><rect x="10" width="10" height="20" fill="#fff"/></svg>Perú</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#ce1126"/><rect width="30" height="15" fill="#003893"/><rect width="30" height="10" fill="#fcd116"/></svg>Colombia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#0038a8"/><rect width="30" height="13.34" fill="#fff"/><rect width="30" height="6.67" fill="#d52b1e"/><circle cx="15" cy="10" r="2.3" fill="none" stroke="#0038a8" stroke-width=".8"/></svg>Paraguay</span></span>
         </div>
-        <h1>Más piezas por plancha y <span class="acento">menos horas dibujando</span> desarrollos</h1>
-        <p class="bajada">Nesting de tus DXF y desarrollos de chapa listos para tu CNC de plasma, oxicorte o láser. Y herramientas que no necesitan CNC: barras y tubos, guillotina, rejas y portones.</p>
+        <h1>Todo el corte del taller, <span class="acento">optimizado</span> en un solo programa</h1>
+        <ul class="chips-modulos" aria-label="Módulos"><li>Nesting</li><li>Desarrollos de chapa</li><li>Foto a DXF</li><li>Barras y tubos</li><li>Guillotina</li><li>Rejas y portones</li><li>Presupuesto</li></ul>
+        <p class="bajada">Para CNC de plasma, oxicorte o láser, y para talleres sin CNC.</p>
         <div class="acciones">
           <a class="boton boton-rojo js-descarga" href="#descargar">Descargar DEMO gratis</a>
           <a class="boton boton-linea" href="#comprar">Comprar PRO por 49 USDT</a>
