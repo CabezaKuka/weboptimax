@@ -82,7 +82,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .portada .bajada{font-size:1.17rem;color:var(--tenue);max-width:46ch;margin-top:22px}
 .chips-modulos{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;max-width:560px}
 .chips-modulos li{font-size:.9rem;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--acero-3);background:rgba(26,31,36,.6);backdrop-filter:blur(4px)}
-.chips-modulos+.bajada{margin-top:16px;font-size:1rem}
+.lista-modulos{margin:22px 0 0;max-width:560px;font-weight:600;font-size:1.05rem;line-height:1.5;color:var(--texto)}
+.lista-modulos+.bajada{margin-top:10px;font-size:1rem}
 .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .datos-portada{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;color:var(--tenue);font-size:.95rem}
 .datos-portada span::before{content:"";display:inline-block;width:6px;height:6px;background:var(--rojo);margin-right:8px;vertical-align:middle;border-radius:1px}
@@ -460,7 +461,7 @@ body{background:
 .hub-texto ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}
 .hub-texto li{padding-left:20px;position:relative}
 .hub-texto li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--rojo)}
-.hub{grid-template-rows:auto 1fr;row-gap:22px}
+.hub{grid-template-rows:auto 1fr;row-gap:22px;scroll-margin-top:96px}
 .hub-pista{grid-column:1;display:flex;align-items:center;gap:10px;margin:0;color:var(--texto);font-weight:600}
 .hub-pista svg{width:26px;height:26px;fill:none;stroke:var(--arco);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;animation:tocar 1.6s ease-in-out infinite}
 @keyframes tocar{50%{transform:translateY(-4px)}}
@@ -612,7 +613,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
   <div class="envoltura">
     <a class="marca" href="#inicio" aria-label="optiMAX, inicio"><img src="img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
     <nav aria-label="Secciones">
-      <a href="#foto-dxf">Foto a DXF</a>
+      <a href="#f-foto">Foto a DXF</a>
       <a href="#funciones">Funciones</a>
       <a href="#desarrollos">Desarrollos</a>
       <a href="#versiones">DEMO y PRO</a>
@@ -633,7 +634,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
           <span class="paises" aria-label="Para talleres de Bolivia, Perú, Colombia y Paraguay"><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#007934"/><rect width="30" height="13.34" fill="#f9e300"/><rect width="30" height="6.67" fill="#d52b1e"/></svg>Bolivia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#d91023"/><rect x="10" width="10" height="20" fill="#fff"/></svg>Perú</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#ce1126"/><rect width="30" height="15" fill="#003893"/><rect width="30" height="10" fill="#fcd116"/></svg>Colombia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#0038a8"/><rect width="30" height="13.34" fill="#fff"/><rect width="30" height="6.67" fill="#d52b1e"/><circle cx="15" cy="10" r="2.3" fill="none" stroke="#0038a8" stroke-width=".8"/></svg>Paraguay</span></span>
         </div>
         <h1>Todo el corte del taller, <span class="acento">optimizado</span> en un solo programa</h1>
-        <ul class="chips-modulos" aria-label="Módulos"><li>Nesting</li><li>Desarrollos de chapa</li><li>Foto a DXF</li><li>Barras y tubos</li><li>Guillotina</li><li>Rejas y portones</li><li>Presupuesto</li></ul>
+        <p class="lista-modulos">Nesting – Desarrollos de chapa – Foto a DXF – Barras y tubos – Guillotina – Rejas y portones – Presupuesto</p>
         <p class="bajada">Para CNC de plasma, oxicorte o láser, y para talleres sin CNC.</p>
         <div class="acciones">
           <a class="boton boton-rojo js-descarga" href="#descargar">Descargar DEMO gratis</a>
@@ -654,53 +655,9 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
     </div>
   </section>
 
-  <section class="seccion" id="video">
-    <div class="envoltura dos-col">
-      <div class="col-video">
-        <div class="intro">
-          <h2>Miralo funcionando</h2>
-          <p>Nesting, desarrollos, guillotina, portones, tolvas y pieza desde una foto.</p>
-        </div>
-        <div class="video-yt">
-          <button class="js-video-yt" type="button" data-id="OUzk42WqTRM" aria-label="Reproducir el video de optiMAX">
-            <img src="https://i.ytimg.com/vi/OUzk42WqTRM/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/OUzk42WqTRM/hqdefault.jpg'" width="1280" height="720" loading="lazy" alt="Video de optiMAX: uso completo del programa">
-            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
-          </button>
-        </div>
-      </div>
-      <div class="col-foto" id="foto-dxf">
-        <h2><span class="sello sello-nuevo">NUEVO</span>De una foto a DXF</h2>
-        <p>¿Tenés que repetir una pieza y no tenés el plano? Sacale una foto y optiMAX te da el contorno medido, listo para el nesting.</p>
-        <ol class="pasos-mini">
-          <li>
-            <button class="captura js-ampliar" type="button" aria-label="Ampliar foto de la pieza"><img src="img/foto-pieza.webp" width="900" height="900" loading="lazy" alt="Pieza de chapa cortada, sostenida con guante de trabajo"></button>
-            <div><b><span class="num">1</span>La pieza</b><p>Cualquier pieza de chapa, aunque no tengas el dibujo.</p></div>
-          </li>
-          <li>
-            <button class="captura js-ampliar" type="button" aria-label="Ampliar foto de la pieza sobre la hoja de calibración"><img src="img/foto-hoja.webp" width="900" height="900" loading="lazy" alt="La misma pieza apoyada sobre la hoja de calibración con cuatro cuadros negros en las esquinas"></button>
-            <div><b><span class="num">2</span>La foto</b><p>Apoyala sobre la hoja de calibración impresa (Carta, A4 o A3) y sacá la foto desde arriba.</p></div>
-          </li>
-          <li>
-            <button class="captura js-ampliar" type="button" aria-label="Ampliar captura de Pieza desde una foto"><img src="img/cap-foto-dxf.webp" width="1378" height="836" loading="lazy" alt="Ventana Pieza desde una foto con el contorno detectado: 5 rectas y 1 arco, 139,64 × 111,08 mm"></button>
-            <div><b><span class="num">3</span>El DXF</b><p>Detecta rectas, arcos y círculos con sus medidas; lo ajustás y va al nesting o a DXF.</p></div>
-          </li>
-        </ol>
-        <div class="novedad-pie">
-          <span><span class="sello sello-demo">DEMO</span>Detectar, medir y editar</span>
-          <span><span class="sello sello-pro">PRO</span>Al nesting y exportar el DXF</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <div class="cifras">
-    <div class="envoltura">
-      <div class="dato"><b>=</b><span>Mismas planchas y mismo sobrante que el nesting comercial que usamos, en lotes reales del taller</span></div>
-      <div class="dato"><b data-contar="94.5" data-dec="1">94,5<small>%</small></b><span>de aprovechamiento: 79 piezas de ángulo en 20 barras de 6 m</span></div>
-      <div class="dato"><b data-contar="14">14</b><span>piezas paramétricas: T, curvas, conos, transiciones y helicoides</span></div>
-      <div class="dato"><b>0<small>/69</small></b><span>antivirus con detecciones en el análisis del instalador</span></div>
-    </div>
-  </div>
+
+
 
   <section class="seccion" id="funciones">
     <div class="envoltura">
@@ -812,6 +769,21 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
         <li><img src="img/fig/helicoide.webp" width="88" height="66" loading="lazy" alt=""><span>Helicoide (hélice de sinfín)</span><span class="sello sello-pro">PRO</span></li>
       </ul>
       <p class="nota-tecnica">Las medidas se cargan como diámetros y secciones exteriores; el desarrollo se calcula sobre el espesor neutro de la chapa. Las líneas de plegado llevan muescas en V opcionales y van al plano PDF, nunca al DXF de corte.</p>
+    </div>
+  </section>
+
+  <section class="seccion" id="video">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Miralo funcionando</h2>
+        <p>Nesting, desarrollos, guillotina, portones, tolvas y pieza desde una foto.</p>
+      </div>
+      <div class="video-yt">
+        <button class="js-video-yt" type="button" data-id="OUzk42WqTRM" aria-label="Reproducir el video de optiMAX">
+          <img src="https://i.ytimg.com/vi/OUzk42WqTRM/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/OUzk42WqTRM/hqdefault.jpg'" width="1280" height="720" loading="lazy" alt="Video de optiMAX: uso completo del programa">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -1392,6 +1364,13 @@ document.querySelectorAll(".js-video-yt").forEach(b => b.addEventListener("click
     else activar(movil.matches ? null : (actual || "f-nesting"));
   };
   movil.addEventListener("change", preparar);
+  addEventListener("hashchange", () => {
+    const h = location.hash.slice(1);
+    if (!paneles.some(p => p.id === h)) return;
+    parar(); activar(h, true);
+    const n = nodos.find(x => x.getAttribute("aria-controls") === h);
+    (movil.matches ? n : hub).scrollIntoView({block: "start"});
+  });
   preparar();
   if (!quieto && "IntersectionObserver" in window) {
     new IntersectionObserver(([e]) => {
