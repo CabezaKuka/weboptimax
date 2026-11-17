@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Nesting y desarrollos de chapa para plasma CNC: distribuye piezas DXF en planchas, genera T, curvas, conos y transiciones, pasa piezas de una foto a DXF, corta barras, guillotina, rejas y portones. DEMO gratis, PRO 49 USDT.">
-<meta property="og:title" content="optiMAX: nesting y desarrollos de chapa para plasma CNC">
+<meta name="description" content="Software para talleres metalúrgicos: nesting de piezas DXF y desarrollos de chapa (T, curvas, conos, transiciones) para CNC de plasma, oxicorte o láser, foto a DXF, y sin CNC: corte de barras, guillotina, rejas, portones y presupuesto. DEMO gratis, PRO 49 USDT.">
+<meta property="og:title" content="optiMAX: nesting, desarrollos de chapa y cortes para talleres metalúrgicos">
 <meta property="og:description" content="Más piezas por plancha y menos horas dibujando desarrollos. DEMO gratis para Windows.">
 <meta property="og:image" content="https://optimax.lat/img/og.jpg">
 <meta property="og:url" content="https://optimax.lat/">
@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/icono.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
-<title>optiMAX: nesting y desarrollos de chapa para plasma CNC</title>
+<title>optiMAX: nesting, desarrollos de chapa y cortes para talleres metalúrgicos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
@@ -347,13 +347,16 @@ body{background:
 @media (max-width:860px){.cifras .envoltura{grid-template-columns:1fr 1fr;row-gap:26px}.cifras div.dato:nth-child(3){border-left:0;padding-left:0}}
 
 /* Resumen de módulos en tarjetas */
-.modulos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 0 clamp(56px,7vw,96px);padding:0;list-style:none}
+.modulos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:0 0 34px;padding:0;list-style:none}
+.modulos:last-of-type{margin-bottom:clamp(56px,7vw,96px)}
+.grupo-modulos{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font:500 .95rem/1.3 var(--f-texto);color:var(--tenue);margin:0 0 14px}
+.grupo-modulos span{font:700 .78rem/1 var(--f-texto);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--rojo);padding:6px 10px;border-radius:999px}
+.grupo-modulos+.modulos+.grupo-modulos span{background:var(--acero-3)}
 .modulos a{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;height:100%;padding:18px;text-decoration:none;border-radius:10px;border:1px solid var(--acero-3);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));transition:border-color .2s,transform .2s,background .2s}
 .modulos a:hover{border-color:rgba(227,18,11,.55);transform:translateY(-3px);background:linear-gradient(180deg,rgba(227,18,11,.08),rgba(255,255,255,.01))}
 .modulos svg{grid-row:span 2;width:44px;height:44px;padding:10px;border-radius:9px;background:rgba(227,18,11,.12);color:#ff5a3c;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .modulos b{font:700 1.25rem/1.15 var(--f-titulo);align-self:end}
 .modulos span{color:var(--tenue);font-size:.93rem;line-height:1.4}
-@media (max-width:900px){.modulos{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.modulos{grid-template-columns:1fr}}
 .funcion{scroll-margin-top:90px}
 
@@ -446,18 +449,18 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
     <div class="envoltura">
       <div>
         <div class="cabecera-portada">
-          <span class="etiqueta"><i></i>Software para plasma CNC</span>
+          <span class="etiqueta"><i></i>Software para talleres metalúrgicos</span>
           <span class="paises" aria-label="Para talleres de Bolivia, Perú, Colombia y Paraguay"><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#007934"/><rect width="30" height="13.34" fill="#f9e300"/><rect width="30" height="6.67" fill="#d52b1e"/></svg>Bolivia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#d91023"/><rect x="10" width="10" height="20" fill="#fff"/></svg>Perú</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#ce1126"/><rect width="30" height="15" fill="#003893"/><rect width="30" height="10" fill="#fcd116"/></svg>Colombia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#0038a8"/><rect width="30" height="13.34" fill="#fff"/><rect width="30" height="6.67" fill="#d52b1e"/><circle cx="15" cy="10" r="2.3" fill="none" stroke="#0038a8" stroke-width=".8"/></svg>Paraguay</span></span>
         </div>
         <h1>Más piezas por plancha y <span class="acento">menos horas dibujando</span> desarrollos</h1>
-        <p class="bajada">Nesting de tus DXF, desarrollos de chapa listos para cortar y el orden de corte optimizado para tu mesa plasma. Más barras, guillotina, rejas y presupuesto, en un solo programa.</p>
+        <p class="bajada">Nesting de tus DXF y desarrollos de chapa listos para tu CNC de plasma, oxicorte o láser. Y herramientas que no necesitan CNC: barras y tubos, guillotina, rejas y portones.</p>
         <div class="acciones">
           <a class="boton boton-rojo js-descarga" href="#descargar">Descargar DEMO gratis</a>
           <a class="boton boton-linea" href="#comprar">Comprar PRO por 49 USDT</a>
         </div>
         <p class="mensaje js-mensaje-descarga" role="status"></p>
         <div class="datos-portada">
-          <span>Windows 10 y 11</span><span>En español</span><span>Funciona sin internet</span><span>DEMO sin vencimiento</span>
+          <span>Windows 10 y 11</span><span>DXF estándar</span><span>En español</span><span>Funciona sin internet</span><span>DEMO sin vencimiento</span>
         </div>
       </div>
       <figure class="escena">
@@ -515,16 +518,21 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
     <div class="envoltura">
       <div class="intro">
         <h2>Todo el trabajo de corte en un solo programa</h2>
-        <p>Pensado para talleres que cortan chapa con plasma CNC y también trabajan con angulares, tubos y cizalla. Tocá cualquier captura para verla en grande.</p>
+        <p>Para talleres que cortan chapa en una CNC y también para los que trabajan solo con sierra, guillotina y soldadora. Tocá cualquier captura para verla en grande.</p>
       </div>
 
+      <h3 class="grupo-modulos"><span>Con tu CNC</span>Plasma, oxicorte o láser · DXF estándar</h3>
       <ul class="modulos">
         <li><a href="#f-nesting"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M7 7h4v6H7zM14 7h3v3h-3zM13 13h4v4h-4zM7 16h3"/></svg><b>Nesting por forma real</b><span>Más piezas por plancha, orden de corte y DXF listo</span></a></li>
         <li><a href="#f-desarrollos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 9 5h6l5 15"/><path d="M6.5 13h11"/><path d="M9 5c1 2 5 2 6 0"/></svg><b>Desarrollos de chapa</b><span>T, curvas, conos, transiciones y helicoides</span></a></li>
+        <li><a href="#foto-dxf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Pieza desde una foto</b><span>Sacás una foto y la pasás a DXF</span></a></li>
+        <li><a href="#f-costos"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h6"/></svg><b>Costos y presupuesto</b><span>Tiempo de corte y costo de cada pieza</span></a></li>
+      </ul>
+      <h3 class="grupo-modulos"><span>Sin CNC</span>Para cualquier taller</h3>
+      <ul class="modulos">
         <li><a href="#f-barras"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18M3 12h18M3 16h18"/><path d="M10 6v4M15 10v4M8 14v4"/></svg><b>Barras y tubos</b><span>Cuántas barras comprar y cómo cortar cada una</span></a></li>
         <li><a href="#f-guillotina"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M12 4v16M3 12h9"/></svg><b>Guillotina</b><span>Cortes de lado a lado, numerados y en PDF</span></a></li>
         <li><a href="#f-rejas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5h16v16"/><path d="M8 5v16M12 5v16M16 5v16M4 9h16"/></svg><b>Rejas y portones</b><span>Plano, lista de corte, peso y pintura</span></a></li>
-        <li><a href="#f-costos"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h6"/></svg><b>Costos y presupuesto</b><span>Tiempo de corte y costo de cada pieza</span></a></li>
       </ul>
 
       <div class="funciones">
@@ -672,7 +680,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
     <div class="envoltura">
       <div class="intro">
         <h2>Hecho en un taller que corta todos los días</h2>
-        <p>optiMAX nació para resolver el corte de nuestras propias máquinas de chapa y angulares. Cada función se pensó con un problema real de la mesa plasma.</p>
+        <p>optiMAX nació para resolver el corte de nuestras propias máquinas de chapa y angulares. Cada función se pensó con un problema real del taller.</p>
       </div>
       <div class="taller">
         <figure class="alto"><img src="img/taller-pieza.webp" width="1152" height="2048" loading="lazy" alt="Pieza de chapa cortada con plasma y armada en el taller"><figcaption>Pieza cortada y armada</figcaption></figure>
@@ -880,7 +888,8 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
     <div class="envoltura">
       <div class="intro"><h2>Preguntas frecuentes</h2><p>¿Tenés otra pregunta? Escribile a nuestro asistente por WhatsApp, contesta al instante.</p><a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Escribinos tu consulta</span><small>WhatsApp +591 78516826</small></a></div>
       <div class="preguntas">
-        <details><summary>¿Sirve para mi mesa plasma?</summary><p>optiMAX exporta un DXF por plancha, solo con las líneas de corte y en el orden optimizado. Ese archivo lo abre el programa de tu mesa (FastCAM u otro), que agrega entradas, compensación y velocidad como siempre. En el taller lo usamos con FastCAM.</p></details>
+        <details><summary>¿Sirve para mi máquina CNC?</summary><p>optiMAX exporta un DXF estándar por plancha, solo con las líneas de corte y en el orden optimizado. Ese archivo lo abre el programa de tu máquina de plasma, oxicorte o láser (FastCAM u otro), que agrega entradas, compensación y velocidad como siempre. En el taller lo usamos con FastCAM en una plasma.</p></details>
+        <details><summary>¿Me sirve si no tengo CNC?</summary><p>Sí. El corte de barras y tubos, la guillotina y las rejas y portones no necesitan CNC: te dicen cuántas barras o planchas comprar y cómo cortar cada una, con la lista de cortes para la sierra o la guillotina. El nesting, los desarrollos y la foto a DXF generan archivos a escala real para cortar en una CNC.</p></details>
         <details><summary>¿Windows muestra un aviso de seguridad al instalar?</summary><p>Es un control habitual de Windows al instalar. Tocá «Más información» y después «Ejecutar de todas formas». optiMAX está <a class="js-vt" target="_blank" rel="noopener">verificado con 69 antivirus</a>, sin ninguna detección. En Windows 11 la ventana se ve distinta, pero los botones son los mismos. Si usás Edge y la descarga queda en pausa, tocá «…» sobre la descarga y «Conservar». Descargalo siempre desde optimax.lat.</p></details>
         <details><summary>¿Necesita internet?</summary><p>No. El programa y la activación de la PRO funcionan sin conexión.</p></details>
         <details><summary>¿La DEMO tiene vencimiento?</summary><p>No. Podés usarla todo el tiempo que quieras, con los límites de la tabla DEMO y PRO.</p></details>
