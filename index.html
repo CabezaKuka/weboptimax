@@ -535,6 +535,59 @@ body{background:
   body{padding-bottom:76px}
   .wa-flotante{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 }
+
+/* ================= Modo claro ================= */
+:root{
+  --acero:#f3f5f7; --acero-2:#ffffff; --acero-3:#e1e6eb; --linea:#c9d1d9;
+  --texto:#1a1f24; --tenue:#56616c; --arco:#c10f08; --ok:#1e9a4c;
+  --brillo:rgba(227,18,11,.10);
+  --sombra:0 18px 44px -18px rgba(20,30,40,.28),0 0 0 1px rgba(20,30,40,.06);
+  color-scheme:light;
+}
+body{background:
+  radial-gradient(1200px 600px at 85% -10%,rgba(227,18,11,.06),transparent 60%),
+  linear-gradient(rgba(20,30,40,.035) 1px,transparent 1px) 0 0/48px 48px,
+  linear-gradient(90deg,rgba(20,30,40,.035) 1px,transparent 1px) 0 0/48px 48px,
+  var(--acero)}
+.barra{background:rgba(255,255,255,.92);box-shadow:0 1px 0 var(--acero-3)}
+.boton-linea{background:#fff}
+.boton-linea:hover{background:#f7f8fa}
+.boton-rojo{box-shadow:0 8px 22px -10px rgba(227,18,11,.6)}
+/* Portada: video aclarado */
+.fondo-portada{opacity:.22;filter:grayscale(.3)}
+.portada::after{background:
+  linear-gradient(90deg,var(--acero) 30%,rgba(243,245,247,.85) 55%,rgba(243,245,247,.45)),
+  linear-gradient(0deg,var(--acero),transparent 30%)}
+@media (max-width:900px){.portada::after{background:linear-gradient(180deg,rgba(243,245,247,.8),var(--acero) 70%)}}
+.etiqueta{background:#fff;border-color:var(--acero-3)}
+.paises svg{box-shadow:0 0 0 1px rgba(20,30,40,.15)}
+.chips-modulos li{background:#fff;border-color:var(--acero-3)}
+.escena .ventana{box-shadow:0 30px 70px -24px rgba(20,30,40,.45),0 0 0 1px rgba(20,30,40,.08)}
+.ver-video circle{fill:rgba(227,18,11,.08)}
+.ver-video path{fill:var(--rojo)}
+/* Tarjetas y paneles */
+.col-foto,.plan,.catalogo li,.pago{background:#fff;box-shadow:0 10px 30px -18px rgba(20,30,40,.25)}
+.catalogo li:hover{background:#f7f8fa}
+.cifras{background:#fff}
+.cifras b{color:var(--rojo)}
+.plan-pro{background:radial-gradient(500px 220px at 100% 0,rgba(227,18,11,.07),transparent 70%),#fff;box-shadow:0 18px 50px -22px rgba(227,18,11,.45)}
+.comparacion>summary{background:#fff}
+/* Diagrama de módulos */
+.hub-lineas line{stroke:var(--linea)}
+.hub-centro{background:radial-gradient(circle at 50% 30%,#fff,#eef1f4 75%);box-shadow:0 0 0 10px rgba(227,18,11,.05),0 20px 50px -20px rgba(20,30,40,.35)}
+.nodo-ico{background:#fff;box-shadow:0 6px 16px -8px rgba(20,30,40,.35)}
+.nodo svg{stroke:var(--rojo)}
+.etq-sin{background:#56616c}
+@media (max-width:900px){
+  .nodo{background:#fff}
+  .nodo-ico{box-shadow:none;background:rgba(227,18,11,.08)}
+  .hub-mapa .hub-panel{background:#fff}
+}
+:root{--wa-fondo:#e9f8ef}
+.wa-chip{color:var(--texto);border-color:rgba(30,154,76,.45)}
+/* Barra fija del celular */
+.barra-movil{background:rgba(255,255,255,.95)}
+@media (max-width:600px){.barra-movil{background:rgba(255,255,255,.95)}}
 </style>
 <!-- Meta Pixel Code (optiMAX-WEB) -->
 <script>
@@ -557,7 +610,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
 
 <header class="barra">
   <div class="envoltura">
-    <a class="marca" href="#inicio" aria-label="optiMAX, inicio"><img src="img/logo-blanco.webp" alt="optiMAX" width="90" height="30"></a>
+    <a class="marca" href="#inicio" aria-label="optiMAX, inicio"><img src="img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
     <nav aria-label="Secciones">
       <a href="#foto-dxf">Foto a DXF</a>
       <a href="#funciones">Funciones</a>
@@ -659,7 +712,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
         <p class="hub-pista"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V11m0-.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.6a6 6 0 0 1-4.6-2.2L4.2 15.6a1.5 1.5 0 0 1 2.3-2L9 16"/></svg>Tocá un módulo para ver qué hace</p>
         <div class="hub-mapa" role="tablist" aria-label="Módulos de optiMAX">
           <svg class="hub-lineas" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line data-para="f-nesting" x1="50" y1="50" x2="31.0" y2="17.1"/><line data-para="f-desarrollos" x1="50" y1="50" x2="14.3" y2="37.0"/><line data-para="f-foto" x1="50" y1="50" x2="14.3" y2="63.0"/><line data-para="f-costos" x1="50" y1="50" x2="31.0" y2="82.9"/><line data-para="f-barras" x1="50" y1="50" x2="79.1" y2="25.6"/><line data-para="f-guillotina" x1="50" y1="50" x2="88.0" y2="50.0"/><line data-para="f-rejas" x1="50" y1="50" x2="79.1" y2="74.4"/></svg>
-          <div class="hub-centro" aria-hidden="true"><img src="img/logo-blanco.webp" alt=""><span>un solo programa</span></div>
+          <div class="hub-centro" aria-hidden="true"><img src="img/logo-oscuro.webp" alt=""><span>un solo programa</span></div>
           <span class="grupo-etq etq-cnc">Con tu CNC</span>
           <button class="nodo" type="button" role="tab" id="t-f-nesting" aria-controls="f-nesting" aria-selected="true" style="--x:31.0%;--y:17.1%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M7 7h4v6H7zM14 7h3v3h-3zM13 13h4v4h-4zM7 16h3"/></svg></span><span class="nodo-txt">Nesting</span><span class="nodo-flecha" aria-hidden="true"></span></button>
           <button class="nodo" type="button" role="tab" id="t-f-desarrollos" aria-controls="f-desarrollos" aria-selected="false" style="--x:14.3%;--y:37.0%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 9 5h6l5 15"/><path d="M6.5 13h11"/><path d="M9 5c1 2 5 2 6 0"/></svg></span><span class="nodo-txt">Desarrollos</span><span class="nodo-flecha" aria-hidden="true"></span></button>
@@ -987,7 +1040,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
 
 <footer>
   <div class="envoltura">
-    <img src="img/logo-blanco.webp" alt="optiMAX" width="66" height="22">
+    <img src="img/logo-oscuro.webp" alt="optiMAX" width="66" height="22">
     <span>Desarrollado por GMSoftware, Santa Cruz de la Sierra, Bolivia</span>
     <a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Escribinos tu consulta</span><small>WhatsApp +591 78516826</small></a>
     <span>Ventas: +591 77626675</span>
