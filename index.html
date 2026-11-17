@@ -393,6 +393,21 @@ body{background:
 .preguntas summary{transition:color .15s}
 .preguntas summary:hover{color:var(--arco)}
 
+/* Video de YouTube con carga al tocar */
+.ver-video{display:inline-flex;align-items:center;gap:10px;margin-top:18px;color:var(--texto);font-weight:600;text-decoration:none}
+.ver-video svg{width:28px;height:28px}
+.ver-video circle{fill:rgba(227,18,11,.15);stroke:var(--rojo);stroke-width:1.2}
+.ver-video path{fill:#fff}
+.ver-video:hover{color:var(--arco)}
+.video-yt{max-width:960px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;box-shadow:var(--sombra),0 0 120px var(--brillo)}
+.video-yt button{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:#000;cursor:pointer}
+.video-yt img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .25s,transform .4s}
+.video-yt button:hover img{opacity:1;transform:scale(1.02)}
+.video-yt .play{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:var(--rojo);display:grid;place-items:center;box-shadow:0 10px 40px rgba(227,18,11,.6);transition:transform .2s}
+.video-yt button:hover .play{transform:scale(1.08)}
+.video-yt .play svg{width:34px;height:34px;fill:#fff;margin-left:4px}
+.video-yt iframe{width:100%;height:100%;border:0;display:block}
+
 /* Aparición al hacer scroll (solo si hay JS y no se pidió reducir movimiento) */
 .revelar{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .revelar.visto{opacity:1;transform:none}
@@ -458,6 +473,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
           <a class="boton boton-rojo js-descarga" href="#descargar">Descargar DEMO gratis</a>
           <a class="boton boton-linea" href="#comprar">Comprar PRO por 49 USDT</a>
         </div>
+        <a class="ver-video" href="#video"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z"/></svg>Ver el programa funcionando (2:30)</a>
         <p class="mensaje js-mensaje-descarga" role="status"></p>
         <div class="datos-portada">
           <span>Windows 10 y 11</span><span>DXF estándar</span><span>En español</span><span>Funciona sin internet</span><span>DEMO sin vencimiento</span>
@@ -469,6 +485,21 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
         </button>
         <figcaption>72 piezas en 8 planchas. De fondo, la mesa plasma del taller donde se desarrolla optiMAX, en Santa Cruz de la Sierra.</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <section class="seccion" id="video">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Miralo funcionando</h2>
+        <p>Dos minutos y medio, acelerado: nesting, desarrollos, guillotina, portones, tolvas y pieza desde una foto.</p>
+      </div>
+      <div class="video-yt">
+        <button class="js-video-yt" type="button" data-id="OUzk42WqTRM" aria-label="Reproducir el video de optiMAX">
+          <img src="https://i.ytimg.com/vi/OUzk42WqTRM/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/OUzk42WqTRM/hqdefault.jpg'" width="1280" height="720" loading="lazy" alt="Video de optiMAX: uso completo del programa">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -1172,7 +1203,7 @@ visor.addEventListener("click", ev => { if (ev.target === visor) visor.close(); 
     requestAnimationFrame(paso);
   };
   if (!quieto) {
-    const sel = ".intro, .modulos li, .funcion, .novedad-pasos li, .cifras .dato, .catalogo, .taller figure, .plan, .requisitos div, .pasos li, .pago, .preguntas";
+    const sel = ".intro, .video-yt, .modulos li, .funcion, .novedad-pasos li, .cifras .dato, .catalogo, .taller figure, .plan, .requisitos div, .pasos li, .pago, .preguntas";
     const obs = new IntersectionObserver(es => es.forEach(e => {
       if (!e.isIntersecting) return;
       e.target.classList.add("visto"); obs.unobserve(e.target);
@@ -1188,6 +1219,17 @@ visor.addEventListener("click", ev => { if (ev.target === visor) visor.close(); 
   const barra = document.getElementById("barra-movil"), portada = document.querySelector(".portada");
   if (barra && portada) new IntersectionObserver(([e]) => barra.classList.toggle("activa", !e.isIntersecting)).observe(portada);
 })();
+
+// Video de YouTube: el reproductor se carga recién al tocar
+document.querySelectorAll(".js-video-yt").forEach(b => b.addEventListener("click", () => {
+  const f = document.createElement("iframe");
+  f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0&modestbranding=1";
+  f.title = "Video de optiMAX";
+  f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+  f.allowFullscreen = true;
+  b.replaceWith(f);
+  eventoPropio("VerVideo");
+}));
 
 // Videos: respetar movimiento reducido
 if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
