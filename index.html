@@ -619,6 +619,25 @@ body{background:
   .nodo[aria-selected="true"] .nodo-flecha::before{border-color:var(--rojo);top:58%;transform:translate(-50%,-50%) rotate(-135deg)}
   .hub-mapa .hub-panel{border:2px solid var(--rojo);border-top:0}
 }
+/* Carteles y logos */
+.carteles-cab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center;margin-bottom:8px}
+.carteles-cab .intro{margin-bottom:0}
+.carteles-cab img{width:100%;height:auto;filter:drop-shadow(0 18px 22px rgba(20,30,40,.28));transform:rotate(-2deg)}
+.cartel-bloque{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(28px,5vw,64px);align-items:center;margin-top:clamp(48px,7vw,88px)}
+.cartel-bloque.invertido{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.cartel-bloque.invertido .hub-texto{order:2}
+.cartel-media{position:relative;padding:0 0 10% 0}
+.cartel-media .captura{width:82%;margin-left:auto}
+.cartel-pieza{position:absolute;left:0;bottom:0;width:33%;height:auto;filter:drop-shadow(0 20px 22px rgba(20,30,40,.38));transform:rotate(-5deg);pointer-events:none}
+@media (max-width:900px){
+  .carteles-cab{grid-template-columns:1fr;gap:24px}
+  .carteles-cab img{max-width:520px}
+  .cartel-bloque,.cartel-bloque.invertido{grid-template-columns:1fr;gap:22px}
+  .cartel-bloque.invertido .hub-texto{order:0}
+  .cartel-media{padding-bottom:18%}
+  .cartel-media .captura{width:86%}
+  .cartel-pieza{width:38%}
+}
 </style>
 <!-- Meta Pixel Code (optiMAX-WEB) -->
 <script>
@@ -646,6 +665,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
       <a href="#f-foto">Foto a DXF</a>
       <a href="#funciones">Funciones</a>
       <a href="#desarrollos">Desarrollos</a>
+      <a href="#carteles">Carteles</a>
       <a href="#versiones">DEMO y PRO</a>
       <a href="#comprar">Comprar</a>
       <a href="#preguntas">Preguntas</a>
@@ -665,7 +685,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
           <span class="paises" aria-label="Para talleres de Bolivia, Perú, Colombia y Paraguay"><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#007934"/><rect width="30" height="13.34" fill="#f9e300"/><rect width="30" height="6.67" fill="#d52b1e"/></svg>Bolivia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#d91023"/><rect x="10" width="10" height="20" fill="#fff"/></svg>Perú</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#ce1126"/><rect width="30" height="15" fill="#003893"/><rect width="30" height="10" fill="#fcd116"/></svg>Colombia</span><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#0038a8"/><rect width="30" height="13.34" fill="#fff"/><rect width="30" height="6.67" fill="#d52b1e"/><circle cx="15" cy="10" r="2.3" fill="none" stroke="#0038a8" stroke-width=".8"/></svg>Paraguay</span></span>
         </div>
         <h1>Todo el corte del taller, <span class="acento">optimizado</span> en un solo programa</h1>
-        <p class="lista-modulos">Nesting – Desarrollos de chapa – Foto a DXF – Barras y tubos – Guillotina – Rejas y portones – Presupuesto</p>
+        <p class="lista-modulos">Nesting – Desarrollos de chapa – Carteles y logos – Foto a DXF – Barras y tubos – Guillotina – Rejas y portones – Presupuesto</p>
         <div class="acciones">
           <a class="boton boton-rojo js-descarga" href="#descargar">Descargar DEMO gratis</a>
           <a class="boton boton-linea" href="#comprar">Comprar PRO por 49 USDT</a>
@@ -772,6 +792,45 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
         </article>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="carteles">
+    <div class="envoltura">
+      <div class="carteles-cab">
+        <div class="intro">
+          <h2>Carteles y logos en chapa</h2>
+          <p>Del texto o el logo del cliente a la chapa calada, lista para el nesting. Sin dibujar nada en el CAD.</p>
+        </div>
+        <img src="img/cartel-largo.webp" width="1085" height="255" loading="lazy" alt="Cartel de chapa pintada de rojo con la palabra optiMAX calada">
+      </div>
+
+      <article class="cartel-bloque" id="letras">
+        <div class="hub-texto"><h3>Letras y carteles <span class="sello sello-pro">PRO</span></h3><p>Escribís el texto, elegís la forma del cartel y optiMAX arma la chapa entera con las letras caladas. Los centros de la O, la A, la B o el 0 quedan sostenidos con puentes para que no se caigan.</p><ul>
+            <li>1 o 2 líneas de texto, con 6 fuentes incluidas de uso comercial libre</li>
+            <li>9 formas de cartel: rectángulo, esquinas en chaflán o invertidas, arco, ticket, hexágono, escudo, círculo y óvalo</li>
+            <li>Agujeros para colgar o atornillar, y fondo liso o calado decorativo</li>
+            <li>Sin cartel: solo las letras, al ancho exacto que necesitás, en DXF</li>
+          </ul></div>
+        <div class="cartel-media">
+          <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de Letras para cartel"> <img src="img/cap-letras.webp" width="1379" height="828" loading="lazy" alt="Ventana Crear pieza con un cartel tipo escudo de 350 × 350 mm con el texto optiMAX 3.2 calado y fondo calado"> </button>
+          <img class="cartel-pieza" src="img/cartel-escudo.webp" width="670" height="657" loading="lazy" alt="El mismo cartel tipo escudo cortado en chapa y pintado de rojo">
+        </div>
+      </article>
+
+      <article class="cartel-bloque invertido" id="logos">
+        <div class="hub-texto"><h3>Logos e imágenes <span class="sello sello-pro">PRO</span></h3><p>El logo que te manda el cliente en PNG o JPG pasa directo a pieza para cortar. Ponés la medida y optiMAX separa el dibujo del fondo, suaviza el borde y agrega los puentes.</p><ul>
+            <li>Calado en la chapa o silueta suelta</li>
+            <li>Separa por color o por claro y oscuro: sirve para logos, escaneos y fotos de un dibujo</li>
+            <li>Limpia manchas y el escalonado de los píxeles</li>
+            <li>Con o sin cartel alrededor, con las mismas formas y agujeros que las letras</li>
+            <li>La imagen queda guardada en la pieza para editarla después</li>
+          </ul></div>
+        <div class="cartel-media">
+          <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de Logo / imagen"> <img src="img/cap-logo.webp" width="1379" height="828" loading="lazy" alt="Ventana Crear pieza con un logo de león calado en un cartel de 300 × 300 mm con esquinas invertidas"> </button>
+          <img class="cartel-pieza" src="img/cartel-leon.webp" width="658" height="654" loading="lazy" alt="Panel de chapa roja con el león calado">
+        </div>
+      </article>
     </div>
   </section>
 
@@ -1312,7 +1371,7 @@ visor.addEventListener("click", ev => { if (ev.target === visor) visor.close(); 
     requestAnimationFrame(paso);
   };
   if (!quieto) {
-    const sel = ".intro, .video-yt, .col-foto, .hub, .cifras .dato, .catalogo, .taller figure, .plan, .requisitos div, .pasos li, .pago, .preguntas";
+    const sel = ".intro, .video-yt, .col-foto, .hub, .cifras .dato, .catalogo, .cartel-bloque, .taller figure, .plan, .requisitos div, .pasos li, .pago, .preguntas";
     const obs = new IntersectionObserver(es => es.forEach(e => {
       if (!e.isIntersecting) return;
       e.target.classList.add("visto"); obs.unobserve(e.target);
