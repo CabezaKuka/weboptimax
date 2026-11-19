@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tolvas · Ayuda de optiMAX</title>
+<meta name="description" content="Tolvas sobre patas calculadas por capacidad.">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../" aria-label="optiMAX, página principal"><img src="../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ayuda</span>
+  <a class="barra-link" href="../#descargar">Descargar DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas de la ayuda">
+<a href="index.html">Inicio</a>
+<a href="nesting.html">Ventana principal</a>
+<a href="crear-pieza.html">Crear pieza</a>
+<a href="foto.html">Pieza desde una foto</a>
+<a href="barras.html">Barras, tubos y angulares</a>
+<a href="guillotina.html">Guillotina</a>
+<a href="portones.html">Rejas y portones</a>
+<a href="tolvas.html" aria-current="page">Tolvas</a>
+<a href="ajustes.html">Ajustes del sistema</a>
+<a href="activar.html">Activar PRO</a>
+</nav>
+<main>
+<h1>Tolvas</h1>
+<p class="intro">Calcula una tolva sobre patas a partir de la capacidad que necesitás: medidas, desarrollos de chapa (ya partidos para que entren en tu plancha), patas, riostras, lista de corte y pesos. Rectangular / cuadrada (cuerpo recto + fondo de pirámide) o circular (cilindro + fondo cónico), sin tapa.</p>
+<p class="intro">No verifica la estructura: las medidas de patas y riostras son tuyas; revisalas con un cálculo estructural antes de fabricar. Todo el módulo es de la versión PRO.</p>
+<nav class="en-pagina" aria-label="En esta página"><p>En esta página</p><a href="#items">Tolvas del trabajo</a><a href="#modelo">Modelo</a><a href="#capacidad">Capacidad</a><a href="#medidas">Medidas exteriores (mm)</a><a href="#boca">Boca de salida (mm)</a><a href="#chapa">Chapa</a><a href="#patas">Patas</a><a href="#riostras">Riostras</a><a href="#perfiles">Perfiles</a><a href="#taller">Corte y costos del taller</a><a href="#salida">Lista, chapas y salida</a></nav>
+<section id="items" class="seccion"><h2>Tolvas del trabajo</h2>
+<dl class="campos">
+<div class="campo"><dt>＋ Ítem / ⧉ Duplicar</dt><dd>Agrega uno nuevo o copia el elegido. Un trabajo puede tener varios ítems; la lista de corte y las barras los juntan a todos.</dd></div>
+<div class="campo"><dt>Nombre / Cantidad</dt><dd>Cómo se llama el ítem y cuántos iguales se hacen.</dd></div>
+</dl></section>
+<section id="modelo" class="seccion"><h2>Modelo</h2>
+<dl class="campos">
+<div class="campo"><dt>Rectangular / cuadrada <span class="sello sello-pro">PRO</span></dt><dd>Cuerpo de lados A × B y fondo en tronco de pirámide.</dd></div>
+<div class="campo"><dt>Circular <span class="sello sello-pro">PRO</span></dt><dd>Cuerpo cilíndrico y fondo en cono.</dd></div>
+</dl></section>
+<section id="capacidad" class="seccion"><h2>Capacidad</h2>
+<dl class="campos">
+<div class="campo"><dt>Capacidad <span class="sello sello-pro">PRO</span></dt><dd>Cuánto tiene que entrar.</dd></div>
+<div class="campo"><dt>Unidad <span class="sello sello-pro">PRO</span></dt><dd>Litros o kilos. En kilos se usa la densidad del material.</dd></div>
+<div class="campo"><dt>Material <span class="sello sello-pro">PRO</span></dt><dd>Grano a guardar (maíz, soya, trigo…): trae su densidad a granel. «Otro» = la escribís.</dd></div>
+<div class="campo"><dt>Densidad (kg/m³) <span class="sello sello-pro">PRO</span></dt><dd>Solo con «Otro»: peso de un metro cúbico del producto a granel.</dd></div>
+</dl></section>
+<section id="medidas" class="seccion"><h2>Medidas exteriores (mm)</h2>
+<dl class="campos">
+<div class="campo"><dt>Fijo <span class="sello sello-pro">PRO</span></dt><dd>Lado / Ø fijo = vos das el ancho y se calcula la altura. Altura fija = vos das la altura máxima y se calcula el ancho.</dd></div>
+<div class="campo"><dt>Lado A (ancho) / Lado B (fondo) <span class="sello sello-pro">PRO</span></dt><dd>Medidas del cuerpo rectangular. Con «Altura fija» marcan solo la proporción entre los dos lados.</dd></div>
+<div class="campo"><dt>Diámetro <span class="sello sello-pro">PRO</span></dt><dd>Diámetro del cuerpo circular (con «Altura fija», se calcula).</dd></div>
+<div class="campo"><dt>Altura máx. (0 = libre) <span class="sello sello-pro">PRO</span></dt><dd>Altura total máxima, desde el piso. 0 = sin límite.</dd></div>
+<div class="campo"><dt>Ángulo mín. pared (°) <span class="sello sello-pro">PRO</span></dt><dd>Inclinación mínima de las paredes del fondo respecto de la horizontal, para que el grano corra (lo usual: 45°).</dd></div>
+</dl></section>
+<section id="boca" class="seccion"><h2>Boca de salida (mm)</h2>
+<dl class="campos">
+<div class="campo"><dt>Altura boca al piso <span class="sello sello-pro">PRO</span></dt><dd>A qué altura queda la boca de salida (define el largo de las patas).</dd></div>
+<div class="campo"><dt>Boca A / Boca B <span class="sello sello-pro">PRO</span></dt><dd>Medidas de la boca rectangular.</dd></div>
+<div class="campo"><dt>Boca Ø (0 = cono) <span class="sello sello-pro">PRO</span></dt><dd>Diámetro de la boca redonda. 0 = fondo en punta.</dd></div>
+<div class="campo"><dt>Corrimiento en A / en B <span class="sello sello-pro">PRO</span></dt><dd>Corre la boca respecto del centro. 0 = centrada. En la circular, «Excentricidad boca».</dd></div>
+</dl></section>
+<section id="chapa" class="seccion"><h2>Chapa</h2>
+<dl class="campos">
+<div class="campo"><dt>Espesor del cuerpo / del fondo <span class="sello sello-pro">PRO</span></dt><dd>Espesor de la chapa de cada parte.</dd></div>
+<div class="campo"><dt>Plancha: largo / ancho <span class="sello sello-pro">PRO</span></dt><dd>Medida de tu plancha: los desarrollos se parten en la menor cantidad de piezas que entran en ella.</dd></div>
+<div class="campo"><dt>Margen de la plancha <span class="sello sello-pro">PRO</span></dt><dd>Franja del borde de la plancha que no se usa.</dd></div>
+<div class="campo"><dt>Muesca en V en pliegues <span class="sello sello-pro">PRO</span></dt><dd>Tamaño de la V que marca cada pliegue en el borde. 0 = sin muescas.</dd></div>
+</dl></section>
+<section id="patas" class="seccion"><h2>Patas</h2>
+<dl class="campos">
+<div class="campo"><dt>Perfil <span class="sello sello-pro">PRO</span></dt><dd>Perfil de las patas (de Ajustes → Barras y perfiles).</dd></div>
+<div class="campo"><dt>Cantidad de patas <span class="sello sello-pro">PRO</span></dt><dd>Entre 3 y 4.</dd></div>
+<div class="campo"><dt>Solape con el cuerpo <span class="sello sello-pro">PRO</span></dt><dd>Cuánto sube cada pata pegada al cuerpo recto, para soldarla.</dd></div>
+<div class="campo"><dt>Placa: lado (0 = sin) <span class="sello sello-pro">PRO</span></dt><dd>Placa base cuadrada al pie de cada pata. 0 = sin placa.</dd></div>
+<div class="campo"><dt>Placa: espesor <span class="sello sello-pro">PRO</span></dt><dd>Espesor de la placa base.</dd></div>
+<div class="campo"><dt>Placa: agujeros / Agujeros: diámetro <span class="sello sello-pro">PRO</span></dt><dd>Agujeros para anclar la placa al piso: sin, 2 o 4, y su diámetro.</dd></div>
+</dl></section>
+<section id="riostras" class="seccion"><h2>Riostras</h2>
+<dl class="campos">
+<div class="campo"><dt>Tipo <span class="sello sello-pro">PRO</span></dt><dd>Sin riostras, anillo horizontal que une las patas, o cruces.</dd></div>
+<div class="campo"><dt>Perfil <span class="sello sello-pro">PRO</span></dt><dd>Perfil de las riostras.</dd></div>
+<div class="campo"><dt>Altura de la riostra <span class="sello sello-pro">PRO</span></dt><dd>A qué altura del piso va la riostra.</dd></div>
+</dl></section>
+<section id="perfiles" class="seccion"><h2>Perfiles</h2>
+<dl class="campos">
+<div class="campo"><dt>Todos · mm · pulg</dt><dd>Filtra la lista de perfiles por cómo están escritas sus medidas (milímetros o pulgadas).</dd></div>
+<div class="campo"><dt>⚙ Administrar perfiles…</dt><dd>Última opción de cada lista: abre Ajustes → Barras y perfiles para cargar o corregir perfiles.</dd></div>
+</dl></section>
+<section id="taller" class="seccion"><h2>Corte y costos del taller</h2>
+<dl class="campos">
+<div class="campo"><dt>Ancho del corte de sierra (mm)</dt><dd>Lo que se pierde en cada corte de barra.</dd></div>
+<div class="campo"><dt>Soldadura (por m) <span class="sello sello-pro">PRO</span></dt><dd>Costo por metro de soldadura.</dd></div>
+<div class="campo"><dt>Pintura (por m²) <span class="sello sello-pro">PRO</span></dt><dd>Costo por metro cuadrado de pintura.</dd></div>
+<div class="campo"><dt>Chapa (por kg) <span class="sello sello-pro">PRO</span></dt><dd>Precio de la chapa por kilo.</dd></div>
+</dl></section>
+<section id="salida" class="seccion"><h2>Lista, chapas y salida</h2>
+<dl class="campos">
+<div class="campo"><dt>Lista de corte</dt><dd>Cada pieza distinta con su marca (letra y color, la misma que en el dibujo), perfil, largo punta a punta, corte de cada extremo con croquis y cantidad. Clic en una fila = se marca en el dibujo (y al revés).</dd></div>
+<div class="campo"><dt>Barras por perfil</dt><dd>Cómo cortar las barras de cada perfil, con las marcas de cada tramo.</dd></div>
+<div class="campo"><dt>Resumen</dt><dd>Piezas, barras, peso, metros de soldadura, superficie de pintura y precio.</dd></div>
+<div class="campo"><dt>Guardar PDF… <span class="sello sello-pro">PRO</span></dt><dd>Lista de corte, barras y plano de cada ítem, en un solo PDF.</dd></div>
+<div class="campo"><dt>Copiar para Excel <span class="sello sello-pro">PRO</span></dt><dd>Copia la lista de corte para una planilla.</dd></div>
+<div class="campo"><dt>Guardar / Abrir / Nuevo <span class="sello sello-pro">PRO</span></dt><dd>Guarda o abre el trabajo en un archivo .nesting.</dd></div>
+<div class="campo"><dt>Chapas <span class="sello sello-pro">PRO</span></dt><dd>Cada chapa a cortar (C = cuerpo, F = fondo, B = placa base) con medidas, espesor y cantidad.</dd></div>
+<div class="campo"><dt>DXF de las vistas… <span class="sello sello-pro">PRO</span></dt><dd>Vista frontal y planta acotadas, en DXF.</dd></div>
+<div class="campo"><dt>Chapas al nesting… <span class="sello sello-pro">PRO</span></dt><dd>Guarda las chapas en DXF (solo el corte) para cargarlas con «＋ DXF» en la ventana principal, y el plano de las chapas en PDF.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../">optimax.lat</a> · Verificá todas las medidas antes de cortar o fabricar.</footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guillotina (cizalla) · Ayuda de optiMAX</title>
+<meta name="description" content="Planchas para cizalla, con los cortes en orden.">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../" aria-label="optiMAX, página principal"><img src="../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ayuda</span>
+  <a class="barra-link" href="../#descargar">Descargar DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas de la ayuda">
+<a href="index.html">Inicio</a>
+<a href="nesting.html">Ventana principal</a>
+<a href="crear-pieza.html">Crear pieza</a>
+<a href="foto.html">Pieza desde una foto</a>
+<a href="barras.html">Barras, tubos y angulares</a>
+<a href="guillotina.html" aria-current="page">Guillotina</a>
+<a href="portones.html">Rejas y portones</a>
+<a href="tolvas.html">Tolvas</a>
+<a href="ajustes.html">Ajustes del sistema</a>
+<a href="activar.html">Activar PRO</a>
+</nav>
+<main>
+<h1>Guillotina (cizalla)</h1>
+<p class="intro">Distribuye piezas rectangulares en planchas para cortarlas con cizalla: todos los cortes van de lado a lado, como los hace la máquina, y salen numerados en el orden en que se hacen.</p>
+<p class="intro">Orden de uso: elegí material y plancha, cargá las piezas (alto, largo y cantidad), indicá el largo máximo de corte de tu cizalla y tocá CALCULAR. En la DEMO, hasta 5 piezas en total.</p>
+<nav class="en-pagina" aria-label="En esta página"><p>En esta página</p><a href="#material">Material y plancha</a><a href="#piezas">Piezas a cortar (alto × largo)</a><a href="#resultado">Resultado y salida</a></nav>
+<section id="material" class="seccion"><h2>Material y plancha</h2>
+<dl class="campos">
+<div class="campo"><dt>Material (chapa)</dt><dd>Chapa de la lista de Ajustes → Materiales (peso y precio).</dd></div>
+<div class="campo"><dt>Medida de plancha</dt><dd>Medidas más usadas; «Otra» = a mano.</dd></div>
+<div class="campo"><dt>Largo / Ancho (mm)</dt><dd>Medida de la plancha.</dd></div>
+<div class="campo"><dt>Ancho del corte (mm)</dt><dd>Lo que se pierde en cada corte. En cizalla suele ser 0.</dd></div>
+<div class="campo"><dt>Refilado (mm)</dt><dd>Franja que se descarta en los cuatro bordes de la plancha (bordes dañados o fuera de escuadra).</dd></div>
+<div class="campo"><dt>Largo máx. de corte (mm)</dt><dd>Lo que corta tu cizalla de punta a punta. Un corte más largo no se usa. 0 = sin límite.</dd></div>
+<div class="campo"><dt>Permitir girar las piezas (sin veta)</dt><dd>Deja girar las piezas 90°. Desmarcalo si la chapa tiene veta o dibujo que tiene que ir en un sentido.</dd></div>
+<div class="campo"><dt>Repartir el sobrante en el precio <span class="sello sello-pro">PRO</span></dt><dd>El precio de cada pieza incluye su parte del sobrante.</dd></div>
+</dl></section>
+<section id="piezas" class="seccion"><h2>Piezas a cortar (alto × largo)</h2>
+<dl class="campos">
+<div class="campo"><dt>Alto / Largo / Cant.</dt><dd>Medida y cantidad de cada pieza; se suma a la lista.</dd></div>
+<div class="campo"><dt>Pegar de Excel</dt><dd>Pega tres columnas copiadas de Excel: alto, largo y cantidad.</dd></div>
+<div class="campo"><dt>Importar… / Limpiar</dt><dd>Lee la lista de un CSV o Excel, o la borra.</dd></div>
+</dl></section>
+<section id="resultado" class="seccion"><h2>Resultado y salida</h2>
+<dl class="campos">
+<div class="campo"><dt>CALCULAR</dt><dd>Dibuja las planchas con los cortes numerados en orden.</dd></div>
+<div class="campo"><dt>Precio por pieza <span class="sello sello-pro">PRO</span></dt><dd>Costo de cada pieza según el precio de la chapa.</dd></div>
+<div class="campo"><dt>Guardar PDF… <span class="sello sello-pro">PRO</span></dt><dd>Plan de cortes en PDF.</dd></div>
+<div class="campo"><dt>Copiar para Excel <span class="sello sello-pro">PRO</span></dt><dd>Copia el resultado para una planilla.</dd></div>
+<div class="campo"><dt>Guardar proyecto / Abrir proyecto… / Nuevo <span class="sello sello-pro">PRO</span></dt><dd>Guarda o abre el trabajo en un archivo .nesting.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../">optimax.lat</a> · Verificá todas las medidas antes de cortar o fabricar.</footer>
+</main>
+</div>
+</body>
+</html>

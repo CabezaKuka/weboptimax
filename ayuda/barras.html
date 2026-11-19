@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barras, tubos y angulares · Ayuda de optiMAX</title>
+<meta name="description" content="Cortar barras de largo fijo con el menor desperdicio.">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../" aria-label="optiMAX, página principal"><img src="../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ayuda</span>
+  <a class="barra-link" href="../#descargar">Descargar DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas de la ayuda">
+<a href="index.html">Inicio</a>
+<a href="nesting.html">Ventana principal</a>
+<a href="crear-pieza.html">Crear pieza</a>
+<a href="foto.html">Pieza desde una foto</a>
+<a href="barras.html" aria-current="page">Barras, tubos y angulares</a>
+<a href="guillotina.html">Guillotina</a>
+<a href="portones.html">Rejas y portones</a>
+<a href="tolvas.html">Tolvas</a>
+<a href="ajustes.html">Ajustes del sistema</a>
+<a href="activar.html">Activar PRO</a>
+</nav>
+<main>
+<h1>Barras, tubos y angulares</h1>
+<p class="intro">Decide cómo cortar barras de largo fijo (tubos, angulares, perfiles) para sacar todas las piezas con la menor cantidad de barras. Los cortes son a 90°.</p>
+<p class="intro">Orden de uso: elegí el material, revisá largo de barra y ancho de corte, cargá las piezas (largo y cantidad) y tocá CALCULAR. En la DEMO, hasta 5 piezas en total.</p>
+<nav class="en-pagina" aria-label="En esta página"><p>En esta página</p><a href="#material">Material</a><a href="#piezas">Piezas a cortar</a><a href="#resultado">Resultado y salida</a></nav>
+<section id="material" class="seccion"><h2>Material</h2>
+<dl class="campos">
+<div class="campo"><dt>Material</dt><dd>Perfil de la lista de Ajustes → Barras y perfiles. Trae el largo de la barra y el precio.</dd></div>
+<div class="campo"><dt>Largo barra (mm)</dt><dd>Largo de las barras nuevas (lo usual: 6000).</dd></div>
+<div class="campo"><dt>Ancho corte (mm)</dt><dd>Lo que se come la sierra o el disco en cada corte. Se descuenta entre pieza y pieza.</dd></div>
+<div class="campo"><dt>Repartir el sobrante en el precio <span class="sello sello-pro">PRO</span></dt><dd>El precio de cada pieza incluye su parte del sobrante. Sin marcar, el sobrante va aparte.</dd></div>
+</dl></section>
+<section id="piezas" class="seccion"><h2>Piezas a cortar</h2>
+<dl class="campos">
+<div class="campo"><dt>Largo / Cant. / ＋ Agregar</dt><dd>Largo de la pieza y cuántas. Enter o ＋ la suma a la lista.</dd></div>
+<div class="campo"><dt>Lista (− / + / ✕)</dt><dd>Cambia la cantidad o saca una pieza; el largo se puede corregir en la fila.</dd></div>
+<div class="campo"><dt>Pegar de Excel</dt><dd>Pega dos columnas copiadas de Excel: largo y cantidad.</dd></div>
+<div class="campo"><dt>Importar…</dt><dd>Lee una lista de un archivo CSV o Excel (.xlsx): largo y cantidad.</dd></div>
+<div class="campo"><dt>Limpiar</dt><dd>Borra toda la lista.</dd></div>
+</dl></section>
+<section id="resultado" class="seccion"><h2>Resultado y salida</h2>
+<dl class="campos">
+<div class="campo"><dt>CALCULAR</dt><dd>Arma las barras: cada una con sus piezas en orden y el sobrante.</dd></div>
+<div class="campo"><dt>Precio por pieza <span class="sello sello-pro">PRO</span></dt><dd>Costo de cada pieza según el precio de la barra.</dd></div>
+<div class="campo"><dt>Guardar PDF… <span class="sello sello-pro">PRO</span></dt><dd>Lista de corte en PDF con la medida de cada tramo.</dd></div>
+<div class="campo"><dt>Copiar lista para Excel <span class="sello sello-pro">PRO</span></dt><dd>Copia la lista de corte para pegarla en una planilla.</dd></div>
+<div class="campo"><dt>Guardar proyecto / Abrir proyecto… / Nuevo <span class="sello sello-pro">PRO</span></dt><dd>Guarda o abre la lista en un archivo .nesting.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../">optimax.lat</a> · Verificá todas las medidas antes de cortar o fabricar.</footer>
+</main>
+</div>
+</body>
+</html>
