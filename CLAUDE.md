@@ -2,6 +2,8 @@
 
 Sitio estático de optiMAX (software de nesting y corte para talleres metalúrgicos), publicado con GitHub Pages desde la rama `main` en https://optimax.lat (archivo `CNAME`). Todo está en `index.html` (HTML, CSS y JS en un solo archivo), con imágenes en `img/` y videos en `video/`.
 
+**Ayuda del programa** (`ayuda/`): 10 páginas estáticas, sin JavaScript ni píxel, que abren el botón «?» y la tecla F1 de cada ventana de optiMAX. **No se editan a mano**: se generan desde el repo del programa (`nesting-cnc`) con `python NO_DISTRIBUIR/generar_ayuda.py RUTA/weboptimax/ayuda` (textos en `desarrollos/` → `Param.ayuda` y en `ayuda_textos.py`). No cambiar nombres de páginas ni anclas: el programa abre esas direcciones (`ayuda.py`). Las imágenes de las figuras salen de `img/fig/`; las que faltan se dibujan en `ayuda/fig/`.
+
 ## Versiones marcadas
 
 Cada versión importante queda guardada en una rama `version-*` que apunta a ese commit. **No borrar estas ramas ni hacerles commits.** Se usan ramas y no tags porque el entorno de Claude no puede subir tags a GitHub.
@@ -9,6 +11,7 @@ Cada versión importante queda guardada en una rama `version-*` que apunta a ese
 | Rama | Commit | Qué es |
 |---|---|---|
 | `version-antes-modo-claro` | `85be41d` | Última versión en modo oscuro (17 nov 2026). Encabezado "Software para talleres metalúrgicos", módulos en tarjetas, 6 funciones explicadas una debajo de la otra. |
+| `version-antes-ayuda` | `89cd541` | Antes de agregar la carpeta `ayuda/` y el enlace «Ayuda» en el menú y el pie (18 nov 2026). |
 | `version-modo-claro-v1` | `8ae20a0` | Primera versión publicada en modo claro (17 nov 2026): diagrama de módulos con optiMAX al centro, video de YouTube, favicon "M" blanca sobre rojo. |
 
 ## Cómo volver a una versión anterior

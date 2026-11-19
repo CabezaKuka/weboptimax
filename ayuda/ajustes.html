@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ajustes del sistema · Ayuda de optiMAX</title>
+<meta name="description" content="Materiales, perfiles, costos, empresa y apariencia.">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../" aria-label="optiMAX, página principal"><img src="../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ayuda</span>
+  <a class="barra-link" href="../#descargar">Descargar DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas de la ayuda">
+<a href="index.html">Inicio</a>
+<a href="nesting.html">Ventana principal</a>
+<a href="crear-pieza.html">Crear pieza</a>
+<a href="foto.html">Pieza desde una foto</a>
+<a href="barras.html">Barras, tubos y angulares</a>
+<a href="guillotina.html">Guillotina</a>
+<a href="portones.html">Rejas y portones</a>
+<a href="tolvas.html">Tolvas</a>
+<a href="ajustes.html" aria-current="page">Ajustes del sistema</a>
+<a href="activar.html">Activar PRO</a>
+</nav>
+<main>
+<h1>Ajustes del sistema</h1>
+<p class="intro">Datos fijos del taller que usa todo el programa. Se abre con ⚙ en la ventana principal. En la DEMO se ven pero no se pueden cambiar los precios, costos, datos de la empresa ni la apariencia.</p>
+<nav class="en-pagina" aria-label="En esta página"><p>En esta página</p><a href="#materiales">Materiales</a><a href="#costos">Costos y moneda</a><a href="#empresa">Empresa</a><a href="#barras-perfiles">Barras y perfiles</a><a href="#apariencia">Apariencia</a></nav>
+<section id="materiales" class="seccion"><h2>Materiales</h2><p class="sec-intro">Las chapas que usás, una por fila.</p>
+<dl class="campos">
+<div class="campo"><dt>Nombre</dt><dd>Cómo aparece en la lista de materiales (ej.: «Chapa negra 2 mm»).</dd></div>
+<div class="campo"><dt>Espesor (mm)</dt><dd>Espesor de la chapa.</dd></div>
+<div class="campo"><dt>kg/m²</dt><dd>Peso por metro cuadrado (acero: 7,85 × espesor).</dd></div>
+<div class="campo"><dt>Precio/m² <span class="sello sello-pro">PRO</span></dt><dd>Precio por metro cuadrado de chapa.</dd></div>
+<div class="campo"><dt>Vel. corte (mm/min) <span class="sello sello-pro">PRO</span></dt><dd>Velocidad de corte de tu máquina para ese espesor (el avance F). 0 = sin dato.</dd></div>
+<div class="campo"><dt>Perforación (s) <span class="sello sello-pro">PRO</span></dt><dd>Pausa de la máquina en cada perforación.</dd></div>
+<div class="campo"><dt>＋ Agregar material / ✕</dt><dd>Agrega una fila o la borra.</dd></div>
+</dl></section>
+<section id="costos" class="seccion"><h2>Costos y moneda</h2>
+<dl class="campos">
+<div class="campo"><dt>Moneda <span class="sello sello-pro">PRO</span></dt><dd>Texto que acompaña los precios en todo el programa (ej.: Bs, USD, $).</dd></div>
+<div class="campo"><dt>Costo por hora de máquina <span class="sello sello-pro">PRO</span></dt><dd>Lo que te cuesta una hora de corte (máquina, consumibles, operario).</dd></div>
+<div class="campo"><dt>Margen (factor) <span class="sello sello-pro">PRO</span></dt><dd>Precio = costo × margen. 1 = sin ganancia; 1,3 = 30 % arriba del costo.</dd></div>
+<div class="campo"><dt>Viaje en vacío (mm/min) <span class="sello sello-pro">PRO</span></dt><dd>Velocidad de la máquina cuando se mueve sin cortar, para estimar el tiempo.</dd></div>
+</dl></section>
+<section id="empresa" class="seccion"><h2>Empresa</h2><p class="sec-intro">Encabezado de los presupuestos en PDF.</p>
+<dl class="campos">
+<div class="campo"><dt>Nombre de la empresa o taller · NIT · Teléfono · Dirección · Email <span class="sello sello-pro">PRO</span></dt><dd>Tus datos.</dd></div>
+<div class="campo"><dt>Validez del presupuesto (días) <span class="sello sello-pro">PRO</span></dt><dd>Cuántos días vale el presupuesto (sale en el PDF). 0 = no se indica.</dd></div>
+</dl></section>
+<section id="barras-perfiles" class="seccion"><h2>Barras y perfiles</h2><p class="sec-intro">Los perfiles en barra que usan «Barras, tubos y angulares», «Rejas y portones» y «Tolvas».</p>
+<dl class="campos">
+<div class="campo"><dt>Nombre</dt><dd>Cómo aparece en las listas (ej.: «Tubo 40x40x2»).</dd></div>
+<div class="campo"><dt>Largo (mm)</dt><dd>Largo de la barra nueva.</dd></div>
+<div class="campo"><dt>Precio barra <span class="sello sello-pro">PRO</span></dt><dd>Precio de una barra entera.</dd></div>
+<div class="campo"><dt>kg/m</dt><dd>Peso por metro.</dd></div>
+<div class="campo"><dt>Forma</dt><dd>Tubo cuadrado / rectangular, tubo redondo, macizo cuadrado o redondo, planchuela o ángulo. La usan los portones y las tolvas para dibujar y calcular.</dd></div>
+<div class="campo"><dt>Medidas (mm)</dt><dd>Sección del perfil, ej.: «40x40x2» o «Ø25,4x2». Si falta, se deduce del nombre.</dd></div>
+</dl></section>
+<section id="apariencia" class="seccion"><h2>Apariencia</h2>
+<dl class="campos">
+<div class="campo"><dt>Claro / Oscuro <span class="sello sello-pro">PRO</span></dt><dd>Colores del programa. Se aplica la próxima vez que lo abrís.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../">optimax.lat</a> · Verificá todas las medidas antes de cortar o fabricar.</footer>
+</main>
+</div>
+</body>
+</html>

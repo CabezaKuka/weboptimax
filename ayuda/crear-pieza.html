@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crear pieza · Ayuda de optiMAX</title>
+<meta name="description" content="Formas básicas, desarrollos de chapa, letras para cartel y paneles calados.">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../" aria-label="optiMAX, página principal"><img src="../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ayuda</span>
+  <a class="barra-link" href="../#descargar">Descargar DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas de la ayuda">
+<a href="index.html">Inicio</a>
+<a href="nesting.html">Ventana principal</a>
+<a href="crear-pieza.html" aria-current="page">Crear pieza</a>
+<a href="foto.html">Pieza desde una foto</a>
+<a href="barras.html">Barras, tubos y angulares</a>
+<a href="guillotina.html">Guillotina</a>
+<a href="portones.html">Rejas y portones</a>
+<a href="tolvas.html">Tolvas</a>
+<a href="ajustes.html">Ajustes del sistema</a>
+<a href="activar.html">Activar PRO</a>
+</nav>
+<main>
+<h1>Crear pieza</h1>
+<p class="intro">Genera piezas a medida sin dibujarlas: formas básicas, desarrollos de chapa (T, curvas, conos, transiciones, helicoide), letras para cartel y paneles calados. A la izquierda elegís la figura, en el medio cargás las medidas y a la derecha ves el resultado al instante.</p>
+<p class="intro">Los diámetros y secciones de los desarrollos son exteriores; el desarrollo se calcula sobre el espesor neutro de la chapa.</p>
+<nav class="chips" aria-label="Figuras"><a href="#letras">Letras para cartel</a><a href="#paneles">Panel calado</a><a href="#rectangulo">Rectángulo</a><a href="#disco">Disco / arandela</a><a href="#brida">Brida</a><a href="#t_cil_cil">T cilindro / cilindro</a><a href="#t_rect_cil">T ramal rectangular sobre caño</a><a href="#t_cil_rect">T ramal redondo sobre caja</a><a href="#codo_sectores">Curva redonda por sectores</a><a href="#codo_rect">Curva rectangular</a><a href="#curva_directa_90">Curva directa 90°</a><a href="#curva_directa">Curva directa</a><a href="#desvio_paralelo">Desvío circular paralelo</a><a href="#tronco_cono">Tronco de cono / reducción</a><a href="#tronco_piramide">Fondo de tolva (tronco de pirámide)</a><a href="#transicion_rect_red">Transición rectangular a redondo</a><a href="#helicoide">Helicoide (hélice de sinfín)</a></nav>
+<section id="comunes" class="seccion"><h2>Campos de todas las figuras</h2>
+<dl class="campos">
+<div class="campo"><dt>Nombre de la pieza</dt><dd>Nombre con el que aparece en la lista de piezas y en los archivos. Se completa solo con la figura y sus medidas; si lo cambiás a mano, se respeta.</dd></div>
+<div class="campo"><dt>Espesor de chapa (mm)</dt><dd>Espesor con el que se calcula el desarrollo. Por defecto, el del material elegido en la ventana principal.</dd></div>
+<div class="campo"><dt>Cantidad de conjuntos</dt><dd>Cuántas veces hacés la pieza completa. Si la figura tiene varias partes, cada conjunto las lleva todas.</dd></div>
+<div class="campo"><dt>Muescas en V en los pliegues (mm)</dt><dd>Solo en figuras con pliegues: una pequeña V en el borde, en cada línea de plegado, para ubicar el pliegue. El número es el tamaño de la V.</dd></div>
+<div class="campo"><dt>Agregar al nesting</dt><dd>Manda la pieza (todas sus partes) a la lista de la ventana principal. En la DEMO, solo con las formas básicas y la curva por sectores.</dd></div>
+<div class="campo"><dt>Exportar DXF…</dt><dd>Guarda las partes en DXF sin pasar por el nesting; opcional, el plano PDF con marcas y pliegues. En las letras sin marco es la única salida. En la DEMO, solo con las figuras que la DEMO permite.</dd></div>
+<div class="campo"><dt>Actualizar pieza</dt><dd>Aparece al editar con ✎: reemplaza la pieza de la lista por la nueva.</dd></div>
+</dl></section>
+<h2 class="categoria" id="cat-letras-y-carteles">Letras y carteles</h2>
+<section id="letras" class="seccion figura"><div class="fig-cab"><img class="fig" src="fig/letras.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Letras para cartel <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Texto para calar en chapa, con puentes en las islas (O, A, B, D, P, R, 0…) para que no se caigan. Sin marco: das el ancho total y sale en DXF para armar el cartel en el CAD. Con marco: el cartel entero (chapa, 1 o 2 líneas y agujeros), listo para el nesting.</p></div></div>
+<h3>Marco</h3><dl class="campos">
+<div class="campo"><dt>Forma</dt><dd>Ninguno = solo las letras, sueltas, en DXF (el cartel lo armás en el CAD). Con una forma = la chapa del cartel entera, con las letras caladas, lista para el nesting.<span class="opciones">Ninguno · Rectángulo · Esquinas invertidas · Esquinas en chaflán · Arco arriba · Ticket · Hexágono alargado · Escudo · Círculo · Óvalo</span></dd></div>
+<div class="campo"><dt>Ancho <span class="unidad">mm</span></dt><dd>Ancho total del cartel (en el círculo, el diámetro).</dd></div>
+<div class="campo"><dt>Alto <span class="unidad">mm</span></dt><dd>Alto total del cartel.</dd></div>
+<div class="campo"><dt>Margen hasta las letras <span class="unidad">mm</span></dt><dd>Distancia mínima entre el borde del cartel y las letras.</dd></div>
+<div class="campo"><dt>Tamaño del detalle (0 = automático) <span class="unidad">mm</span></dt><dd>Depende de la forma: rectángulo = radio de las esquinas (0 = vivas); esquinas invertidas o en chaflán = tamaño de la esquina; arco arriba = alto del arco; ticket = cuánto entran los lados curvos; hexágono = largo de las puntas; escudo = alto de la parte curva. Salvo en el rectángulo, 0 = un tamaño automático.</dd></div>
+<div class="campo"><dt>Agujeros de fijación</dt><dd>Ninguno, 2 arriba (para colgar) o 4 (uno cerca de cada esquina).</dd></div>
+<div class="campo"><dt>Diámetro de los agujeros <span class="unidad">mm</span></dt><dd>Diámetro de los agujeros de fijación.</dd></div>
+<div class="campo"><dt>Distancia del agujero al borde <span class="unidad">mm</span></dt><dd>Del centro del agujero al borde del cartel.</dd></div>
+</dl>
+<h3>Texto / Línea 1</h3><dl class="campos">
+<div class="campo"><dt>Texto</dt><dd>Lo que se escribe. Sin marco va una sola línea: para más, generá cada línea por separado. Con marco, esta es la línea de arriba.</dd></div>
+<div class="campo"><dt>Fuente</dt><dd>Tipo de letra (6 incluidas, gratuitas para uso comercial).<span class="opciones">Anton · Bebas Neue · Archivo Black · Montserrat ExtraBold · Alfa Slab One · Pacifico</span></dd></div>
+<div class="campo"><dt>Ancho total del texto <span class="unidad">mm</span></dt><dd>Sin marco: ancho total que tiene que medir el texto; el programa busca el alto de letra que da ese ancho (lo muestra en la línea de datos).</dd></div>
+<div class="campo"><dt>Tamaño <span class="unidad">%</span></dt><dd>Con marco: tamaño de la línea 1. 100 % = lo más grande que entra en el cartel; al lado se ve el alto en mm.</dd></div>
+<div class="campo"><dt>Espaciado entre letras <span class="unidad">%</span></dt><dd>Aire extra entre letras, en % del cuerpo de la letra. 0 = el de la fuente; negativo = más juntas.</dd></div>
+</dl>
+<h3>Línea 2</h3><dl class="campos">
+<div class="campo"><dt>Texto (opcional)</dt><dd>Segunda línea, debajo de la primera (solo con marco). Vacío = una sola línea.</dd></div>
+<div class="campo"><dt>Fuente</dt><dd>Tipo de letra de la línea 2 (puede ser otra que la de la línea 1).<span class="opciones">Anton · Bebas Neue · Archivo Black · Montserrat ExtraBold · Alfa Slab One · Pacifico</span></dd></div>
+<div class="campo"><dt>Tamaño <span class="unidad">%</span></dt><dd>Tamaño de la línea 2, como el de la línea 1. Si las dos no entran juntas, el cartel se marca en rojo.</dd></div>
+</dl>
+<h3>Puentes</h3><dl class="campos">
+<div class="campo"><dt>Ancho del puente (0 = automático) <span class="unidad">mm</span></dt><dd>Ancho de las uniones que sostienen las islas (el centro de la O, la A, la B…) para que no se caigan. 0 = automático: 1,5 × espesor, mínimo 3 mm.</dd></div>
+<div class="campo"><dt>Puentes por isla</dt><dd>Automático = 2 puentes (arriba y abajo) en las islas grandes y 1 en las chicas. O fijo 1 o 2.</dd></div>
+</dl>
+<h3>Fondo</h3><dl class="campos">
+<div class="campo"><dt>Fondo</dt><dd>Con marco: liso (chapa entera) o calado con un patrón decorativo, como los paneles calados.</dd></div>
+<div class="campo"><dt>Borde liso alrededor del texto <span class="unidad">mm</span></dt><dd>Franja lisa, sin calar, alrededor de cada línea de texto, para que las letras se lean. Entre la línea 1 y la 2 queda todo liso.</dd></div>
+<div class="campo"><dt>Patrón</dt><dd>Orgánico = celdas irregulares tipo panal natural; geométrico = figuras iguales en grilla.</dd></div>
+<div class="campo"><dt>Tamaño de celda <span class="unidad">mm</span></dt><dd>Distancia media entre centros de huecos vecinos (hueco + nervio). Más chica = más huecos.</dd></div>
+<div class="campo"><dt>Irregularidad <span class="unidad">%</span></dt><dd>0 % = celdas casi iguales (panal); 50 % = naturales; 100 % = más mezcla de tamaños y formas.</dd></div>
+<div class="campo"><dt>Radio de las esquinas del hueco <span class="unidad">mm</span></dt><dd>Redondeo de las esquinas de cada hueco. 0 = esquinas vivas.</dd></div>
+<div class="campo"><dt>Variante</dt><dd>Cambia el sorteo del patrón orgánico. El mismo número da siempre el mismo dibujo.</dd></div>
+<div class="campo"><dt>Figura</dt><dd>Forma de cada hueco del patrón geométrico.<span class="opciones">Círculo · Hexágono · Cuadrado · Rombo</span></dd></div>
+<div class="campo"><dt>Grilla</dt><dd>Tresbolillo = filas corridas medio paso (más denso); recta = filas y columnas alineadas.</dd></div>
+<div class="campo"><dt>Paso <span class="unidad">mm</span></dt><dd>Distancia entre centros de figuras vecinas.</dd></div>
+<div class="campo"><dt>Tamaño de la figura <span class="unidad">% del paso</span></dt><dd>Tamaño de cada figura en % del paso. Si dejaría menos nervio que el mínimo, se achica sola (y avisa).</dd></div>
+<div class="campo"><dt>Giro <span class="unidad">°</span></dt><dd>Gira cada figura sobre su centro (no se aplica al círculo).</dd></div>
+<div class="campo"><dt>Nervio entre huecos (0 = automático) <span class="unidad">mm</span></dt><dd>Ancho mínimo de chapa entre dos huecos, para que la plasma no lo corte ni lo deforme. 0 = automático: 2 × espesor, mínimo 5 mm. Por debajo, se usa igual pero avisa.</dd></div>
+<div class="campo"><dt>Hueco mínimo (0 = automático) <span class="unidad">mm</span></dt><dd>Los huecos más chicos que esto se sacan (Ø del círculo que entra en el hueco). 0 = automático: 5 × espesor, mínimo 6 mm.</dd></div>
+</dl></section>
+<h2 class="categoria" id="cat-paneles-calados">Paneles calados</h2>
+<section id="paneles" class="seccion figura"><div class="fig-cab"><img class="fig" src="fig/paneles.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Panel calado <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Chapa con huecos decorativos (celosías, frentes, separadores): patrón orgánico (Voronoi) o geométrico, con degradé, dentro de cualquiera de los 9 marcos. Una pieza para el nesting.</p></div></div>
+<h3>Marco</h3><dl class="campos">
+<div class="campo"><dt>Forma</dt><dd>Forma exterior de la chapa.<span class="opciones">Rectángulo · Esquinas invertidas · Esquinas en chaflán · Arco arriba · Ticket · Hexágono alargado · Escudo · Círculo · Óvalo</span></dd></div>
+<div class="campo"><dt>Ancho <span class="unidad">mm</span></dt><dd>Ancho total del panel (en el círculo, el diámetro).</dd></div>
+<div class="campo"><dt>Alto <span class="unidad">mm</span></dt><dd>Alto total del panel.</dd></div>
+<div class="campo"><dt>Margen sin calar <span class="unidad">mm</span></dt><dd>Franja lisa, sin huecos, entre el borde del panel y el calado.</dd></div>
+<div class="campo"><dt>Tamaño del detalle (0 = automático) <span class="unidad">mm</span></dt><dd>Depende de la forma: rectángulo = radio de las esquinas (0 = vivas); esquinas invertidas o en chaflán = tamaño de la esquina; arco arriba = alto del arco; ticket = cuánto entran los lados curvos; hexágono = largo de las puntas; escudo = alto de la parte curva. Salvo en el rectángulo, 0 = un tamaño automático.</dd></div>
+<div class="campo"><dt>Agujeros de fijación</dt><dd>Ninguno, 2 arriba (para colgar) o 4 (uno cerca de cada esquina).</dd></div>
+<div class="campo"><dt>Diámetro de los agujeros <span class="unidad">mm</span></dt><dd>Diámetro de los agujeros de fijación.</dd></div>
+<div class="campo"><dt>Distancia del agujero al borde <span class="unidad">mm</span></dt><dd>Del centro del agujero al borde del panel.</dd></div>
+</dl>
+<h3>Patrón</h3><dl class="campos">
+<div class="campo"><dt>Patrón</dt><dd>Orgánico = celdas irregulares tipo panal natural (Voronoi); geométrico = figuras iguales en grilla.</dd></div>
+<div class="campo"><dt>Tamaño de celda <span class="unidad">mm</span></dt><dd>Distancia media entre centros de huecos vecinos (hueco + nervio). Más chica = más huecos.</dd></div>
+<div class="campo"><dt>Irregularidad <span class="unidad">%</span></dt><dd>0 % = celdas casi iguales (panal); 50 % = naturales; 100 % = más mezcla de tamaños y formas.</dd></div>
+<div class="campo"><dt>Radio de las esquinas del hueco <span class="unidad">mm</span></dt><dd>Redondeo de las esquinas de cada hueco. 0 = esquinas vivas.</dd></div>
+<div class="campo"><dt>Figura</dt><dd>Forma de cada hueco del patrón geométrico.<span class="opciones">Círculo · Hexágono · Cuadrado · Rombo</span></dd></div>
+<div class="campo"><dt>Grilla</dt><dd>Tresbolillo = filas corridas medio paso (más denso); recta = filas y columnas alineadas.</dd></div>
+<div class="campo"><dt>Paso <span class="unidad">mm</span></dt><dd>Distancia entre centros de figuras vecinas.</dd></div>
+<div class="campo"><dt>Tamaño de la figura <span class="unidad">% del paso</span></dt><dd>Tamaño de cada figura en % del paso. Si dejaría menos nervio que el mínimo, se achica sola (y avisa).</dd></div>
+<div class="campo"><dt>Giro <span class="unidad">°</span></dt><dd>Gira cada figura sobre su centro (no se aplica al círculo).</dd></div>
+<div class="campo"><dt>Variante</dt><dd>Cambia el sorteo del patrón orgánico. El mismo número da siempre el mismo panel.</dd></div>
+</dl>
+<h3>Degradé</h3><dl class="campos">
+<div class="campo"><dt>Degradé</dt><dd>Hace variar el tamaño a lo largo del panel: horizontal (de izquierda a derecha), vertical (de abajo hacia arriba) o desde el centro hacia las esquinas. Uniforme = todo igual.</dd></div>
+<div class="campo"><dt>Tamaño al comienzo <span class="unidad">%</span></dt><dd>Tamaño al comienzo del degradé, en % (de la celda en el orgánico, de la figura en el geométrico). 100 % = el tamaño elegido arriba.</dd></div>
+<div class="campo"><dt>Tamaño al final <span class="unidad">%</span></dt><dd>Tamaño al final del degradé, en %. Más chico que el comienzo = los huecos se achican hacia el final.</dd></div>
+</dl>
+<h3>Corte</h3><dl class="campos">
+<div class="campo"><dt>Nervio entre huecos (0 = automático) <span class="unidad">mm</span></dt><dd>Ancho mínimo de chapa entre dos huecos, para que la plasma no lo corte ni lo deforme. 0 = automático: 2 × espesor, mínimo 5 mm. Por debajo, se usa igual pero avisa.</dd></div>
+<div class="campo"><dt>Hueco mínimo (0 = automático) <span class="unidad">mm</span></dt><dd>Los huecos más chicos que esto se sacan (Ø del círculo que entra en el hueco). 0 = automático: 5 × espesor, mínimo 6 mm.</dd></div>
+</dl></section>
+<h2 class="categoria" id="cat-formas-basicas">Formas básicas</h2>
+<section id="rectangulo" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/rectangulo.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Rectángulo <span class="sello sello-demo">DEMO</span></h2><p class="sec-intro">Chapa rectangular con esquinas redondeadas y agujeros en las esquinas opcionales.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ancho <span class="unidad">mm</span></dt><dd>Medida horizontal de la chapa.</dd></div>
+<div class="campo"><dt>Alto <span class="unidad">mm</span></dt><dd>Medida vertical de la chapa.</dd></div>
+<div class="campo"><dt>Radio de esquinas (0 = rectas) <span class="unidad">mm</span></dt><dd>Redondea las cuatro esquinas con ese radio. 0 = esquinas vivas.</dd></div>
+<div class="campo"><dt>Ø agujeros en esquinas (0 = sin) <span class="unidad">mm</span></dt><dd>Diámetro de un agujero en cada esquina (para fijar la chapa). 0 = sin agujeros.</dd></div>
+<div class="campo"><dt>Distancia del centro del agujero al borde <span class="unidad">mm</span></dt><dd>Desde el centro de cada agujero hasta los dos bordes de la chapa que tiene al lado.</dd></div>
+</dl></section>
+<section id="disco" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/disco.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Disco / arandela <span class="sello sello-demo">DEMO</span></h2><p class="sec-intro">Disco macizo o arandela (corona circular).</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior <span class="unidad">mm</span></dt><dd>Diámetro del borde de afuera.</dd></div>
+<div class="campo"><dt>Ø interior (0 = disco macizo) <span class="unidad">mm</span></dt><dd>Diámetro del agujero central. 0 = disco macizo; mayor que 0 = arandela.</dd></div>
+</dl></section>
+<section id="brida" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/brida.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Brida <span class="sello sello-demo">DEMO</span></h2><p class="sec-intro">Brida circular con agujeros equidistantes sobre un círculo de pernos.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior <span class="unidad">mm</span></dt><dd>Diámetro exterior de la brida.</dd></div>
+<div class="campo"><dt>Ø interior (0 = ciega) <span class="unidad">mm</span></dt><dd>Diámetro del agujero central (el del caño). 0 = brida ciega, sin agujero central.</dd></div>
+<div class="campo"><dt>Ø círculo de pernos <span class="unidad">mm</span></dt><dd>Diámetro del círculo donde van los centros de los agujeros de los bulones.</dd></div>
+<div class="campo"><dt>Cantidad de agujeros</dt><dd>Cuántos agujeros para bulones, repartidos a la misma distancia sobre el círculo de pernos.</dd></div>
+<div class="campo"><dt>Ø agujeros <span class="unidad">mm</span></dt><dd>Diámetro de cada agujero para bulón.</dd></div>
+<div class="campo"><dt>Giro del primer agujero <span class="unidad">°</span></dt><dd>Ángulo del primer agujero, medido desde la derecha (eje horizontal) en sentido antihorario. Con 8 agujeros, 22,5° los deja a los costados de los ejes en lugar de encima.</dd></div>
+</dl></section>
+<h2 class="categoria" id="cat-desarrollos">Desarrollos</h2>
+<section id="t_cil_cil" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/t_cil_cil.webp" width="176" height="132" alt="" loading="lazy"><div><h2>T cilindro / cilindro <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Injerto de un caño (ramal) sobre otro (principal), a cualquier ángulo y con excentricidad. Genera el desarrollo del ramal y, opcional, la chapa del principal con el agujero.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior principal <span class="unidad">mm</span></dt><dd>Diámetro exterior del caño principal (el que recibe al otro).</dd></div>
+<div class="campo"><dt>Ø exterior ramal <span class="unidad">mm</span></dt><dd>Diámetro exterior del ramal (el caño que se injerta). Puede ser igual o menor que el principal.</dd></div>
+<div class="campo"><dt>Ángulo ramal / principal <span class="unidad">°</span></dt><dd>Ángulo entre los ejes de los dos caños. 90° = T a escuadra; menos de 90° = injerto inclinado.</dd></div>
+<div class="campo"><dt>Excentricidad (desplazamiento lateral) <span class="unidad">mm</span></dt><dd>Corre el eje del ramal hacia un costado del eje del principal. 0 = ejes que se cortan. Con desplazamiento, el ramal entra «de costado».</dd></div>
+<div class="campo"><dt>Largo del ramal (desde eje principal) <span class="unidad">mm</span></dt><dd>Medido sobre el eje del ramal, desde el eje del principal hasta la boca libre del ramal.</dd></div>
+<div class="campo"><dt>Unión</dt><dd>Apoyado: el ramal se apoya por fuera del principal (el corte toma el interior del ramal). Penetrante: el ramal entra en el principal hasta su pared interior.</dd></div>
+<div class="campo"><dt>Posición de la costura <span class="unidad">°</span></dt><dd>Dónde queda la soldadura del ramal, en grados alrededor de su eje: 0 = sobre la línea del eje del principal, 90 = al costado.</dd></div>
+<div class="campo"><dt>Dividir el ramal en partes</dt><dd>Corta el desarrollo en esa cantidad de chapas iguales, para que entre en la plancha o sea más fácil de rolar. Cada parte lleva su costura.</dd></div>
+<div class="campo"><dt>Generar chapa del principal</dt><dd>Sí = también sale la chapa del caño principal desarrollada, con el agujero ya cortado.<span class="opciones">No · Sí</span></dd></div>
+<div class="campo"><dt>Largo chapa del principal <span class="unidad">mm</span></dt><dd>Largo de la chapa del principal (en la dirección de su eje). El cruce de los ejes queda en el medio de la chapa.</dd></div>
+</dl></section>
+<section id="t_rect_cil" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/t_rect_cil.webp" width="176" height="132" alt="" loading="lazy"><div><h2>T ramal rectangular sobre caño <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Ramal de sección rectangular apoyado sobre un caño redondo, a 90° y centrado. El ramal se arma con 4 chapas: 2 caras rectas (lado A) y 2 caras con el corte curvo (lado B, van entre las otras). Opcional: la chapa del caño con el agujero.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior principal <span class="unidad">mm</span></dt><dd>Diámetro exterior del caño redondo sobre el que apoya el ramal.</dd></div>
+<div class="campo"><dt>Ramal: lado paralelo al eje del caño (A) <span class="unidad">mm</span></dt><dd>Lado del ramal paralelo al eje del caño. Las 2 caras A son rectas y van con el ancho completo.</dd></div>
+<div class="campo"><dt>Ramal: lado transversal al caño (B) <span class="unidad">mm</span></dt><dd>Lado del ramal que cruza el caño. Las 2 caras B llevan el corte curvo y van entre las caras A. Tiene que ser menor que el Ø del principal.</dd></div>
+<div class="campo"><dt>Largo del ramal (desde eje principal) <span class="unidad">mm</span></dt><dd>Desde el eje del caño hasta la boca libre del ramal.</dd></div>
+<div class="campo"><dt>Generar chapa del principal</dt><dd>Sí = también sale la chapa del caño desarrollada, con el agujero rectangular ya cortado.<span class="opciones">No · Sí</span></dd></div>
+<div class="campo"><dt>Largo chapa del principal <span class="unidad">mm</span></dt><dd>Largo de la chapa del principal (en la dirección de su eje). El agujero queda centrado.</dd></div>
+</dl></section>
+<section id="t_cil_rect" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/t_cil_rect.webp" width="176" height="132" alt="" loading="lazy"><div><h2>T ramal redondo sobre caja <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Ramal de caño redondo sobre una cara plana (caja, tolva o conducto rectangular), a 90° o inclinado. Genera el desarrollo del ramal y, opcional, la chapa de la cara con el agujero (círculo o elipse).</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior ramal <span class="unidad">mm</span></dt><dd>Diámetro exterior del caño que se injerta sobre la cara plana.</dd></div>
+<div class="campo"><dt>Ángulo ramal / cara <span class="unidad">°</span></dt><dd>Ángulo entre el eje del ramal y la cara. 90° = perpendicular (agujero redondo); menos = inclinado (elipse).</dd></div>
+<div class="campo"><dt>Largo del ramal (sobre su eje, desde la cara) <span class="unidad">mm</span></dt><dd>Desde el punto donde el eje del ramal toca la cara hasta la boca libre.</dd></div>
+<div class="campo"><dt>Posición de la costura <span class="unidad">°</span></dt><dd>Dónde queda la soldadura del ramal, en grados alrededor de su eje: 0 = del lado del ángulo agudo.</dd></div>
+<div class="campo"><dt>Dividir el ramal en partes</dt><dd>Corta el desarrollo en esa cantidad de chapas iguales, para que entre en la plancha o sea más fácil de rolar. Cada parte lleva su costura.</dd></div>
+<div class="campo"><dt>Generar chapa de la cara</dt><dd>Sí = también sale la chapa de la cara con el agujero (círculo o elipse) ya cortado.<span class="opciones">No · Sí</span></dd></div>
+<div class="campo"><dt>Chapa de la cara: largo (en la dirección de inclinación) <span class="unidad">mm</span></dt><dd>Largo de esa chapa, en la dirección hacia donde se inclina el ramal. El agujero queda centrado.</dd></div>
+<div class="campo"><dt>Chapa de la cara: ancho <span class="unidad">mm</span></dt><dd>Ancho de esa chapa (la otra dirección).</dd></div>
+</dl></section>
+<section id="codo_sectores" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/codo_sectores.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Curva redonda por sectores <span class="sello sello-demo">DEMO</span></h2><p class="sec-intro">Codo de chapa en gajos: dos extremos (medio gajo) y gajos intermedios completos. Los gajos encastran entre sí girados 180°, el nesting lo aprovecha.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior <span class="unidad">mm</span></dt><dd>Diámetro exterior del caño.</dd></div>
+<div class="campo"><dt>Ángulo total de la curva <span class="unidad">°</span></dt><dd>Cuánto gira la curva. 90° = codo en escuadra.</dd></div>
+<div class="campo"><dt>Cantidad de piezas (gajos)</dt><dd>Cantidad total de gajos, contando los dos extremos (que son medio gajo). Ej.: 5 = 2 extremos + 3 intermedios. Más gajos = curva más suave.</dd></div>
+<div class="campo"><dt>Radio de curvatura (al eje) <span class="unidad">mm</span></dt><dd>Radio de la curva medido hasta el eje del caño. Lo usual: 1 a 1,5 veces el diámetro.</dd></div>
+<div class="campo"><dt>Tramo recto en cada extremo <span class="unidad">mm</span></dt><dd>Tramo recto que se suma en la punta de cada extremo (para soldar o embridar). 0 = sin tramo recto.</dd></div>
+<div class="campo"><dt>Costura</dt><dd>Dónde queda la soldadura longitudinal del caño: garganta (lado interior de la curva), talón (lado exterior) o costado.</dd></div>
+<div class="campo"><dt>Dividir cada gajo en partes</dt><dd>Corta cada gajo en esa cantidad de chapas, si no entra en la plancha.</dd></div>
+</dl></section>
+<section id="codo_rect" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/codo_rect.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Curva rectangular <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Codo de conducto rectangular: 2 tapas laterales planas (sector de corona) y 2 bandas roladas (garganta y talón) que van entre las tapas. Medidas de sección exteriores.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Sección: lado en el plano de la curva <span class="unidad">mm</span></dt><dd>Lado de la sección en el plano de la curva: distancia entre garganta y talón, medida por fuera.</dd></div>
+<div class="campo"><dt>Sección: lado perpendicular <span class="unidad">mm</span></dt><dd>El otro lado de la sección: ancho entre las tapas laterales, medido por fuera.</dd></div>
+<div class="campo"><dt>Radio interior (garganta, por fuera) <span class="unidad">mm</span></dt><dd>Radio de la garganta (la banda de adentro), medido por fuera. 0 = garganta en esquina viva.</dd></div>
+<div class="campo"><dt>Ángulo de la curva <span class="unidad">°</span></dt><dd>Cuánto gira la curva. 90° = codo en escuadra.</dd></div>
+<div class="campo"><dt>Tramo recto entrada <span class="unidad">mm</span></dt><dd>Tramo recto en la entrada, que se suma a tapas y bandas. 0 = sin tramo.</dd></div>
+<div class="campo"><dt>Tramo recto salida <span class="unidad">mm</span></dt><dd>Tramo recto en la salida. 0 = sin tramo.</dd></div>
+</dl></section>
+<section id="curva_directa_90" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/curva_directa_90.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Curva directa 90° <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Codo de caño redondo en escuadra, con un solo corte a 45° (inglete). Dos tramos rectos.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior <span class="unidad">mm</span></dt><dd>Diámetro exterior del caño.</dd></div>
+<div class="campo"><dt>Largo del tramo 1 (al eje) <span class="unidad">mm</span></dt><dd>Largo de un tramo sobre el eje, desde el extremo libre hasta el cruce de los dos ejes. Tiene que ser mayor que el radio × tan(ángulo / 2).</dd></div>
+<div class="campo"><dt>Largo del tramo 2 (al eje) <span class="unidad">mm</span></dt><dd>Largo del otro tramo, medido igual (extremo libre → cruce de los ejes).</dd></div>
+<div class="campo"><dt>Costura</dt><dd>Dónde queda la soldadura longitudinal del caño: garganta (lado interior de la curva), talón (lado exterior) o costado.</dd></div>
+<div class="campo"><dt>Dividir cada tramo en partes</dt><dd>Corta el desarrollo en esa cantidad de chapas iguales, para que entre en la plancha o sea más fácil de rolar. Cada parte lleva su costura.</dd></div>
+</dl></section>
+<section id="curva_directa" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/curva_directa.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Curva directa <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Codo de caño redondo con un solo corte oblicuo (inglete): dos tramos rectos con el ángulo que pidas. Cada tramo se mide sobre el eje, hasta el cruce de los dos ejes.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior <span class="unidad">mm</span></dt><dd>Diámetro exterior del caño.</dd></div>
+<div class="campo"><dt>Ángulo de la curva <span class="unidad">°</span></dt><dd>Cuánto cambia de dirección el caño (90° = codo en escuadra). Lleva un solo corte oblicuo.</dd></div>
+<div class="campo"><dt>Largo del tramo 1 (al eje) <span class="unidad">mm</span></dt><dd>Largo de un tramo sobre el eje, desde el extremo libre hasta el cruce de los dos ejes. Tiene que ser mayor que el radio × tan(ángulo / 2).</dd></div>
+<div class="campo"><dt>Largo del tramo 2 (al eje) <span class="unidad">mm</span></dt><dd>Largo del otro tramo, medido igual (extremo libre → cruce de los ejes).</dd></div>
+<div class="campo"><dt>Costura</dt><dd>Dónde queda la soldadura longitudinal del caño: garganta (lado interior de la curva), talón (lado exterior) o costado.</dd></div>
+<div class="campo"><dt>Dividir cada tramo en partes</dt><dd>Corta el desarrollo en esa cantidad de chapas iguales, para que entre en la plancha o sea más fácil de rolar. Cada parte lleva su costura.</dd></div>
+</dl></section>
+<section id="desvio_paralelo" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/desvio_paralelo.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Desvío circular paralelo <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Desvío en Z de caño redondo: entrada y salida paralelas, corridas una distancia dada, unidas por un tramo inclinado con dos cortes oblicuos. Los tres tramos se miden sobre el eje.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior <span class="unidad">mm</span></dt><dd>Diámetro exterior del caño.</dd></div>
+<div class="campo"><dt>Desplazamiento entre ejes <span class="unidad">mm</span></dt><dd>Distancia entre el eje de entrada y el de salida, medida perpendicular a ellos (cuánto «se corre» el caño).</dd></div>
+<div class="campo"><dt>Ángulo del tramo inclinado <span class="unidad">°</span></dt><dd>Inclinación del tramo del medio respecto de los tramos rectos. Con más ángulo, el desvío es más corto.</dd></div>
+<div class="campo"><dt>Largo del tramo de entrada (al eje) <span class="unidad">mm</span></dt><dd>Largo del tramo de entrada sobre el eje, desde el extremo libre hasta el cruce con el eje del tramo inclinado. Tiene que ser mayor que el radio × tan(ángulo / 2).</dd></div>
+<div class="campo"><dt>Largo del tramo de salida (al eje) <span class="unidad">mm</span></dt><dd>Largo del tramo de salida, medido igual.</dd></div>
+<div class="campo"><dt>Costura</dt><dd>Dónde queda la soldadura longitudinal del caño: garganta (lado interior de la curva), talón (lado exterior) o costado.</dd></div>
+<div class="campo"><dt>Dividir cada tramo en partes</dt><dd>Corta el desarrollo en esa cantidad de chapas iguales, para que entre en la plancha o sea más fácil de rolar. Cada parte lleva su costura.</dd></div>
+</dl></section>
+<section id="tronco_cono" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/tronco_cono.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Tronco de cono / reducción <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Reducción entre dos bocas circulares paralelas. Concéntrica (desarrollo exacto en arcos) o excéntrica (desarrollo por triangulación). Se puede dividir en partes si no entra en la plancha.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior boca mayor <span class="unidad">mm</span></dt><dd>Diámetro exterior de la boca grande.</dd></div>
+<div class="campo"><dt>Ø exterior boca menor <span class="unidad">mm</span></dt><dd>Diámetro exterior de la boca chica. 0 = cono completo, en punta.</dd></div>
+<div class="campo"><dt>Altura entre bocas <span class="unidad">mm</span></dt><dd>Distancia entre los planos de las dos bocas (paralelas).</dd></div>
+<div class="campo"><dt>Excentricidad (desplazamiento de la boca menor) <span class="unidad">mm</span></dt><dd>Corrimiento del centro de la boca chica respecto de la grande. 0 = concéntrico. (Ø mayor − Ø menor) / 2 = un lado queda vertical.</dd></div>
+<div class="campo"><dt>Posición de la costura <span class="unidad">°</span></dt><dd>Dónde queda la soldadura, en grados: 0 = del lado hacia donde se corre la boca chica.</dd></div>
+<div class="campo"><dt>Dividir en partes</dt><dd>Corta el desarrollo en esa cantidad de chapas, para que entre en la plancha.</dd></div>
+</dl></section>
+<section id="tronco_piramide" class="seccion figura"><div class="fig-cab"><img class="fig" src="fig/tronco_piramide.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Fondo de tolva (tronco de pirámide) <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Tronco de pirámide rectangular entre una boca mayor y una menor, centrada o descentrada (fondo de tolva). Desarrollo por caras, en 1 pieza con pliegues, 2 mitades o 4 caras.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Boca mayor: lado A (exterior) <span class="unidad">mm</span></dt><dd>Lado A de la boca grande, medido por fuera.</dd></div>
+<div class="campo"><dt>Boca mayor: lado B (exterior) <span class="unidad">mm</span></dt><dd>Lado B de la boca grande, medido por fuera.</dd></div>
+<div class="campo"><dt>Boca menor: lado a (exterior) <span class="unidad">mm</span></dt><dd>Lado de la boca chica en la dirección de A, por fuera.</dd></div>
+<div class="campo"><dt>Boca menor: lado b (exterior) <span class="unidad">mm</span></dt><dd>Lado de la boca chica en la dirección de B, por fuera.</dd></div>
+<div class="campo"><dt>Corrimiento de la boca menor en A <span class="unidad">mm</span></dt><dd>Corre la boca chica en la dirección de A. 0 = centrada.</dd></div>
+<div class="campo"><dt>Corrimiento de la boca menor en B <span class="unidad">mm</span></dt><dd>Corre la boca chica en la dirección de B. 0 = centrada.</dd></div>
+<div class="campo"><dt>Altura entre bocas <span class="unidad">mm</span></dt><dd>Distancia entre los planos de las dos bocas.</dd></div>
+<div class="campo"><dt>Armado (1 pieza, 2 mitades o 4 caras)</dt><dd>1 = una sola chapa con pliegues; 2 = dos mitades; 4 = una chapa por cara (para soldar en las aristas).</dd></div>
+<div class="campo"><dt>Cara donde empieza el desarrollo (0 a 3)</dt><dd>Cara en la que empieza el desarrollo: cambia dónde cae la soldadura. 0 = lado +y, 1 = −x, 2 = −y, 3 = +x.</dd></div>
+</dl></section>
+<section id="transicion_rect_red" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/transicion_rect_red.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Transición rectangular a redondo <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Unión entre una boca rectangular y una redonda paralelas, centrada o corrida: caras planas en los lados y conos en las esquinas. Las líneas de plegado van al plano PDF; el DXF lleva solo el corte.</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Boca rectangular: lado A (en X) <span class="unidad">mm</span></dt><dd>Lado A de la boca rectangular (en X), por fuera.</dd></div>
+<div class="campo"><dt>Boca rectangular: lado B (en Y) <span class="unidad">mm</span></dt><dd>Lado B de la boca rectangular (en Y), por fuera.</dd></div>
+<div class="campo"><dt>Ø exterior boca redonda <span class="unidad">mm</span></dt><dd>Diámetro exterior de la boca redonda.</dd></div>
+<div class="campo"><dt>Altura entre bocas <span class="unidad">mm</span></dt><dd>Distancia entre los planos de las dos bocas (paralelas).</dd></div>
+<div class="campo"><dt>Desplazamiento de la boca redonda en X <span class="unidad">mm</span></dt><dd>Corrimiento de la boca redonda en X, entre los centros de las dos bocas. 0 = centrada.</dd></div>
+<div class="campo"><dt>Desplazamiento de la boca redonda en Y <span class="unidad">mm</span></dt><dd>Corrimiento de la boca redonda en Y. 0 = centrada.</dd></div>
+<div class="campo"><dt>Costura</dt><dd>En qué lado de la boca rectangular queda la soldadura: al medio del lado A o del lado B.<span class="opciones">Medio del lado A · Medio del lado B</span></dd></div>
+<div class="campo"><dt>Dividir en partes</dt><dd>1 = una chapa; 2 = dos mitades; 4 = una parte por esquina. Los cortes van al medio de los lados.</dd></div>
+<div class="campo"><dt>Líneas de plegado por esquina</dt><dd>Cuántas líneas de plegado lleva el cono de cada esquina (plegado por golpes). Más líneas = curva más pareja. El borde con las caras planas siempre se marca.</dd></div>
+</dl></section>
+<section id="helicoide" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/helicoide.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Helicoide (hélice de sinfín) <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Hélice de chimango / tornillo sinfín, una vuelta por pieza: se corta una corona con un sector recortado y se estira hasta el paso. El espesor no cambia el desarrollo (solo cuenta para el material).</p></div></div>
+<dl class="campos">
+<div class="campo"><dt>Ø exterior de la hélice <span class="unidad">mm</span></dt><dd>Diámetro exterior de la hélice (el del chimango terminado).</dd></div>
+<div class="campo"><dt>Ø del eje (interior) <span class="unidad">mm</span></dt><dd>Diámetro del eje o caño sobre el que va soldada la hélice.</dd></div>
+<div class="campo"><dt>Paso (avance por vuelta) <span class="unidad">mm</span></dt><dd>Cuánto avanza la hélice en una vuelta. Cada pieza es una vuelta.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../">optimax.lat</a> · Verificá todas las medidas antes de cortar o fabricar.</footer>
+</main>
+</div>
+</body>
+</html>
