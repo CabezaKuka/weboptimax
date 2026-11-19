@@ -35,7 +35,8 @@ Antes de cada cambio grande en producción, crear una rama marcador sobre `main`
 
 ## Cosas a no romper
 
-- Pixel de Meta (`fbq`), con los eventos personalizados `VerVideo` y `VerModulo`.
+- Pixel de Meta (`fbq`), con los eventos personalizados `VerVideo`, `VerModulo` (al abrir o pasar de módulo en el detalle de Funciones) y `DescargaDesdeModulo` (botón de descarga dentro del detalle).
+- Funciones: tarjetas `.mod` (data-mod = id del artículo) que abren el diálogo `#mod-detalle`; el contenido de cada módulo son los `<article class="hub-panel">` guardados en `.mod-fuente`. Los enlaces `#f-…` del menú abren el detalle de ese módulo.
 - Lógica de descarga (`.js-descarga`) y de pago (pestañas, QR, mensaje de WhatsApp).
 - Precio en Bs para visitantes de Bolivia (detección por zona horaria; `.js-precio-pro`).
 - Para probar en local hace falta un servidor (`python -m http.server 8000`): abierto como archivo, el video de YouTube da error 153.
