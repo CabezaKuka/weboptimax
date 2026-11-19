@@ -619,25 +619,10 @@ body{background:
   .nodo[aria-selected="true"] .nodo-flecha::before{border-color:var(--rojo);top:58%;transform:translate(-50%,-50%) rotate(-135deg)}
   .hub-mapa .hub-panel{border:2px solid var(--rojo);border-top:0}
 }
-/* Carteles y logos */
-.carteles-cab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center;margin-bottom:8px}
-.carteles-cab .intro{margin-bottom:0}
-.carteles-cab img{width:100%;height:auto;filter:drop-shadow(0 18px 22px rgba(20,30,40,.28));transform:rotate(-2deg)}
-.cartel-bloque{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(28px,5vw,64px);align-items:center;margin-top:clamp(48px,7vw,88px)}
-.cartel-bloque.invertido{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
-.cartel-bloque.invertido .hub-texto{order:2}
-.cartel-media{position:relative;padding:0 0 10% 0}
-.cartel-media .captura{width:82%;margin-left:auto}
-.cartel-pieza{position:absolute;left:0;bottom:0;width:33%;height:auto;filter:drop-shadow(0 20px 22px rgba(20,30,40,.38));transform:rotate(-5deg);pointer-events:none}
-@media (max-width:900px){
-  .carteles-cab{grid-template-columns:1fr;gap:24px}
-  .carteles-cab img{max-width:520px}
-  .cartel-bloque,.cartel-bloque.invertido{grid-template-columns:1fr;gap:22px}
-  .cartel-bloque.invertido .hub-texto{order:0}
-  .cartel-media{padding-bottom:18%}
-  .cartel-media .captura{width:86%}
-  .cartel-pieza{width:38%}
-}
+/* Foto de la pieza cortada al lado de la captura */
+.doble.con-pieza{grid-template-columns:2.4fr 1fr;align-items:center;padding-right:10px}
+.pieza-foto{width:100%;height:auto;align-self:center;filter:drop-shadow(0 16px 18px rgba(20,30,40,.32));transform:rotate(-4deg)}
+@media (min-width:901px){.hub-mapa{aspect-ratio:1/1.4}}
 </style>
 <!-- Meta Pixel Code (optiMAX-WEB) -->
 <script>
@@ -665,7 +650,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
       <a href="#f-foto">Foto a DXF</a>
       <a href="#funciones">Funciones</a>
       <a href="#desarrollos">Desarrollos</a>
-      <a href="#carteles">Carteles</a>
+      <a href="#f-letras">Carteles</a>
       <a href="#versiones">DEMO y PRO</a>
       <a href="#comprar">Comprar</a>
       <a href="#preguntas">Preguntas</a>
@@ -717,17 +702,19 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
       <div class="hub">
         <p class="hub-pista"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V11m0-.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.6a6 6 0 0 1-4.6-2.2L4.2 15.6a1.5 1.5 0 0 1 2.3-2L9 16"/></svg>Tocá un módulo para ver qué hace</p>
         <div class="hub-mapa" role="tablist" aria-label="Módulos de optiMAX">
-          <svg class="hub-lineas" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line data-para="f-nesting" x1="50" y1="50" x2="31.0" y2="17.1"/><line data-para="f-desarrollos" x1="50" y1="50" x2="14.3" y2="37.0"/><line data-para="f-foto" x1="50" y1="50" x2="14.3" y2="63.0"/><line data-para="f-costos" x1="50" y1="50" x2="31.0" y2="82.9"/><line data-para="f-barras" x1="50" y1="50" x2="79.1" y2="25.6"/><line data-para="f-guillotina" x1="50" y1="50" x2="88.0" y2="50.0"/><line data-para="f-rejas" x1="50" y1="50" x2="79.1" y2="74.4"/></svg>
+          <svg class="hub-lineas" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line data-para="f-nesting" x1="50" y1="50" x2="43.1" y2="10.6"/><line data-para="f-desarrollos" x1="50" y1="50" x2="23.2" y2="20.3"/><line data-para="f-letras" x1="50" y1="50" x2="11.5" y2="39.0"/><line data-para="f-logos" x1="50" y1="50" x2="11.5" y2="61.0"/><line data-para="f-foto" x1="50" y1="50" x2="23.2" y2="79.7"/><line data-para="f-costos" x1="50" y1="50" x2="43.1" y2="89.4"/><line data-para="f-barras" x1="50" y1="50" x2="80.6" y2="24.3"/><line data-para="f-guillotina" x1="50" y1="50" x2="90.0" y2="50.0"/><line data-para="f-rejas" x1="50" y1="50" x2="80.6" y2="75.7"/></svg>
           <div class="hub-centro" aria-hidden="true"><img src="img/logo-oscuro.webp" alt=""><span>un solo programa</span></div>
           <span class="grupo-etq etq-cnc">Con tu CNC</span>
-          <button class="nodo" type="button" role="tab" id="t-f-nesting" aria-controls="f-nesting" aria-selected="true" style="--x:31.0%;--y:17.1%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M7 7h4v6H7zM14 7h3v3h-3zM13 13h4v4h-4zM7 16h3"/></svg></span><span class="nodo-txt">Nesting</span><span class="nodo-flecha" aria-hidden="true"></span></button>
-          <button class="nodo" type="button" role="tab" id="t-f-desarrollos" aria-controls="f-desarrollos" aria-selected="false" style="--x:14.3%;--y:37.0%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 9 5h6l5 15"/><path d="M6.5 13h11"/><path d="M9 5c1 2 5 2 6 0"/></svg></span><span class="nodo-txt">Desarrollos</span><span class="nodo-flecha" aria-hidden="true"></span></button>
-          <button class="nodo" type="button" role="tab" id="t-f-foto" aria-controls="f-foto" aria-selected="false" style="--x:14.3%;--y:63.0%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><span class="nodo-txt">Foto a DXF</span><span class="nodo-flecha" aria-hidden="true"></span></button>
-          <button class="nodo" type="button" role="tab" id="t-f-costos" aria-controls="f-costos" aria-selected="false" style="--x:31.0%;--y:82.9%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2M8 18h6"/></svg></span><span class="nodo-txt">Costos</span><span class="nodo-flecha" aria-hidden="true"></span></button>
+          <button class="nodo" type="button" role="tab" id="t-f-nesting" aria-controls="f-nesting" aria-selected="true" style="--x:43.1%;--y:10.6%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M7 7h4v6H7zM14 7h3v3h-3zM13 13h4v4h-4zM7 16h3"/></svg></span><span class="nodo-txt">Nesting</span><span class="nodo-flecha" aria-hidden="true"></span></button>
+          <button class="nodo" type="button" role="tab" id="t-f-desarrollos" aria-controls="f-desarrollos" aria-selected="false" style="--x:23.2%;--y:20.3%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 9 5h6l5 15"/><path d="M6.5 13h11"/><path d="M9 5c1 2 5 2 6 0"/></svg></span><span class="nodo-txt">Desarrollos</span><span class="nodo-flecha" aria-hidden="true"></span></button>
+          <button class="nodo" type="button" role="tab" id="t-f-letras" aria-controls="f-letras" aria-selected="false" style="--x:11.5%;--y:39.0%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M8 9.5h8M12 9.5V16"/></svg></span><span class="nodo-txt">Carteles</span><span class="nodo-flecha" aria-hidden="true"></span></button>
+          <button class="nodo" type="button" role="tab" id="t-f-logos" aria-controls="f-logos" aria-selected="false" style="--x:11.5%;--y:61.0%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><circle cx="9" cy="9.5" r="1.8"/><path d="M4 18l5-5 3 3 3-4 5 6"/></svg></span><span class="nodo-txt">Logos</span><span class="nodo-flecha" aria-hidden="true"></span></button>
+          <button class="nodo" type="button" role="tab" id="t-f-foto" aria-controls="f-foto" aria-selected="false" style="--x:23.2%;--y:79.7%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><span class="nodo-txt">Foto a DXF</span><span class="nodo-flecha" aria-hidden="true"></span></button>
+          <button class="nodo" type="button" role="tab" id="t-f-costos" aria-controls="f-costos" aria-selected="false" style="--x:43.1%;--y:89.4%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2M8 18h6"/></svg></span><span class="nodo-txt">Costos</span><span class="nodo-flecha" aria-hidden="true"></span></button>
           <span class="grupo-etq etq-sin">Sin CNC</span>
-          <button class="nodo" type="button" role="tab" id="t-f-barras" aria-controls="f-barras" aria-selected="false" style="--x:79.1%;--y:25.6%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18M3 12h18M3 16h18"/><path d="M10 6v4M15 10v4M8 14v4"/></svg></span><span class="nodo-txt">Barras y tubos</span><span class="nodo-flecha" aria-hidden="true"></span></button>
-          <button class="nodo" type="button" role="tab" id="t-f-guillotina" aria-controls="f-guillotina" aria-selected="false" style="--x:88.0%;--y:50.0%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M12 4v16M3 12h9"/></svg></span><span class="nodo-txt">Guillotina</span><span class="nodo-flecha" aria-hidden="true"></span></button>
-          <button class="nodo" type="button" role="tab" id="t-f-rejas" aria-controls="f-rejas" aria-selected="false" style="--x:79.1%;--y:74.4%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5h16v16"/><path d="M8 5v16M12 5v16M16 5v16M4 9h16"/></svg></span><span class="nodo-txt">Rejas y portones</span><span class="nodo-flecha" aria-hidden="true"></span></button>
+          <button class="nodo" type="button" role="tab" id="t-f-barras" aria-controls="f-barras" aria-selected="false" style="--x:80.6%;--y:24.3%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18M3 12h18M3 16h18"/><path d="M10 6v4M15 10v4M8 14v4"/></svg></span><span class="nodo-txt">Barras y tubos</span><span class="nodo-flecha" aria-hidden="true"></span></button>
+          <button class="nodo" type="button" role="tab" id="t-f-guillotina" aria-controls="f-guillotina" aria-selected="false" style="--x:90.0%;--y:50.0%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M12 4v16M3 12h9"/></svg></span><span class="nodo-txt">Guillotina</span><span class="nodo-flecha" aria-hidden="true"></span></button>
+          <button class="nodo" type="button" role="tab" id="t-f-rejas" aria-controls="f-rejas" aria-selected="false" style="--x:80.6%;--y:75.7%"><span class="nodo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5h16v16"/><path d="M8 5v16M12 5v16M16 5v16M4 9h16"/></svg></span><span class="nodo-txt">Rejas y portones</span><span class="nodo-flecha" aria-hidden="true"></span></button>
         </div>
         <div class="hub-paneles">
         <article class="hub-panel" id="f-nesting" role="tabpanel" aria-labelledby="t-f-nesting">
@@ -748,6 +735,24 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
               <li>Plano de armado en PDF con marcas y líneas de plegado</li>
             </ul></div>
           <div class="hub-media"><div class="doble"> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de Crear pieza"> <img src="img/cap-desarrollo.webp" width="1380" height="841" loading="lazy" alt="Ventana Crear pieza con el desarrollo de una T cilindro sobre cilindro de 100 mm a 90°"> </button> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar plano de armado en PDF"> <img src="img/plano-transicion.webp" width="1102" height="776" loading="lazy" alt="Plano de armado en PDF de una transición rectangular a redondo de 300 × 300 mm a Ø 100 mm, escala 1:10, con líneas de plegado"> </button> </div></div>
+        </article>
+        <article class="hub-panel" id="f-letras" role="tabpanel" aria-labelledby="t-f-letras">
+          <div class="hub-texto"><h3>Letras y carteles <span class="sello sello-pro">PRO</span></h3><p>Escribís el texto, elegís la forma del cartel y optiMAX arma la chapa entera con las letras caladas. Los centros de la O, la A, la B o el 0 quedan sostenidos con puentes para que no se caigan.</p><ul>
+              <li>1 o 2 líneas de texto, con 6 fuentes incluidas de uso comercial libre</li>
+              <li>9 formas de cartel: rectángulo, esquinas en chaflán o invertidas, arco, ticket, hexágono, escudo, círculo y óvalo</li>
+              <li>Agujeros para colgar o atornillar, y fondo liso o calado decorativo</li>
+              <li>Sin cartel: solo las letras, al ancho exacto que necesitás, en DXF</li>
+            </ul></div>
+          <div class="hub-media"><div class="doble con-pieza"> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de Letras para cartel"> <img src="img/cap-letras.webp" width="1379" height="828" loading="lazy" alt="Ventana Crear pieza con un cartel tipo escudo de 350 × 350 mm con el texto optiMAX 3.2 calado y fondo calado"> </button> <img class="pieza-foto" src="img/cartel-escudo.webp" width="670" height="657" loading="lazy" alt="El mismo cartel tipo escudo cortado en chapa y pintado de rojo"> </div></div>
+        </article>
+        <article class="hub-panel" id="f-logos" role="tabpanel" aria-labelledby="t-f-logos">
+          <div class="hub-texto"><h3>Logos e imágenes <span class="sello sello-pro">PRO</span></h3><p>El logo que te manda el cliente en PNG o JPG pasa directo a pieza para cortar. Ponés la medida y optiMAX separa el dibujo del fondo, suaviza el borde y agrega los puentes.</p><ul>
+              <li>Calado en la chapa o silueta suelta</li>
+              <li>Separa por color o por claro y oscuro: sirve para logos, escaneos y fotos de un dibujo</li>
+              <li>Limpia manchas y el escalonado de los píxeles</li>
+              <li>Con o sin cartel alrededor, con las mismas formas y agujeros que las letras</li>
+            </ul></div>
+          <div class="hub-media"><div class="doble con-pieza"> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de Logo / imagen"> <img src="img/cap-logo.webp" width="1379" height="828" loading="lazy" alt="Ventana Crear pieza con un logo de león calado en un cartel de 300 × 300 mm con esquinas invertidas"> </button> <img class="pieza-foto" src="img/cartel-leon.webp" width="658" height="654" loading="lazy" alt="Panel de chapa roja con un león calado"> </div></div>
         </article>
         <article class="hub-panel" id="f-foto" role="tabpanel" aria-labelledby="t-f-foto">
           <div class="hub-texto"><h3>Pieza desde una foto <span class="sello sello-demo">Detectar en DEMO</span> <span class="sello sello-pro">PRO</span></h3><p>Sacás una foto de una pieza apoyada sobre la hoja de calibración y optiMAX te da el contorno medido, listo para el nesting.</p><ul>
@@ -792,45 +797,6 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
         </article>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="seccion" id="carteles">
-    <div class="envoltura">
-      <div class="carteles-cab">
-        <div class="intro">
-          <h2>Carteles y logos en chapa</h2>
-          <p>Del texto o el logo del cliente a la chapa calada, lista para el nesting. Sin dibujar nada en el CAD.</p>
-        </div>
-        <img src="img/cartel-largo.webp" width="1085" height="255" loading="lazy" alt="Cartel de chapa pintada de rojo con la palabra optiMAX calada">
-      </div>
-
-      <article class="cartel-bloque" id="letras">
-        <div class="hub-texto"><h3>Letras y carteles <span class="sello sello-pro">PRO</span></h3><p>Escribís el texto, elegís la forma del cartel y optiMAX arma la chapa entera con las letras caladas. Los centros de la O, la A, la B o el 0 quedan sostenidos con puentes para que no se caigan.</p><ul>
-            <li>1 o 2 líneas de texto, con 6 fuentes incluidas de uso comercial libre</li>
-            <li>9 formas de cartel: rectángulo, esquinas en chaflán o invertidas, arco, ticket, hexágono, escudo, círculo y óvalo</li>
-            <li>Agujeros para colgar o atornillar, y fondo liso o calado decorativo</li>
-            <li>Sin cartel: solo las letras, al ancho exacto que necesitás, en DXF</li>
-          </ul></div>
-        <div class="cartel-media">
-          <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de Letras para cartel"> <img src="img/cap-letras.webp" width="1379" height="828" loading="lazy" alt="Ventana Crear pieza con un cartel tipo escudo de 350 × 350 mm con el texto optiMAX 3.2 calado y fondo calado"> </button>
-          <img class="cartel-pieza" src="img/cartel-escudo.webp" width="670" height="657" loading="lazy" alt="El mismo cartel tipo escudo cortado en chapa y pintado de rojo">
-        </div>
-      </article>
-
-      <article class="cartel-bloque invertido" id="logos">
-        <div class="hub-texto"><h3>Logos e imágenes <span class="sello sello-pro">PRO</span></h3><p>El logo que te manda el cliente en PNG o JPG pasa directo a pieza para cortar. Ponés la medida y optiMAX separa el dibujo del fondo, suaviza el borde y agrega los puentes.</p><ul>
-            <li>Calado en la chapa o silueta suelta</li>
-            <li>Separa por color o por claro y oscuro: sirve para logos, escaneos y fotos de un dibujo</li>
-            <li>Limpia manchas y el escalonado de los píxeles</li>
-            <li>Con o sin cartel alrededor, con las mismas formas y agujeros que las letras</li>
-            <li>La imagen queda guardada en la pieza para editarla después</li>
-          </ul></div>
-        <div class="cartel-media">
-          <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar captura de Logo / imagen"> <img src="img/cap-logo.webp" width="1379" height="828" loading="lazy" alt="Ventana Crear pieza con un logo de león calado en un cartel de 300 × 300 mm con esquinas invertidas"> </button>
-          <img class="cartel-pieza" src="img/cartel-leon.webp" width="658" height="654" loading="lazy" alt="Panel de chapa roja con el león calado">
-        </div>
-      </article>
     </div>
   </section>
 
@@ -1371,7 +1337,7 @@ visor.addEventListener("click", ev => { if (ev.target === visor) visor.close(); 
     requestAnimationFrame(paso);
   };
   if (!quieto) {
-    const sel = ".intro, .video-yt, .col-foto, .hub, .cifras .dato, .catalogo, .cartel-bloque, .taller figure, .plan, .requisitos div, .pasos li, .pago, .preguntas";
+    const sel = ".intro, .video-yt, .col-foto, .hub, .cifras .dato, .catalogo, .taller figure, .plan, .requisitos div, .pasos li, .pago, .preguntas";
     const obs = new IntersectionObserver(es => es.forEach(e => {
       if (!e.isIntersecting) return;
       e.target.classList.add("visto"); obs.unobserve(e.target);
