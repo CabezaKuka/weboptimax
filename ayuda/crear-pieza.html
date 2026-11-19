@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crear pieza · Ayuda de optiMAX</title>
-<meta name="description" content="Formas básicas, desarrollos de chapa, letras para cartel, paneles calados e íconos.">
+<meta name="description" content="Formas básicas, desarrollos de chapa, letras para cartel, logos, paneles calados e íconos.">
 <link rel="icon" type="image/png" href="../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,9 +32,9 @@
 </nav>
 <main>
 <h1>Crear pieza</h1>
-<p class="intro">Genera piezas a medida sin dibujarlas: formas básicas, desarrollos de chapa (T, curvas, conos, transiciones, helicoide), letras para cartel, íconos y paneles calados. A la izquierda elegís la figura, en el medio cargás las medidas y a la derecha ves el resultado al instante.</p>
+<p class="intro">Genera piezas a medida sin dibujarlas: formas básicas, desarrollos de chapa (T, curvas, conos, transiciones, helicoide), letras para cartel, logos, íconos y paneles calados. A la izquierda elegís la figura, en el medio cargás las medidas y a la derecha ves el resultado al instante.</p>
 <p class="intro">Los diámetros y secciones de los desarrollos son exteriores; el desarrollo se calcula sobre el espesor neutro de la chapa.</p>
-<nav class="chips" aria-label="Figuras"><a href="#letras">Letras para cartel</a><a href="#rectangulo">Rectángulo</a><a href="#disco">Disco / arandela</a><a href="#brida">Brida</a><a href="#t_cil_cil">T cilindro / cilindro</a><a href="#t_rect_cil">T ramal rectangular sobre caño</a><a href="#t_cil_rect">T ramal redondo sobre caja</a><a href="#codo_sectores">Curva redonda por sectores</a><a href="#codo_rect">Curva rectangular</a><a href="#curva_directa_90">Curva directa 90°</a><a href="#curva_directa">Curva directa</a><a href="#desvio_paralelo">Desvío circular paralelo</a><a href="#tronco_cono">Tronco de cono / reducción</a><a href="#tronco_piramide">Fondo de tolva (tronco de pirámide)</a><a href="#transicion_rect_red">Transición rectangular a redondo</a><a href="#helicoide">Helicoide (hélice de sinfín)</a><a href="#paneles">Panel calado</a><a href="#iconos_banos">Baños</a><a href="#iconos_prohibicion">Prohibiciones</a><a href="#iconos_seguridad">Salida y seguridad</a><a href="#iconos_comercio">Comercio y gastronomía</a><a href="#iconos_varios">Varios</a></nav>
+<nav class="chips" aria-label="Figuras"><a href="#letras">Letras para cartel</a><a href="#logo">Logo / imagen</a><a href="#rectangulo">Rectángulo</a><a href="#disco">Disco / arandela</a><a href="#brida">Brida</a><a href="#t_cil_cil">T cilindro / cilindro</a><a href="#t_rect_cil">T ramal rectangular sobre caño</a><a href="#t_cil_rect">T ramal redondo sobre caja</a><a href="#codo_sectores">Curva redonda por sectores</a><a href="#codo_rect">Curva rectangular</a><a href="#curva_directa_90">Curva directa 90°</a><a href="#curva_directa">Curva directa</a><a href="#desvio_paralelo">Desvío circular paralelo</a><a href="#tronco_cono">Tronco de cono / reducción</a><a href="#tronco_piramide">Fondo de tolva (tronco de pirámide)</a><a href="#transicion_rect_red">Transición rectangular a redondo</a><a href="#helicoide">Helicoide (hélice de sinfín)</a><a href="#paneles">Panel calado</a><a href="#iconos_banos">Baños</a><a href="#iconos_prohibicion">Prohibiciones</a><a href="#iconos_seguridad">Salida y seguridad</a><a href="#iconos_comercio">Comercio y gastronomía</a><a href="#iconos_varios">Varios</a></nav>
 <section id="comunes" class="seccion"><h2>Campos de todas las figuras</h2>
 <dl class="campos">
 <div class="campo"><dt>Nombre de la pieza</dt><dd>Nombre con el que aparece en la lista de piezas y en los archivos. Se completa solo con la figura y sus medidas; si lo cambiás a mano, se respeta.</dd></div>
@@ -88,6 +88,38 @@
 <div class="campo"><dt>Giro <span class="unidad">°</span></dt><dd>Gira cada figura sobre su centro (no se aplica al círculo).</dd></div>
 <div class="campo"><dt>Nervio entre huecos (0 = automático) <span class="unidad">mm</span></dt><dd>Ancho mínimo de chapa entre dos huecos, para que la plasma no lo corte ni lo deforme. 0 = automático: 2 × espesor, mínimo 5 mm. Por debajo, se usa igual pero avisa.</dd></div>
 <div class="campo"><dt>Hueco mínimo (0 = automático) <span class="unidad">mm</span></dt><dd>Los huecos más chicos que esto se sacan (Ø del círculo que entra en el hueco). 0 = automático: 5 × espesor, mínimo 6 mm.</dd></div>
+</dl></section>
+<section id="logo" class="seccion figura"><div class="fig-cab"><img class="fig" src="fig/logo.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Logo / imagen <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Un logo o dibujo en PNG o JPG (como lo manda el cliente) pasa a pieza para cortar: calado en la chapa con puentes, o silueta suelta, con o sin el cartel alrededor. La medida la ponés vos; la imagen queda guardada en la pieza para editarla después.</p></div></div>
+<h3>Imagen</h3><dl class="campos">
+<div class="campo"><dt>Imagen</dt><dd>PNG, JPG, BMP o WEBP. Se guarda dentro de la pieza (hasta 1600 px de lado), así el ✎ la vuelve a abrir aunque muevas o borres el archivo.</dd></div>
+<div class="campo"><dt>Separar</dt><dd>Todo menos el fondo = corta todo lo que no es fondo (lo transparente del PNG o el color de los bordes). Un color = solo el color elegido. Claro / oscuro = por brillo, para escaneos o fotos de un dibujo.</dd></div>
+<div class="campo"><dt>Color a cortar</dt><dd>Los colores principales del logo, de más a menos superficie: tocá el que se corta.<span class="opciones">1 · 2 · 3 · 4 · 5 · 6</span></dd></div>
+<div class="campo"><dt>Tolerancia de color</dt><dd>0 = automática: el borde queda a mitad de camino entre el dibujo y lo que lo rodea. A mano: cuánto se puede apartar un píxel del color (o del fondo) para contarlo; más alto toma sombras y bordes suavizados.</dd></div>
+<div class="campo"><dt>Ajuste del umbral</dt><dd>0 = automático (Otsu). Positivo toma más gris como dibujo; negativo, menos.</dd></div>
+<div class="campo"><dt>Cortar</dt><dd>Lo oscuro = dibujo oscuro sobre fondo claro (lo común). Lo claro = dibujo claro sobre oscuro.</dd></div>
+<div class="campo"><dt>Suavizado</dt><dd>Quita el serrucho de los píxeles. 0 = el borde tal cual; más alto redondea más las esquinas chicas.</dd></div>
+<div class="campo"><dt>Quitar manchas menores a <span class="unidad">mm</span></dt><dd>Manchas y huecos de menos de este lado (en mm, ya a la medida final) se descartan: ruido del JPG, puntitos.</dd></div>
+</dl>
+<h3>Pieza</h3><dl class="campos">
+<div class="campo"><dt>Modo</dt><dd>Calado = el dibujo queda hueco en la chapa (las islas, con puentes). Silueta = el dibujo sale como pieza suelta (las partes separadas se unen solas).</dd></div>
+<div class="campo"><dt>Tamaño (el lado más largo) <span class="unidad">mm</span></dt><dd>Medida del lado más largo del ícono (ancho o alto, el mayor). El otro sale proporcional.</dd></div>
+<div class="campo"><dt>Espejo</dt><dd>Espejado = el dibujo dado vuelta de izquierda a derecha (una flecha que apunte al otro lado).<span class="opciones">Normal · Espejado</span></dd></div>
+<div class="campo"><dt>Giro</dt><dd>Gira el dibujo en sentido horario (por ejemplo, una flecha hacia arriba o hacia abajo).<span class="opciones">0° · 90° · 180° · 270°</span></dd></div>
+</dl>
+<h3>Marco</h3><dl class="campos">
+<div class="campo"><dt>Forma</dt><dd>Ninguno = solo el dibujo calado, en DXF (la chapa la armás en el CAD). Con una forma = la chapa del cartel entera con el ícono calado, lista para el nesting.<span class="opciones">Ninguno · Rectángulo · Esquinas invertidas · Esquinas en chaflán · Arco arriba · Ticket · Hexágono alargado · Escudo · Círculo · Óvalo</span></dd></div>
+<div class="campo"><dt>Ancho <span class="unidad">mm</span></dt><dd>Ancho total del cartel (en el círculo, el diámetro).</dd></div>
+<div class="campo"><dt>Alto <span class="unidad">mm</span></dt><dd>Alto total del cartel.</dd></div>
+<div class="campo"><dt>Margen hasta el ícono <span class="unidad">mm</span></dt><dd>Distancia mínima entre el borde del cartel y el ícono.</dd></div>
+<div class="campo"><dt>Tamaño del detalle (0 = automático) <span class="unidad">mm</span></dt><dd>Depende de la forma, igual que en Letras para cartel: radio de las esquinas, tamaño del chaflán, alto del arco, etc. Salvo en el rectángulo, 0 = un tamaño automático.</dd></div>
+<div class="campo"><dt>Agujeros de fijación</dt><dd>Ninguno, 2 arriba (para colgar) o 4 (uno cerca de cada esquina).</dd></div>
+<div class="campo"><dt>Diámetro de los agujeros <span class="unidad">mm</span></dt><dd>Diámetro de los agujeros de fijación.</dd></div>
+<div class="campo"><dt>Distancia del agujero al borde <span class="unidad">mm</span></dt><dd>Del centro del agujero al borde del cartel.</dd></div>
+<div class="campo"><dt>Tamaño del ícono <span class="unidad">%</span></dt><dd>100 % = lo más grande que entra en el cartel con el margen; al lado se ve la medida en mm.</dd></div>
+</dl>
+<h3>Puentes</h3><dl class="campos">
+<div class="campo"><dt>Ancho del puente (0 = automático) <span class="unidad">mm</span></dt><dd>Calado: ancho de los puentes que sostienen las islas (0 = 1,5 × espesor, mínimo 3 mm). Silueta: ancho de las uniones entre partes separadas (0 = 2 × espesor, mínimo 5 mm).</dd></div>
+<div class="campo"><dt>Puentes por isla</dt><dd>Automático = 2 puentes en las islas grandes y 1 en las chicas. O fijo 1 o 2.</dd></div>
 </dl></section>
 <h2 class="categoria" id="cat-formas-basicas">Formas básicas</h2>
 <section id="rectangulo" class="seccion figura"><div class="fig-cab"><img class="fig" src="../img/fig/rectangulo.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Rectángulo <span class="sello sello-demo">DEMO</span></h2><p class="sec-intro">Chapa rectangular con esquinas redondeadas y agujeros en las esquinas opcionales.</p></div></div>
