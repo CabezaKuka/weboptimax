@@ -13,6 +13,7 @@ Cada versión importante queda guardada en una rama `version-*` que apunta a ese
 | `version-antes-modo-claro` | `85be41d` | Última versión en modo oscuro (17 nov 2026). Encabezado "Software para talleres metalúrgicos", módulos en tarjetas, 6 funciones explicadas una debajo de la otra. |
 | `version-antes-ayuda` | `89cd541` | Antes de agregar la carpeta `ayuda/` y el enlace «Ayuda» en el menú y el pie (18 nov 2026). |
 | `version-modo-claro-v1` | `8ae20a0` | Primera versión publicada en modo claro (17 nov 2026): diagrama de módulos con optiMAX al centro, video de YouTube, favicon "M" blanca sobre rojo. |
+| `version-antes-carteles` | `9229890` | Antes de agregar Letras y carteles y Logos, y de cambiar el diagrama de módulos por tarjetas con detalle emergente (19 nov 2026). |
 
 ## Cómo volver a una versión anterior
 
