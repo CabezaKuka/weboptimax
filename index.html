@@ -717,7 +717,17 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '4773464836310644');
+// external_id: identificador anónimo por navegador (mejora la coincidencia de eventos en Meta)
+var oxEid = null;
+try {
+  oxEid = localStorage.getItem('ox_eid');
+  if (!oxEid) {
+    oxEid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+          : Date.now().toString(36) + Math.random().toString(36).slice(2);
+    localStorage.setItem('ox_eid', oxEid);
+  }
+} catch (e) { oxEid = null; }
+fbq('init', '4773464836310644', oxEid ? {external_id: oxEid} : {});
 fbq('track', 'PageView');
 </script>
 <!-- End Meta Pixel Code -->
