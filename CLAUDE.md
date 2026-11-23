@@ -1,6 +1,15 @@
 # weboptimax: notas para Claude
 
-Sitio estático de optiMAX (software de nesting y corte para talleres metalúrgicos), publicado con GitHub Pages desde la rama `main` en https://optimax.lat (archivo `CNAME`). Todo está en `index.html` (HTML, CSS y JS en un solo archivo), con imágenes en `img/` y videos en `video/`.
+Sitio estático de optiMAX (software de nesting y corte para talleres metalúrgicos), publicado con GitHub Pages desde la rama `main` en https://optimax.lat (archivo `CNAME`). Dos idiomas: `index.html` (español, con voseo) y `pt/index.html` (portugués de Brasil). Las dos usan los mismos `comun.css` y `comun.js`, y las mismas `img/` y `video/`.
+
+## Idiomas (español y portugués)
+
+- **`comun.js`** tiene toda la lógica y el bloque `CONFIG` (dirección de pago, ID de Binance, URL de descarga, WhatsApp, vencimiento del QR): se cambia una sola vez para las dos páginas. Los textos que arma el JS (mensaje de WhatsApp, avisos, «Comprar PRO por 590 Bs», etc.) vienen de `window.T`, definido al final de cada página.
+- **`pt/index.html` no se edita a mano**: se genera desde `index.html` con `python _herramientas/armar_pt.py` (tabla de pares español → portugués). Después de cambiar un texto en español, correr el script: si corta, actualizar o agregar el par en la tabla. Al final avisa si quedó algo en español. `_herramientas/` empieza con guion bajo, así que GitHub Pages no la publica.
+- **Redirección:** el script del principio de `index.html` pasa a `/pt/` si el navegador está en portugués, o si en el selector se eligió portugués (`localStorage` `ox_idioma`). Conserva `?codigo=` y `#comprar`, porque el botón «Comprar no site» del programa en portugués abre `https://optimax.lat/?codigo=…#comprar`. No sacarlo mientras el programa use esa dirección.
+- Selector con banderas SVG (España y Brasil; los emojis de banderas no se ven en Windows): `ES` · `PT` en la barra y nombres completos en el pie. Hasta 1023 px el menú se oculta para que entren selector y botón. La página pt enlaza «Ajuda» a `../ayuda/pt/`.
+- Píxel: es el mismo en las dos páginas. Todos los eventos llevan `idioma` (`es` / `pt-BR`) para medir Brasil aparte.
+- Glosario y nombres de módulos en portugués: los mismos del programa (Criar peça, Guilhotina, Grades e portões, Planificações, chapa, sobra…). Portugués de Brasil, sin «ecrã» ni «ficheiro».
 
 **Ayuda del programa** (`ayuda/`): 10 páginas estáticas, sin JavaScript ni píxel, que abren el botón «?» y la tecla F1 de cada ventana de optiMAX. **No se editan a mano**: se generan desde el repo del programa (`nesting-cnc`) con `python NO_DISTRIBUIR/generar_ayuda.py RUTA/weboptimax/ayuda` (textos en `desarrollos/` → `Param.ayuda` y en `ayuda_textos.py`). No cambiar nombres de páginas ni anclas: el programa abre esas direcciones (`ayuda.py`). Las imágenes de las figuras salen de `img/fig/`; las que faltan se dibujan en `ayuda/fig/`.
 
@@ -14,6 +23,7 @@ Cada versión importante queda guardada en una rama `version-*` que apunta a ese
 | `version-antes-ayuda` | `89cd541` | Antes de agregar la carpeta `ayuda/` y el enlace «Ayuda» en el menú y el pie (18 nov 2026). |
 | `version-modo-claro-v1` | `8ae20a0` | Primera versión publicada en modo claro (17 nov 2026): diagrama de módulos con optiMAX al centro, video de YouTube, favicon "M" blanca sobre rojo. |
 | `version-antes-carteles` | `9229890` | Antes de agregar Letras y carteles y Logos, y de cambiar el diagrama de módulos por tarjetas con detalle emergente (19 nov 2026). |
+| `version-antes-portugues` | `90820b3` | Antes de la versión en portugués (`/pt/`) y de separar `comun.css` / `comun.js` (22 nov 2026). Todo en un solo `index.html`. |
 
 ## Cómo volver a una versión anterior
 
@@ -38,6 +48,6 @@ Antes de cada cambio grande en producción, crear una rama marcador sobre `main`
 
 - Pixel de Meta (`fbq`), con los eventos personalizados `VerVideo`, `VerModulo` (al abrir o pasar de módulo en el detalle de Funciones) y `DescargaDesdeModulo` (botón de descarga dentro del detalle).
 - Funciones: tarjetas `.mod` (data-mod = id del artículo) que abren el diálogo `#mod-detalle`; el contenido de cada módulo son los `<article class="hub-panel">` guardados en `.mod-fuente`. Los enlaces `#f-…` del menú abren el detalle de ese módulo.
-- Lógica de descarga (`.js-descarga`) y de pago (pestañas, QR, mensaje de WhatsApp).
+- Lógica de descarga (`.js-descarga`) y de pago (pestañas, QR, mensaje de WhatsApp), en `comun.js`.
 - Precio en Bs para visitantes de Bolivia (detección por zona horaria; `.js-precio-pro`).
 - Para probar en local hace falta un servidor (`python -m http.server 8000`): abierto como archivo, el video de YouTube da error 153.
