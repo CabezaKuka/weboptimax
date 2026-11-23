@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Software para serralherias e metalúrgicas: nesting de peças DXF e planificação de chapas (T, curvas, cones, transições) para CNC de plasma, oxicorte ou laser, foto para DXF e, sem CNC, corte de barras, guilhotina, grades, portões e orçamento. DEMO grátis, PRO 49 USDT.">
+<meta property="og:title" content="optiMAX: nesting, planificação de chapas e cortes para serralherias e metalúrgicas">
+<meta property="og:description" content="Todo o corte da oficina, otimizado em um só programa: nesting, planificações, barras, guilhotina, grades e orçamento. DEMO grátis para Windows.">
+<meta property="og:image" content="https://optimax.lat/img/og.jpg">
+<meta property="og:url" content="https://optimax.lat/pt/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/icono.png">
+<link rel="canonical" href="https://optimax.lat/pt/">
+<link rel="alternate" hreflang="es" href="https://optimax.lat/">
+<link rel="alternate" hreflang="pt-BR" href="https://optimax.lat/pt/">
+<link rel="alternate" hreflang="x-default" href="https://optimax.lat/">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
+<title>optiMAX: nesting, planificação de chapas e cortes para serralherias e metalúrgicas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../comun.css">
+<!-- Meta Pixel Code (optiMAX-WEB) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+// external_id: identificador anónimo por navegador (mejora la coincidencia de eventos en Meta)
+var oxEid = null;
+try {
+  oxEid = localStorage.getItem('ox_eid');
+  if (!oxEid) {
+    oxEid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+          : Date.now().toString(36) + Math.random().toString(36).slice(2);
+    localStorage.setItem('ox_eid', oxEid);
+  }
+} catch (e) { oxEid = null; }
+fbq('init', '4773464836310644', oxEid ? {external_id: oxEid} : {});
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></noscript>
+
+<header class="barra">
+  <div class="envoltura">
+    <a class="marca" href="#inicio" aria-label="optiMAX, início"><img src="../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+    <nav aria-label="Seções">
+      <a href="#f-foto">Foto para DXF</a>
+      <a href="#funciones">Funções</a>
+      <a href="#desarrollos">Planificações</a>
+      <a href="#f-letras">Placas</a>
+      <a href="#versiones">DEMO e PRO</a>
+      <a href="#comprar">Comprar</a>
+      <a href="#preguntas">Perguntas</a>
+      <a href="../ayuda/pt/">Ajuda</a>
+    </nav>
+    <span class="idiomas" role="group" aria-label="Idioma"><a class="idioma js-idioma" href="../" hreflang="es" lang="es" data-idioma="es" title="Español"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg>ES</a><span class="idioma actual" title="Português"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009c3b"/><path d="M15 2.6 27.4 10 15 17.4 2.6 10z" fill="#ffdf00"/><circle cx="15" cy="10" r="4.1" fill="#002776"/></svg>PT</span></span>
+    <a class="boton boton-rojo boton-chico js-descarga" href="#descargar">Baixar DEMO</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="portada">
+    <video class="fondo-portada" src="../video/plasma-corte.mp4" poster="../video/plasma-corte.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <div class="envoltura">
+      <div>
+        <div class="cabecera-portada">
+          <span class="etiqueta"><i></i>Software para serralherias e metalúrgicas</span>
+          <span class="paises" aria-label="Para serralherias e metalúrgicas do Brasil"><span><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009c3b"/><path d="M15 2.6 27.4 10 15 17.4 2.6 10z" fill="#ffdf00"/><circle cx="15" cy="10" r="4.1" fill="#002776"/></svg>Brasil</span></span>
+        </div>
+        <h1>Todo o corte da oficina, <span class="acento">otimizado</span> em um só programa</h1>
+        <p class="lista-modulos">Nesting – Planificação de chapas – Placas e logos – Foto para DXF – Barras e tubos – Guilhotina – Grades e portões – Orçamento</p>
+        <div class="acciones">
+          <a class="boton boton-rojo js-descarga" href="#descargar">Baixar DEMO grátis</a>
+          <a class="boton boton-linea" href="#comprar">Comprar o PRO por 49 USDT</a>
+        </div>
+        <p class="mensaje js-mensaje-descarga" role="status"></p>
+        <div class="datos-portada">
+          <span>Windows 10 e 11</span><span>DXF padrão</span><span>Em português</span><span>Funciona sem internet</span><span>DEMO sem vencimento</span>
+        </div>
+      </div>
+      <figure class="escena">
+        <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura do nesting">
+          <img src="../img/cap-nesting.webp" width="1560" height="1002" fetchpriority="high" alt="optiMAX com 72 peças distribuídas em 8 chapas de 1.000 × 2.000 mm">
+        </button>
+        <figcaption>72 peças em 8 chapas. Ao fundo, a mesa de plasma da oficina onde o optiMAX é desenvolvido, em Santa Cruz de la Sierra (Bolívia).</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="seccion" id="funciones">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Todo o trabalho de corte em um só programa</h2>
+        <p>Para oficinas que cortam chapa em uma CNC e para as que trabalham só com serra, guilhotina e máquina de solda. Toque em cada módulo para ver o que ele faz.</p>
+      </div>
+      <div class="mods">
+        <div class="mods-grupo">
+          <div class="mods-cab"><span class="grupo-etq etq-cnc">Com a sua CNC</span><span>Peças para plasma, oxicorte ou laser, em DXF padrão</span></div>
+          <ul class="mods-grid">
+          <li><button class="mod" type="button" data-mod="f-nesting" aria-haspopup="dialog"><span class="mod-img"><img src="../img/cap-nesting.webp" width="1560" height="1002" loading="lazy" alt=""><span class="mod-sello">Na DEMO</span></span><span class="mod-nombre">Nesting<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span><span class="mod-linea">Distribui seus DXF na chapa com o menor desperdício</span></button></li>
+          <li><button class="mod" type="button" data-mod="f-desarrollos" aria-haspopup="dialog"><span class="mod-img"><img src="../img/cap-desarrollo.webp" width="1380" height="841" loading="lazy" alt=""><span class="mod-sello es-pro">PRO</span></span><span class="mod-nombre">Planificação de chapas<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span><span class="mod-linea">Derivações em T, curvas, cones, transições e helicoides</span></button></li>
+          <li><button class="mod" type="button" data-mod="f-letras" aria-haspopup="dialog"><span class="mod-img"><img src="../img/cap-letras.webp" width="1379" height="828" loading="lazy" alt=""><span class="mod-sello es-pro">PRO</span></span><span class="mod-nombre">Letras e placas<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span><span class="mod-linea">Texto vazado na chapa, com pontes e o formato da placa</span></button></li>
+          <li><button class="mod" type="button" data-mod="f-logos" aria-haspopup="dialog"><span class="mod-img"><img src="../img/cap-logo.webp" width="1379" height="828" loading="lazy" alt=""><span class="mod-sello es-pro">PRO</span></span><span class="mod-nombre">Logos e imagens<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span><span class="mod-linea">Do PNG ou JPG do cliente a uma peça para cortar</span></button></li>
+          <li><button class="mod" type="button" data-mod="f-foto" aria-haspopup="dialog"><span class="mod-img"><img src="../img/cap-foto-dxf.webp" width="1378" height="836" loading="lazy" alt=""><span class="mod-sello">Detectar na DEMO</span></span><span class="mod-nombre">Foto para DXF<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span><span class="mod-linea">O contorno medido de uma peça a partir de uma foto</span></button></li>
+          <li><button class="mod" type="button" data-mod="f-costos" aria-haspopup="dialog"><span class="mod-img"><img src="../img/cap-presupuesto.webp" width="1199" height="753" loading="lazy" alt=""><span class="mod-sello es-pro">PRO</span></span><span class="mod-nombre">Custos e orçamento<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span><span class="mod-linea">Metros de corte, tempo e custo de cada peça</span></button></li>
+          </ul>
+        </div>
+        <div class="mods-grupo sin-cnc">
+          <div class="mods-cab"><span class="grupo-etq etq-sin">Sem CNC</span><span>Para a oficina que trabalha com serra, tesoura e máquina de solda</span></div>
+          <ul class="mods-grid">
+          <li><button class="mod" type="button" data-mod="f-barras" aria-haspopup="dialog"><span class="mod-img"><img src="../img/cap-barras.webp" width="1237" height="790" loading="lazy" alt=""><span class="mod-sello">DEMO: 5 peças</span></span><span class="mod-nombre">Barras e tubos<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span><span class="mod-linea">Quantas barras comprar e como cortar cada uma</span></button></li>
+          <li><button class="mod" type="button" data-mod="f-guillotina" aria-haspopup="dialog"><span class="mod-img"><img src="../img/cap-guillotina.webp" width="1279" height="809" loading="lazy" alt=""><span class="mod-sello">DEMO: 5 peças</span></span><span class="mod-nombre">Guilhotina<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span><span class="mod-linea">Cortes de lado a lado, numerados em ordem</span></button></li>
+          <li><button class="mod" type="button" data-mod="f-rejas" aria-haspopup="dialog"><span class="mod-img"><img src="../img/cap-rejas.webp" width="1321" height="830" loading="lazy" alt=""><span class="mod-sello">Grade na DEMO</span></span><span class="mod-nombre">Grades e portões<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span><span class="mod-linea">Desenho, lista de corte e barras a comprar</span></button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mod-fuente" hidden>
+
+        <article class="hub-panel" id="f-nesting">
+          <div class="hub-texto"><h3>Nesting pela forma real <span class="sello sello-demo">DEMO e PRO</span></h3><p>Carregue seus DXF, informe as quantidades e a medida da chapa. O optiMAX testa dezenas de ordens de encaixe em paralelo e fica com a que usa menos chapas e deixa a sobra mais aproveitável.</p><ul>
+              <li>Peças irregulares, com furos e peças pequenas dentro dos furos</li>
+              <li>Importa um DXF com muitas peças e agrupa as iguais</li>
+              <li>Rotação de 90° até livre a cada 5°</li>
+              <li>Ordem de corte otimizada: furos primeiro e o mínimo de deslocamento em vazio</li>
+              <li>Confere cada DXF exportado com a distribuição, peça por peça</li>
+            </ul></div>
+          <div class="hub-media"><button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura do nesting"> <img src="../img/cap-nesting.webp" width="1560" height="1002" loading="lazy" alt="optiMAX com 72 peças distribuídas em 8 chapas de 1.000 × 2.000 mm, 71,2 % de aproveitamento"> </button></div>
+        </article>
+        <article class="hub-panel" id="f-desarrollos">
+          <div class="hub-texto"><h3>Planificação de chapas <span class="sello sello-pro">PRO</span></h3><p>Preencha as medidas e a peça planificada vai direto para o nesting. Veja a prévia antes de adicionar e edite de novo quando quiser.</p><ul>
+              <li>Derivações em T (boca de lobo) em qualquer ângulo e com excentricidade</li>
+              <li>Curvas redondas e retangulares, cones, transições e helicoides</li>
+              <li>Furo na chapa do tubo principal incluído</li>
+              <li>Plano de montagem em PDF com marcas e linhas de dobra</li>
+            </ul></div>
+          <div class="hub-media"><div class="doble"> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura de Criar peça"> <img src="../img/cap-desarrollo.webp" width="1380" height="841" loading="lazy" alt="Janela Criar peça com a planificação de um T cilindro sobre cilindro de 100 mm a 90°"> </button> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar o plano de montagem em PDF"> <img src="../img/plano-transicion.webp" width="1102" height="776" loading="lazy" alt="Plano de montagem em PDF de uma transição retangular para redondo de 300 × 300 mm para Ø 100 mm, escala 1:10, com linhas de dobra"> </button> </div></div>
+        </article>
+        <article class="hub-panel" id="f-letras">
+          <div class="hub-texto"><h3>Letras e placas <span class="sello sello-pro">PRO</span></h3><p>Escreva o texto, escolha o formato da placa e o optiMAX monta a chapa inteira com as letras vazadas. Os miolos do O, do A, do B ou do 0 ficam presos por pontes para não caírem.</p><ul>
+              <li>1 ou 2 linhas de texto, com 6 fontes incluídas de uso comercial livre</li>
+              <li>9 formatos de placa: retângulo, cantos chanfrados ou invertidos, arco, ticket, hexágono, escudo, círculo e oval</li>
+              <li>Furos para pendurar ou parafusar, e fundo liso ou vazado decorativo</li>
+              <li>Sem placa: só as letras, na largura exata que você precisa, em DXF</li>
+            </ul></div>
+          <div class="hub-media"><div class="doble con-pieza"> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura de Letras para placa"> <img src="../img/cap-letras.webp" width="1379" height="828" loading="lazy" alt="Janela Criar peça com uma placa tipo escudo de 350 × 350 mm com o texto optiMAX 3.2 vazado e fundo vazado"> </button> <img class="pieza-foto" src="../img/cartel-escudo.webp" width="670" height="657" loading="lazy" alt="A mesma placa tipo escudo cortada em chapa e pintada de vermelho"> </div></div>
+        </article>
+        <article class="hub-panel" id="f-logos">
+          <div class="hub-texto"><h3>Logos e imagens <span class="sello sello-pro">PRO</span></h3><p>O logo que o cliente manda em PNG ou JPG vira direto uma peça para cortar. Informe a medida e o optiMAX separa o desenho do fundo, suaviza a borda e adiciona as pontes.</p><ul>
+              <li>Vazado na chapa ou silhueta solta</li>
+              <li>Separa por cor ou por claro e escuro: serve para logos, digitalizações e fotos de um desenho</li>
+              <li>Limpa manchas e o serrilhado dos pixels</li>
+              <li>Com ou sem placa em volta, com os mesmos formatos e furos das letras</li>
+            </ul></div>
+          <div class="hub-media"><div class="doble con-pieza"> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura de Logo / imagem"> <img src="../img/cap-logo.webp" width="1379" height="828" loading="lazy" alt="Janela Criar peça com um logo de leão vazado em uma placa de 300 × 300 mm com cantos invertidos"> </button> <img class="pieza-foto" src="../img/cartel-leon.webp" width="658" height="654" loading="lazy" alt="Painel de chapa vermelha com um leão vazado"> </div></div>
+        </article>
+        <article class="hub-panel" id="f-foto">
+          <div class="hub-texto"><h3>Peça a partir de uma foto <span class="sello sello-demo">Detectar na DEMO</span> <span class="sello sello-pro">PRO</span></h3><p>Tire uma foto da peça apoiada sobre a folha de calibração e o optiMAX entrega o contorno medido, pronto para o nesting.</p><ul>
+              <li>Detecta retas, arcos e círculos com suas medidas</li>
+              <li>Ajuste o contorno se precisar</li>
+              <li>Adicione ao nesting ou exporte em DXF (PRO)</li>
+            </ul></div>
+          <div class="hub-media"><button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura de Peça a partir de uma foto"> <img src="../img/cap-foto-dxf.webp" width="1378" height="836" loading="lazy" alt="Janela Peça a partir de uma foto com o contorno detectado"> </button></div>
+        </article>
+        <article class="hub-panel" id="f-costos">
+          <div class="hub-texto"><h3>Custos e orçamento <span class="sello sello-pro">PRO</span></h3><p>Com o preço da chapa e os dados da sua máquina, calcula metros de corte, perfurações, tempo estimado e custo de cada peça.</p><ul>
+              <li>Desconta a sobra que pode ser reaproveitada</li>
+              <li>Orçamento em PDF interno ou versão para o cliente</li>
+              <li>Moeda e dados da sua empresa configuráveis</li>
+            </ul></div>
+          <div class="hub-media"><button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura do orçamento"> <img src="../img/cap-presupuesto.webp" width="1199" height="753" loading="lazy" alt="Orçamento do trabalho: 72 peças, 123 m de corte, 1 h 55 min estimados"> </button></div>
+        </article>
+        <article class="hub-panel sin-cnc" id="f-barras">
+          <div class="hub-texto"><h3>Barras, tubos e cantoneiras <span class="sello sello-demo">DEMO até 5 peças</span> <span class="sello sello-pro">PRO</span></h3><p>Otimiza o corte de perfis em barras de comprimento fixo. Cole a lista do Excel e veja quantas barras comprar e como cortar cada uma.</p><ul>
+              <li>Comprimento da barra e largura do corte à sua escolha</li>
+              <li>Lista de corte em PDF com a medida de cada pedaço</li>
+              <li>Preço por peça conforme o custo da barra</li>
+            </ul></div>
+          <div class="hub-media"><button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura de barras"> <img src="../img/cap-barras.webp" width="1237" height="790" loading="lazy" alt="Corte de 79 peças de cantoneira 40×40×3 em 20 barras de 6.000 mm com 94,5 % de aproveitamento"> </button></div>
+        </article>
+        <article class="hub-panel sin-cnc" id="f-guillotina">
+          <div class="hub-texto"><h3>Guilhotina (tesoura) <span class="sello sello-demo">DEMO até 5 peças</span> <span class="sello sello-pro">PRO</span></h3><p>Para retângulos cortados na tesoura: cortes de lado a lado, como a máquina trabalha, respeitando o comprimento máximo de corte.</p><ul>
+              <li>Cortes numerados na ordem em que são feitos</li>
+              <li>Plano de cortes em PDF para levar à máquina</li>
+            </ul></div>
+          <div class="hub-media"><div class="doble"> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura da guilhotina"> <img src="../img/cap-guillotina.webp" width="1279" height="809" loading="lazy" alt="Janela da guilhotina com 18 peças em 3 chapas e 25 cortes"> </button> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar o plano de cortes em PDF"> <img src="../img/cap-pdf-guillotina.webp" width="1125" height="675" loading="lazy" alt="Plano de cortes da guilhotina em PDF com os cortes numerados"> </button> </div></div>
+        </article>
+        <article class="hub-panel sin-cnc" id="f-rejas">
+          <div class="hub-texto"><h3>Grades e portões <span class="sello sello-demo">Grade na DEMO</span> <span class="sello sello-pro">Portões PRO</span></h3><p>Informe a largura e a altura do portão ou da grade, escolha os perfis e o preenchimento, e o programa monta o desenho com todas as medidas, a lista de corte com cada peça marcada e quantas barras comprar de cada perfil.</p><ul>
+              <li>Grade, portão de abrir de 1 e 2 folhas e portão de correr</li>
+              <li>Preenchimento vertical, horizontal, diagonal, losangos, quadriculado, cruz ou chapa fechada</li>
+              <li>Cortes a 45° com croqui; peso, metros de solda e m² de pintura</li>
+              <li>Desenho em PDF, DXF e cópia para o Excel (PRO); perfis em mm ou polegadas</li>
+              <li>Na DEMO: grade de janela de até 1.500 × 1.000 mm</li>
+            </ul></div>
+          <div class="hub-media"><div class="doble"> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar a captura de grades e portões"> <img src="../img/cap-rejas.webp" width="1321" height="830" loading="lazy" alt="Janela Grades e portões com um portão de abrir de 2 folhas de 3.000 × 2.100 mm: 28 peças, 10 barras, 57 kg"> </button> <button class="captura ventana js-ampliar" type="button" aria-label="Ampliar o desenho com medidas em PDF"> <img src="../img/cap-pdf-rejas.webp" width="1121" height="792" loading="lazy" alt="Desenho em PDF do portão de abrir de 2 folhas com cotas acumuladas e peças marcadas por letra"> </button> </div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="desarrollos">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Catálogo de peças</h2>
+        <p>As formas básicas e a curva redonda por gomos vêm na DEMO. As demais planificações fazem parte do PRO.</p>
+      </div>
+      <ul class="catalogo">
+        <li><img src="../img/fig/rectangulo.webp" width="88" height="66" loading="lazy" alt=""><span>Retângulo</span><span class="sello sello-demo">DEMO</span></li>
+        <li><img src="../img/fig/disco.webp" width="88" height="66" loading="lazy" alt=""><span>Disco / arruela</span><span class="sello sello-demo">DEMO</span></li>
+        <li><img src="../img/fig/brida.webp" width="88" height="66" loading="lazy" alt=""><span>Flange</span><span class="sello sello-demo">DEMO</span></li>
+        <li><img src="../img/fig/codo_sectores.webp" width="88" height="66" loading="lazy" alt=""><span>Curva redonda por gomos</span><span class="sello sello-demo">DEMO</span></li>
+        <li><img src="../img/fig/t_cil_cil.webp" width="88" height="66" loading="lazy" alt=""><span>T cilindro / cilindro</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="../img/fig/t_rect_cil.webp" width="88" height="66" loading="lazy" alt=""><span>T ramal retangular sobre tubo</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="../img/fig/t_cil_rect.webp" width="88" height="66" loading="lazy" alt=""><span>T ramal redondo sobre duto retangular</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="../img/fig/codo_rect.webp" width="88" height="66" loading="lazy" alt=""><span>Curva retangular</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="../img/fig/curva_directa_90.webp" width="88" height="66" loading="lazy" alt=""><span>Curva direta 90°</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="../img/fig/curva_directa.webp" width="88" height="66" loading="lazy" alt=""><span>Curva direta</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="../img/fig/desvio_paralelo.webp" width="88" height="66" loading="lazy" alt=""><span>Desvio circular paralelo</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="../img/fig/tronco_cono.webp" width="88" height="66" loading="lazy" alt=""><span>Tronco de cone / redução</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="../img/fig/transicion_rect_red.webp" width="88" height="66" loading="lazy" alt=""><span>Transição retangular para redondo</span><span class="sello sello-pro">PRO</span></li>
+        <li><img src="../img/fig/helicoide.webp" width="88" height="66" loading="lazy" alt=""><span>Helicoide (hélice de rosca transportadora)</span><span class="sello sello-pro">PRO</span></li>
+      </ul>
+      <p class="nota-tecnica">As medidas são informadas como diâmetros e seções externas; a planificação é calculada na linha neutra da espessura da chapa. As linhas de dobra levam entalhes em V opcionais e vão para o plano em PDF, nunca para o DXF de corte.</p>
+    </div>
+  </section>
+
+  <section class="seccion" id="video">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Veja funcionando</h2>
+        <p>Nesting, planificações, guilhotina, portões, tremonhas e peça a partir de uma foto. Vídeo com o programa em espanhol.</p>
+      </div>
+      <div class="video-yt">
+        <button class="js-video-yt" type="button" data-id="OUzk42WqTRM" aria-label="Reproduzir o vídeo do optiMAX">
+          <img src="https://i.ytimg.com/vi/OUzk42WqTRM/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/OUzk42WqTRM/hqdefault.jpg'" width="1280" height="720" loading="lazy" alt="Vídeo do optiMAX: uso completo do programa">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="taller">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Feito numa oficina que corta todos os dias</h2>
+        <p>O optiMAX nasceu para resolver o corte das nossas próprias máquinas de chapa e cantoneiras. Cada função foi pensada a partir de um problema real da oficina.</p>
+      </div>
+      <div class="taller">
+        <figure><img src="../img/taller-pieza.webp" width="1152" height="2048" loading="lazy" alt="Peça de chapa cortada a plasma e montada na oficina"><figcaption>Peça cortada e montada</figcaption></figure>
+        <figure><video src="../video/plasma-chispas.mp4" poster="../video/plasma-chispas.jpg" autoplay muted loop playsinline preload="none" aria-label="Arco de plasma cortando"></video><figcaption>Corte em andamento</figcaption></figure>
+        <figure><img src="../img/taller-maquinas.webp" width="1252" height="851" loading="lazy" alt="Máquinas agrícolas de chapa prontas na oficina"><figcaption>Máquinas prontas</figcaption></figure>
+        <figure><img src="../img/taller-tolvas.webp" width="1600" height="900" loading="lazy" alt="Tremonhas de chapa em fabricação"><figcaption>Tremonhas em fabricação</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="versiones">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>DEMO e PRO</h2>
+        <p>A DEMO não vence e já faz o nesting completo. O PRO acrescenta as planificações, os portões, os custos e os projetos, e tira os limites de barras, guilhotina e grades.</p>
+      </div>
+      <div class="planes">
+        <div class="plan">
+          <h3>DEMO</h3>
+          <div class="monto">Grátis<small>Sem vencimento</small></div>
+          <ul>
+            <li>Nesting completo e DXF de todas as chapas</li>
+            <li>Formas básicas e curva redonda por gomos</li>
+            <li>Foto para DXF: detectar, medir e editar</li>
+            <li>Barras e guilhotina até 5 peças</li>
+            <li>Grade de janela até 1.500 × 1.000 mm</li>
+          </ul>
+          <a class="boton boton-linea js-descarga" href="#descargar">Baixar DEMO grátis</a>
+          <p class="mensaje js-mensaje-descarga" role="status"></p>
+        </div>
+        <div class="plan plan-pro">
+          <span class="cinta">PAGAMENTO ÚNICO</span>
+          <h3>PRO</h3>
+          <div class="monto js-precio-pro">49 USDT<small>ou 590 Bs pelo QR boliviano · um PC</small></div>
+          <ul>
+            <li>Tudo da DEMO, sem limites</li>
+            <li>As 10 planificações de chapa</li>
+            <li>Foto para DXF: adicionar ao nesting e exportar</li>
+            <li>Todos os portões, com DXF, PDF e Excel</li>
+            <li>Custos, orçamento e projetos salvos</li>
+          </ul>
+          <a class="boton boton-rojo" href="#comprar">Comprar o PRO</a>
+        </div>
+      </div>
+      <details class="comparacion">
+      <summary>Ver a comparação completa</summary>
+      <div class="tabla-caja">
+        <table>
+          <thead>
+            <tr><th scope="col">Função</th><th scope="col">DEMO<small>Grátis</small></th><th scope="col" class="col-pro">PRO<small>49 USDT ou 590 Bs, pagamento único</small></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nesting pela forma real, DXF com várias peças e ordem de corte otimizada</td><td class="si">Sim</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Profundidade do cálculo</td><td class="parcial">Rápido e Normal (até 24 ordens)</td><td class="parcial col-pro">+ Profundo e Máximo</td></tr>
+            <tr><td>Exportar o DXF de todas as chapas (R12, com arcos)</td><td class="si">Sim</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Plano de montagem em PDF e pesos</td><td class="si">Sim</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Custos, tempo de corte e orçamento em PDF</td><td class="no">Não</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Salvar e abrir projetos</td><td class="no">Não</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Formas básicas e curva redonda por gomos</td><td class="si">Sim</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>As outras 10 planificações (T, curvas, cone, transição, desvio, helicoide)</td><td class="no">Não</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Foto para DXF: detectar, medir e editar</td><td class="si">Sim</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Foto para DXF: adicionar ao nesting e exportar o DXF</td><td class="no">Não</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Barras, tubos e guilhotina: calcular e desenhar</td><td class="parcial">Até 5 peças</td><td class="parcial col-pro">Sem limite</td></tr>
+            <tr><td>Barras e guilhotina: preço por peça, PDF e Excel</td><td class="no">Não</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Grades e portões: desenho, lista de corte e barras</td><td class="parcial">Grade de janela até 1.500 × 1.000 mm</td><td class="parcial col-pro">Todos os tipos e medidas</td></tr>
+            <tr><td>Grades e portões: DXF, PDF, Excel e custos</td><td class="no">Não</td><td class="si col-pro">Sim</td></tr>
+            <tr><td>Configurações do sistema</td><td class="parcial">Edita materiais (sem preço nem velocidade); o resto só visualiza</td><td class="parcial col-pro">Tudo</td></tr>
+            <tr><td>Atualizações grátis</td><td class="si">Sim</td><td class="si col-pro">Sim</td></tr>
+          </tbody>
+        </table>
+      </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="seccion" id="descargar">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Baixe a DEMO</h2>
+        <p>O optiMAX é um programa de computador para Windows. Instala como qualquer programa, sem nada extra.</p>
+      </div>
+      <dl class="requisitos">
+        <div><dt>Sistema</dt><dd>Windows 10 ou 11 de 64 bits</dd></div>
+        <div><dt>Processador</dt><dd>x64 de 4 núcleos ou mais recomendado; o cálculo usa vários núcleos ao mesmo tempo</dd></div>
+        <div><dt>Memória</dt><dd>4 GB mínimo, 8 GB recomendado</dd></div>
+        <div><dt>Disco</dt><dd>Cerca de 300 MB livres</dd></div>
+        <div><dt>Tela</dt><dd>1366 × 768 ou maior</dd></div>
+        <div><dt>Arquivos</dt><dd>Lê e exporta DXF; detecta se o desenho está em milímetros ou polegadas</dd></div>
+      </dl>
+      <div class="acciones">
+        <a class="boton boton-rojo js-descarga" href="#descargar">Baixar DEMO grátis</a>
+      </div>
+      <p class="mensaje js-mensaje-descarga" role="status"></p>
+    </div>
+  </section>
+
+  <section class="seccion" id="comprar">
+    <div class="envoltura compra">
+      <div>
+        <h2>Comprar o optiMAX PRO</h2>
+        <div class="precio" style="margin-top:22px"><b>49 USDT</b><span>ou 590 Bs pelo QR boliviano. Pagamento único, um PC.</span></div>
+        <ol class="pasos">
+          <li><div><b>Instale a DEMO</b><span>Na janela «Ativar optiMAX PRO» aparece o código do seu PC.</span></div></li>
+          <li><div><b>Pague a licença</b><span>De qualquer país, 49 USDT para o ID da Binance ou pela rede BNB Smart Chain (BEP-20). Ou 590 Bs com o QR do Banco Nacional da Bolívia.</span></div></li>
+          <li><div><b>Envie seus dados e o comprovante pelo WhatsApp</b><span>Preencha seu nome e o código do seu PC: a mensagem é montada sozinha e você anexa o comprovante do pagamento.</span></div></li>
+          <li><div><b>Receba sua chave PRO</b><span>Conferimos o pagamento e enviamos a chave para ativar nesse PC.</span></div></li>
+        </ol>
+        <div class="condiciones">
+          <p><b>Uma licença, um PC.</b> A chave fica vinculada ao computador.</p>
+          <p><b>Sem reembolso.</b> Teste a DEMO com os seus próprios DXF antes de comprar.</p>
+        </div>
+      </div>
+
+      <div class="pago">
+        <div class="pestanas" role="tablist" aria-label="Forma de pagamento">
+          <button type="button" role="tab" id="tab-binance" aria-controls="panel-binance" aria-selected="true">ID da Binance<small>49 USDT</small></button>
+          <button type="button" role="tab" id="tab-usdt" aria-controls="panel-usdt" aria-selected="false">Outra carteira<small>USDT BEP-20</small></button>
+          <button type="button" role="tab" id="tab-qr" aria-controls="panel-qr" aria-selected="false">QR boliviano<small>590 Bs</small></button>
+        </div>
+
+        <div class="panel" id="panel-binance" role="tabpanel" aria-labelledby="tab-binance">
+          <div class="qr-banco">
+            <div class="id-caja">
+              <small>ID da Binance</small>
+              <b id="id-binance"></b>
+              <button class="boton boton-linea boton-chico" type="button" id="copiar-id">Copiar ID</button>
+              <span class="tenue" id="copiado-id" role="status"></span>
+            </div>
+            <div class="qr-banco-texto">
+              <div class="pago-red"><span>ID da Binance</span><span>Valor: 49 USDT</span></div>
+              <p class="tenue">Nome da conta: <b style="color:var(--texto)">GMSoftware</b></p>
+              <p class="tenue">No app da Binance: <b style="color:var(--texto)">Ativos → USDT → Enviar → Enviar para usuário da Binance</b>. Cole o ID e envie 49 USDT.</p>
+              <p class="tenue">É uma transferência entre contas da Binance: chega na hora e sem taxa.</p>
+              <ul class="avisos"><li>Guarde o comprovante do pagamento: você vai enviá-lo pelo WhatsApp.</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-usdt" role="tabpanel" aria-labelledby="tab-usdt" hidden>
+          <div class="pago-red"><span>USDT na rede BNB Smart Chain (BEP-20)</span><span>Valor: 49 USDT</span></div>
+          <div class="qr-y-dir">
+            <div id="qr" aria-label="Código QR do endereço de pagamento"></div>
+            <div style="display:grid;gap:10px;min-width:0">
+              <div class="direccion" id="direccion"></div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+                <button class="boton boton-linea boton-chico" type="button" id="copiar">Copiar endereço</button>
+                <span class="tenue" id="copiado" role="status" style="font-size:.9rem"></span>
+              </div>
+            </div>
+          </div>
+          <ul class="avisos">
+            <li>De qualquer carteira ou exchange: Binance, MEXC, Bybit etc.</li>
+            <li>Use somente a rede BNB Smart Chain (BEP-20). Se enviar por outra rede (TRC-20, ERC-20), o dinheiro pode ser perdido.</li>
+            <li>Envie 49 USDT. A taxa da rede fica por nossa conta.</li>
+            <li>Guarde o comprovante do envio: você vai enviá-lo pelo WhatsApp.</li>
+          </ul>
+        </div>
+
+        <div class="panel" id="panel-qr" role="tabpanel" aria-labelledby="tab-qr" hidden>
+          <div class="qr-banco">
+            <img id="img-qr-bnb" src="../img/qr-bnb.jpg" width="640" height="1002" alt="QR de cobrança do Banco Nacional da Bolívia de 590 Bs, referente à licença optiMAX PRO">
+            <div class="qr-banco-texto">
+              <div class="pago-red"><span>QR do Banco Nacional da Bolívia</span><span>Valor: 590 Bs</span></div>
+              <p class="tenue">Escaneie o QR com o app do seu banco ou carteira. O valor já está preenchido.</p>
+              <p class="tenue">Se estiver vendo a página no celular, salve o QR e abra pela galeria no app do seu banco.</p>
+              <a class="boton boton-linea boton-chico" id="bajar-qr" href="../img/qr-bnb.jpg" download="QR-optiMAX-PRO.jpg">Salvar QR</a>
+              <ul class="avisos"><li>Guarde o comprovante: você vai enviá-lo pelo WhatsApp.</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <form class="formulario" id="form-comprobante" novalidate>
+          <label for="nombre-lic">Nome ou empresa para a licença
+            <input id="nombre-lic" name="nombre-lic" autocomplete="organization" maxlength="80" placeholder="Assim aparece em «Sobre» no programa">
+          </label>
+          <label for="codigo-pc">Código do seu PC (janela «Ativar optiMAX PRO»)
+            <input id="codigo-pc" name="codigo-pc" autocomplete="off" spellcheck="false" placeholder="Ex.: 5ZS5-FJFM-AJVR">
+          </label>
+          <button class="boton boton-rojo" type="submit">Preparar mensagem de WhatsApp</button>
+          <p class="mensaje" id="mensaje-form" role="status"></p>
+          <div class="envio" id="envio" hidden>
+            <p><b>Último passo:</b> envie a mensagem e anexe o comprovante do pagamento.</p>
+            <div class="envio-opciones">
+              <div class="envio-qr">
+                <div id="qr-wa" aria-label="Código QR para abrir o WhatsApp no celular"></div>
+                <span class="tenue">Pagou pelo celular? Escaneie este QR com a câmera: o WhatsApp abre com a mensagem pronta para anexar o comprovante.</span>
+              </div>
+              <div class="envio-boton">
+                <a class="boton boton-rojo" id="abrir-wa" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+                <span class="tenue">Abre o WhatsApp neste dispositivo.</span>
+              </div>
+            </div>
+            <pre class="vista-msg" id="vista-msg"></pre>
+          </div>
+          <p class="tenue" style="font-size:.9rem">WhatsApp de vendas: <span style="user-select:all" id="numero-wa">+591 77626675</span></p>
+          <p class="tenue" style="font-size:.9rem">Dúvidas antes de comprar? Pergunte ao nosso assistente:</p>
+          <a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Envie sua dúvida</span><small>WhatsApp +591 78516826</small></a>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="preguntas">
+    <div class="envoltura">
+      <div class="intro"><h2>Perguntas frequentes</h2><p>Tem outra pergunta? Escreva para o nosso assistente pelo WhatsApp, ele responde na hora.</p><a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Envie sua dúvida</span><small>WhatsApp +591 78516826</small></a></div>
+      <div class="preguntas">
+        <details><summary>Serve para a minha máquina CNC?</summary><p>O optiMAX exporta um DXF padrão por chapa, só com as linhas de corte e na ordem otimizada. Esse arquivo é aberto pelo programa da sua máquina de plasma, oxicorte ou laser (FastCAM ou outro), que adiciona entradas, compensação e velocidade como sempre. Na nossa oficina usamos com o FastCAM em uma plasma.</p></details>
+        <details><summary>Serve se eu não tiver CNC?</summary><p>Sim. O corte de barras e tubos, a guilhotina e as grades e portões não precisam de CNC: mostram quantas barras ou chapas comprar e como cortar cada uma, com a lista de cortes para a serra ou a guilhotina. O nesting, as planificações e a foto para DXF geram arquivos em escala real para cortar em uma CNC.</p></details>
+        <details><summary>O Windows mostra um aviso de segurança ao instalar?</summary><p>É uma verificação normal do Windows ao instalar. Clique em «Mais informações» e depois em «Executar assim mesmo». O optiMAX foi <a class="js-vt" target="_blank" rel="noopener">verificado com 67 antivírus</a>, sem nenhuma detecção. No Windows 11 a janela é diferente, mas os botões são os mesmos. Se usar o Edge e o download ficar pausado, clique em «…» sobre o download e em «Manter». Baixe sempre em optimax.lat.</p></details>
+        <details><summary>Precisa de internet?</summary><p>Não. O programa e a ativação do PRO funcionam sem conexão.</p></details>
+        <details><summary>A DEMO tem vencimento?</summary><p>Não. Você pode usar pelo tempo que quiser, com os limites da tabela DEMO e PRO.</p></details>
+        <details><summary>Posso usar a licença em dois computadores?</summary><p>Não. Cada chave serve para um PC. Para outro computador é preciso outra licença.</p></details>
+        <details><summary>Posso pagar de outra forma?</summary><p>De qualquer país, 49 USDT para o ID da Binance (entre contas da Binance) ou pela rede BNB Smart Chain (BEP-20) de qualquer carteira ou exchange. Também 590 Bs com o QR do Banco Nacional da Bolívia. Por enquanto não há outras formas de pagamento.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="envoltura">
+    <img src="../img/logo-oscuro.webp" alt="optiMAX" width="66" height="22">
+    <span>Desenvolvido pela GMSoftware, Santa Cruz de la Sierra, Bolívia</span>
+    <a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Envie sua dúvida</span><small>WhatsApp +591 78516826</small></a>
+    <span>Vendas: +591 77626675</span>
+    <a href="../ayuda/pt/">Ajuda do programa</a>
+    <span class="idiomas" role="group" aria-label="Idioma"><a class="idioma js-idioma" href="../" hreflang="es" lang="es" data-idioma="es" title="Español"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg>Español</a><span class="idioma actual" title="Português"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009c3b"/><path d="M15 2.6 27.4 10 15 17.4 2.6 10z" fill="#ffdf00"/><circle cx="15" cy="10" r="4.1" fill="#002776"/></svg>Português</span></span>
+  </div>
+</footer>
+
+<div class="barra-movil" id="barra-movil">
+  <a class="boton boton-rojo js-descarga" href="#descargar" data-movil="Enviar a DEMO para o meu PC">Baixar DEMO grátis</a>
+  <a class="boton boton-linea" href="#comprar">Comprar o PRO</a>
+</div>
+
+<a class="wa-flotante js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener" aria-label="Dúvidas pelo WhatsApp, assistente automático"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Dúvidas</span></a>
+
+<dialog class="mod-detalle" id="mod-detalle" aria-label="Detalhe do módulo">
+  <div class="md-caja">
+    <div class="md-cab"><span class="md-grupo"></span><span class="md-cuenta"></span><button type="button" class="md-cerrar" aria-label="Fechar">✕</button></div>
+    <div class="md-cuerpo"></div>
+    <section class="md-pie">
+      <button type="button" class="md-nav md-ant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H6M11 6l-6 6 6 6"/></svg><span></span></button>
+      <a class="boton boton-rojo js-descarga md-descarga" href="#descargar" data-movil="Enviar a DEMO para o meu PC">Baixar DEMO grátis</a>
+      <button type="button" class="md-nav md-sig"><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+      <p class="mensaje js-mensaje-descarga md-mensaje" role="status"></p>
+    </section>
+  </div>
+</dialog>
+<dialog class="visor" id="visor" aria-label="Captura ampliada">
+  <button type="button" id="cerrar-visor">Fechar</button>
+  <img id="visor-img" alt="">
+</dialog>
+
+<dialog class="instalar" id="instalar" aria-labelledby="instalar-titulo">
+  <div class="instalar-caja">
+    <button type="button" class="instalar-cerrar" id="cerrar-instalar" aria-label="Fechar">✕</button>
+    <h2 id="instalar-titulo">Seu download começou</h2>
+    <p class="tenue">Para instalar, abra o arquivo baixado.</p>
+    <p class="instalar-aviso"><b>O Windows mostra um aviso de segurança?</b> É uma verificação normal do Windows ao instalar.
+      Clique em «Mais informações» e depois em «Executar assim mesmo». O optiMAX foi
+      <a class="js-vt" target="_blank" rel="noopener">verificado com 67 antivírus</a>, sem nenhuma detecção.</p>
+    <ol class="instalar-pasos">
+      <li><img src="../img/instalar-1.webp" width="532" height="498" loading="lazy"
+             alt="Janela «O Windows protegeu o computador» com «Mais informações» marcado">
+        <div><span class="num">1</span>Clique em <b>«Mais informações»</b></div></li>
+      <li><img src="../img/instalar-2.webp" width="532" height="498" loading="lazy"
+             alt="Janela «O Windows protegeu o computador» com «Executar assim mesmo» marcado">
+        <div><span class="num">2</span>Clique em <b>«Executar assim mesmo»</b></div></li>
+      <li class="ancho"><div><span class="num">3</span>Se o Windows perguntar se você permite que o aplicativo faça alterações, clique em
+        <b>«Sim»</b>. No instalador do optiMAX, aceite as condições de uso e siga com <b>«Avançar»</b> até
+        <b>«Instalar»</b>.</div></li>
+    </ol>
+    <p class="instalar-nota tenue">No Windows 11 a janela é diferente, mas os botões são os mesmos. As imagens mostram o Windows em espanhol.</p>
+    <p class="instalar-nota tenue">Usa o Edge e o download ficou pausado? Clique em «…» sobre o download e em «Manter».</p>
+    <details><summary>Por que o Windows pede confirmação?</summary>
+      <p>O Windows pede uma confirmação extra para programas que não têm um certificado pago de assinatura digital, e
+      o optiMAX é distribuído sem esse certificado. O instalador é o que a GMSoftware publica no seu repositório oficial no
+      GitHub: baixe sempre em optimax.lat.</p></details>
+    <div class="instalar-pie">
+      <a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Dúvidas para instalar? Fale com a gente</span><small>WhatsApp +591 78516826</small></a>
+      <span class="tenue">Não começou? <a id="descarga-otra" href="#">Baixe de novo</a></span>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+// Textos que arma el JS (comun.js), en portugués de Brasil. La versión en español está en ../index.html.
+window.T = {
+  idioma: "pt-BR",
+  urlCompartir: "https://optimax.lat/pt/#descargar",
+  dirCopiada: "Endereço copiado", dirSeleccionada: "Endereço selecionado: copie com Ctrl+C",
+  idCopiado: "ID copiado", idSeleccionado: "ID selecionado: copie com Ctrl+C",
+  enlaceCopiado: "Link copiado: cole no seu WhatsApp ou e-mail e abra no computador.",
+  abriEnlace: "Abra este link no seu computador: ",
+  compartirTexto: "Baixe a DEMO do optiMAX no computador (Windows):",
+  enlaceCorto: "Link para o meu PC", enlaceLargo: "Enviar o link para o meu PC",
+  soloPC: "O optiMAX é para PC com Windows: envie o link para você mesmo e baixe no computador.",
+  sinDescarga: "O download será liberado nos próximos dias. Enquanto isso, fale com a gente pelo WhatsApp +591 78516826.",
+  formas: {binance: "ID da Binance, 49 USDT", usdt: "USDT BEP-20, 49 USDT", qr: "QR do BNB (Bolívia), 590 Bs"},
+  comprarBs: "Comprar o PRO por 590 Bs",
+  precioBsDetalle: "ou 49 USDT de outros países. Pagamento único, um PC.",
+  montoBsDetalle: "ou 49 USDT de outros países · um PC",
+  errNombre: "Escreva o nome ou a empresa para a licença.",
+  errLargo: "O nome é muito longo: encurte um pouco (máximo de 80 caracteres sem acentos).",
+  errCodigo: "O código do PC tem 12 letras e números, por exemplo 5ZS5-FJFM-AJVR. Copie da janela «Ativar optiMAX PRO».",
+  mensajeWA: (nome, codigo, forma) => `Olá, paguei o optiMAX PRO.\nNome para a licença: ${nome}\nCódigo do PC: ${codigo}\nForma de pagamento: ${forma}\nSegue o comprovante do pagamento.`,
+  tituloVideo: "Vídeo do optiMAX",
+  conCnc: "Com a sua CNC", sinCnc: "Sem CNC", de: " de ", anterior: "Anterior: ", siguiente: "Próximo: "
+};
+</script>
+<script src="../comun.js"></script>
+</body>
+</html>
