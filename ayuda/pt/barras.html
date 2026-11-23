@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barras, tubos e cantoneiras · Ajuda do optiMAX</title>
+<meta name="description" content="Cortar barras de comprimento fixo com o menor desperdício.">
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../../" aria-label="optiMAX, página principal"><img src="../../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ajuda</span>
+  <span class="idiomas" aria-label="Idioma"><a href="../barras.html" hreflang="es" lang="es">Español</a> · <span>Português</span></span>
+  <a class="barra-link" href="../../#descargar">Baixar a DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas da ajuda">
+<a href="index.html">Início</a>
+<a href="nesting.html">Janela principal</a>
+<a href="crear-pieza.html">Criar peça</a>
+<a href="foto.html">Peça a partir de uma foto</a>
+<a href="barras.html" aria-current="page">Barras, tubos e cantoneiras</a>
+<a href="guillotina.html">Guilhotina</a>
+<a href="portones.html">Grades e portões</a>
+<a href="tolvas.html">Tremonhas</a>
+<a href="ajustes.html">Configurações do sistema</a>
+<a href="activar.html">Ativar PRO</a>
+</nav>
+<main>
+<h1>Barras, tubos e cantoneiras</h1>
+<p class="intro">Decide como cortar barras de comprimento fixo (tubos, cantoneiras, perfis) para tirar todas as peças com a menor quantidade de barras. Os cortes são a 90°.</p>
+<p class="intro">Ordem de uso: escolha o material, confira o comprimento da barra e a largura do corte, informe as peças (comprimento e quantidade) e toque em CALCULAR. Na DEMO, até 5 peças no total.</p>
+<nav class="en-pagina" aria-label="Nesta página"><p>Nesta página</p><a href="#material">Material</a><a href="#piezas">Peças a cortar</a><a href="#resultado">Resultado e saída</a></nav>
+<section id="material" class="seccion"><h2>Material</h2>
+<dl class="campos">
+<div class="campo"><dt>Material</dt><dd>Perfil da lista de Configurações → Barras e perfis. Traz o comprimento da barra e o preço.</dd></div>
+<div class="campo"><dt>Comprimento da barra (mm)</dt><dd>Comprimento das barras novas (o usual: 6000).</dd></div>
+<div class="campo"><dt>Largura do corte (mm)</dt><dd>O que a serra ou o disco come em cada corte. É descontado entre peça e peça.</dd></div>
+<div class="campo"><dt>Distribuir a sobra no preço <span class="sello sello-pro">PRO</span></dt><dd>O preço de cada peça inclui sua parte da sobra. Sem marcar, a sobra vai à parte.</dd></div>
+</dl></section>
+<section id="piezas" class="seccion"><h2>Peças a cortar</h2>
+<dl class="campos">
+<div class="campo"><dt>Comprimento / Qtd. / ＋ Adicionar</dt><dd>Comprimento da peça e quantas. Enter ou ＋ a soma à lista.</dd></div>
+<div class="campo"><dt>Lista (− / + / ✕)</dt><dd>Muda a quantidade ou tira uma peça; o comprimento pode ser corrigido na linha.</dd></div>
+<div class="campo"><dt>Colar do Excel</dt><dd>Cola duas colunas copiadas do Excel: comprimento e quantidade.</dd></div>
+<div class="campo"><dt>Importar…</dt><dd>Lê uma lista de um arquivo CSV ou Excel (.xlsx): comprimento e quantidade.</dd></div>
+<div class="campo"><dt>Limpar</dt><dd>Apaga toda a lista.</dd></div>
+</dl></section>
+<section id="resultado" class="seccion"><h2>Resultado e saída</h2>
+<dl class="campos">
+<div class="campo"><dt>CALCULAR</dt><dd>Monta as barras: cada uma com suas peças em ordem e a sobra.</dd></div>
+<div class="campo"><dt>Preço por peça <span class="sello sello-pro">PRO</span></dt><dd>Custo de cada peça conforme o preço da barra.</dd></div>
+<div class="campo"><dt>Salvar PDF… <span class="sello sello-pro">PRO</span></dt><dd>Lista de corte em PDF com a medida de cada trecho.</dd></div>
+<div class="campo"><dt>Copiar lista para o Excel <span class="sello sello-pro">PRO</span></dt><dd>Copia a lista de corte para colá-la em uma planilha.</dd></div>
+<div class="campo"><dt>Salvar projeto / Abrir projeto… / Novo <span class="sello sello-pro">PRO</span></dt><dd>Salva ou abre a lista em um arquivo .nesting.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../../">optimax.lat</a> · Verifique todas as medidas antes de cortar ou fabricar.</footer>
+</main>
+</div>
+</body>
+</html>

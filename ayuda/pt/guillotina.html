@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guilhotina (tesoura) · Ajuda do optiMAX</title>
+<meta name="description" content="Chapas para guilhotina, com os cortes em ordem.">
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../../" aria-label="optiMAX, página principal"><img src="../../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ajuda</span>
+  <span class="idiomas" aria-label="Idioma"><a href="../guillotina.html" hreflang="es" lang="es">Español</a> · <span>Português</span></span>
+  <a class="barra-link" href="../../#descargar">Baixar a DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas da ajuda">
+<a href="index.html">Início</a>
+<a href="nesting.html">Janela principal</a>
+<a href="crear-pieza.html">Criar peça</a>
+<a href="foto.html">Peça a partir de uma foto</a>
+<a href="barras.html">Barras, tubos e cantoneiras</a>
+<a href="guillotina.html" aria-current="page">Guilhotina</a>
+<a href="portones.html">Grades e portões</a>
+<a href="tolvas.html">Tremonhas</a>
+<a href="ajustes.html">Configurações do sistema</a>
+<a href="activar.html">Ativar PRO</a>
+</nav>
+<main>
+<h1>Guilhotina (tesoura)</h1>
+<p class="intro">Distribui peças retangulares em chapas para cortá-las com guilhotina: todos os cortes vão de lado a lado, como a máquina faz, e saem numerados na ordem em que são feitos.</p>
+<p class="intro">Ordem de uso: escolha material e chapa, informe as peças (altura, comprimento e quantidade), indique o comprimento máximo de corte da sua guilhotina e toque em CALCULAR. Na DEMO, até 5 peças no total.</p>
+<nav class="en-pagina" aria-label="Nesta página"><p>Nesta página</p><a href="#material">Material e chapa</a><a href="#piezas">Peças a cortar (altura × comprimento)</a><a href="#resultado">Resultado e saída</a></nav>
+<section id="material" class="seccion"><h2>Material e chapa</h2>
+<dl class="campos">
+<div class="campo"><dt>Material (chapa)</dt><dd>Chapa da lista de Configurações → Materiais (peso e preço).</dd></div>
+<div class="campo"><dt>Medida da chapa</dt><dd>Medidas mais usadas; «Outra» = à mão.</dd></div>
+<div class="campo"><dt>Comprimento / Largura (mm)</dt><dd>Medida da chapa.</dd></div>
+<div class="campo"><dt>Largura do corte (mm)</dt><dd>O que se perde em cada corte. Na guilhotina costuma ser 0.</dd></div>
+<div class="campo"><dt>Refile (mm)</dt><dd>Faixa que se descarta nas quatro bordas da chapa (bordas danificadas ou fora de esquadro).</dd></div>
+<div class="campo"><dt>Comprimento máx. de corte (mm)</dt><dd>O que sua guilhotina corta de ponta a ponta. Um corte mais longo não é usado. 0 = sem limite.</dd></div>
+<div class="campo"><dt>Permitir girar as peças (sem veio)</dt><dd>Deixa girar as peças 90°. Desmarque se a chapa tem veio ou desenho que deve ir em um sentido.</dd></div>
+<div class="campo"><dt>Distribuir a sobra no preço <span class="sello sello-pro">PRO</span></dt><dd>O preço de cada peça inclui sua parte da sobra.</dd></div>
+</dl></section>
+<section id="piezas" class="seccion"><h2>Peças a cortar (altura × comprimento)</h2>
+<dl class="campos">
+<div class="campo"><dt>Altura / Comprimento / Qtd.</dt><dd>Medida e quantidade de cada peça; é somada à lista.</dd></div>
+<div class="campo"><dt>Colar do Excel</dt><dd>Cola três colunas copiadas do Excel: altura, comprimento e quantidade.</dd></div>
+<div class="campo"><dt>Importar… / Limpar</dt><dd>Lê a lista de um CSV ou Excel, ou a apaga.</dd></div>
+</dl></section>
+<section id="resultado" class="seccion"><h2>Resultado e saída</h2>
+<dl class="campos">
+<div class="campo"><dt>CALCULAR</dt><dd>Desenha as chapas com os cortes numerados em ordem.</dd></div>
+<div class="campo"><dt>Preço por peça <span class="sello sello-pro">PRO</span></dt><dd>Custo de cada peça conforme o preço da chapa.</dd></div>
+<div class="campo"><dt>Salvar PDF… <span class="sello sello-pro">PRO</span></dt><dd>Plano de cortes em PDF.</dd></div>
+<div class="campo"><dt>Copiar para o Excel <span class="sello sello-pro">PRO</span></dt><dd>Copia o resultado para uma planilha.</dd></div>
+<div class="campo"><dt>Salvar projeto / Abrir projeto… / Novo <span class="sello sello-pro">PRO</span></dt><dd>Salva ou abre o trabalho em um arquivo .nesting.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../../">optimax.lat</a> · Verifique todas as medidas antes de cortar ou fabricar.</footer>
+</main>
+</div>
+</body>
+</html>

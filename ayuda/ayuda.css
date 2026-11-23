@@ -14,7 +14,10 @@ a{color:var(--rojo-oscuro)}
   background:rgba(255,255,255,.94);box-shadow:0 1px 0 var(--acero-3);backdrop-filter:blur(6px)}
 .marca img{display:block;height:30px;width:auto}
 .barra-tit{font:700 20px/1 var(--f-titulo);letter-spacing:.02em;text-transform:uppercase;color:var(--tenue)}
-.barra-link{margin-left:auto;font-weight:600;text-decoration:none;background:var(--rojo);color:#fff;
+.idiomas{margin-left:auto;font-size:14px;color:var(--tenue)}
+.idiomas a{color:var(--tenue)}
+.idiomas span{font-weight:600;color:var(--texto)}
+.barra-link{font-weight:600;text-decoration:none;background:var(--rojo);color:#fff;
   padding:7px 14px;border-radius:8px;font-size:14px}
 .barra-link:hover{background:var(--rojo-oscuro)}
 .marco{display:grid;grid-template-columns:230px minmax(0,1fr);gap:32px;max-width:1180px;margin:0 auto;

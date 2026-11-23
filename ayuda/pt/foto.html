@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peça a partir de uma foto · Ajuda do optiMAX</title>
+<meta name="description" content="Da foto de uma peça a um contorno para cortar.">
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../../" aria-label="optiMAX, página principal"><img src="../../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ajuda</span>
+  <span class="idiomas" aria-label="Idioma"><a href="../foto.html" hreflang="es" lang="es">Español</a> · <span>Português</span></span>
+  <a class="barra-link" href="../../#descargar">Baixar a DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas da ajuda">
+<a href="index.html">Início</a>
+<a href="nesting.html">Janela principal</a>
+<a href="crear-pieza.html">Criar peça</a>
+<a href="foto.html" aria-current="page">Peça a partir de uma foto</a>
+<a href="barras.html">Barras, tubos e cantoneiras</a>
+<a href="guillotina.html">Guilhotina</a>
+<a href="portones.html">Grades e portões</a>
+<a href="tolvas.html">Tremonhas</a>
+<a href="ajustes.html">Configurações do sistema</a>
+<a href="activar.html">Ativar PRO</a>
+</nav>
+<main>
+<h1>Peça a partir de uma foto</h1>
+<p class="intro">Converte a foto de uma peça em um contorno de retas, arcos e círculos para cortá-la.</p>
+<p class="intro">Como: imprima a folha de calibração em 100 %, apoie a peça em cima, tire a foto de cima com os 4 quadrados pretos à vista e passe-a para o PC sem compressão (pelo WhatsApp, como documento). Depois: Abrir foto → ajuste a detecção → corrija o que for preciso sobre a foto → Adicionar ao nesting.</p>
+<nav class="en-pagina" aria-label="Nesta página"><p>Nesta página</p><a href="#foto">Foto da peça</a><a href="#hoja">Folha de calibração</a><a href="#deteccion">Detecção</a><a href="#pieza">Peça</a><a href="#edicion">Edição sobre a foto</a><a href="#control">Controle da folha (mm)</a><a href="#vista">Prévia e saída</a></nav>
+<section id="foto" class="seccion"><h2>Foto da peça</h2>
+<dl class="campos">
+<div class="campo"><dt>Abrir foto…</dt><dd>Escolhe a foto. A folha e seu tamanho de papel são reconhecidos sozinhos.</dd></div>
+</dl></section>
+<section id="hoja" class="seccion"><h2>Folha de calibração</h2>
+<dl class="campos">
+<div class="campo"><dt>A4 · Carta · A3</dt><dd>Tamanho de papel da folha a imprimir.</dd></div>
+<div class="campo"><dt>Salvar PDF…</dt><dd>Salva a folha em PDF para imprimi-la em tamanho real (100 %, sem «ajustar à página»).</dd></div>
+</dl></section>
+<section id="deteccion" class="seccion"><h2>Detecção</h2>
+<dl class="campos">
+<div class="campo"><dt>Limiar</dt><dd>Quanto da imagem é tomado como peça. Para a direita, mais peça; para a esquerda, menos. No meio = automático.</dd></div>
+<div class="campo"><dt>Voltar ao automático</dt><dd>Coloca o limiar de novo em automático.</dd></div>
+<div class="campo"><dt>Brilhos do metal</dt><dd>Recupera as partes da peça que saem brancas pelo reflexo. 0 = não as procura.</dd></div>
+<div class="campo"><dt>Limpeza da borda</dt><dd>Preenche entalhes e rebarbas pequenas do contorno (o valor em mm). Nada = fiel à foto.</dd></div>
+</dl></section>
+<section id="pieza" class="seccion"><h2>Peça</h2>
+<dl class="campos">
+<div class="campo"><dt>Espessura (mm)</dt><dd>Corrige a borda da peça que se vê em perspectiva. Por padrão, a do material escolhido.</dd></div>
+<div class="campo"><dt>Tolerância do contorno</dt><dd>Quanto o contorno limpo pode se afastar da borda medida. Mais = menos trechos, mais simples; menos = mais fiel.</dd></div>
+<div class="campo"><dt>Retas quase a 0°, 45° ou 90°: exatas</dt><dd>Endireita as retas que estão quase nesses ângulos.</dd></div>
+<div class="campo"><dt>Arredondar diâmetros e raios a 0,5 mm</dt><dd>Se um furo ou raio está a 0,2 mm ou menos de um valor redondo, deixa-o exato.</dd></div>
+</dl></section>
+<section id="edicion" class="seccion"><h2>Edição sobre a foto</h2><p class="sec-intro">Arraste os pontos: □ move um canto, ○ curva um trecho e um trecho inteiro se move em paralelo. Roda = zoom; arrastar o fundo = mover a vista.</p>
+<dl class="campos">
+<div class="campo"><dt>Ímã na borda (Ctrl solta)</dt><dd>Ao soltar um ponto, ele vai para a borda real da peça na foto. Com Ctrl pressionado, fica onde você o soltar.</dd></div>
+<div class="campo"><dt>Shift ao arrastar</dt><dd>Deixa a reta vizinha a 0°, 45° ou 90°.</dd></div>
+<div class="campo"><dt>Duplo clique</dt><dd>Medida exata: comprimento e ângulo de uma reta, raio de um arco ou diâmetro de um círculo.</dd></div>
+<div class="campo"><dt>Clique direito</dt><dd>Adicionar ou apagar um ponto, passar um trecho de reta para arco (e vice-versa), adicionar ou apagar um furo.</dd></div>
+<div class="campo"><dt>Desfazer / Refazer</dt><dd>Volta atrás ou adiante as mudanças.</dd></div>
+<div class="campo"><dt>Desenhar o contorno à mão</dt><dd>Para quando a detecção não serve: clique ponto por ponto; clique no primeiro ou Enter fecha, Esc cancela.</dd></div>
+<div class="campo"><dt>Voltar ao detectado</dt><dd>Descarta o editado e volta ao contorno detectado.</dd></div>
+</dl></section>
+<section id="control" class="seccion"><h2>Controle da folha (mm)</h2>
+<dl class="campos">
+<div class="campo"><dt>Horizontal / Vertical</dt><dd>Meça com régua entre as bordas externas dos quadrados pretos. Se não der o que a folha diz (a impressora a reduziu ou ampliou), informe o medido.</dd></div>
+</dl></section>
+<section id="vista" class="seccion"><h2>Prévia e saída</h2>
+<dl class="campos">
+<div class="campo"><dt>Ver o detectado</dt><dd>Mostra em cima da foto a mancha detectada.</dd></div>
+<div class="campo"><dt>Ver a peça inteira</dt><dd>Enquadra a peça inteira.</dd></div>
+<div class="campo"><dt>Medidas</dt><dd>Medidas do contorno final e avisos da detecção.</dd></div>
+<div class="campo"><dt>Nome / Quantidade</dt><dd>Como a peça se chama na lista e quantas cortar.</dd></div>
+<div class="campo"><dt>Adicionar ao nesting <span class="sello sello-pro">PRO</span></dt><dd>Manda a peça para a lista da janela principal.</dd></div>
+<div class="campo"><dt>Exportar DXF… <span class="sello sello-pro">PRO</span></dt><dd>Salva o contorno em DXF, para continuar no AutoCAD.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../../">optimax.lat</a> · Verifique todas as medidas antes de cortar ou fabricar.</footer>
+</main>
+</div>
+</body>
+</html>

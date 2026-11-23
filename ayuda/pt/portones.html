@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grades e portões · Ajuda do optiMAX</title>
+<meta name="description" content="Grades e portões com lista de corte e barras por perfil.">
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../../" aria-label="optiMAX, página principal"><img src="../../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ajuda</span>
+  <span class="idiomas" aria-label="Idioma"><a href="../portones.html" hreflang="es" lang="es">Español</a> · <span>Português</span></span>
+  <a class="barra-link" href="../../#descargar">Baixar a DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas da ajuda">
+<a href="index.html">Início</a>
+<a href="nesting.html">Janela principal</a>
+<a href="crear-pieza.html">Criar peça</a>
+<a href="foto.html">Peça a partir de uma foto</a>
+<a href="barras.html">Barras, tubos e cantoneiras</a>
+<a href="guillotina.html">Guilhotina</a>
+<a href="portones.html" aria-current="page">Grades e portões</a>
+<a href="tolvas.html">Tremonhas</a>
+<a href="ajustes.html">Configurações do sistema</a>
+<a href="activar.html">Ativar PRO</a>
+</nav>
+<main>
+<h1>Grades e portões</h1>
+<p class="intro">Monta grades e portões de serralheria por medidas: desenha a elevação e tira a lista de corte com marcas e como cortar as barras de cada perfil. As peças inclinadas são dadas com o comprimento ponta a ponta e o ângulo de cada extremo medido a partir do esquadro (são cortadas no esquadro e depois se faz a ponta).</p>
+<p class="intro">Na DEMO: só grade de janela até 1500 × 1000 mm; aparecem o desenho, a lista e as barras.</p>
+<nav class="en-pagina" aria-label="Nesta página"><p>Nesta página</p><a href="#items">Itens do trabalho</a><a href="#tipo">Tipo</a><a href="#medidas">Medidas do vão (mm)</a><a href="#perfiles">Perfis</a><a href="#relleno">Enchimento</a><a href="#holguras">Folgas do portão</a><a href="#taller">Corte e custos da oficina</a><a href="#vista">Prévia</a><a href="#salida">Lista, barras e saída</a></nav>
+<section id="items" class="seccion"><h2>Itens do trabalho</h2>
+<dl class="campos">
+<div class="campo"><dt>＋ Item / ⧉ Duplicar</dt><dd>Adiciona um novo ou copia o escolhido. Um trabalho pode ter vários itens; a lista de corte e as barras juntam todos.</dd></div>
+<div class="campo"><dt>Nome / Quantidade</dt><dd>Como o item se chama e quantos iguais são feitos.</dd></div>
+</dl></section>
+<section id="tipo" class="seccion"><h2>Tipo</h2>
+<dl class="campos">
+<div class="campo"><dt>Grade de janela</dt><dd>Um quadro com enchimento. Serve também para painéis de cerca.</dd></div>
+<div class="campo"><dt>Portão de abrir 1 folha / 2 folhas <span class="sello sello-pro">PRO</span></dt><dd>Folhas que abrem com dobradiças.</dd></div>
+<div class="campo"><dt>Portão de correr <span class="sello sello-pro">PRO</span></dt><dd>Uma folha que corre sobre um trilho.</dd></div>
+</dl></section>
+<section id="medidas" class="seccion"><h2>Medidas do vão (mm)</h2>
+<dl class="campos">
+<div class="campo"><dt>Largura / Altura</dt><dd>Medida do vão a cobrir. As folhas saem descontando as folgas.</dd></div>
+</dl></section>
+<section id="perfiles" class="seccion"><h2>Perfis</h2>
+<dl class="campos">
+<div class="campo"><dt>Todos · mm · pol.</dt><dd>Filtra a lista de perfis pela forma como suas medidas estão escritas (milímetros ou polegadas).</dd></div>
+<div class="campo"><dt>⚙ Gerenciar perfis…</dt><dd>Última opção de cada lista: abre Configurações → Barras e perfis para cadastrar ou corrigir perfis.</dd></div>
+<div class="campo"><dt>Moldura</dt><dd>Perfil do quadro de cada folha (vai em meia-esquadria, 45°).</dd></div>
+<div class="campo"><dt>Travessas</dt><dd>Perfil das travessas. «Igual ao quadro» = o mesmo perfil do quadro.</dd></div>
+<div class="campo"><dt>Enchimento</dt><dd>Perfil das barras ou diagonais.</dd></div>
+</dl></section>
+<section id="relleno" class="seccion"><h2>Enchimento</h2>
+<dl class="campos">
+<div class="campo"><dt>Barras verticais / horizontais</dt><dd>Barras paralelas distribuídas com vãos iguais.</dd></div>
+<div class="campo"><dt>Diagonais</dt><dd>Barras inclinadas (em 2 folhas, espelhadas na direita).</dd></div>
+<div class="campo"><dt>Losangos / Quadriculado</dt><dd>Duas famílias de barras cruzadas, soldadas em cada cruzamento.</dd></div>
+<div class="campo"><dt>Cruz (X) por trecho</dt><dd>Um X em cada trecho entre travessas.</dd></div>
+<div class="campo"><dt>Chapa cega</dt><dd>Folha fechada com chapa.</dd></div>
+<div class="campo"><dt>Vão máximo (mm)</dt><dd>Vão livre máximo entre barras. Coloca-se a menor quantidade de barras para que todos os vãos sejam iguais e não passem deste valor.</dd></div>
+<div class="campo"><dt>Ângulo (°)</dt><dd>Inclinação das diagonais e losangos.</dd></div>
+<div class="campo"><dt>Travessas</dt><dd>Quantas travessas cruzam a folha (perpendiculares às barras; com chapa, horizontais). Dividem a folha em trechos iguais.</dd></div>
+<div class="campo"><dt>Montagem</dt><dd>De topo = o enchimento é cortado em cada trecho e apoia contra a travessa. Passantes = o enchimento vai inteiro de quadro a quadro e a travessa fica sobreposta.</dd></div>
+<div class="campo"><dt>Espessura da chapa (mm)</dt><dd>Só com chapa cega: espessura da chapa.</dd></div>
+</dl></section>
+<section id="holguras" class="seccion"><h2>Folgas do portão</h2>
+<dl class="campos">
+<div class="campo"><dt>Folga lateral (mm)</dt><dd>Folga entre cada folha e a lateral do vão.</dd></div>
+<div class="campo"><dt>Folga entre folhas (mm)</dt><dd>Folga entre as duas folhas de um portão de abrir de 2 folhas.</dd></div>
+<div class="campo"><dt>Folga do piso (mm)</dt><dd>Espaço livre entre o piso e a folha.</dd></div>
+<div class="campo"><dt>Sobreposição do portão de correr (mm)</dt><dd>Quanto a folha de correr passa além do vão do lado que fecha.</dd></div>
+</dl></section>
+<section id="taller" class="seccion"><h2>Corte e custos da oficina</h2><p class="sec-intro">O aço sai do preço por barra de Configurações → Barras e perfis; a margem, de Configurações → Custos e moeda.</p>
+<dl class="campos">
+<div class="campo"><dt>Largura do corte da serra (mm)</dt><dd>O que se perde em cada corte de barra.</dd></div>
+<div class="campo"><dt>Solda (por m) <span class="sello sello-pro">PRO</span></dt><dd>Custo por metro de solda.</dd></div>
+<div class="campo"><dt>Pintura (por m²) <span class="sello sello-pro">PRO</span></dt><dd>Custo por metro quadrado de pintura.</dd></div>
+</dl></section>
+<section id="vista" class="seccion"><h2>Prévia</h2>
+<dl class="campos">
+<div class="campo"><dt>Colorir peças</dt><dd>Cada marca com sua cor. Desligado = desenho monocromático.</dd></div>
+<div class="campo"><dt>Cotas</dt><dd>Medidas de montagem acumuladas a partir da borda externa de cada folha até a face de cada peça (o que se marca com a trena). Também vão para o DXF (camada COTAS) e para o PDF.</dd></div>
+</dl></section>
+<section id="salida" class="seccion"><h2>Lista, barras e saída</h2>
+<dl class="campos">
+<div class="campo"><dt>Lista de corte</dt><dd>Cada peça diferente com sua marca (letra e cor, a mesma do desenho), perfil, comprimento ponta a ponta, corte de cada extremo com croqui e quantidade. Clique em uma linha = é marcada no desenho (e vice-versa).</dd></div>
+<div class="campo"><dt>Barras por perfil</dt><dd>Como cortar as barras de cada perfil, com as marcas de cada trecho.</dd></div>
+<div class="campo"><dt>Resumo</dt><dd>Peças, barras, peso, metros de solda, superfície de pintura e preço.</dd></div>
+<div class="campo"><dt>Salvar PDF… <span class="sello sello-pro">PRO</span></dt><dd>Lista de corte, barras e plano de cada item, em um só PDF.</dd></div>
+<div class="campo"><dt>Copiar para o Excel <span class="sello sello-pro">PRO</span></dt><dd>Copia a lista de corte para uma planilha.</dd></div>
+<div class="campo"><dt>Salvar / Abrir / Novo <span class="sello sello-pro">PRO</span></dt><dd>Salva ou abre o trabalho em um arquivo .nesting.</dd></div>
+<div class="campo"><dt>Exportar DXF… <span class="sello sello-pro">PRO</span></dt><dd>Elevação em DXF, com uma camada por marca.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../../">optimax.lat</a> · Verifique todas as medidas antes de cortar ou fabricar.</footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Janela principal: nesting de chapa · Ajuda do optiMAX</title>
+<meta name="description" content="Carregar peças, distribuí-las em chapas e exportar o DXF.">
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../ayuda.css">
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="../../" aria-label="optiMAX, página principal"><img src="../../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"></a>
+  <span class="barra-tit">Ajuda</span>
+  <span class="idiomas" aria-label="Idioma"><a href="../nesting.html" hreflang="es" lang="es">Español</a> · <span>Português</span></span>
+  <a class="barra-link" href="../../#descargar">Baixar a DEMO</a>
+</header>
+<div class="marco">
+<nav class="menu" aria-label="Páginas da ajuda">
+<a href="index.html">Início</a>
+<a href="nesting.html" aria-current="page">Janela principal</a>
+<a href="crear-pieza.html">Criar peça</a>
+<a href="foto.html">Peça a partir de uma foto</a>
+<a href="barras.html">Barras, tubos e cantoneiras</a>
+<a href="guillotina.html">Guilhotina</a>
+<a href="portones.html">Grades e portões</a>
+<a href="tolvas.html">Tremonhas</a>
+<a href="ajustes.html">Configurações do sistema</a>
+<a href="activar.html">Ativar PRO</a>
+</nav>
+<main>
+<h1>Janela principal: nesting de chapa</h1>
+<p class="intro">Distribui peças em chapas para cortá-las com plasma ou laser, com o menor desperdício possível, e exporta um DXF por chapa para a mesa de corte.</p>
+<p class="intro">Ordem de uso: carregue as peças (DXF, Criar ou Foto) e suas quantidades → escolha chapa, opções e material → DISTRIBUIR → revise o resultado → Exportar DXF.</p>
+<nav class="en-pagina" aria-label="Nesta página"><p>Nesta página</p><a href="#encabezado">Cabeçalho</a><a href="#proyecto">Projeto</a><a href="#modulos">Módulos</a><a href="#piezas">Peças</a><a href="#multipieza">DXF com várias peças</a><a href="#plancha">Opções: Chapa</a><a href="#optimizacion">Opções: Otimização</a><a href="#material">Opções: Material</a><a href="#acciones">Distribuir e exportar</a><a href="#resultado">Resultado</a><a href="#exportar">Exportar DXF</a><a href="#presupuesto">Orçamento do trabalho</a></nav>
+<section id="encabezado" class="seccion"><h2>Cabeçalho</h2>
+<dl class="campos">
+<div class="campo"><dt>?</dt><dd>Abre esta ajuda no navegador (também com F1).</dd></div>
+<div class="campo"><dt>⚙</dt><dd>Configurações do sistema: materiais, perfis, custos, dados da empresa e aparência.</dd></div>
+<div class="campo"><dt>Sobre</dt><dd>Versão instalada, licença e procurar atualizações.</dd></div>
+<div class="campo"><dt>Botão da licença</dt><dd>Mostra se é DEMO ou PRO. Na DEMO abre «Ativar PRO».</dd></div>
+</dl></section>
+<section id="proyecto" class="seccion"><h2>Projeto</h2>
+<dl class="campos">
+<div class="campo"><dt>Novo</dt><dd>Começa um trabalho vazio. Se há mudanças sem salvar, pergunta antes.</dd></div>
+<div class="campo"><dt>Abrir… <span class="sello sello-pro">PRO</span></dt><dd>Abre um projeto .nesting salvo (peças, opções, material e a distribuição). Se o projeto é de barras, guilhotina, portões ou tremonhas, abre essa janela.</dd></div>
+<div class="campo"><dt>Salvar / Salvar como… <span class="sello sello-pro">PRO</span></dt><dd>Salva o trabalho em um arquivo .nesting. As peças vão dentro do arquivo: não é preciso guardar os DXF originais.</dd></div>
+</dl></section>
+<section id="modulos" class="seccion"><h2>Módulos</h2><p class="sec-intro">Cada módulo é um trabalho à parte: enquanto há peças de chapa carregadas, os módulos ficam desabilitados (e vice-versa).</p>
+<dl class="campos">
+<div class="campo"><dt>Barras e tubos</dt><dd>Corte de barras, tubos e cantoneiras de comprimento fixo. Ver «Barras, tubos e cantoneiras».</dd></div>
+<div class="campo"><dt>Guilhotina</dt><dd>Corte de chapa com guilhotina (cortes de lado a lado). Ver «Guilhotina».</dd></div>
+<div class="campo"><dt>Grades e portões</dt><dd>Grades e portões de serralheria com lista de corte. Ver «Grades e portões».</dd></div>
+<div class="campo"><dt>Tremonhas <span class="sello sello-pro">PRO</span></dt><dd>Tremonhas sobre pés calculadas por capacidade. Ver «Tremonhas».</dd></div>
+</dl></section>
+<section id="piezas" class="seccion"><h2>Peças</h2>
+<dl class="campos">
+<div class="campo"><dt>＋ DXF</dt><dd>Adiciona peças a partir de arquivos DXF (você pode escolher vários). As unidades do arquivo são detectadas sozinhas; se forem duvidosas, a peça mostra um aviso ⚠ com a conversão feita.</dd></div>
+<div class="campo"><dt>✚ Criar</dt><dd>Abre «Criar peça»: formas básicas, planificações de chapa, letras, logos, ícones e painéis vazados. Ver «Criar peça».</dd></div>
+<div class="campo"><dt>◉ Foto</dt><dd>Peça a partir de uma foto sobre a folha de calibração. Ver «Peça a partir de uma foto».</dd></div>
+<div class="campo"><dt>− quantidade +</dt><dd>Quantas peças iguais cortar. 0 = a peça fica na lista mas não é distribuída.</dd></div>
+<div class="campo"><dt>✎</dt><dd>Só em peças criadas no programa: abre de novo «Criar peça» com seus dados para alterá-la.</dd></div>
+<div class="campo"><dt>✕</dt><dd>Tira a peça da lista.</dd></div>
+</dl></section>
+<section id="multipieza" class="seccion"><h2>DXF com várias peças</h2><p class="sec-intro">Se um DXF traz várias peças desenhadas, abre uma janela para importá-las separadamente.</p>
+<dl class="campos">
+<div class="campo"><dt>Lista de peças</dt><dd>Cada peça diferente encontrada, com seu desenho e sua quantidade (as iguais se juntam). Cotas, textos e eixos são ignorados.</dd></div>
+<div class="campo"><dt>O contorno externo é a moldura da chapa: ignorá-lo</dt><dd>Marque se o desenho traz o retângulo da chapa ao redor das peças.</dd></div>
+<div class="campo"><dt>Importar</dt><dd>Adiciona as peças à lista com as quantidades indicadas.</dd></div>
+</dl></section>
+<section id="plancha" class="seccion"><h2>Opções: Chapa</h2>
+<dl class="campos">
+<div class="campo"><dt>1000×2000 · 1220×2440 · 1500×3000 · Outra</dt><dd>Medidas de chapa mais usadas. «Outra» = você escreve largura e altura à mão.</dd></div>
+<div class="campo"><dt>Largura / Altura (mm)</dt><dd>Medida da chapa.</dd></div>
+<div class="campo"><dt>Girar chapa</dt><dd>Troca largura e altura.</dd></div>
+<div class="campo"><dt>Margem de segurança (mm)</dt><dd>Faixa da borda da chapa onde não se colocam peças.</dd></div>
+<div class="campo"><dt>Espaçamento entre cortes (mm)</dt><dd>Distância mínima entre duas peças. Tem que cobrir a largura do corte da máquina, mais um pouco.</dd></div>
+<div class="campo"><dt>Sobra mínima útil (mm)</dt><dd>Um retalho que fica no final da chapa conta como sobra útil só se medir pelo menos isto. O cálculo prefere deixar retalhos úteis.</dd></div>
+</dl></section>
+<section id="optimizacion" class="seccion"><h2>Opções: Otimização</h2>
+<dl class="campos">
+<div class="campo"><dt>Rotações</dt><dd>Que giros cada peça pode testar: sem girar, 0° / 180°, a cada 90°, 45°, 15° ou livre (a cada 5°). Mais giros = melhor encaixe, cálculo mais lento.</dd></div>
+<div class="campo"><dt>Encostar</dt><dd>Para onde as peças se juntam: para baixo ou para a esquerda. Automático = ao longo da chapa (para baixo se for mais alta que larga).</dd></div>
+<div class="campo"><dt>Profundidade do cálculo</dt><dd>Rápido, Normal, Profundo ou Máximo: quantas ordens de colocação diferentes são testadas e quanto tempo no máximo. Mais profundidade = melhor resultado, mais espera.</dd></div>
+<div class="campo"><dt>Profundo e Máximo <span class="sello sello-pro">PRO</span></dt><dd>Além disso repetem as melhores ordens com uma grade mais fina.</dd></div>
+<div class="campo"><dt>Avançado ▸</dt><dd>Mostra os valores que a profundidade define, para mudá-los à mão (fica em «Personalizado»).</dd></div>
+<div class="campo"><dt>Resolução da grade (mm)</dt><dd>Tamanho da grade com que se procuram os lugares livres. Menor = mais precisa e mais lenta. Com peças muito pequenas se ajusta sozinha.</dd></div>
+<div class="campo"><dt>Passadas (sequências diferentes)</dt><dd>Quantas ordens de colocação diferentes são testadas (na DEMO, até 24). É o que mais melhora o resultado.</dd></div>
+<div class="campo"><dt>Tempo máx. (s)</dt><dd>Corta o cálculo nesse tempo e fica com o melhor encontrado.</dd></div>
+<div class="campo"><dt>Refinar as melhores (quantidade)</dt><dd>Quantos dos melhores resultados se repetem com grade fina. 0 = não refinar.</dd></div>
+<div class="campo"><dt>Resolução ao refinar (mm)</dt><dd>Grade dessa repetição.</dd></div>
+<div class="campo"><dt>Peças dentro de furos</dt><dd>Permite colocar peças pequenas dentro dos furos das grandes.</dd></div>
+</dl></section>
+<section id="material" class="seccion"><h2>Opções: Material</h2>
+<dl class="campos">
+<div class="campo"><dt>Material</dt><dd>Chapa do trabalho (cadastradas em Configurações → Materiais). Dá o peso e, na PRO, os custos. Sua espessura é a que «Criar peça» propõe.</dd></div>
+</dl></section>
+<section id="acciones" class="seccion"><h2>Distribuir e exportar</h2>
+<dl class="campos">
+<div class="campo"><dt>DISTRIBUIR</dt><dd>Calcula a distribuição. Enquanto calcula, o botão diz PARAR: você o interrompe e fica o melhor resultado até esse momento.</dd></div>
+<div class="campo"><dt>Exportar DXF</dt><dd>Salva um DXF por chapa (ver abaixo).</dd></div>
+</dl></section>
+<section id="resultado" class="seccion"><h2>Resultado</h2>
+<dl class="campos">
+<div class="campo"><dt>Chapas</dt><dd>Quantas chapas são necessárias.</dd></div>
+<div class="campo"><dt>Peças colocadas</dt><dd>Peças distribuídas sobre o total pedido. Se alguma não cabe na chapa, avisa.</dd></div>
+<div class="campo"><dt>Aproveitamento</dt><dd>Porcentagem da chapa usada que fica em peças.</dd></div>
+<div class="campo"><dt>Peças cortadas</dt><dd>Peso das peças, conforme o material.</dd></div>
+<div class="campo"><dt>Custo da chapa <span class="sello sello-pro">PRO</span></dt><dd>Custo da chapa usada, descontando a sobra útil.</dd></div>
+<div class="campo"><dt>‹ ›</dt><dd>Passa de uma chapa para outra (também com as miniaturas abaixo).</dd></div>
+<div class="campo"><dt>Orçamento <span class="sello sello-pro">PRO</span></dt><dd>Custo de chapa e de corte do trabalho, e orçamento em PDF (ver abaixo).</dd></div>
+<div class="campo"><dt>Ajustar</dt><dd>Volta a enquadrar o desenho da chapa.</dd></div>
+</dl></section>
+<section id="exportar" class="seccion"><h2>Exportar DXF</h2><p class="sec-intro">Ao terminar, o programa lê de novo cada arquivo e verifica medidas, posições, borda e separação. O DXF leva só o que se corta; marcas e dobras vão para o plano PDF.</p>
+<dl class="campos">
+<div class="campo"><dt>Nome</dt><dd>Nome dos arquivos: com uma chapa, nome.dxf; com várias, nome1.dxf, nome2.dxf…</dd></div>
+<div class="campo"><dt>Pasta</dt><dd>Onde são salvos.</dd></div>
+<div class="campo"><dt>Contorno da chapa (camada PLANCHA)</dt><dd>Adiciona o retângulo da chapa, para referência.</dd></div>
+<div class="campo"><dt>Linha de corte da sobra (camada SOBRANTE)</dt><dd>Adiciona um corte reto que separa o retalho útil do resto da chapa.</dd></div>
+<div class="campo"><dt>Desenho em PDF das peças com marcas ou dobras</dt><dd>PDF em escala com as marcas e linhas de dobra das peças criadas no programa.</dd></div>
+<div class="campo"><dt>Otimizar ordem de corte</dt><dd>Ordena os cortes: furos antes do contorno, peças próximas seguidas e menos deslocamento em vazio, a partir de baixo à esquerda.</dd></div>
+<div class="campo"><dt>Orçamento em PDF <span class="sello sello-pro">PRO</span></dt><dd>Salva também o orçamento do trabalho.</dd></div>
+<div class="campo"><dt>Versão para o cliente <span class="sello sello-pro">PRO</span></dt><dd>O orçamento mostra só quantidades e preços (oculta custos e margem).</dd></div>
+<div class="campo"><dt>Cliente <span class="sello sello-pro">PRO</span></dt><dd>Nome do cliente para o cabeçalho do orçamento (opcional).</dd></div>
+</dl></section>
+<section id="presupuesto" class="seccion"><h2>Orçamento do trabalho</h2>
+<dl class="campos">
+<div class="campo"><dt>Resumo / Chapa / Corte <span class="sello sello-pro">PRO</span></dt><dd>Custo da chapa (com desperdício), metros de corte, perfurações, tempo estimado e preço com a margem de Configurações → Custos e moeda.</dd></div>
+<div class="campo"><dt>Salvar PDF… <span class="sello sello-pro">PRO</span></dt><dd>Orçamento em PDF com os dados da sua empresa (Configurações → Empresa).</dd></div>
+<div class="campo"><dt>Versão para o cliente <span class="sello sello-pro">PRO</span></dt><dd>O PDF mostra só quantidades e preços.</dd></div>
+</dl></section>
+<footer class="pie">optiMAX · GMSoftware · <a href="../../">optimax.lat</a> · Verifique todas as medidas antes de cortar ou fabricar.</footer>
+</main>
+</div>
+</body>
+</html>
