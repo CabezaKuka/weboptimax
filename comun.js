@@ -7,7 +7,7 @@ const CONFIG = {
   direccionPago: "0xb4cd33650f254214ed24188ed087f6848add00d1",  // USDT en BNB Smart Chain (BEP-20)
   idBinance: "211223373",     // ID de Binance (transferencia entre usuarios de Binance)
   urlDescarga: "https://github.com/CabezaKuka/optimax-descargas/releases/latest/download/optiMAX_Setup.exe",
-  virusTotal: "https://www.virustotal.com/gui/file/30e18a4ecebf462709de0d66eef38cbbe3848314cfd9a002184437ca48932d55",  // análisis del instalador optiMAX_Setup.exe (0/67, 20/11/2026); actualizar si se cambia el .exe
+  virusTotal: "https://www.virustotal.com/gui/file/15f2478688194c5bafff27b0a05b0a7575053e1aa96f00b90101e1c3530810e2",  // análisis del instalador optiMAX_Setup.exe (0/68, 23/11/2026); actualizar si se cambia el .exe
   whatsapp: "59177626675",            // ventas (comprobantes), solo dígitos
   whatsappConsultas: "59178516826",   // asistente de consultas, solo dígitos
   qrBancoVence: "2028-10-25"          // QR del BNB (590 Bs): generar uno nuevo antes de esta fecha
