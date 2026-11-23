@@ -35,13 +35,13 @@
 <h1>Criar peça</h1>
 <p class="intro">Gera peças sob medida sem desenhá-las: formas básicas, planificações de chapa (T, curvas, cones, transições, helicoide), letras para placa, logos, ícones e painéis vazados. À esquerda você escolhe a figura, no meio informa as medidas e à direita vê o resultado na hora.</p>
 <p class="intro">Os diâmetros e seções das planificações são externos; a planificação é calculada sobre a espessura neutra da chapa.</p>
-<nav class="chips" aria-label="Figuras"><a href="#letras">Letras para placa</a><a href="#logo">Logo / imagem</a><a href="#rectangulo">Retângulo</a><a href="#disco">Disco / arruela</a><a href="#brida">Flange</a><a href="#t_cil_cil">T cilindro / cilindro</a><a href="#t_rect_cil">T ramal retangular sobre tubo</a><a href="#t_cil_rect">T ramal redondo sobre caixa</a><a href="#codo_sectores">Curva redonda por gomos</a><a href="#codo_rect">Curva retangular</a><a href="#curva_directa_90">Curva em esquadria 90°</a><a href="#curva_directa">Curva em esquadria</a><a href="#desvio_paralelo">Desvio paralelo redondo</a><a href="#tronco_cono">Tronco de cone / redução</a><a href="#tronco_piramide">Fundo de tremonha (tronco de pirâmide)</a><a href="#transicion_rect_red">Transição retangular para redondo</a><a href="#helicoide">Helicoide (hélice de rosca transportadora)</a><a href="#paneles">Painel vazado</a><a href="#iconos_banos">Banheiros</a><a href="#iconos_prohibicion">Proibições</a><a href="#iconos_seguridad">Saída e segurança</a><a href="#iconos_comercio">Comércio e gastronomia</a><a href="#iconos_varios">Diversos</a></nav>
+<nav class="chips" aria-label="Figuras"><a href="#letras">Letras para placa</a><a href="#logo">Logo / imagem</a><a href="#cartel_figura">Placa com figura</a><a href="#rectangulo">Retângulo</a><a href="#disco">Disco / arruela</a><a href="#brida">Flange</a><a href="#t_cil_cil">T cilindro / cilindro</a><a href="#t_rect_cil">T ramal retangular sobre tubo</a><a href="#t_cil_rect">T ramal redondo sobre caixa</a><a href="#codo_sectores">Curva redonda por gomos</a><a href="#codo_rect">Curva retangular</a><a href="#curva_directa_90">Curva em esquadria 90°</a><a href="#curva_directa">Curva em esquadria</a><a href="#desvio_paralelo">Desvio paralelo redondo</a><a href="#tronco_cono">Tronco de cone / redução</a><a href="#tronco_piramide">Fundo de tremonha (tronco de pirâmide)</a><a href="#transicion_rect_red">Transição retangular para redondo</a><a href="#helicoide">Helicoide (hélice de rosca transportadora)</a><a href="#paneles">Painel vazado</a><a href="#iconos_banos">Banheiros</a><a href="#iconos_prohibicion">Proibições</a><a href="#iconos_seguridad">Saída e segurança</a><a href="#iconos_comercio">Comércio e gastronomia</a><a href="#iconos_varios">Diversos</a></nav>
 <section id="comunes" class="seccion"><h2>Campos de todas as figuras</h2>
 <dl class="campos">
-<div class="campo"><dt>Nome da peça</dt><dd>Nome com que aparece na lista de peças e nos arquivos. É preenchido sozinho com a figura e suas medidas; se você o mudar à mão, é respeitado.</dd></div>
-<div class="campo"><dt>Espessura da chapa (mm)</dt><dd>Espessura com que se calcula a planificação. Por padrão, a do material escolhido na janela principal.</dd></div>
-<div class="campo"><dt>Quantidade de conjuntos</dt><dd>Quantas vezes você faz a peça completa. Se a figura tem várias partes, cada conjunto leva todas.</dd></div>
-<div class="campo"><dt>Entalhes em V nas dobras (mm)</dt><dd>Só em figuras com dobras: um pequeno V na borda, em cada linha de dobra, para localizar a dobra. O número é o tamanho do V.</dd></div>
+<div class="campo"><dt>Nome</dt><dd>Nome com que aparece na lista de peças e nos arquivos. É preenchido sozinho com a figura e suas medidas; se você o mudar à mão, é respeitado.</dd></div>
+<div class="campo"><dt>Espessura</dt><dd>Espessura com que se calcula a planificação. Por padrão, a do material escolhido na janela principal.</dd></div>
+<div class="campo"><dt>Quantidade</dt><dd>Quantas vezes você faz a peça completa. Se a figura tem várias partes, cada conjunto leva todas.</dd></div>
+<div class="campo"><dt>Entalhes em V</dt><dd>Só em figuras com dobras: um pequeno V na borda, em cada linha de dobra, para localizar a dobra. O número é o tamanho do V.</dd></div>
 <div class="campo"><dt>Adicionar ao nesting</dt><dd>Manda a peça (todas as suas partes) para a lista da janela principal. Na DEMO, só com as formas básicas e a curva por gomos.</dd></div>
 <div class="campo"><dt>Exportar DXF…</dt><dd>Salva as partes em DXF sem passar pelo nesting; opcional, o plano PDF com marcas e dobras. Nas letras sem moldura é a única saída. Na DEMO, só com as figuras que a DEMO permite.</dd></div>
 <div class="campo"><dt>Atualizar peça</dt><dd>Aparece ao editar com ✎: substitui a peça da lista pela nova.</dd></div>
@@ -52,18 +52,18 @@
 <div class="campo"><dt>Forma</dt><dd>Nenhuma = só as letras, soltas, em DXF (a placa você monta no CAD). Com uma forma = a chapa da placa inteira, com as letras vazadas, pronta para o nesting.<span class="opciones">Nenhum · Retângulo · Cantos invertidos · Cantos chanfrados · Arco em cima · Ticket · Hexágono alongado · Escudo · Círculo · Oval</span></dd></div>
 <div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura total da placa (no círculo, o diâmetro).</dd></div>
 <div class="campo"><dt>Altura <span class="unidad">mm</span></dt><dd>Altura total da placa.</dd></div>
-<div class="campo"><dt>Margem até as letras <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e as letras.</dd></div>
-<div class="campo"><dt>Tamanho do detalhe (0 = automático) <span class="unidad">mm</span></dt><dd>Depende da forma: retângulo = raio dos cantos (0 = vivos); cantos invertidos ou chanfrados = tamanho do canto; arco em cima = altura do arco; ticket = quanto entram os lados curvos; hexágono = comprimento das pontas; escudo = altura da parte curva. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
-<div class="campo"><dt>Furos de fixação</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
-<div class="campo"><dt>Diâmetro dos furos <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
-<div class="campo"><dt>Distância do furo à borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
+<div class="campo"><dt>Margem <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e as letras.</dd></div>
+<div class="campo"><dt>Detalhe <span class="unidad">mm</span></dt><dd>Depende da forma: retângulo = raio dos cantos (0 = vivos); cantos invertidos ou chanfrados = tamanho do canto; arco em cima = altura do arco; ticket = quanto entram os lados curvos; hexágono = comprimento das pontas; escudo = altura da parte curva. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
+<div class="campo"><dt>Furos</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
+<div class="campo"><dt>Ø furo <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
+<div class="campo"><dt>Até a borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
 </dl>
 <h3>Texto / Linha 1</h3><dl class="campos">
 <div class="campo"><dt>Texto</dt><dd>O que se escreve. Sem moldura vai uma só linha: para mais, gere cada linha separadamente. Com moldura, esta é a linha de cima.</dd></div>
 <div class="campo"><dt>Fonte</dt><dd>Tipo de letra (6 incluídas, gratuitas para uso comercial).<span class="opciones">Anton · Bebas Neue · Archivo Black · Montserrat ExtraBold · Alfa Slab One · Pacifico</span></dd></div>
-<div class="campo"><dt>Largura total do texto <span class="unidad">mm</span></dt><dd>Sem moldura: largura total que o texto deve medir; o programa procura a altura de letra que dá essa largura (mostra na linha de dados).</dd></div>
+<div class="campo"><dt>Espaçamento <span class="unidad">%</span></dt><dd>Espaço extra entre letras, em % do corpo da letra. 0 = o da fonte; negativo = mais juntas.</dd></div>
+<div class="campo"><dt>Largura do texto <span class="unidad">mm</span></dt><dd>Sem moldura: largura total que o texto deve medir; o programa procura a altura de letra que dá essa largura (mostra na linha de dados).</dd></div>
 <div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>Com moldura: tamanho da linha 1. 100 % = o maior que cabe na placa; ao lado aparece a altura em mm.</dd></div>
-<div class="campo"><dt>Espaçamento entre letras <span class="unidad">%</span></dt><dd>Espaço extra entre letras, em % do corpo da letra. 0 = o da fonte; negativo = mais juntas.</dd></div>
 </dl>
 <h3>Linha 2</h3><dl class="campos">
 <div class="campo"><dt>Texto (opcional)</dt><dd>Segunda linha, abaixo da primeira (só com moldura). Vazio = uma só linha.</dd></div>
@@ -71,24 +71,24 @@
 <div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>Tamanho da linha 2, como o da linha 1. Se as duas não cabem juntas, a placa fica marcada em vermelho.</dd></div>
 </dl>
 <h3>Pontes</h3><dl class="campos">
-<div class="campo"><dt>Largura da ponte (0 = automático) <span class="unidad">mm</span></dt><dd>Largura das uniões que seguram as ilhas (o centro do O, do A, do B…) para que não caiam. 0 = automático: 1,5 × espessura, mínimo 3 mm.</dd></div>
-<div class="campo"><dt>Pontes por ilha</dt><dd>Automático = 2 pontes (em cima e embaixo) nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
+<div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura das uniões que seguram as ilhas (o centro do O, do A, do B…) para que não caiam. 0 = automático: 1,5 × espessura, mínimo 3 mm.</dd></div>
+<div class="campo"><dt>Por ilha</dt><dd>Automático = 2 pontes (em cima e embaixo) nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
 </dl>
 <h3>Fundo</h3><dl class="campos">
 <div class="campo"><dt>Fundo</dt><dd>Com moldura: liso (chapa inteira) ou vazado com um padrão decorativo, como os painéis vazados.</dd></div>
-<div class="campo"><dt>Borda lisa ao redor do texto <span class="unidad">mm</span></dt><dd>Faixa lisa, sem vazar, ao redor de cada linha de texto, para que as letras se leiam. Entre a linha 1 e a 2 fica tudo liso.</dd></div>
+<div class="campo"><dt>Borda lisa <span class="unidad">mm</span></dt><dd>Faixa lisa, sem vazar, ao redor de cada linha de texto, para que as letras se leiam. Entre a linha 1 e a 2 fica tudo liso.</dd></div>
 <div class="campo"><dt>Padrão</dt><dd>Orgânico = células irregulares tipo favo natural; geométrico = figuras iguais em grade.</dd></div>
-<div class="campo"><dt>Tamanho da célula <span class="unidad">mm</span></dt><dd>Distância média entre centros de furos vizinhos (furo + nervura). Menor = mais furos.</dd></div>
+<div class="campo"><dt>Célula <span class="unidad">mm</span></dt><dd>Distância média entre centros de furos vizinhos (furo + nervura). Menor = mais furos.</dd></div>
 <div class="campo"><dt>Irregularidade <span class="unidad">%</span></dt><dd>0 % = células quase iguais (favo); 50 % = naturais; 100 % = mais mistura de tamanhos e formas.</dd></div>
-<div class="campo"><dt>Raio dos cantos do furo <span class="unidad">mm</span></dt><dd>Arredondamento dos cantos de cada furo. 0 = cantos vivos.</dd></div>
+<div class="campo"><dt>Raio do furo <span class="unidad">mm</span></dt><dd>Arredondamento dos cantos de cada furo. 0 = cantos vivos.</dd></div>
 <div class="campo"><dt>Variante</dt><dd>Muda o sorteio do padrão orgânico. O mesmo número dá sempre o mesmo desenho.</dd></div>
 <div class="campo"><dt>Figura</dt><dd>Forma de cada furo do padrão geométrico.<span class="opciones">Círculo · Hexágono · Quadrado · Losango</span></dd></div>
 <div class="campo"><dt>Grade</dt><dd>Desencontrado = fileiras deslocadas meio passo (mais denso); reta = fileiras e colunas alinhadas.<span class="opciones">Intercalada · Alinhada</span></dd></div>
 <div class="campo"><dt>Passo <span class="unidad">mm</span></dt><dd>Distância entre centros de figuras vizinhas.</dd></div>
-<div class="campo"><dt>Tamanho da figura <span class="unidad">% do passo</span></dt><dd>Tamanho de cada figura em % do passo. Se deixaria menos nervura que o mínimo, diminui sozinha (e avisa).</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">% do passo</span></dt><dd>Tamanho de cada figura em % do passo. Se deixaria menos nervura que o mínimo, diminui sozinha (e avisa).</dd></div>
 <div class="campo"><dt>Giro <span class="unidad">°</span></dt><dd>Gira cada figura sobre seu centro (não se aplica ao círculo).</dd></div>
-<div class="campo"><dt>Nervura entre furos (0 = automático) <span class="unidad">mm</span></dt><dd>Largura mínima de chapa entre dois furos, para que o plasma não a corte nem a deforme. 0 = automático: 2 × espessura, mínimo 5 mm. Abaixo disso, é usado igual mas avisa.</dd></div>
-<div class="campo"><dt>Furo mínimo (0 = automático) <span class="unidad">mm</span></dt><dd>Os furos menores que isto são retirados (Ø do círculo que cabe no furo). 0 = automático: 5 × espessura, mínimo 6 mm.</dd></div>
+<div class="campo"><dt>Nervura <span class="unidad">mm</span></dt><dd>Largura mínima de chapa entre dois furos, para que o plasma não a corte nem a deforme. 0 = automático: 2 × espessura, mínimo 5 mm. Abaixo disso, é usado igual mas avisa.</dd></div>
+<div class="campo"><dt>Furo mínimo <span class="unidad">mm</span></dt><dd>Os furos menores que isto são retirados (Ø do círculo que cabe no furo). 0 = automático: 5 × espessura, mínimo 6 mm.</dd></div>
 </dl></section>
 <section id="logo" class="seccion figura"><div class="fig-cab"><img class="fig" src="../fig/logo.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Logo / imagem <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Um logo ou desenho em PNG ou JPG (como o cliente manda) vira peça para cortar: vazado na chapa com pontes, ou silhueta solta, com ou sem a placa ao redor. A medida é você quem define; a imagem fica guardada na peça para editá-la depois.</p></div></div>
 <h3>Imagem</h3><dl class="campos">
@@ -99,11 +99,11 @@
 <div class="campo"><dt>Ajuste do limiar</dt><dd>0 = automático (Otsu). Positivo pega mais cinza como desenho; negativo, menos.</dd></div>
 <div class="campo"><dt>Cortar</dt><dd>O escuro = desenho escuro sobre fundo claro (o comum). O claro = desenho claro sobre escuro.</dd></div>
 <div class="campo"><dt>Suavização</dt><dd>Tira o serrilhado dos pixels. 0 = a borda tal como está; mais alto arredonda mais os cantos pequenos.</dd></div>
-<div class="campo"><dt>Remover manchas menores que <span class="unidad">mm</span></dt><dd>Manchas e furos com lado menor que este (em mm, já na medida final) são descartados: ruído do JPG, pontinhos.</dd></div>
+<div class="campo"><dt>Remover manchas <span class="unidad">mm</span></dt><dd>Manchas e furos com lado menor que este (em mm, já na medida final) são descartados: ruído do JPG, pontinhos.</dd></div>
 </dl>
 <h3>Peça</h3><dl class="campos">
 <div class="campo"><dt>Modo</dt><dd>Vazado = o desenho fica oco na chapa (as ilhas, com pontes). Silhueta = o desenho sai como peça solta (as partes separadas se unem sozinhas).</dd></div>
-<div class="campo"><dt>Tamanho (o lado mais longo) <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
 <div class="campo"><dt>Espelho</dt><dd>Espelhado = o desenho virado da esquerda para a direita (uma seta que aponte para o outro lado).<span class="opciones">Normal · Espelhado</span></dd></div>
 <div class="campo"><dt>Giro</dt><dd>Gira o desenho em sentido horário (por exemplo, uma seta para cima ou para baixo).<span class="opciones">0° · 90° · 180° · 270°</span></dd></div>
 </dl>
@@ -111,16 +111,59 @@
 <div class="campo"><dt>Forma</dt><dd>Nenhuma = só o desenho vazado, em DXF (a chapa você monta no CAD). Com uma forma = a chapa da placa inteira com o ícone vazado, pronta para o nesting.<span class="opciones">Nenhum · Retângulo · Cantos invertidos · Cantos chanfrados · Arco em cima · Ticket · Hexágono alongado · Escudo · Círculo · Oval</span></dd></div>
 <div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura total da placa (no círculo, o diâmetro).</dd></div>
 <div class="campo"><dt>Altura <span class="unidad">mm</span></dt><dd>Altura total da placa.</dd></div>
-<div class="campo"><dt>Margem até o ícone <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
-<div class="campo"><dt>Tamanho do detalhe (0 = automático) <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
-<div class="campo"><dt>Furos de fixação</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
-<div class="campo"><dt>Diâmetro dos furos <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
-<div class="campo"><dt>Distância do furo à borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
-<div class="campo"><dt>Tamanho do ícone <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
+<div class="campo"><dt>Margem <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
+<div class="campo"><dt>Detalhe <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
+<div class="campo"><dt>Furos</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
+<div class="campo"><dt>Ø furo <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
+<div class="campo"><dt>Até a borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
 </dl>
 <h3>Pontes</h3><dl class="campos">
-<div class="campo"><dt>Largura da ponte (0 = automático) <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
-<div class="campo"><dt>Pontes por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
+<div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
+<div class="campo"><dt>Por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
+</dl></section>
+<section id="cartel_figura" class="seccion figura"><div class="fig-cab"><img class="fig" src="../fig/cartel_figura.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Placa com figura <span class="sello sello-pro">PRO</span> <span class="sello sello-demo">Padaria e ícones na DEMO</span></h2><p class="sec-intro">Placa pronta com uma figura (padaria, cafeteria, oficina…), um ícone ou o seu logo: você escolhe a figura, escreve o texto em uma ou duas linhas e coloca as medidas, e sai a chapa inteira com a figura e o texto vazados com pontes e os furos, pronta para o nesting.</p></div></div>
+<h3>Figura</h3><dl class="campos">
+<div class="campo"><dt>Figura</dt><dd>A figura da placa: uma de ramo (padaria, cafeteria, oficina…), um ícone para placas ou o seu logo (PNG ou JPG). Vai uma figura só.<span class="opciones">Padaria · Cafeteria · Oficina mecânica · Ícone · Meu logo</span></dd></div>
+<div class="campo"><dt>Ícone</dt><dd>O ícone que vai como figura da placa.<span class="opciones">Homem · Mulher · Homem e mulher · Acessível · Fraldário · Proibido estacionar · Proibido fumar · Entrada proibida · Proibido animais · Saída · Seta · Seta a 45° · Seta curva · Extintor · Primeiros socorros · Ponto de encontro · Risco elétrico · Atenção · Bar · Cerveja · Café · Restaurante · Churrasco · WiFi · Estacionamento · Animais de estimação · Escada · Elevador</span></dd></div>
+<div class="campo"><dt>Imagem</dt><dd>PNG, JPG, BMP ou WEBP. É guardada dentro da peça (até 1600 px de lado), assim o ✎ a abre de novo mesmo que você mova ou apague o arquivo.</dd></div>
+<div class="campo"><dt>Separar</dt><dd>Tudo menos o fundo = corta tudo o que não é fundo (o transparente do PNG ou a cor das bordas). Uma cor = só a cor escolhida. Claro / escuro = por brilho, para digitalizações ou fotos de um desenho.</dd></div>
+<div class="campo"><dt>Cor a cortar</dt><dd>As cores principais do logo, da maior para a menor superfície: toque na que se corta.<span class="opciones">1 · 2 · 3 · 4 · 5 · 6</span></dd></div>
+<div class="campo"><dt>Tolerância de cor</dt><dd>0 = automática: a borda fica a meio caminho entre o desenho e o que o rodeia. À mão: quanto um pixel pode se afastar da cor (ou do fundo) para ser contado; mais alto pega sombras e bordas suavizadas.</dd></div>
+<div class="campo"><dt>Ajuste do limiar</dt><dd>0 = automático (Otsu). Positivo pega mais cinza como desenho; negativo, menos.</dd></div>
+<div class="campo"><dt>Cortar</dt><dd>O escuro = desenho escuro sobre fundo claro (o comum). O claro = desenho claro sobre escuro.</dd></div>
+<div class="campo"><dt>Suavização</dt><dd>Tira o serrilhado dos pixels. 0 = a borda tal como está; mais alto arredonda mais os cantos pequenos.</dd></div>
+<div class="campo"><dt>Remover manchas <span class="unidad">mm</span></dt><dd>Manchas e furos com lado menor que este (em mm, já na medida final) são descartados: ruído do JPG, pontinhos.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>100 % = a proporção do modelo; ao lado aparece a medida em mm.</dd></div>
+</dl>
+<h3>Linha 1</h3><dl class="campos">
+<div class="campo"><dt>Texto</dt><dd>O texto principal (por exemplo, o ramo). Com uma figura de ramo, vazio = o nome dela em maiúsculas; com um ícone ou um logo é preciso escrevê-lo.</dd></div>
+<div class="campo"><dt>Fonte</dt><dd>Uma das 6 fontes do programa.<span class="opciones">Anton · Bebas Neue · Archivo Black · Montserrat ExtraBold · Alfa Slab One · Pacifico</span></dd></div>
+<div class="campo"><dt>Espaçamento <span class="unidad">%</span></dt><dd>Espaço extra entre letras, em % do tamanho da letra (vale para as duas linhas).</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>100 % = a proporção do modelo; ao lado aparece a altura das maiúsculas em mm.</dd></div>
+</dl>
+<h3>Linha 2</h3><dl class="campos">
+<div class="campo"><dt>Texto (opcional)</dt><dd>Segunda linha, por exemplo o nome do negócio ou o telefone. Vazia = uma linha só.</dd></div>
+<div class="campo"><dt>Fonte</dt><dd>Uma das 6 fontes do programa.<span class="opciones">Anton · Bebas Neue · Archivo Black · Montserrat ExtraBold · Alfa Slab One · Pacifico</span></dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>100 % = a proporção do modelo; ao lado aparece a altura em mm.</dd></div>
+</dl>
+<h3>Moldura</h3><dl class="campos">
+<div class="campo"><dt>Forma</dt><dd>As 9 formas da placa (as mesmas de Letras para placa).<span class="opciones">Retângulo · Cantos invertidos · Cantos chanfrados · Arco em cima · Ticket · Hexágono alongado · Escudo · Círculo · Oval</span></dd></div>
+<div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura total da placa (no círculo, o diâmetro).</dd></div>
+<div class="campo"><dt>Altura <span class="unidad">mm</span></dt><dd>Altura total da placa.</dd></div>
+<div class="campo"><dt>Margem <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e a figura ou as letras.</dd></div>
+<div class="campo"><dt>Detalhe <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
+<div class="campo"><dt>Furos</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
+<div class="campo"><dt>Ø furo <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
+<div class="campo"><dt>Até a borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
+</dl>
+<h3>Disposição e enfeite</h3><dl class="campos">
+<div class="campo"><dt>Disposição</dt><dd>Figura em cima e o texto embaixo, ou a figura à esquerda e o texto à direita. Automática = à esquerda se a placa for bem mais larga do que alta.</dd></div>
+<div class="campo"><dt>Enfeite</dt><dd>Linha com um losango no meio, entre a figura e o texto (ou entre as duas linhas), ou nada.<span class="opciones">Linha com losango · Nenhum</span></dd></div>
+</dl>
+<h3>Pontes</h3><dl class="campos">
+<div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura das pontes que seguram as ilhas das letras e da figura (0 = 1,5 × espessura, mínimo 3 mm).</dd></div>
+<div class="campo"><dt>Por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
 </dl></section>
 <h2 class="categoria" id="cat-formas-basicas">Formas básicas</h2>
 <section id="rectangulo" class="seccion figura"><div class="fig-cab"><img class="fig" src="../../img/fig/rectangulo.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Retângulo <span class="sello sello-demo">DEMO</span></h2><p class="sec-intro">Chapa retangular com cantos arredondados e furos opcionais nos cantos.</p></div></div>
@@ -270,39 +313,39 @@
 <div class="campo"><dt>Forma</dt><dd>Forma externa da chapa.<span class="opciones">Retângulo · Cantos invertidos · Cantos chanfrados · Arco em cima · Ticket · Hexágono alongado · Escudo · Círculo · Oval</span></dd></div>
 <div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura total do painel (no círculo, o diâmetro).</dd></div>
 <div class="campo"><dt>Altura <span class="unidad">mm</span></dt><dd>Altura total do painel.</dd></div>
-<div class="campo"><dt>Margem sem vazar <span class="unidad">mm</span></dt><dd>Faixa lisa, sem furos, entre a borda do painel e o vazado.</dd></div>
-<div class="campo"><dt>Tamanho do detalhe (0 = automático) <span class="unidad">mm</span></dt><dd>Depende da forma: retângulo = raio dos cantos (0 = vivos); cantos invertidos ou chanfrados = tamanho do canto; arco em cima = altura do arco; ticket = quanto entram os lados curvos; hexágono = comprimento das pontas; escudo = altura da parte curva. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
-<div class="campo"><dt>Furos de fixação</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
-<div class="campo"><dt>Diâmetro dos furos <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
-<div class="campo"><dt>Distância do furo à borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda do painel.</dd></div>
+<div class="campo"><dt>Margem <span class="unidad">mm</span></dt><dd>Faixa lisa, sem furos, entre a borda do painel e o vazado.</dd></div>
+<div class="campo"><dt>Detalhe <span class="unidad">mm</span></dt><dd>Depende da forma: retângulo = raio dos cantos (0 = vivos); cantos invertidos ou chanfrados = tamanho do canto; arco em cima = altura do arco; ticket = quanto entram os lados curvos; hexágono = comprimento das pontas; escudo = altura da parte curva. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
+<div class="campo"><dt>Furos</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
+<div class="campo"><dt>Ø furo <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
+<div class="campo"><dt>Até a borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda do painel.</dd></div>
 </dl>
 <h3>Padrão</h3><dl class="campos">
 <div class="campo"><dt>Padrão</dt><dd>Orgânico = células irregulares tipo favo natural (Voronoi); geométrico = figuras iguais em grade.</dd></div>
-<div class="campo"><dt>Tamanho da célula <span class="unidad">mm</span></dt><dd>Distância média entre centros de furos vizinhos (furo + nervura). Menor = mais furos.</dd></div>
+<div class="campo"><dt>Célula <span class="unidad">mm</span></dt><dd>Distância média entre centros de furos vizinhos (furo + nervura). Menor = mais furos.</dd></div>
 <div class="campo"><dt>Irregularidade <span class="unidad">%</span></dt><dd>0 % = células quase iguais (favo); 50 % = naturais; 100 % = mais mistura de tamanhos e formas.</dd></div>
-<div class="campo"><dt>Raio dos cantos do furo <span class="unidad">mm</span></dt><dd>Arredondamento dos cantos de cada furo. 0 = cantos vivos.</dd></div>
+<div class="campo"><dt>Raio do furo <span class="unidad">mm</span></dt><dd>Arredondamento dos cantos de cada furo. 0 = cantos vivos.</dd></div>
 <div class="campo"><dt>Figura</dt><dd>Forma de cada furo do padrão geométrico.<span class="opciones">Círculo · Hexágono · Quadrado · Losango</span></dd></div>
 <div class="campo"><dt>Grade</dt><dd>Desencontrado = fileiras deslocadas meio passo (mais denso); reta = fileiras e colunas alinhadas.<span class="opciones">Intercalada · Alinhada</span></dd></div>
 <div class="campo"><dt>Passo <span class="unidad">mm</span></dt><dd>Distância entre centros de figuras vizinhas.</dd></div>
-<div class="campo"><dt>Tamanho da figura <span class="unidad">% do passo</span></dt><dd>Tamanho de cada figura em % do passo. Se deixaria menos nervura que o mínimo, diminui sozinha (e avisa).</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">% do passo</span></dt><dd>Tamanho de cada figura em % do passo. Se deixaria menos nervura que o mínimo, diminui sozinha (e avisa).</dd></div>
 <div class="campo"><dt>Giro <span class="unidad">°</span></dt><dd>Gira cada figura sobre seu centro (não se aplica ao círculo).</dd></div>
 <div class="campo"><dt>Variante</dt><dd>Muda o sorteio do padrão orgânico. O mesmo número dá sempre o mesmo painel.</dd></div>
 </dl>
 <h3>Degradê</h3><dl class="campos">
 <div class="campo"><dt>Degradê</dt><dd>Faz variar o tamanho ao longo do painel: horizontal (da esquerda para a direita), vertical (de baixo para cima) ou do centro para os cantos. Uniforme = tudo igual.<span class="opciones">Uniforme · Horizontal · Vertical · A partir do centro</span></dd></div>
-<div class="campo"><dt>Tamanho no início <span class="unidad">%</span></dt><dd>Tamanho no começo do degradê, em % (da célula no orgânico, da figura no geométrico). 100 % = o tamanho escolhido acima.</dd></div>
-<div class="campo"><dt>Tamanho no final <span class="unidad">%</span></dt><dd>Tamanho no final do degradê, em %. Menor que o começo = os furos diminuem para o final.</dd></div>
+<div class="campo"><dt>No início <span class="unidad">%</span></dt><dd>Tamanho no começo do degradê, em % (da célula no orgânico, da figura no geométrico). 100 % = o tamanho escolhido acima.</dd></div>
+<div class="campo"><dt>No final <span class="unidad">%</span></dt><dd>Tamanho no final do degradê, em %. Menor que o começo = os furos diminuem para o final.</dd></div>
 </dl>
 <h3>Corte</h3><dl class="campos">
-<div class="campo"><dt>Nervura entre furos (0 = automático) <span class="unidad">mm</span></dt><dd>Largura mínima de chapa entre dois furos, para que o plasma não a corte nem a deforme. 0 = automático: 2 × espessura, mínimo 5 mm. Abaixo disso, é usado igual mas avisa.</dd></div>
-<div class="campo"><dt>Furo mínimo (0 = automático) <span class="unidad">mm</span></dt><dd>Os furos menores que isto são retirados (Ø do círculo que cabe no furo). 0 = automático: 5 × espessura, mínimo 6 mm.</dd></div>
+<div class="campo"><dt>Nervura <span class="unidad">mm</span></dt><dd>Largura mínima de chapa entre dois furos, para que o plasma não a corte nem a deforme. 0 = automático: 2 × espessura, mínimo 5 mm. Abaixo disso, é usado igual mas avisa.</dd></div>
+<div class="campo"><dt>Furo mínimo <span class="unidad">mm</span></dt><dd>Os furos menores que isto são retirados (Ø do círculo que cabe no furo). 0 = automático: 5 × espessura, mínimo 6 mm.</dd></div>
 </dl></section>
 <h2 class="categoria" id="cat-íconos">Ícones</h2>
 <section id="iconos_banos" class="seccion figura"><div class="fig-cab"><img class="fig" src="../fig/iconos_banos.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Banheiros <span class="sello sello-demo">DEMO</span></h2><p class="sec-intro">Ícones de banheiro (homem, mulher, os dois, acessível e trocador de bebê), vazados na chapa ou como peça solta, com ou sem a placa ao redor.</p></div></div>
 <h3>Ícone</h3><dl class="campos">
 <div class="campo"><dt>Ícone</dt><dd>O desenho. Cada ícone é pensado para plasma: traços grossos e espaço entre as partes.<span class="opciones">Homem · Mulher · Homem e mulher · Acessível · Fraldário</span></dd></div>
 <div class="campo"><dt>Modo</dt><dd>Vazado = o desenho fica oco na chapa (as ilhas, com pontes). Silhueta = o desenho sai como peça solta (as partes separadas se unem sozinhas).</dd></div>
-<div class="campo"><dt>Tamanho (o lado mais longo) <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
 <div class="campo"><dt>Espelho</dt><dd>Espelhado = o desenho virado da esquerda para a direita (uma seta que aponte para o outro lado).<span class="opciones">Normal · Espelhado</span></dd></div>
 <div class="campo"><dt>Giro</dt><dd>Gira o desenho em sentido horário (por exemplo, uma seta para cima ou para baixo).<span class="opciones">0° · 90° · 180° · 270°</span></dd></div>
 </dl>
@@ -310,22 +353,22 @@
 <div class="campo"><dt>Forma</dt><dd>Nenhuma = só o desenho vazado, em DXF (a chapa você monta no CAD). Com uma forma = a chapa da placa inteira com o ícone vazado, pronta para o nesting.<span class="opciones">Nenhum · Retângulo · Cantos invertidos · Cantos chanfrados · Arco em cima · Ticket · Hexágono alongado · Escudo · Círculo · Oval</span></dd></div>
 <div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura total da placa (no círculo, o diâmetro).</dd></div>
 <div class="campo"><dt>Altura <span class="unidad">mm</span></dt><dd>Altura total da placa.</dd></div>
-<div class="campo"><dt>Margem até o ícone <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
-<div class="campo"><dt>Tamanho do detalhe (0 = automático) <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
-<div class="campo"><dt>Furos de fixação</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
-<div class="campo"><dt>Diâmetro dos furos <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
-<div class="campo"><dt>Distância do furo à borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
-<div class="campo"><dt>Tamanho do ícone <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
+<div class="campo"><dt>Margem <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
+<div class="campo"><dt>Detalhe <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
+<div class="campo"><dt>Furos</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
+<div class="campo"><dt>Ø furo <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
+<div class="campo"><dt>Até a borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
 </dl>
 <h3>Pontes</h3><dl class="campos">
-<div class="campo"><dt>Largura da ponte (0 = automático) <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
-<div class="campo"><dt>Pontes por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
+<div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
+<div class="campo"><dt>Por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
 </dl></section>
 <section id="iconos_prohibicion" class="seccion figura"><div class="fig-cab"><img class="fig" src="../fig/iconos_prohibicion.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Proibições <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Sinais de proibição já montados (círculo e barra com sua figura): estacionar, fumar, passagem e animais.</p></div></div>
 <h3>Ícone</h3><dl class="campos">
 <div class="campo"><dt>Ícone</dt><dd>O desenho. Cada ícone é pensado para plasma: traços grossos e espaço entre as partes.<span class="opciones">Proibido estacionar · Proibido fumar · Entrada proibida · Proibido animais</span></dd></div>
 <div class="campo"><dt>Modo</dt><dd>Vazado = o desenho fica oco na chapa (as ilhas, com pontes). Silhueta = o desenho sai como peça solta (as partes separadas se unem sozinhas).</dd></div>
-<div class="campo"><dt>Tamanho (o lado mais longo) <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
 <div class="campo"><dt>Espelho</dt><dd>Espelhado = o desenho virado da esquerda para a direita (uma seta que aponte para o outro lado).<span class="opciones">Normal · Espelhado</span></dd></div>
 <div class="campo"><dt>Giro</dt><dd>Gira o desenho em sentido horário (por exemplo, uma seta para cima ou para baixo).<span class="opciones">0° · 90° · 180° · 270°</span></dd></div>
 </dl>
@@ -333,22 +376,22 @@
 <div class="campo"><dt>Forma</dt><dd>Nenhuma = só o desenho vazado, em DXF (a chapa você monta no CAD). Com uma forma = a chapa da placa inteira com o ícone vazado, pronta para o nesting.<span class="opciones">Nenhum · Retângulo · Cantos invertidos · Cantos chanfrados · Arco em cima · Ticket · Hexágono alongado · Escudo · Círculo · Oval</span></dd></div>
 <div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura total da placa (no círculo, o diâmetro).</dd></div>
 <div class="campo"><dt>Altura <span class="unidad">mm</span></dt><dd>Altura total da placa.</dd></div>
-<div class="campo"><dt>Margem até o ícone <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
-<div class="campo"><dt>Tamanho do detalhe (0 = automático) <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
-<div class="campo"><dt>Furos de fixação</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
-<div class="campo"><dt>Diâmetro dos furos <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
-<div class="campo"><dt>Distância do furo à borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
-<div class="campo"><dt>Tamanho do ícone <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
+<div class="campo"><dt>Margem <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
+<div class="campo"><dt>Detalhe <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
+<div class="campo"><dt>Furos</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
+<div class="campo"><dt>Ø furo <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
+<div class="campo"><dt>Até a borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
 </dl>
 <h3>Pontes</h3><dl class="campos">
-<div class="campo"><dt>Largura da ponte (0 = automático) <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
-<div class="campo"><dt>Pontes por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
+<div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
+<div class="campo"><dt>Por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
 </dl></section>
 <section id="iconos_seguridad" class="seccion figura"><div class="fig-cab"><img class="fig" src="../fig/iconos_seguridad.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Saída e segurança <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Saída, setas, extintor, primeiros socorros, ponto de encontro, risco elétrico e atenção.</p></div></div>
 <h3>Ícone</h3><dl class="campos">
 <div class="campo"><dt>Ícone</dt><dd>O desenho. Cada ícone é pensado para plasma: traços grossos e espaço entre as partes.<span class="opciones">Saída · Seta · Seta a 45° · Seta curva · Extintor · Primeiros socorros · Ponto de encontro · Risco elétrico · Atenção</span></dd></div>
 <div class="campo"><dt>Modo</dt><dd>Vazado = o desenho fica oco na chapa (as ilhas, com pontes). Silhueta = o desenho sai como peça solta (as partes separadas se unem sozinhas).</dd></div>
-<div class="campo"><dt>Tamanho (o lado mais longo) <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
 <div class="campo"><dt>Espelho</dt><dd>Espelhado = o desenho virado da esquerda para a direita (uma seta que aponte para o outro lado).<span class="opciones">Normal · Espelhado</span></dd></div>
 <div class="campo"><dt>Giro</dt><dd>Gira o desenho em sentido horário (por exemplo, uma seta para cima ou para baixo).<span class="opciones">0° · 90° · 180° · 270°</span></dd></div>
 </dl>
@@ -356,22 +399,22 @@
 <div class="campo"><dt>Forma</dt><dd>Nenhuma = só o desenho vazado, em DXF (a chapa você monta no CAD). Com uma forma = a chapa da placa inteira com o ícone vazado, pronta para o nesting.<span class="opciones">Nenhum · Retângulo · Cantos invertidos · Cantos chanfrados · Arco em cima · Ticket · Hexágono alongado · Escudo · Círculo · Oval</span></dd></div>
 <div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura total da placa (no círculo, o diâmetro).</dd></div>
 <div class="campo"><dt>Altura <span class="unidad">mm</span></dt><dd>Altura total da placa.</dd></div>
-<div class="campo"><dt>Margem até o ícone <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
-<div class="campo"><dt>Tamanho do detalhe (0 = automático) <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
-<div class="campo"><dt>Furos de fixação</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
-<div class="campo"><dt>Diâmetro dos furos <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
-<div class="campo"><dt>Distância do furo à borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
-<div class="campo"><dt>Tamanho do ícone <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
+<div class="campo"><dt>Margem <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
+<div class="campo"><dt>Detalhe <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
+<div class="campo"><dt>Furos</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
+<div class="campo"><dt>Ø furo <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
+<div class="campo"><dt>Até a borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
 </dl>
 <h3>Pontes</h3><dl class="campos">
-<div class="campo"><dt>Largura da ponte (0 = automático) <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
-<div class="campo"><dt>Pontes por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
+<div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
+<div class="campo"><dt>Por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
 </dl></section>
 <section id="iconos_comercio" class="seccion figura"><div class="fig-cab"><img class="fig" src="../fig/iconos_comercio.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Comércio e gastronomia <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Bar, cerveja, café, restaurante, churrasqueira, WiFi e estacionamento.</p></div></div>
 <h3>Ícone</h3><dl class="campos">
 <div class="campo"><dt>Ícone</dt><dd>O desenho. Cada ícone é pensado para plasma: traços grossos e espaço entre as partes.<span class="opciones">Bar · Cerveja · Café · Restaurante · Churrasco · WiFi · Estacionamento</span></dd></div>
 <div class="campo"><dt>Modo</dt><dd>Vazado = o desenho fica oco na chapa (as ilhas, com pontes). Silhueta = o desenho sai como peça solta (as partes separadas se unem sozinhas).</dd></div>
-<div class="campo"><dt>Tamanho (o lado mais longo) <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
 <div class="campo"><dt>Espelho</dt><dd>Espelhado = o desenho virado da esquerda para a direita (uma seta que aponte para o outro lado).<span class="opciones">Normal · Espelhado</span></dd></div>
 <div class="campo"><dt>Giro</dt><dd>Gira o desenho em sentido horário (por exemplo, uma seta para cima ou para baixo).<span class="opciones">0° · 90° · 180° · 270°</span></dd></div>
 </dl>
@@ -379,22 +422,22 @@
 <div class="campo"><dt>Forma</dt><dd>Nenhuma = só o desenho vazado, em DXF (a chapa você monta no CAD). Com uma forma = a chapa da placa inteira com o ícone vazado, pronta para o nesting.<span class="opciones">Nenhum · Retângulo · Cantos invertidos · Cantos chanfrados · Arco em cima · Ticket · Hexágono alongado · Escudo · Círculo · Oval</span></dd></div>
 <div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura total da placa (no círculo, o diâmetro).</dd></div>
 <div class="campo"><dt>Altura <span class="unidad">mm</span></dt><dd>Altura total da placa.</dd></div>
-<div class="campo"><dt>Margem até o ícone <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
-<div class="campo"><dt>Tamanho do detalhe (0 = automático) <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
-<div class="campo"><dt>Furos de fixação</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
-<div class="campo"><dt>Diâmetro dos furos <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
-<div class="campo"><dt>Distância do furo à borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
-<div class="campo"><dt>Tamanho do ícone <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
+<div class="campo"><dt>Margem <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
+<div class="campo"><dt>Detalhe <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
+<div class="campo"><dt>Furos</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
+<div class="campo"><dt>Ø furo <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
+<div class="campo"><dt>Até a borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
 </dl>
 <h3>Pontes</h3><dl class="campos">
-<div class="campo"><dt>Largura da ponte (0 = automático) <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
-<div class="campo"><dt>Pontes por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
+<div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
+<div class="campo"><dt>Por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
 </dl></section>
 <section id="iconos_varios" class="seccion figura"><div class="fig-cab"><img class="fig" src="../fig/iconos_varios.webp" width="176" height="132" alt="" loading="lazy"><div><h2>Diversos <span class="sello sello-pro">PRO</span></h2><p class="sec-intro">Animais, escada e elevador.</p></div></div>
 <h3>Ícone</h3><dl class="campos">
 <div class="campo"><dt>Ícone</dt><dd>O desenho. Cada ícone é pensado para plasma: traços grossos e espaço entre as partes.<span class="opciones">Animais de estimação · Escada · Elevador</span></dd></div>
 <div class="campo"><dt>Modo</dt><dd>Vazado = o desenho fica oco na chapa (as ilhas, com pontes). Silhueta = o desenho sai como peça solta (as partes separadas se unem sozinhas).</dd></div>
-<div class="campo"><dt>Tamanho (o lado mais longo) <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">mm</span></dt><dd>Medida do lado mais longo do ícone (largura ou altura, o maior). O outro sai proporcional.</dd></div>
 <div class="campo"><dt>Espelho</dt><dd>Espelhado = o desenho virado da esquerda para a direita (uma seta que aponte para o outro lado).<span class="opciones">Normal · Espelhado</span></dd></div>
 <div class="campo"><dt>Giro</dt><dd>Gira o desenho em sentido horário (por exemplo, uma seta para cima ou para baixo).<span class="opciones">0° · 90° · 180° · 270°</span></dd></div>
 </dl>
@@ -402,16 +445,16 @@
 <div class="campo"><dt>Forma</dt><dd>Nenhuma = só o desenho vazado, em DXF (a chapa você monta no CAD). Com uma forma = a chapa da placa inteira com o ícone vazado, pronta para o nesting.<span class="opciones">Nenhum · Retângulo · Cantos invertidos · Cantos chanfrados · Arco em cima · Ticket · Hexágono alongado · Escudo · Círculo · Oval</span></dd></div>
 <div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Largura total da placa (no círculo, o diâmetro).</dd></div>
 <div class="campo"><dt>Altura <span class="unidad">mm</span></dt><dd>Altura total da placa.</dd></div>
-<div class="campo"><dt>Margem até o ícone <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
-<div class="campo"><dt>Tamanho do detalhe (0 = automático) <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
-<div class="campo"><dt>Furos de fixação</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
-<div class="campo"><dt>Diâmetro dos furos <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
-<div class="campo"><dt>Distância do furo à borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
-<div class="campo"><dt>Tamanho do ícone <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
+<div class="campo"><dt>Margem <span class="unidad">mm</span></dt><dd>Distância mínima entre a borda da placa e o ícone.</dd></div>
+<div class="campo"><dt>Detalhe <span class="unidad">mm</span></dt><dd>Depende da forma, igual que em Letras para placa: raio dos cantos, tamanho do chanfro, altura do arco etc. Exceto no retângulo, 0 = um tamanho automático.</dd></div>
+<div class="campo"><dt>Furos</dt><dd>Nenhum, 2 em cima (para pendurar) ou 4 (um perto de cada canto).</dd></div>
+<div class="campo"><dt>Ø furo <span class="unidad">mm</span></dt><dd>Diâmetro dos furos de fixação.</dd></div>
+<div class="campo"><dt>Até a borda <span class="unidad">mm</span></dt><dd>Do centro do furo até a borda da placa.</dd></div>
+<div class="campo"><dt>Tamanho <span class="unidad">%</span></dt><dd>100 % = o maior que cabe na placa com a margem; ao lado aparece a medida em mm.</dd></div>
 </dl>
 <h3>Pontes</h3><dl class="campos">
-<div class="campo"><dt>Largura da ponte (0 = automático) <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
-<div class="campo"><dt>Pontes por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
+<div class="campo"><dt>Largura <span class="unidad">mm</span></dt><dd>Vazado: largura das pontes que seguram as ilhas (0 = 1,5 × espessura, mínimo 3 mm). Silhueta: largura das uniões entre partes separadas (0 = 2 × espessura, mínimo 5 mm).</dd></div>
+<div class="campo"><dt>Por ilha</dt><dd>Automático = 2 pontes nas ilhas grandes e 1 nas pequenas. Ou fixo 1 ou 2.</dd></div>
 </dl></section>
 <footer class="pie">optiMAX · GMSoftware · <a href="../../">optimax.lat</a> · Verifique todas as medidas antes de cortar ou fabricar.</footer>
 </main>
