@@ -10,7 +10,7 @@
   try {
     var elegido = null; try { elegido = localStorage.getItem("ox_idioma"); } catch (e) {}
     var nav = (navigator.languages && navigator.languages[0]) || navigator.language || "";
-    if (elegido === "pt" || (!elegido && /^pt\b/i.test(nav))) location.replace("pt/" + location.search + location.hash);
+    if (elegido === "pt" || (!elegido && /^pt\b/i.test(nav))) location.replace("pt/index.html" + location.search + location.hash);
   } catch (e) {}
 })();
 </script>
@@ -75,7 +75,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
       <a href="#preguntas">Preguntas</a>
       <a href="ayuda/">Ayuda</a>
     </nav>
-    <span class="idiomas" role="group" aria-label="Idioma"><span class="idioma actual" title="Español"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg>ES</span><a class="idioma js-idioma" href="pt/" hreflang="pt-BR" lang="pt-BR" data-idioma="pt" title="Português"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009c3b"/><path d="M15 2.6 27.4 10 15 17.4 2.6 10z" fill="#ffdf00"/><circle cx="15" cy="10" r="4.1" fill="#002776"/></svg>PT</a></span>
+    <span class="idiomas" role="group" aria-label="Idioma"><span class="idioma actual" title="Español"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg>ES</span><a class="idioma js-idioma" href="pt/index.html" hreflang="pt-BR" lang="pt-BR" data-idioma="pt" title="Português"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009c3b"/><path d="M15 2.6 27.4 10 15 17.4 2.6 10z" fill="#ffdf00"/><circle cx="15" cy="10" r="4.1" fill="#002776"/></svg>PT</a></span>
     <a class="boton boton-rojo boton-chico js-descarga" href="#descargar">Descargar DEMO</a>
   </div>
 </header>
@@ -495,7 +495,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
     <a class="wa-chip js-consultas" href="https://wa.me/59178516826" target="_blank" rel="noopener"><svg class="ico-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.9 3 3 6.6 3 11c0 2.3 1.1 4.4 2.9 5.9L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5.1 0 9-3.6 9-8.1S17.1 3 12 3z" fill="currentColor"/><circle cx="8" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="12" cy="11" r="1.3" fill="var(--wa-fondo)"/><circle cx="16" cy="11" r="1.3" fill="var(--wa-fondo)"/></svg><span>Escribinos tu consulta</span><small>WhatsApp +591 78516826</small></a>
     <span>Ventas: +591 77626675</span>
     <a href="ayuda/">Ayuda del programa</a>
-    <span class="idiomas" role="group" aria-label="Idioma"><span class="idioma actual" title="Español"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg>Español</span><a class="idioma js-idioma" href="pt/" hreflang="pt-BR" lang="pt-BR" data-idioma="pt" title="Português"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009c3b"/><path d="M15 2.6 27.4 10 15 17.4 2.6 10z" fill="#ffdf00"/><circle cx="15" cy="10" r="4.1" fill="#002776"/></svg>Português</a></span>
+    <span class="idiomas" role="group" aria-label="Idioma"><span class="idioma actual" title="Español"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg>Español</span><a class="idioma js-idioma" href="pt/index.html" hreflang="pt-BR" lang="pt-BR" data-idioma="pt" title="Português"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009c3b"/><path d="M15 2.6 27.4 10 15 17.4 2.6 10z" fill="#ffdf00"/><circle cx="15" cy="10" r="4.1" fill="#002776"/></svg>Português</a></span>
   </div>
 </footer>
 
