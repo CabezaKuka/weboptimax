@@ -13,6 +13,7 @@ Cada versión importante queda guardada en una rama `version-*` que apunta a ese
 | `version-antes-modo-claro` | `85be41d` | Última versión en modo oscuro (17 nov 2026). Encabezado "Software para talleres metalúrgicos", módulos en tarjetas, 6 funciones explicadas una debajo de la otra. |
 | `version-antes-ayuda` | `89cd541` | Antes de agregar la carpeta `ayuda/` y el enlace «Ayuda» en el menú y el pie (18 nov 2026). |
 | `version-modo-claro-v1` | `8ae20a0` | Primera versión publicada en modo claro (17 nov 2026): diagrama de módulos con optiMAX al centro, video de YouTube, favicon "M" blanca sobre rojo. |
+| `version-antes-carteles` | `9229890` | Antes de agregar Letras y carteles y Logos, y de cambiar el diagrama de módulos por tarjetas con detalle emergente (19 nov 2026). |
 
 ## Cómo volver a una versión anterior
 
@@ -35,7 +36,8 @@ Antes de cada cambio grande en producción, crear una rama marcador sobre `main`
 
 ## Cosas a no romper
 
-- Pixel de Meta (`fbq`), con los eventos personalizados `VerVideo` y `VerModulo`.
+- Pixel de Meta (`fbq`), con los eventos personalizados `VerVideo`, `VerModulo` (al abrir o pasar de módulo en el detalle de Funciones) y `DescargaDesdeModulo` (botón de descarga dentro del detalle).
+- Funciones: tarjetas `.mod` (data-mod = id del artículo) que abren el diálogo `#mod-detalle`; el contenido de cada módulo son los `<article class="hub-panel">` guardados en `.mod-fuente`. Los enlaces `#f-…` del menú abren el detalle de ese módulo.
 - Lógica de descarga (`.js-descarga`) y de pago (pestañas, QR, mensaje de WhatsApp).
 - Precio en Bs para visitantes de Bolivia (detección por zona horaria; `.js-precio-pro`).
 - Para probar en local hace falta un servidor (`python -m http.server 8000`): abierto como archivo, el video de YouTube da error 153.
