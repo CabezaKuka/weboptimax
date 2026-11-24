@@ -37,6 +37,7 @@ rep('href="comun.css"', 'href="../comun.css"', 1)
 rep('src="comun.js"', 'src="../comun.js"', 1)
 rep('<a href="ayuda/">Ayuda</a>', '<a href="../ayuda/pt/">Ajuda</a>', 1)
 rep('<a href="ayuda/">Ayuda del programa</a>', '<a href="../ayuda/pt/">Ajuda do programa</a>', 1)
+rep('optiMAX en Facebook', 'optiMAX no Facebook', 4)
 
 # ---------- Selector de idioma ----------
 rep('<span class="idiomas" role="group" aria-label="Idioma"><span class="idioma actual" title="Español"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg>ES</span><a class="idioma js-idioma" href="pt/index.html" hreflang="pt-BR" lang="pt-BR" data-idioma="pt" title="Português"><svg class="bandera" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009c3b"/><path d="M15 2.6 27.4 10 15 17.4 2.6 10z" fill="#ffdf00"/><circle cx="15" cy="10" r="4.1" fill="#002776"/></svg>PT</a></span>',

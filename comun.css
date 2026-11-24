@@ -702,3 +702,11 @@ a.idioma:hover{color:var(--texto);background:rgba(0,0,0,.06)}
 @media (max-width:1023px){.barra nav{display:none}.barra .idiomas{margin-left:auto}.barra .idiomas~.boton{margin-left:0}}
 @media (max-width:520px){.barra .idioma.actual{display:none}.barra .idiomas{padding:2px}.barra .envoltura{gap:10px}}
 @media (max-width:370px){.barra .idioma{font-size:0;gap:0;padding:6px 8px}}
+/* Facebook */
+.fb-ico{flex:0 0 auto;display:inline-flex;width:30px;height:30px;color:#1877f2;transition:transform .15s}
+.fb-ico:hover{transform:scale(1.08)}
+.fb-ico svg{width:100%;height:100%}
+.barra .idiomas~.fb-ico{margin-left:-10px}
+@media (max-width:520px){.barra .fb-ico{width:26px;height:26px}.barra .idiomas~.fb-ico{margin-left:-2px}}
+@media (max-width:420px){.barra .fb-ico{display:none}}
+@media (min-width:1200px){.barra .envoltura{gap:14px}.barra nav{gap:15px}}
