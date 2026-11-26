@@ -13,6 +13,21 @@ Sitio estático de optiMAX (software de nesting y corte para talleres metalúrgi
 
 **Ayuda del programa** (`ayuda/`): 10 páginas estáticas, sin JavaScript ni píxel, que abren el botón «?» y la tecla F1 de cada ventana de optiMAX. **No se editan a mano**: se generan desde el repo del programa (`nesting-cnc`) con `python NO_DISTRIBUIR/generar_ayuda.py RUTA/weboptimax/ayuda` (textos en `desarrollos/` → `Param.ayuda` y en `ayuda_textos.py`). No cambiar nombres de páginas ni anclas: el programa abre esas direcciones (`ayuda.py`). Las imágenes de las figuras salen de `img/fig/`; las que faltan se dibujan en `ayuda/fig/`.
 
+## Página de optiMAX Taller (`taller/`)
+
+`taller/index.html` = https://optimax.lat/taller/, la página de **optiMAX Taller**, la app del celular (la app vive en
+https://app.optimax.lat, repo `optimax-pwa`; esta es solo su página). Solo en español por ahora. Usa `../comun.css` (letras,
+colores, barra, botones y pie) + su propio `<style>` (clases `tl-…`; colores de cada oficio iguales a los de la app); **no**
+usa `comun.js` (que es del programa de Windows: descarga y pagos). Su propio script al final: precio de la PRO **250 Bs en
+Bolivia / 20 USDT afuera** (zona horaria `America/La_Paz`, como el sitio y la app; `.js-precio`, `.js-precio-pc` = 590 Bs /
+49 USDT), mensaje de WhatsApp a ventas y eventos del píxel (`TallerAbrirApp` con `modulo`, `Contact` + `TallerComprarPRO`
+con `precio`, `TallerConsulta`; todos con `idioma: "es"` y `pagina: "taller"`). Mismo píxel y `ox_eid` que el sitio.
+Imágenes en `taller/img/`: capturas reales de la app (`3d-*.webp` = vistas 3D, `cel-*.webp` = pantallas del celular,
+`og.jpg` = imagen para compartir) y las 12 figuras en `taller/img/fig/`. Las capturas se sacan con el guion de Claude
+(Playwright sobre la PWA con `?pro=1`); si cambia la app, se vuelven a sacar. Datos de DEMO / PRO = los de la app (ver
+`estado-pwa.md` en el Project de la PWA): si cambian allá, cambiarlos acá. El enlace desde el sitio es `/taller/`
+(absoluto, así sirve también en `pt/`).
+
 ## Versiones marcadas
 
 Cada versión importante queda guardada en una rama `version-*` que apunta a ese commit. **No borrar estas ramas ni hacerles commits.** Se usan ramas y no tags porque el entorno de Claude no puede subir tags a GitHub.
@@ -24,6 +39,7 @@ Cada versión importante queda guardada en una rama `version-*` que apunta a ese
 | `version-modo-claro-v1` | `8ae20a0` | Primera versión publicada en modo claro (17 nov 2026): diagrama de módulos con optiMAX al centro, video de YouTube, favicon "M" blanca sobre rojo. |
 | `version-antes-carteles` | `9229890` | Antes de agregar Letras y carteles y Logos, y de cambiar el diagrama de módulos por tarjetas con detalle emergente (19 nov 2026). |
 | `version-antes-portugues` | `90820b3` | Antes de la versión en portugués (`/pt/`) y de separar `comun.css` / `comun.js` (22 nov 2026). Todo en un solo `index.html`. |
+| `version-antes-taller` | `5a7e8e1` | Antes de la página `taller/` (optiMAX Taller, la app del celular) y del enlace «App Taller» en el menú y el pie (25 nov 2026). |
 
 ## Cómo volver a una versión anterior
 

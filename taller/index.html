@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>optiMAX Taller: desarrollos de chapa, rejas, portones, barras y guillotina en el celular</title>
+<meta name="description" content="optiMAX Taller: la app del taller en el celular. Desarrollos de chapa con su plantilla, rejas y portones con la lista de corte, barras y guillotina, con vista 3D. DEMO gratis, PRO de pago único.">
+<meta property="og:title" content="optiMAX Taller: tu taller en el bolsillo">
+<meta property="og:description" content="Desarrollos de chapa, rejas y portones, barras y guillotina en el celular, con vista 3D. Probala gratis, sin instalar nada.">
+<meta property="og:image" content="https://optimax.lat/taller/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://optimax.lat/taller/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://optimax.lat/taller/">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/icono-180.png">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../comun.css">
+<style>
+/* optiMAX Taller: usa los colores y letras de optimax.lat (comun.css). Colores de cada oficio, los mismos de la app. */
+.tl{--chapa:#2563eb;--herreria:#c96a05;--carpinteria:#15803d}
+.tl .barra .marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tl .marca-taller{font:700 1.25rem/1 var(--f-titulo);letter-spacing:.02em;color:var(--texto);border-left:1px solid var(--linea);padding-left:10px}
+.tl-eyebrow{font:700 .8rem/1.2 var(--f-texto);text-transform:uppercase;letter-spacing:.14em;color:var(--rojo)}
+.tl-portada{padding-block:clamp(28px,5vw,64px) clamp(36px,5vw,64px)}
+.tl-portada .envoltura{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(20px,4vw,48px);align-items:center}
+.tl-portada h1{font-size:clamp(2.7rem,6.4vw,4.6rem);margin:10px 0 16px}
+.tl-portada p.lead{font-size:1.12rem;color:var(--tenue);max-width:46ch}
+.tl-acciones{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 18px}
+.tl-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tl-chips li{font-size:.88rem;color:var(--tenue);border:1px solid var(--linea);border-radius:999px;padding:4px 12px;background:var(--acero-2)}
+.tl-hero-img{margin:0;border-radius:14px;overflow:hidden;box-shadow:var(--sombra);background:#eef1f4;position:relative}
+.tl-hero-img img{width:100%;height:auto}
+.tl-hero-img figcaption,.tl-3d figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 12px;font-size:.85rem;font-weight:600;color:#1a1f24}
+.tl-precio-hero{font-size:.95rem;color:var(--tenue);margin-top:6px}
+.tl-precio-hero strong{color:var(--texto)}
+/* herramientas */
+.tl-herr{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.tl-h{background:var(--acero-2);border:1px solid var(--acero-3);border-top:4px solid var(--c);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--sombra)}
+.tl-h h3{font-size:1.45rem;color:var(--c)}
+.tl-h p{color:var(--tenue);font-size:.98rem}
+.tl-h .oficio{font:700 .75rem/1 var(--f-texto);text-transform:uppercase;letter-spacing:.12em;color:var(--c)}
+.tl-cel{border:7px solid #1a1f24;border-radius:22px;overflow:hidden;background:#1a1f24;margin-top:auto}
+.tl-cel img{width:100%;height:auto}
+.tl-h a{font-weight:600;color:var(--c);text-decoration:none}
+.tl-h a:hover{text-decoration:underline}
+/* 3D */
+.tl-3d-grande{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;margin-bottom:18px}
+.tl-3d{position:relative;margin:0;border-radius:12px;overflow:hidden;background:#eef1f4;box-shadow:var(--sombra)}
+.tl-3d img{width:100%;height:100%;object-fit:cover}
+.tl-3d-chapa{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tl-3d-chapa .tl-3d img{aspect-ratio:4/3;object-fit:contain;background:#eef1f4}
+/* catálogo */
+.tl-cat{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.tl-fig{background:var(--acero-2);border:1px solid var(--acero-3);border-radius:10px;padding:10px 10px 12px;text-align:center;font-size:.9rem;font-weight:600;position:relative}
+.tl-fig img{width:100%;height:96px;object-fit:contain;margin-bottom:6px}
+.tl-fig .sello{position:absolute;top:8px;right:8px}
+.tl-sello{display:inline-block;font:700 .7rem/1 var(--f-texto);letter-spacing:.06em;padding:4px 7px;border-radius:4px;text-transform:uppercase}
+.tl-demo{background:#dcfce7;color:#166534}
+.tl-pro{background:var(--rojo);color:#fff}
+/* precios */
+.tl-planes{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin-inline:auto}
+.tl-plan{background:var(--acero-2);border:1px solid var(--acero-3);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--sombra)}
+.tl-plan.pro{border:2px solid var(--rojo)}
+.tl-plan h3{font-size:1.9rem}
+.tl-monto{font:800 2.8rem/1 var(--f-titulo)}
+.tl-monto small{font:500 1rem var(--f-texto);color:var(--tenue)}
+.tl-plan ul{margin:0;padding-left:20px;line-height:1.75}
+.tl-plan .boton{margin-top:auto}
+.tl-nota{font-size:.92rem;color:var(--tenue);text-align:center;margin-top:18px}
+/* pasos */
+.tl-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:paso;padding:0;margin:0;list-style:none}
+.tl-pasos li{background:var(--acero-2);border:1px solid var(--acero-3);border-radius:12px;padding:20px 20px 20px 64px;position:relative}
+.tl-pasos li::before{counter-increment:paso;content:counter(paso);position:absolute;left:18px;top:18px;width:32px;height:32px;border-radius:50%;background:var(--rojo);color:#fff;font:700 1.1rem/32px var(--f-titulo);text-align:center}
+.tl-pasos h3{font-size:1.3rem;margin-bottom:6px}
+.tl-pasos p{color:var(--tenue)}
+/* comparación */
+.tl-tabla{width:100%;max-width:900px;margin-inline:auto;border-collapse:collapse;background:var(--acero-2);border-radius:12px;overflow:hidden;box-shadow:var(--sombra)}
+.tl-tabla th,.tl-tabla td{padding:12px 16px;border-bottom:1px solid var(--acero-3);text-align:left;vertical-align:top}
+.tl-tabla thead th{font:700 1.15rem var(--f-titulo);background:var(--acero-3)}
+.tl-tabla td:not(:first-child),.tl-tabla th:not(:first-child){text-align:center;width:28%}
+.tl-si{color:var(--ok);font-weight:700}
+.tl-no{color:var(--tenue)}
+/* preguntas */
+.tl-preg{max-width:820px}
+.tl-preg details{border-bottom:1px solid var(--acero-3);padding:16px 0}
+.tl-preg summary{cursor:pointer;font-weight:600;font-size:1.05rem}
+.tl-preg details p{margin-top:10px;color:var(--tenue)}
+/* final */
+.tl-final{text-align:center}
+.tl-final h2{margin-bottom:12px}
+.tl-final .tl-acciones{justify-content:center}
+.tl-barra-cel{display:none}
+@media (max-width:1000px){.tl-herr{grid-template-columns:1fr 1fr}.tl-cat{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:760px){
+  .tl-portada .envoltura,.tl-3d-grande,.tl-planes,.tl-pasos{grid-template-columns:1fr}
+  .tl-portada .tl-hero-img{order:-1}
+  .tl-3d-chapa{grid-template-columns:1fr 1fr}
+  .tl-cat{grid-template-columns:repeat(3,1fr)}
+  .tl-tabla th,.tl-tabla td{padding:10px 8px;font-size:.92rem}
+  .tl .marca-taller{font-size:1.1rem}
+  .tl-hero-img figcaption,.tl-3d figcaption{font-size:.78rem;padding:4px 10px;left:8px;bottom:8px}
+  .tl-barra-cel{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:25;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.96);border-top:1px solid var(--acero-3);backdrop-filter:blur(8px)}
+  .tl-barra-cel .boton{flex:1}
+  body.tl{padding-bottom:76px}
+}
+@media (max-width:480px){.tl-herr{grid-template-columns:1fr}.tl-cat{grid-template-columns:repeat(2,1fr)}.tl-cel{max-width:300px;margin-inline:auto}}
+</style>
+<!-- Meta Pixel Code (optiMAX-WEB) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+// external_id: el mismo identificador anónimo por navegador que optimax.lat
+var oxEid = null;
+try {
+  oxEid = localStorage.getItem('ox_eid');
+  if (!oxEid) {
+    oxEid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+          : Date.now().toString(36) + Math.random().toString(36).slice(2);
+    localStorage.setItem('ox_eid', oxEid);
+  }
+} catch (e) { oxEid = null; }
+fbq('init', '4773464836310644', oxEid ? {external_id: oxEid} : {});
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+</head>
+<body class="tl">
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></noscript>
+
+<header class="barra">
+  <div class="envoltura">
+    <a class="marca" href="#inicio" aria-label="optiMAX Taller, inicio"><img src="../img/logo-oscuro.webp" alt="optiMAX" width="90" height="30"><span class="marca-taller">Taller</span></a>
+    <nav aria-label="Secciones">
+      <a href="#herramientas">Herramientas</a>
+      <a href="#vista-3d">Vista 3D</a>
+      <a href="#desarrollos">Desarrollos</a>
+      <a href="#precios">DEMO y PRO</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="boton boton-rojo boton-chico js-app" data-modulo="inicio" href="https://app.optimax.lat/">Abrir la app</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="tl-portada">
+    <div class="envoltura">
+      <div>
+        <p class="tl-eyebrow">Chapa · Herrería · Carpintería</p>
+        <h1>Tu taller en el bolsillo</h1>
+        <p class="lead">Cargás las medidas en el celular y tenés la plantilla de la chapa, la lista de corte del portón, las barras a comprar y el orden de los cortes. Y antes de cortar, la ves armada en 3D.</p>
+        <div class="tl-acciones">
+          <a class="boton boton-rojo js-app" data-modulo="inicio" href="https://app.optimax.lat/">Probar gratis</a>
+          <a class="boton boton-linea" href="#precios">Ver la PRO</a>
+        </div>
+        <ul class="tl-chips">
+          <li>Sin instalar nada</li>
+          <li>Sin registrarte</li>
+          <li>DEMO sin vencimiento</li>
+          <li>Anda sin internet</li>
+        </ul>
+        <p class="tl-precio-hero">PRO de pago único: <strong class="js-precio">20 USDT</strong></p>
+      </div>
+      <figure class="tl-hero-img">
+        <img src="img/3d-porton.webp" width="1200" height="780" alt="Portón batiente de 2 hojas en 3D, entre dos columnas, armado con la lista de corte de la app" fetchpriority="high">
+        <figcaption>Portón batiente en la vista 3D de la app</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="seccion" id="herramientas">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>Cuatro herramientas, una app</h2>
+        <p>Elegís lo que vas a fabricar, cargás las medidas y la app hace las cuentas. Todo en español y con las medidas en milímetros.</p>
+      </div>
+      <div class="tl-herr">
+        <article class="tl-h" style="--c:var(--chapa)">
+          <span class="oficio">Chapa</span>
+          <h3>Desarrollos de chapa</h3>
+          <p>T de caño, curvas, conos, fondos de tolva, transiciones y hélices: la plantilla con sus medidas para trazar, o impresa a escala con la PRO.</p>
+          <a class="js-app" data-modulo="chapa" href="https://app.optimax.lat/#chapa">Abrir desarrollos →</a>
+          <div class="tl-cel"><img src="img/cel-chapa.webp" width="480" height="960" loading="lazy" alt="Pantalla de la app con la plantilla de una transición rectangular a redondo y sus medidas"></div>
+        </article>
+        <article class="tl-h" style="--c:var(--herreria)">
+          <span class="oficio">Herrería</span>
+          <h3>Rejas y portones</h3>
+          <p>Rejas de ventana, portones batientes y corredizos: la lista de corte de cada perfil con sus ángulos, las barras a comprar, el peso y el croquis.</p>
+          <a class="js-app" data-modulo="portones" href="https://app.optimax.lat/#portones">Abrir rejas y portones →</a>
+          <div class="tl-cel"><img src="img/cel-portones.webp" width="480" height="960" loading="lazy" alt="Pantalla de la app con el dibujo de un portón de dos hojas y su lista de corte por marca"></div>
+        </article>
+        <article class="tl-h" style="--c:var(--herreria)">
+          <span class="oficio">Herrería</span>
+          <h3>Barras y tubos</h3>
+          <p>Cuántas barras comprar y cómo cortar cada una para que sobre lo menos posible, con la lista de corte barra por barra.</p>
+          <a class="js-app" data-modulo="barras" href="https://app.optimax.lat/#barras">Abrir barras y tubos →</a>
+          <div class="tl-cel"><img src="img/cel-barras.webp" width="480" height="960" loading="lazy" alt="Pantalla de la app con el corte de una barra de 6000 mm y lo que sobra"></div>
+        </article>
+        <article class="tl-h" style="--c:var(--carpinteria)">
+          <span class="oficio">Carpintería</span>
+          <h3>Guillotina y melamina</h3>
+          <p>Piezas rectangulares en planchas de melamina o chapa, con cortes de lado a lado, numerados en el orden en que se hacen.</p>
+          <a class="js-app" data-modulo="guillotina" href="https://app.optimax.lat/#guillotina">Abrir guillotina →</a>
+          <div class="tl-cel"><img src="img/cel-guillotina.webp" width="480" height="960" loading="lazy" alt="Pantalla de la app con una plancha de melamina, las piezas y los cortes numerados"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="vista-3d">
+    <div class="envoltura">
+      <div class="intro">
+        <p class="tl-eyebrow">Vista 3D</p>
+        <h2>Mirala armada antes de cortar</h2>
+        <p>Cada portón, reja y desarrollo se ve en 3D: lo girás con un dedo y lo acercás con dos. El portón entre columnas o paredes, la reja en el hueco de la ventana y la chapa enrollada como va a quedar. Está también en la DEMO.</p>
+      </div>
+      <div class="tl-3d-grande">
+        <figure class="tl-3d"><img src="img/3d-corredizo.webp" width="1200" height="780" loading="lazy" alt="Portón corredizo en 3D que corre por detrás de las paredes"><figcaption>Corredizo con paredes</figcaption></figure>
+        <figure class="tl-3d"><img src="img/3d-reja.webp" width="800" height="800" loading="lazy" alt="Reja de ventana de rombos en 3D, sobrepuesta en el hueco de una pared"><figcaption>Reja de ventana en la pared</figcaption></figure>
+      </div>
+      <div class="tl-3d-chapa">
+        <figure class="tl-3d"><img src="img/3d-t_cil_cil.webp" width="800" height="577" loading="lazy" alt="T de caño en 3D"><figcaption>T de caño</figcaption></figure>
+        <figure class="tl-3d"><img src="img/3d-codo_sectores.webp" width="800" height="700" loading="lazy" alt="Curva redonda por sectores en 3D"><figcaption>Curva por sectores</figcaption></figure>
+        <figure class="tl-3d"><img src="img/3d-transicion_rect_red.webp" width="800" height="622" loading="lazy" alt="Transición rectangular a redondo en 3D"><figcaption>Transición</figcaption></figure>
+        <figure class="tl-3d"><img src="img/3d-tronco_piramide.webp" width="800" height="622" loading="lazy" alt="Fondo de tolva en 3D"><figcaption>Fondo de tolva</figcaption></figure>
+        <figure class="tl-3d"><img src="img/3d-t_rect_cil.webp" width="800" height="622" loading="lazy" alt="T de ramal rectangular sobre caño en 3D"><figcaption>T rectangular</figcaption></figure>
+        <figure class="tl-3d"><img src="img/3d-codo_rect.webp" width="800" height="622" loading="lazy" alt="Curva rectangular en 3D"><figcaption>Curva rectangular</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="desarrollos">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>12 desarrollos de chapa</h2>
+        <p>Cargás diámetros, lados, alturas y espesor, y la app te da la plantilla de cada chapa con sus medidas. Con la PRO la imprimís a escala en hojas A4 y te llevás el plano de armado en PDF.</p>
+      </div>
+      <div class="tl-cat">
+        <div class="tl-fig"><span class="tl-sello tl-demo sello">DEMO</span><img src="img/fig/t_cil_cil.webp" loading="lazy" alt="">T cilindro / cilindro</div>
+        <div class="tl-fig"><span class="tl-sello tl-demo sello">DEMO</span><img src="img/fig/codo_sectores.webp" loading="lazy" alt="">Curva redonda por sectores</div>
+        <div class="tl-fig"><span class="tl-sello tl-demo sello">DEMO</span><img src="img/fig/tronco_cono.webp" loading="lazy" alt="">Tronco de cono / reducción</div>
+        <div class="tl-fig"><span class="tl-sello tl-demo sello">DEMO</span><img src="img/fig/tronco_piramide.webp" loading="lazy" alt="">Fondo de tolva</div>
+        <div class="tl-fig"><span class="tl-sello tl-pro sello">PRO</span><img src="img/fig/t_rect_cil.webp" loading="lazy" alt="">T ramal rectangular sobre caño</div>
+        <div class="tl-fig"><span class="tl-sello tl-pro sello">PRO</span><img src="img/fig/t_cil_rect.webp" loading="lazy" alt="">T ramal redondo sobre caja</div>
+        <div class="tl-fig"><span class="tl-sello tl-pro sello">PRO</span><img src="img/fig/codo_rect.webp" loading="lazy" alt="">Curva rectangular</div>
+        <div class="tl-fig"><span class="tl-sello tl-pro sello">PRO</span><img src="img/fig/curva_directa_90.webp" loading="lazy" alt="">Curva directa 90°</div>
+        <div class="tl-fig"><span class="tl-sello tl-pro sello">PRO</span><img src="img/fig/curva_directa.webp" loading="lazy" alt="">Curva directa</div>
+        <div class="tl-fig"><span class="tl-sello tl-pro sello">PRO</span><img src="img/fig/desvio_paralelo.webp" loading="lazy" alt="">Desvío circular paralelo</div>
+        <div class="tl-fig"><span class="tl-sello tl-pro sello">PRO</span><img src="img/fig/transicion_rect_red.webp" loading="lazy" alt="">Transición rectangular a redondo</div>
+        <div class="tl-fig"><span class="tl-sello tl-pro sello">PRO</span><img src="img/fig/helicoide.webp" loading="lazy" alt="">Helicoide (hélice de sinfín)</div>
+      </div>
+      <div class="tl-acciones"><a class="boton boton-rojo js-app" data-modulo="chapa" href="https://app.optimax.lat/#chapa">Probar los desarrollos</a></div>
+    </div>
+  </section>
+
+  <section class="seccion" id="precios">
+    <div class="envoltura">
+      <div class="intro" style="margin-inline:auto;text-align:center">
+        <h2>DEMO y PRO</h2>
+        <p>Probás todo gratis, sin vencimiento. Cuando lo necesitás para trabajar, comprás la PRO una sola vez.</p>
+      </div>
+      <div class="tl-planes">
+        <article class="tl-plan">
+          <h3>DEMO</h3>
+          <div class="tl-monto">Gratis <small>sin vencimiento</small></div>
+          <ul>
+            <li>4 desarrollos de chapa: plantilla con sus medidas y vista 3D</li>
+            <li>Reja de ventana hasta 1500 × 1000 mm, con su lista de corte y las barras</li>
+            <li>Barras y guillotina hasta 5 piezas</li>
+            <li>Vista 3D de los desarrollos y de la reja</li>
+          </ul>
+          <a class="boton boton-linea js-app" data-modulo="inicio" href="https://app.optimax.lat/">Probar la DEMO</a>
+        </article>
+        <article class="tl-plan pro">
+          <p class="tl-eyebrow">Pago único</p>
+          <h3>PRO</h3>
+          <div class="tl-monto"><span class="js-precio">20 USDT</span> <small>todos los módulos</small></div>
+          <ul>
+            <li>Los 12 desarrollos de chapa</li>
+            <li>Plantilla impresa a escala, plano de armado y PDF en A4</li>
+            <li>Portones batientes de 1 y 2 hojas y corredizos, de cualquier medida</li>
+            <li>Barras y guillotina sin límite de piezas, con precio por pieza</li>
+            <li>Costos del portón: perfiles, soldadura y pintura</li>
+            <li>Guardar trabajos; los de portones, barras y guillotina también se abren en optiMAX para Windows</li>
+          </ul>
+          <a class="boton boton-rojo js-comprar" href="https://wa.me/59177626675" target="_blank" rel="noopener">Comprar la PRO por WhatsApp</a>
+        </article>
+      </div>
+      <p class="tl-nota">La licencia va con tu número de WhatsApp y sirve en hasta 2 equipos. La PRO de la app y la de optiMAX para Windows son licencias separadas.</p>
+    </div>
+  </section>
+
+  <section class="seccion" id="empezar">
+    <div class="envoltura">
+      <div class="intro"><h2>Empezá en un minuto</h2></div>
+      <ol class="tl-pasos">
+        <li><h3>Abrila</h3><p>Entrá a <a class="js-app" data-modulo="inicio" href="https://app.optimax.lat/">app.optimax.lat</a> desde el celular. No pide cuenta ni datos.</p></li>
+        <li><h3>Dejala en el inicio</h3><p>En Android, menú ⋮ → «Instalar aplicación». En iPhone, desde Safari: Compartir → «Agregar a inicio» (así no se borran tus datos).</p></li>
+        <li><h3>Usala en el taller</h3><p>Abrila una vez con internet y después anda sin conexión. Para la PRO: «Comprar PRO» en la app, y al pagar, «Ya compré: activar».</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion" id="windows">
+    <div class="envoltura">
+      <div class="intro">
+        <h2>¿Taller o optiMAX para Windows?</h2>
+        <p>Taller es para preparar el trabajo desde el celular. Si cortás con CNC y necesitás el DXF o el nesting de piezas en la plancha, eso está en optiMAX para Windows.</p>
+      </div>
+      <table class="tl-tabla">
+        <thead><tr><th></th><th>optiMAX Taller</th><th>optiMAX para Windows</th></tr></thead>
+        <tbody>
+          <tr><td>Dónde se usa</td><td>Celular, tablet o PC, en el navegador</td><td>PC con Windows</td></tr>
+          <tr><td>Desarrollos de chapa</td><td class="tl-si">12</td><td class="tl-si">Los mismos y más</td></tr>
+          <tr><td>Rejas, portones, barras y guillotina</td><td class="tl-si">Sí</td><td class="tl-si">Sí</td></tr>
+          <tr><td>Vista 3D</td><td class="tl-si">Sí</td><td class="tl-no">—</td></tr>
+          <tr><td>DXF para la CNC y nesting en plancha</td><td class="tl-no">—</td><td class="tl-si">Sí</td></tr>
+          <tr><td>Letras, carteles y pieza desde una foto</td><td class="tl-no">—</td><td class="tl-si">Sí</td></tr>
+          <tr><td>PRO, pago único</td><td><span class="js-precio">20 USDT</span></td><td><span class="js-precio-pc">49 USDT</span></td></tr>
+        </tbody>
+      </table>
+      <p class="tl-nota"><a href="../">Conocé optiMAX para Windows →</a></p>
+    </div>
+  </section>
+
+  <section class="seccion" id="preguntas">
+    <div class="envoltura tl-preg">
+      <h2>Preguntas frecuentes</h2>
+      <details><summary>¿Necesito una máquina CNC?</summary><p>No. Las plantillas se trazan a mano o se imprimen a escala, y las listas de corte son para sierra, amoladora, cizalla o guillotina.</p></details>
+      <details><summary>¿Tengo que instalar algo?</summary><p>No. Se abre en el navegador del celular. Si querés, la dejás en la pantalla de inicio y se abre como cualquier app.</p></details>
+      <details><summary>¿Funciona sin internet?</summary><p>Sí, después de abrirla una vez con internet. La PRO, una vez activada, sigue andando sin conexión.</p></details>
+      <details><summary>¿Cómo compro y activo la PRO?</summary><p>Tocás «Comprar PRO» en la app o el botón de esta página y nos escribís por WhatsApp. Cuando está pago, en la app tocás «Ya compré: activar» → «Entrar con WhatsApp» desde el mismo número.</p></details>
+      <details><summary>¿En cuántos equipos la puedo usar?</summary><p>En hasta 2 equipos con el mismo número de WhatsApp.</p></details>
+      <details><summary>¿Dónde quedan mis trabajos?</summary><p>Con la PRO quedan guardados en el mismo equipo. Los de portones, barras y guillotina también se guardan en un archivo .nesting, que podés pasar a otro equipo o abrir en optiMAX para Windows.</p></details>
+      <details><summary>¿Me sirve la licencia de optiMAX para Windows?</summary><p>No, son productos y licencias separados.</p></details>
+    </div>
+  </section>
+
+  <section class="seccion tl-final">
+    <div class="envoltura">
+      <h2>Probala ahora en tu celular</h2>
+      <p class="tenue">Es gratis y no pide registro.</p>
+      <div class="tl-acciones">
+        <a class="boton boton-rojo js-app" data-modulo="inicio" href="https://app.optimax.lat/">Abrir optiMAX Taller</a>
+        <a class="boton boton-linea js-consultas" href="https://wa.me/59178516826?text=Hola%2C%20tengo%20una%20consulta%20sobre%20optiMAX%20Taller" target="_blank" rel="noopener">Hacer una consulta</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="tl-barra-cel">
+  <a class="boton boton-rojo js-app" data-modulo="inicio" href="https://app.optimax.lat/">Probar gratis</a>
+  <a class="boton boton-linea" href="#precios">Ver la PRO</a>
+</div>
+
+<footer>
+  <div class="envoltura">
+    <img src="../img/logo-oscuro.webp" alt="optiMAX" width="66" height="22">
+    <span>optiMAX Taller · Desarrollado por GMSoftware, Santa Cruz de la Sierra, Bolivia</span>
+    <span>Ventas: +591 77626675 · Consultas: +591 78516826</span>
+    <a href="../">optiMAX para Windows</a>
+  </div>
+</footer>
+
+<script>
+// Precio: 250 Bs en Bolivia (zona horaria, como optimax.lat y la app), 20 USDT afuera.
+(function () {
+  var bolivia = false;
+  try { bolivia = Intl.DateTimeFormat().resolvedOptions().timeZone === "America/La_Paz"; } catch (e) {}
+  var precio = bolivia ? "250 Bs" : "20 USDT";
+  document.querySelectorAll(".js-precio").forEach(function (e) { e.textContent = precio; });
+  document.querySelectorAll(".js-precio-pc").forEach(function (e) { e.textContent = bolivia ? "590 Bs" : "49 USDT"; });
+  var txt = "Hola, quiero comprar optiMAX Taller PRO (" + precio + ").";
+  document.querySelectorAll(".js-comprar").forEach(function (a) { a.href = "https://wa.me/59177626675?text=" + encodeURIComponent(txt); });
+  // Píxel: abrir la app (con el módulo), comprar y consultas
+  function evento(tipo, nombre, datos) {
+    try { if (window.fbq) fbq(tipo, nombre, Object.assign({ idioma: "es", pagina: "taller" }, datos || {})); } catch (e) {}
+  }
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a");
+    if (!a) return;
+    if (a.classList.contains("js-app")) evento("trackCustom", "TallerAbrirApp", { modulo: a.dataset.modulo || "inicio" });
+    else if (a.classList.contains("js-comprar")) { evento("track", "Contact", { content_name: "optiMAX Taller PRO" }); evento("trackCustom", "TallerComprarPRO", { precio: precio }); }
+    else if (a.classList.contains("js-consultas")) evento("trackCustom", "TallerConsulta");
+  });
+})();
+</script>
+</body>
+</html>
