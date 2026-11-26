@@ -20,11 +20,15 @@ https://app.optimax.lat, repo `optimax-pwa`; esta es solo su página). Solo en e
 colores, barra, botones y pie) + su propio `<style>` (clases `tl-…`; colores de cada oficio iguales a los de la app); **no**
 usa `comun.js` (que es del programa de Windows: descarga y pagos). Su propio script al final: precio de la PRO **250 Bs en
 Bolivia / 20 USDT afuera** (zona horaria `America/La_Paz`, como el sitio y la app; `.js-precio`, `.js-precio-pc` = 590 Bs /
-49 USDT), mensaje de WhatsApp a ventas y eventos del píxel (`TallerAbrirApp` con `modulo`, `Contact` + `TallerComprarPRO`
-con `precio`, `TallerConsulta`; todos con `idioma: "es"` y `pagina: "taller"`). Mismo píxel y `ox_eid` que el sitio.
+49 USDT) y eventos del píxel (`TallerAbrirApp` con `modulo`, `TallerConsulta`; con `idioma: "es"` y `pagina: "taller"`).
+Mismo píxel y `ox_eid` que el sitio. **La PRO se compra solo desde la app** (26-nov, Max): la página muestra el precio y
+dice que se compra en la app («Comprar PRO»), sin enlace de compra ni WhatsApp a ventas (la compra queda atada al
+equipo); por eso ya no hay `js-comprar` ni los eventos `Contact` / `TallerComprarPRO`.
 Imágenes en `taller/img/`: capturas reales de la app (`3d-*.webp` = vistas 3D, `cel-*.webp` = pantallas del celular,
-`og.jpg` = imagen para compartir) y las 12 figuras en `taller/img/fig/`. Las capturas se sacan con el guion de Claude
-(Playwright sobre la PWA con `?pro=1`); si cambia la app, se vuelven a sacar. Datos de DEMO / PRO = los de la app (ver
+`og.jpg` = imagen para compartir) y las 12 figuras en `taller/img/fig/`. Las capturas 3D de portones (`3d-porton`,
+`3d-corredizo`, `3d-reja`, `3d-panos`, `og.jpg`) se sacan con `python _herramientas/capturas_taller.py --app RUTA/optimax-pwa`
+(Playwright sobre la PWA con `?pro=1`; `pro/` = el repo privado); si cambia la app, se vuelven a sacar. Las de chapa y
+`cel-*` no están en ese guion (se sacaron a mano el 25-nov). Datos de DEMO / PRO = los de la app (ver
 `estado-pwa.md` en el Project de la PWA): si cambian allá, cambiarlos acá. El enlace desde el sitio es `/taller/`
 (absoluto, así sirve también en `pt/`).
 

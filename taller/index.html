@@ -53,6 +53,9 @@
 .tl-3d-grande{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;margin-bottom:18px}
 .tl-3d{position:relative;margin:0;border-radius:12px;overflow:hidden;background:#eef1f4;box-shadow:var(--sombra)}
 .tl-3d img{width:100%;height:100%;object-fit:cover}
+.tl-3d-texto{background:var(--acero-2);border:1px solid var(--acero-3);border-top:4px solid var(--herreria);border-radius:12px;padding:22px;display:flex;flex-direction:column;justify-content:center;gap:10px;box-shadow:var(--sombra)}
+.tl-3d-texto h3{font-size:1.45rem;color:var(--herreria)}
+.tl-3d-texto p{color:var(--tenue)}
 .tl-3d-chapa{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .tl-3d-chapa .tl-3d img{aspect-ratio:4/3;object-fit:contain;background:#eef1f4}
 /* catálogo */
@@ -72,6 +75,8 @@
 .tl-monto small{font:500 1rem var(--f-texto);color:var(--tenue)}
 .tl-plan ul{margin:0;padding-left:20px;line-height:1.75}
 .tl-plan .boton{margin-top:auto}
+.tl-en-app{margin-top:auto;background:var(--acero-3);border-radius:10px;padding:14px 16px;font-weight:600;text-align:center}
+.tl-en-app small{display:block;font-weight:500;color:var(--tenue);margin-top:4px}
 .tl-nota{font-size:.92rem;color:var(--tenue);text-align:center;margin-top:18px}
 /* pasos */
 .tl-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:paso;padding:0;margin:0;list-style:none}
@@ -224,11 +229,19 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
       <div class="intro">
         <p class="tl-eyebrow">Vista 3D</p>
         <h2>Mirala armada antes de cortar</h2>
-        <p>Cada portón, reja y desarrollo se ve en 3D: lo girás con un dedo y lo acercás con dos. El portón entre columnas o paredes, la reja en el hueco de la ventana y la chapa enrollada como va a quedar. Está también en la DEMO.</p>
+        <p>Cada portón, reja y desarrollo se ve en 3D: lo girás con un dedo y lo acercás con dos. El portón entre columnas o paredes de ladrillo, la reja en el hueco de la ventana y la chapa enrollada como va a quedar. Está también en la DEMO.</p>
       </div>
       <div class="tl-3d-grande">
         <figure class="tl-3d"><img src="img/3d-corredizo.webp" width="1200" height="780" loading="lazy" alt="Portón corredizo en 3D que corre por detrás de las paredes"><figcaption>Corredizo con paredes</figcaption></figure>
         <figure class="tl-3d"><img src="img/3d-reja.webp" width="800" height="800" loading="lazy" alt="Reja de ventana de rombos en 3D, sobrepuesta en el hueco de una pared"><figcaption>Reja de ventana en la pared</figcaption></figure>
+      </div>
+      <div class="tl-3d-grande">
+        <figure class="tl-3d"><img src="img/3d-panos.webp" width="1200" height="780" loading="lazy" alt="Portón de 2 hojas en 3D con chapa en paños, parantes y travesaño doble con barrotes en la franja, entre paredes de ladrillo"><figcaption>Travesaño doble y chapa en paños</figcaption></figure>
+        <div class="tl-3d-texto">
+          <h3>Tu diseño de portón</h3>
+          <p>Barrotes, diagonales, rombos, cuadrícula, cruz o chapa ciega. Travesaños repartidos o un travesaño doble al centro, con la franja libre o con sus propios barrotes.</p>
+          <p>Con chapa, elegís cuántos paños van a lo ancho: la app pone los parantes y te da cada chapa a cortar.</p>
+        </div>
       </div>
       <div class="tl-3d-chapa">
         <figure class="tl-3d"><img src="img/3d-t_cil_cil.webp" width="800" height="577" loading="lazy" alt="T de caño en 3D"><figcaption>T de caño</figcaption></figure>
@@ -295,7 +308,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
             <li>Costos del portón: perfiles, soldadura y pintura</li>
             <li>Guardar trabajos; los de portones, barras y guillotina también se abren en optiMAX para Windows</li>
           </ul>
-          <a class="boton boton-rojo js-comprar" href="https://wa.me/59177626675" target="_blank" rel="noopener">Comprar la PRO por WhatsApp</a>
+          <p class="tl-en-app">Se compra desde la app, en el celular: abrila y tocá «Comprar PRO».<small>Pagás con QR, Binance o USDT y la PRO se activa sola.</small></p>
         </article>
       </div>
       <p class="tl-nota">La licencia va con tu número de WhatsApp y sirve en hasta 2 equipos. La PRO de la app y la de optiMAX para Windows son licencias separadas.</p>
@@ -308,7 +321,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
       <ol class="tl-pasos">
         <li><h3>Abrila</h3><p>Entrá a <a class="js-app" data-modulo="inicio" href="https://app.optimax.lat/">app.optimax.lat</a> desde el celular. No pide cuenta ni datos.</p></li>
         <li><h3>Dejala en el inicio</h3><p>En Android, menú ⋮ → «Instalar aplicación». En iPhone, desde Safari: Compartir → «Agregar a inicio» (así no se borran tus datos).</p></li>
-        <li><h3>Usala en el taller</h3><p>Abrila una vez con internet y después anda sin conexión. Para la PRO: «Comprar PRO» en la app, y al pagar, «Ya compré: activar».</p></li>
+        <li><h3>Usala en el taller</h3><p>Abrila una vez con internet y después anda sin conexión. Para la PRO: «Comprar PRO» en la app; cuando confirmamos el pago, se activa sola.</p></li>
       </ol>
     </div>
   </section>
@@ -341,7 +354,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
       <details><summary>¿Necesito una máquina CNC?</summary><p>No. Las plantillas se trazan a mano o se imprimen a escala, y las listas de corte son para sierra, amoladora, cizalla o guillotina.</p></details>
       <details><summary>¿Tengo que instalar algo?</summary><p>No. Se abre en el navegador del celular. Si querés, la dejás en la pantalla de inicio y se abre como cualquier app.</p></details>
       <details><summary>¿Funciona sin internet?</summary><p>Sí, después de abrirla una vez con internet. La PRO, una vez activada, sigue andando sin conexión.</p></details>
-      <details><summary>¿Cómo compro y activo la PRO?</summary><p>Tocás «Comprar PRO» en la app o el botón de esta página y nos escribís por WhatsApp. Cuando está pago, en la app tocás «Ya compré: activar» → «Entrar con WhatsApp» desde el mismo número.</p></details>
+      <details><summary>¿Cómo compro y activo la PRO?</summary><p>Desde la app, en el celular: tocás «Comprar PRO», elegís cómo pagar (QR, Binance o USDT), pagás y tocás «Ya pagué». Se abre WhatsApp con el aviso del pago: lo mandás y, cuando confirmamos el pago, la PRO se activa sola en ese equipo.</p></details>
       <details><summary>¿En cuántos equipos la puedo usar?</summary><p>En hasta 2 equipos con el mismo número de WhatsApp.</p></details>
       <details><summary>¿Dónde quedan mis trabajos?</summary><p>Con la PRO quedan guardados en el mismo equipo. Los de portones, barras y guillotina también se guardan en un archivo .nesting, que podés pasar a otro equipo o abrir en optiMAX para Windows.</p></details>
       <details><summary>¿Me sirve la licencia de optiMAX para Windows?</summary><p>No, son productos y licencias separados.</p></details>
@@ -382,9 +395,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
   var precio = bolivia ? "250 Bs" : "20 USDT";
   document.querySelectorAll(".js-precio").forEach(function (e) { e.textContent = precio; });
   document.querySelectorAll(".js-precio-pc").forEach(function (e) { e.textContent = bolivia ? "590 Bs" : "49 USDT"; });
-  var txt = "Hola, quiero comprar optiMAX Taller PRO (" + precio + ").";
-  document.querySelectorAll(".js-comprar").forEach(function (a) { a.href = "https://wa.me/59177626675?text=" + encodeURIComponent(txt); });
-  // Píxel: abrir la app (con el módulo), comprar y consultas
+  // Píxel: abrir la app (con el módulo) y consultas (la PRO se compra en la app: ahí se mide)
   function evento(tipo, nombre, datos) {
     try { if (window.fbq) fbq(tipo, nombre, Object.assign({ idioma: "es", pagina: "taller" }, datos || {})); } catch (e) {}
   }
@@ -392,7 +403,6 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
     var a = ev.target.closest && ev.target.closest("a");
     if (!a) return;
     if (a.classList.contains("js-app")) evento("trackCustom", "TallerAbrirApp", { modulo: a.dataset.modulo || "inicio" });
-    else if (a.classList.contains("js-comprar")) { evento("track", "Contact", { content_name: "optiMAX Taller PRO" }); evento("trackCustom", "TallerComprarPRO", { precio: precio }); }
     else if (a.classList.contains("js-consultas")) evento("trackCustom", "TallerConsulta");
   });
 })();
