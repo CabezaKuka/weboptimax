@@ -82,14 +82,13 @@ def acercar(pasos):
 
 
 def porton(pg, base):
-    """Portada y og.jpg: batiente de 2 hojas de barrotes entre columnas."""
+    """Batiente de 2 hojas de barrotes entre columnas (sección 3D)."""
     portones(pg, base)
     pg.click(".p-tarjeta[data-v=batiente_2]")
     pg.fill("#p-ancho", "3000")
     pg.fill("#p-alto", "1800")
     esperar(pg)
     foto_3d(pg, "Columnas", "3d-porton.webp", 1200, 780, acercar(2))
-    foto_3d(pg, "Columnas", "og.jpg", 1200, 630, acercar(2))
 
 
 def corredizo(pg, base):
@@ -132,7 +131,50 @@ def panos(pg, base):
     foto_3d(pg, "Paredes", "3d-panos.webp", 1200, 780, acercar(2))
 
 
-CAPTURAS = {"porton": porton, "corredizo": corredizo, "reja": reja, "panos": panos}
+def plancha(pg, base):
+    """Plancha de chapa negra 2000 × 1000 con las piezas y los cortes numerados (guillotina, con la PRO)."""
+    pg.set_viewport_size({"width": 900, "height": 900})
+    pg.goto(base + "?pro=1#chapa")
+    pg.wait_for_selector("#chapas li")
+    pg.evaluate("""() => localStorage.setItem('optimax-guillotina', JSON.stringify({ corte: '3', rotar: true,
+      filas: [['500', '300', 4], ['300', '800', 2], ['400', '400', 2], ['150', '1000', 3], ['250', '250', 4]] }))""")
+    pg.goto(base + "#guillotina")
+    pg.wait_for_selector("#g-plancha option", state="attached")
+    etiqueta = pg.evaluate("""() => [...document.querySelectorAll('#g-plancha option')].map((o) => o.textContent)
+      .find((t) => t.includes('negra') && t.includes('1,5'))""")
+    pg.select_option("#g-plancha", label=etiqueta)
+    pg.wait_for_timeout(2500)
+    pg.wait_for_selector(".g-plancha svg")
+    tmp = os.path.join(SALIDA, "_plancha.png")
+    pg.locator(".g-plancha svg").first.screenshot(path=tmp)
+    img = Image.open(tmp).convert("RGB")
+    ancho = 800
+    img = img.resize((ancho, round(img.height * ancho / img.width)), Image.LANCZOS)
+    img.save(os.path.join(SALIDA, "plancha.webp"), quality=86, method=6)
+    os.remove(tmp)
+    print(f"  plancha.webp: {img.width} × {img.height}")
+
+
+def portada(pg, base):
+    """og.jpg (1200 × 630): el portón de paños grande + la curva por sectores y la plancha en tarjetas."""
+    fondo = Image.open(os.path.join(SALIDA, "3d-panos.webp")).convert("RGB")
+    og = fondo.resize((1200, 780), Image.LANCZOS).crop((0, 60, 1200, 690))
+    def tarjeta(nombre, w):
+        im = Image.open(os.path.join(SALIDA, nombre)).convert("RGB")
+        im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
+        borde = Image.new("RGB", (im.width + 12, im.height + 12), "#ffffff")
+        borde.paste(im, (6, 6))
+        return borde
+    curva = tarjeta("3d-codo_sectores.webp", 250)
+    pl = tarjeta("plancha.webp", 330)
+    og.paste(curva, (1200 - curva.width - 28, 24))
+    og.paste(pl, (1200 - pl.width - 28, 630 - pl.height - 24))
+    og.save(os.path.join(SALIDA, "og.jpg"), quality=86, optimize=True)
+    print("  og.jpg: 1200 × 630 (composición)")
+
+
+CAPTURAS = {"porton": porton, "corredizo": corredizo, "reja": reja, "panos": panos, "plancha": plancha,
+            "portada": portada}
 
 
 def main():
