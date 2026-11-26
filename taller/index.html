@@ -36,6 +36,12 @@
 .tl-chips li{font-size:.88rem;color:var(--tenue);border:1px solid var(--linea);border-radius:999px;padding:4px 12px;background:var(--acero-2)}
 .tl-hero-img{margin:0;border-radius:14px;overflow:hidden;box-shadow:var(--sombra);background:#eef1f4;position:relative}
 .tl-hero-img img{width:100%;height:auto}
+/* portada: el portón grande y, encima, la curva y la plancha (26-nov, Max: que no parezca solo de portones) */
+.tl-hero-comp{position:relative;margin:0 22px 26px 0}
+.tl-hc{position:absolute;background:#fff;border:5px solid #fff;border-radius:10px;box-shadow:0 10px 28px rgba(26,31,36,.22)}
+.tl-hc-curva{width:27%;height:auto;top:-16px;right:-22px;background:#eef1f4}
+.tl-hc-plancha{width:44%;height:auto;bottom:-26px;right:-22px}
+.tl-hero-comp .tl-hero-img figcaption{top:12px;bottom:auto}
 .tl-hero-img figcaption,.tl-3d figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 12px;font-size:.85rem;font-weight:600;color:#1a1f24}
 .tl-precio-hero{font-size:.95rem;color:var(--tenue);margin-top:6px}
 .tl-precio-hero strong{color:var(--texto)}
@@ -104,7 +110,11 @@
 @media (max-width:1000px){.tl-herr{grid-template-columns:1fr 1fr}.tl-cat{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:760px){
   .tl-portada .envoltura,.tl-3d-grande,.tl-planes,.tl-pasos{grid-template-columns:1fr}
-  .tl-portada .tl-hero-img{order:-1}
+  .tl-portada .tl-hero-comp{order:-1}
+  .tl-hero-comp{margin:0;display:grid;grid-template-columns:2fr 3fr;gap:10px;align-items:center}
+  .tl-hero-comp .tl-hero-img{grid-column:1/-1}
+  .tl-hc{position:static;width:100%;border-width:3px;box-shadow:var(--sombra)}
+  .tl-hero-comp .tl-hero-img figcaption{top:auto;bottom:8px}
   .tl-3d-chapa{grid-template-columns:1fr 1fr}
   .tl-cat{grid-template-columns:repeat(3,1fr)}
   .tl-tabla th,.tl-tabla td{padding:10px 8px;font-size:.92rem}
@@ -178,9 +188,13 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
         </ul>
         <p class="tl-precio-hero">PRO de pago único: <strong class="js-precio">20 USDT</strong></p>
       </div>
-      <figure class="tl-hero-img">
-        <img src="img/3d-porton.webp" width="1200" height="780" alt="Portón batiente de 2 hojas en 3D, entre dos columnas, armado con la lista de corte de la app" fetchpriority="high">
-        <figcaption>Portón batiente en la vista 3D de la app</figcaption>
+      <figure class="tl-hero-comp">
+        <div class="tl-hero-img">
+          <img src="img/3d-panos.webp" width="1200" height="780" alt="Portón de 2 hojas en 3D con chapa en paños y travesaño doble con barrotes, entre paredes de ladrillo" fetchpriority="high">
+          <figcaption>Portones, desarrollos de chapa y cortes de plancha</figcaption>
+        </div>
+        <img class="tl-hc tl-hc-curva" src="img/3d-codo_sectores.webp" width="800" height="700" alt="Curva redonda por sectores en 3D">
+        <img class="tl-hc tl-hc-plancha" src="img/plancha.webp" width="800" height="421" alt="Plancha de chapa negra con las piezas y los cortes numerados">
       </figure>
     </div>
   </section>
@@ -236,7 +250,7 @@ src="https://www.facebook.com/tr?id=4773464836310644&ev=PageView&noscript=1"></n
         <figure class="tl-3d"><img src="img/3d-reja.webp" width="800" height="800" loading="lazy" alt="Reja de ventana de rombos en 3D, sobrepuesta en el hueco de una pared"><figcaption>Reja de ventana en la pared</figcaption></figure>
       </div>
       <div class="tl-3d-grande">
-        <figure class="tl-3d"><img src="img/3d-panos.webp" width="1200" height="780" loading="lazy" alt="Portón de 2 hojas en 3D con chapa en paños, parantes y travesaño doble con barrotes en la franja, entre paredes de ladrillo"><figcaption>Travesaño doble y chapa en paños</figcaption></figure>
+        <figure class="tl-3d"><img src="img/3d-porton.webp" width="1200" height="780" loading="lazy" alt="Portón batiente de 2 hojas de barrotes en 3D, entre dos columnas, sobre piso de adoquín"><figcaption>Batiente de barrotes entre columnas</figcaption></figure>
         <div class="tl-3d-texto">
           <h3>Tu diseño de portón</h3>
           <p>Barrotes, diagonales, rombos, cuadrícula, cruz o chapa ciega. Travesaños repartidos o un travesaño doble al centro, con la franja libre o con sus propios barrotes.</p>

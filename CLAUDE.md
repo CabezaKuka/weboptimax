@@ -25,9 +25,13 @@ Mismo píxel y `ox_eid` que el sitio. **La PRO se compra solo desde la app** (26
 dice que se compra en la app («Comprar PRO»), sin enlace de compra ni WhatsApp a ventas (la compra queda atada al
 equipo); por eso ya no hay `js-comprar` ni los eventos `Contact` / `TallerComprarPRO`.
 Imágenes en `taller/img/`: capturas reales de la app (`3d-*.webp` = vistas 3D, `cel-*.webp` = pantallas del celular,
-`og.jpg` = imagen para compartir) y las 12 figuras en `taller/img/fig/`. Las capturas 3D de portones (`3d-porton`,
-`3d-corredizo`, `3d-reja`, `3d-panos`, `og.jpg`) se sacan con `python _herramientas/capturas_taller.py --app RUTA/optimax-pwa`
-(Playwright sobre la PWA con `?pro=1`; `pro/` = el repo privado); si cambia la app, se vuelven a sacar. Las de chapa y
+`og.jpg` = imagen para compartir) y las 12 figuras en `taller/img/fig/`. **Portada** (26-nov, Max: que no parezca solo de
+portones): `.tl-hero-comp` = el portón con travesaño doble y chapa en paños (`3d-panos`) grande y, encima, la curva por
+sectores (`3d-codo_sectores`) y una plancha de chapa negra con los cortes numerados (`plancha.webp`); en el celular las
+dos van debajo. `og.jpg` es la misma composición en una imagen. Las capturas de portones (`3d-porton`, `3d-corredizo`,
+`3d-reja`, `3d-panos`), la plancha y `og.jpg` se sacan con `python _herramientas/capturas_taller.py --app RUTA/optimax-pwa`
+(Playwright sobre la PWA con `?pro=1`; `pro/` = el repo privado; `--solo portada` rearma `og.jpg` con las imágenes que
+ya están); si cambia la app, se vuelven a sacar. Las de chapa y
 `cel-*` no están en ese guion (se sacaron a mano el 25-nov). Datos de DEMO / PRO = los de la app (ver
 `estado-pwa.md` en el Project de la PWA): si cambian allá, cambiarlos acá. El enlace desde el sitio es `/taller/`
 (absoluto, así sirve también en `pt/`).
